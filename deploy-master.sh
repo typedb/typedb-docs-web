@@ -15,7 +15,7 @@ echo
 echo "Checking out graknlabs/grakn:master into a temporary branch graknlabs-docs-temp-branch"
 echo "..."
 git stash
-git remote add graknlabs-docs-temp-remote git@github.com:graknlabs/grakn.git
+git remote add graknlabs-docs-temp-remote git@github.com:graknlabs/web-dev.git
 git fetch graknlabs-docs-temp-remote
 git checkout -b graknlabs-docs-temp-branch graknlabs-docs-temp-remote/master
 
@@ -31,9 +31,7 @@ git commit -m "Updating dev.grakn.ai"
 echo
 echo "Pushing website to git@heroku.com:grakn-web-dev.git"
 echo "..."
-# we will just push the git tree for just the docs repo, by doing `git subtree split --prefix docs ...` from the root directory
-cd ../
-git push git@heroku.com:grakn-web-dev.git `git subtree split --prefix docs graknlabs-docs-temp-branch`:master --force
+git push git@heroku.com:grakn-web-dev.git
 
 echo
 echo "Removing up temporary branch graknlabs-docs-temp-branch"
