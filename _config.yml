@@ -19,10 +19,6 @@ google_analytics: UA-72414051-1
 # disqus_shortname: idrbwjekyll
 # if you're using disqus for comments, add the shortname here. if not, leave this value blank.
 
-# DO NOT MODIFY THIS PARAMETER
-urlprefix: 
-# DO NOT MODIFY THIS PARAMETER
-
 host: 127.0.0.1
 # the preview server used. Leave as is.
 
@@ -33,6 +29,16 @@ exclude:
   - .gitignore
   - Gemfile
   - Gemfile.lock
+  - api.yml
+  - config.ru
+  - feed.xml
+  - Procfile
+  - PULL_REQUEST_TEMPLATE.md
+  - Rakefile
+  - README.md
+  - static.json
+  - to-do-list.md
+  - tooltips.json
   - pdfconfigs
   - pdf-template.sh
   - _config-template.yml
