@@ -4,101 +4,76 @@
 
 You need to install the following dependencies to be able to build HTML pages in the documentation repository. **NOTE:** this is *not* necessary for updating the documentation itself.
 
-1. **Bundler** - you will need to install `bundler` through your package manager of choice.
+**Arch Linux**
+```
+$ yaourt -S ruby-bundler
+$ bundle install
+```
 
-    **Arch Linux**
-    ```
-    $ yaourt -S ruby-bundler
-    ```
-
-    **OSX**
-    ```
-    $ brew install ruby
-    $ gem install bundler
-    ```
-
-2. **Rake** - this is used to automate the rest of the site building process.
-    ```
-    $ gem install rake
-    ```
-
-    With `rake` installed you can now install all other dependencies:
-    ```
-    $ rake dependencies
-    ```
+**macOS**
+```
+$ brew install ruby
+$ gem install bundler
+$ bundle install
+```
 
 ## Building
 
 You can generate the documentation HTML by running the following in the repository top level.
+
 ```
-$ rake build
-      Generating...
-                    done in 1.503 seconds.
- Auto-regeneration: disabled. Use --watch to enable.
-$
+$ jekyll build
 ```
 
-This will build the documentation site in `_jekyll` and create a symlink `_site` in the repository top level directory which will contain all the generated content.
+This will build the documentation site by taking everything (excluding certain files and directories) in the top level directorty and generating the static html files in the `_site` directory.
 
 
 ## Cleaning
 
 Clean by running the following command in the repository top level:
+
 ```
-$ rake clean
+$ jekyll clean
 ```
 
-This will remove all generated files.
-
+This will remove the `_site` directory.
 
 ## Running local server (for development)
 
-You can also build and server the generated HTML files in one command. A web
-server will be started listening on `localhost` (127.0.0.1) on port 4005
+You can also build and server the generated HTML files in one command. A WEBrick web
+server will be started listening on 127.0.0.1:4005.
 
 ```
-$ rake serve
-    Server address: http://127.0.0.1:4005/
-  Server running... press ctrl-c to stop.
-$
+$ jekyll serve
 ```
 
-You can now view the documentation by navigating your web browser to `http://127.0.0.1:4005/`
-
+You can now view the documentation by navigating your web browser to `http://127.0.0.1:4005`
 
 ## Running host server (to test production deployment) (optional, for debugging host server issues)
 
-The [dev.grakn.ai](https://dev.grakn.ai) website is hosted on a node server. To test the actual node server deployment, which is different from the rake server, you need to:
+The [dev.grakn.ai](https://dev.grakn.ai) website is hosted on a Puma web server as a Heroku app using the following command. This can only be run locally which starts the Puma server listening on 0.0.0.0:9292.
 
-1. Install NPM Modules; These are used to run the deployment server tests.
-    ```
-    $ yarn install
-    ```
-2. Run the deployment server with ```node ./deploy-server.js```
-3. Test how everything is going to look on releasing, on `http://127.0.0.1:3003/`
-
+```
+$ jekyll build
+$ bundle exec puma -t 8:32 -w 3
+```
 
 ## Deployment
 
 1. Make sure you have access rights to write to Grakn Heroku account.
-1. Create a new PR to Grakn [master branch](https://github.com/graknlabs/grakn/tree/master).
-2. Once the PR has been merged run the following:
-```
-git fetch <grakn-master-remote> master
-cd docs
-./deploy-master.sh
-```
-
+2. Create a new PR to Grakn Docs [master branch](https://github.com/graknlabs/docs/tree/master).
+3. Once the PR has been merged, an automatic deploy to [dev.grakn.ai](https://dev.grakn.ai) takes place.
 
 ## Tests
 
-There are a few tests we run against docs:
+Work in progres ...
+<!-- There are a few tests we run against docs:
 
 - `html-proofer`
 - `GraqlDocsTest`
-- `JavaDocsTest`
+- `JavaDocsTest` -->
 
-`html-proofer` can be executed with `rake test`. It will check all the links in the docs to make sure they actually go
+<!-- `html-proofer` can be executed with `rake test`. It will check all the links in the docs to make sure they actually go
 somewhere.
 
 `GraqlDocsTest` and `JavaDocsTest` will test the Graql and Java code blocks respectively. Blocks are identified by
@@ -115,4 +90,4 @@ Java code blocks are actually tested with Groovy (because it is an interpreted l
 between Java and Groovy syntax, so we recommend writing code that is valid in both languages.
 
 If a code block should not be executed (e.g. because it is deliberately invalid or does something dangerous), then mark
-it `graq-test-ignore` or `java-test-ignore` instead of `graql` or `java`.
+it `graq-test-ignore` or `java-test-ignore` instead of `graql` or `java`. -->
