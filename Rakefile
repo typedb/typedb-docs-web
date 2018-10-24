@@ -20,7 +20,7 @@ task :build => ['clean'] do
     jekyll('build')
 end
 
-task :serve => ['clean', 'build'] do
+task :serve => ['build'] do
     jekyll('serve')
     :clean
 end
