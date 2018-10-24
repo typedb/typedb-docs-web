@@ -24,6 +24,11 @@ task :clean do
     rm_rf '_site'
 end
 
+desc 'Ruby buildpack to build jekyll'
+task "assets:precompile" do
+    jekyll('build')
+end
+
 desc 'Generate HTML and build site'
 task :build => ['clean', 'symlink_assets'] do
     generate_config()
