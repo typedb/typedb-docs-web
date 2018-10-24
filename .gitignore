@@ -1,0 +1,11 @@
+# jekyll
+_site/
+.sass_cache/
+.jekyll_cache/
+.jekyll-metadata
+
+# 
+yarn.lock
+
+# misc
+.DS_Store
