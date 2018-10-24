@@ -6,7 +6,6 @@ _site
 
 # 
 yarn.lock
-**/Gemfile.lock
 
 # misc
 .DS_Store
