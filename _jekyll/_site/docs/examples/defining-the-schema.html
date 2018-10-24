@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definit...">
-<meta name="keywords" content="special_layouts,  json, scrolling, scrollto, jquery plugin, GRAKN.AI, Grakn Labs, grakn, graql, grakn.ai, knowledge graph, knowledge engineering, knowledge base, distributed knowledge graph, development platform, developer tool, data platform, programming langauge, query langauge, database, semantic database, distributed semantic database, distributed database, graph database, semantic search, data exploration, recommendation system, knowledge management, real-time analytics, advanced analytics, reasoning engine, inference engine, expert systems, semantic applications, research engines, data management, business intelligence, big data, semantic web, semantic data, knowledge representation, automated reasoning, semantic network, knowledge ontology, semantic graph, ontology engineering, graph based knowledge representation, artificial intelligence,">
-<title>Scroll layout | GRAKN.AI</title>
-<meta property="og:description" content="This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definit...">
-<meta property="og:title" content="Scroll layout | GRAKN.AI" >
+<meta name="description" content="How to model and load a schema into Grakn">
+<meta name="keywords" content="schemaknowledge graphontologymigration,  schema, knowledge graph, ontology, migration, GRAKN.AI, Grakn Labs, grakn, graql, grakn.ai, knowledge graph, knowledge engineering, knowledge base, distributed knowledge graph, development platform, developer tool, data platform, programming langauge, query langauge, database, semantic database, distributed semantic database, distributed database, graph database, semantic search, data exploration, recommendation system, knowledge management, real-time analytics, advanced analytics, reasoning engine, inference engine, expert systems, semantic applications, research engines, data management, business intelligence, big data, semantic web, semantic data, knowledge representation, automated reasoning, semantic network, knowledge ontology, semantic graph, ontology engineering, graph based knowledge representation, artificial intelligence,">
+<title>Defining the Schema | GRAKN.AI</title>
+<meta property="og:description" content="How to model and load a schema into Grakn">
+<meta property="og:title" content="Defining the Schema | GRAKN.AI" >
 <meta property="og:image" content="/images/og-image.png" >
 <link rel="stylesheet" href="/css/syntax.css">
 
@@ -251,7 +251,7 @@ src="https://www.facebook.com/tr?id=2009892122581066&ev=PageView&noscript=1" alt
                 
                 dataSource: '/search.json',
                 
-                searchResultTemplate: '<li><a href="{url}" title="Scroll layout">{title}</a></li>',
+                searchResultTemplate: '<li><a href="{url}" title="Defining the Schema">{title}</a></li>',
                 noResultsText: '<li><a class="empty">No results found</a></li>',
                 limit: 10,
                 fuzzy: true
@@ -735,7 +735,7 @@ src="https://www.facebook.com/tr?id=2009892122581066&ev=PageView&noscript=1" alt
             
             
             
-            <li><a href="/docs/examples/defining-the-schema">Defining the schema</a></li>
+            <li class="active"><a href="/docs/examples/defining-the-schema">Defining the schema</a></li>
             
             
             
@@ -789,7 +789,7 @@ src="https://www.facebook.com/tr?id=2009892122581066&ev=PageView&noscript=1" alt
             
 
 <div class="post-header">
-   <h1 class="post-title-main">Scroll layout</h1>
+   <h1 class="post-title-main">Defining the Schema</h1>
 </div>
 
 
@@ -799,32 +799,10 @@ src="https://www.facebook.com/tr?id=2009892122581066&ev=PageView&noscript=1" alt
 <div class="post-content">
 
    
-    <div class="summary">This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definitions for that particular term. The scenario here is that the JSON blocks are really long, with extensive nesting and subnesting, which makes it difficult for tables below the JSON to adequately explain the term in a usable way.</div>
+    <div class="summary">How to model and load a schema into Grakn</div>
    
 
     
-    
-
-<!-- this handles the automatic toc. use ## for subheads to auto-generate the on-page minitoc. if you use html tags, you must supply an ID for the heading element in order for it to appear in the minitoc. -->
-<script>
-$( document ).ready(function() {
-  // Handler for .ready() called.
-
-$('#toc').toc({ minimumHeaders: 0, listType: 'ul', showSpeed: 0, headers: 'h2' });
-
-/* this offset helps account for the space taken up by the floating toolbar. */
-$('#toc').on('click', 'a', function() {
-  var target = $(this.getAttribute('href'))
-    , scroll_target = target.offset().top
-
-  $(window).scrollTop(scroll_target - 10);
-  return false
-})
-
-});
-</script>
-
-<div id="toc"></div>
 
     
 
@@ -832,238 +810,242 @@ $('#toc').on('click', 'a', function() {
 
     
 
-    
-
-  
-
-
-
-<script src="../js/jquery.scrollTo.min.js"></script>
-    <!-- local scroll must come after scrollTo, because localScroll is based on scrollTo, which is based on jQuery -->
-<script src="../js/jquery.localScroll.min.js"></script>
-
-<script>
-
-$( document ).ready(function() {
-$('#small-box-links').localScroll({
-           target:'#definition-box-container',
-           showSpeed: 1000,
-           hash: true,
-           easing: 'swing',
-           onAfter:function(){
-          $("#definition-box-container div a").addClass("active");
-          $("#definition-box-container div a").removeClass("active");
-          $("#definition-box-container div").removeClass("active");
-           $(window.location.hash).addClass("active");
-  }
-});
-
-
-});
-</script>
-
-<!-- documentation for localScroll function: http://flesler.blogspot.com/2007/10/jquerylocalscroll-10.html -->
-    <style type="text/css">
- 
-   #definition-box-container {
-        border: 0px solid #dedede;
-        border-radius: 4px;
-        max-height: 500px;
-        overflow: scroll;
-        padding-left:5px;
-        border-radius:5px;
-    }
-
-    #json-box-container {
-
-      border: 1px solid #dedede;
-      border-radius: 4px;
-      max-height:500px;
-      overflow: scroll;
-    }
-
-    #small-box-links {
-      float: left;
-    }
-
-    #definition-box-container .active {
-     background-color: #FFFBCC;
-    }
-    
-    div#definition-box-container div {
-      padding: 10px;
-}
-
-    @media (min-height: 700px)  {
-       #json-box-container {
-           max-height:500px;
-         }
-           #definition-box-container  {
-          max-height: 500px;
-  }
-    }
-
-     @media (min-height: 800px)  {
-       #json-box-container {
-           max-height:600px;
-    }
-        #definition-box-container  {
-          max-height: 600px;
-  }
-  }
-
-    @media (min-height: 900px)  {
-       #json-box-container {
-           max-height:700px;
-    }
-        #definition-box-container  {
-          max-height: 700px;
-  }
-  }
-
-     @media (min-height: 1000px)  {
-       #json-box-container {
-           max-height:800px;
-    }
-        #definition-box-container  {
-          max-height: 800px;
-  }
-  }
-
-    @media (min-height: 1100px)  {
-       #json-box-container {
-           max-height:900px;
-    }
-        #definition-box-container  {
-          max-height: 900px;
-  }
-  }
+  <h2 id="the-goal">The Goal</h2>
 
+<p>In this tutorial, our aim is to write a schema and load it into our knowledge graph; phone_calls. One that describes the reality of our dataset.</p>
 
-    </style>
+<h2 id="the-dataset">The Dataset</h2>
 
+<p>First off, let’s look at the dataset we are going to be working with in this series. Simply put, we’re going to have:</p>
 
-<div class="container">
-<div class="row">
- 
-<div id="small-box-links">
+<p><strong>people</strong> who <strong>call</strong> each other. Those who make calls, have a <strong>contract</strong> with <strong>company</strong> “Telecom”.</p>
 
-<div class="col-md-6">
-<div id="json-box-container">
-<pre>
-{
-  <a href="#apples">"apples"</a>: "red fruit at the store",
-  <a href="#bananas">"bananas"</a>: "yellow bananas in a bunch",
-  <a href="#carrots">"carrots"</a>: "orange vegetables that grow in the ground",
-  <a href="#dingbats">"dingbats"</a>: "a type of character symbol on a computer",
-  <a href="#eggs">"eggs"</a>: "chickens lay them, and people eat them",
-  <a href="#falafel">"falafel"</a>: "a Mediterranean sandwich consisting of lots of different stuff i don't know much about",
-  <a href="#giraffe">"giraffe"</a>: "tall animal, has purple tongue",
-  <a href="#hippo">"hippo"</a>: "surprisingly dangerous amphibian",
-  <a href="#igloo">"igloo"</a>: "an ice shelter made by eskimos",
-  <a href="#jeep">"jeep</a>: "the only car that starts with a j",
-  <a href="#kilt">"kilt"</a>: "something worn by scottish people, not a dress",
-  <a href="#lamp">"lamp"</a>: "you use it to read by your bedside at night"
-  <a href="#manifold">"manifold"</a>: "an intake mechanism on a car, like a valve, i think",
-  <a href="#octopus">"octopus"</a>: "eight tentacles, shoots ink, lives in dark caves, very mysterious",
-  <a href="#paranoia">"paranoia"</a>: "the constant feeling that others are out to get you, conspiring against your success",
-  <a href="#qui">"qui"</a>: "a life force that runs through your body",
-  <a href="#radical">"radical"</a>: "someone who opposes the status quo in major ways",
-  <a href="#silly">"silly"</a>: "how I feel writing this dummy copy",
-  <a href="#taffy">"taffy"</a>: "the sweets children like the most and dentists hate the worst",
-  <a href="#umbrella">"umbrella"</a>: "an invention that has not had any advancements in 200 years",
-  <a href="#vampire">"vampire"</a>: "a paranormal figure that is surprisingly in vogue despite its basic nature",
-  <a href="#washington">"washington"</a>: "the place where tom was born",
-  <a href="#xylophone">"xylophone"</a>: "some kind of pinging instrument used to sound chime-like notes",
-  <a href="#yahoo">"yahoo"</a>: "an expression of exuberance, said under breath when something works right",
-  <a href="#zeta">"zeta"</a>: "the way british people pronounce z",
-  <a href="#alpha">"alpha"</a>: "the original letter of the alphabet, which has since come to mean the first. however, i think the original symbol of alpha is actually an ox. it is somewhat of a mystery to linquists as to the exact origin of the letter alpha, but it basically represents the dawn of the alphabet, which proved to be a huge step forward for human thought and expression.",
-  <a href="#beta">"beta"</a>: "the period of time when something is finished but undergoing testing by a group of people.",
-  <a href="#cappa">"cappa"</a>: "how italians refer to their baseball caps",
-  <a href="#dunno">"dunno"</a>: "informal expression for 'don't know'"
-  }
-      
-</pre>
+<p>People, calls, contracts and companies. That’s what we are dealing with. But what do we want to get out of this data?</p>
 
-</div><!-- end json-box-container-->
-</div> <!-- end col-md-6-->
+<h2 id="the-insights">The insights</h2>
 
-<div class="col-md-3">
+<p>The below insights will give us a better perspective of what else needs to be included in the dataset.</p>
 
-<div id="definition-box-container">
+<ul>
+  <li>Since September 10th, which customers called the person X?</li>
+  <li>Who are the people who have received a call from a London customer aged over 50 who has previously called someone aged under 20?</li>
+  <li>Who are the common contacts of customers X and Y?</li>
+  <li>Who are the customers who 1) have all called each other and 2) have all called person X at least once?</li>
+  <li>How does the average call duration among customers aged under 20 compare with those aged over 40?</li>
+</ul>
 
+<p>This is all we need for determining how our schema should be defined. Let’s break it down.</p>
 
-    <div id="apples"><h5>apples</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer magna massa, euismod sed rutrum at, ullamcorper quis tellus. Vestibulum erat purus, aliquet sit amet pellentesque eget, tempus at ante. Nulla justo nisi, elementum nec nisi eget, consectetur varius tortor. </div>
+<p>A <strong>company</strong> has a <strong>name</strong>, and can be the <strong>provider</strong> of a <strong>contract</strong> to a <strong>person</strong>, who then becomes a <strong>customer</strong>.</p>
 
-    <div id="bananas"><h5>bananas</h5>Curabitur quis nibh sed eros viverra tempus et quis lorem. Nulla convallis sit amet risus vitae rutrum. Nulla at faucibus lectus. Pellentesque tortor nisl, interdum ac quam non, egestas congue massa. Vestibulum non porttitor lacus. Nam tincidunt arcu lectus. Donec eget ornare neque, hendrerit ornare lectus. In ac pretium odio.</div>
+<p>A <strong>person</strong> has a <strong>first and last name</strong>, an <strong>age</strong>, a <strong>city</strong> they live in, and a <strong>phone number</strong>. A person who doesn’t have a registered contract (not a customer) has only a <strong>phone number</strong>.</p>
 
-    <div id="carrots"><h5>carrots</h5>Vivamus pulvinar vestibulum pharetra. Vivamus vitae diam iaculis, posuere mi sed, dignissim massa. Nunc vitae aliquet urna. Proin sed pulvinar ex. Maecenas nisl lorem, rutrum sit amet hendrerit sed, posuere at odio. Sed consectetur semper tristique. Vivamus finibus varius felis at convallis. Fusce in dictum nunc.</div>
+<p>A <strong>call</strong>, made from a <strong>person (caller)</strong> to another <strong>person (callee)</strong>, has a <strong>duration</strong> as well as the <strong>date and time</strong> it’s been made.</p>
 
-    <div id="dingbats"><h5>dingbats</h5>Curabitur feugiat lorem eget elit ullamcorper tincidunt. In euismod diam aliquet tortor fermentum tempor. Fusce quam felis, commodo viverra orci vitae, scelerisque aliquet risus. </div>
+<h2 id="the-schema">The Schema</h2>
 
-    <div id="eggs"><h5>eggs</h5>Duis est nunc, fringilla eu ligula et, varius dignissim dui. Vivamus in tellus vitae ipsum vehicula fermentum at congue tellus. Suspendisse fermentum, magna vitae aliquet sodales, tellus nisi rutrum arcu, vitae auctor dolor quam ac tellus. Cras posuere augue erat, in sagittis quam lacinia id.</div>
+<p>Now that we have a good understanding of our dataset, we can go ahead and write the schema for it.</p>
 
-    <div id="falafel"><h5>falafel</h5>Praesent auctor a enim non lacinia. Integer sodales aliquet mi vel dapibus. Donec consequat justo eget nisi lacinia, eu sodales ligula molestie. Sed sapien nulla, rhoncus at elementum a, </div>
+<p>But first, let’s visualise the reality of our dataset.</p>
 
-    <div id="giraffe"><h5>giraffe</h5>Nullam venenatis at lectus sed pharetra. Sed hendrerit ligula lectus, non pellentesque diam faucibus sit amet. Aliquam dictum hendrerit pellentesque. Cras eu nisl sagittis, faucibus velit sit amet, sagittis odio. Donec vulputate ex vitae purus</div>
+<p><img src="/images/examples-defining-the-schema-1.png" alt="The Visualised Schema" /></p>
 
-    <div id="hippo"><h5>hippo</h5>Cras nec pretium nulla. Suspendisse tempus tortor vel venenatis pulvinar. Integer varius tempor enim fringilla tincidunt. Phasellus magna turpis, auctor vitae elit eget, fringilla pellentesque est. Phasellus ut porta risus. Curabitur iaculis sapien sed venenatis auctor. Integer eu orci at lectus eleifend auctor id rutrum urna.</div>
+<p>By looking at this visualised schema, we can identify the Grakn concepts.</p>
 
-    <div id="igloo"><h5>igloo</h5>Suspendisse tempus tortor vel venenatis pulvinar. Integer varius tempor enim fringilla tincidunt. Phasellus magna turpis, auctor vitae elit eget, fringilla pellentesque est. Phasellus ut porta risus.  </div>
+<div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> Everything that describes your domain in a Grakn knowledge graph is a <strong><a href="http://dev.grakn.ai/academy/schema-elements.html#concepts">concept</a></strong>. This includes the elements of the schema (namely types and roles, which we call schema concepts) and the actual data (which we simply call things; you can think of them as instances of types if you are the programmer kind of person)</div>
 
-    <div id="jeep"><h5>jeep</h5>Nulla vitae metus rutrum, condimentum orci nec, maximus est. Aenean sit amet ante nec elit dignissim faucibus eget quis quam. </div>
+<p><strong>call</strong> is of type <strong>relationship</strong> that has two role players:</p>
 
-    <div id="kilt"><h5>kilt</h5>Morbi maximus, erat vel rhoncus sagittis, dolor purus dignissim ante, sit amet pharetra ex justo vitae ipsum. Nulla consequat interdum neque</div>
+<ul>
+  <li><strong>person</strong> who plays the role of a <strong>caller</strong>, and</li>
+  <li>(another) <strong>person</strong> who plays the role of a <strong>callee</strong>.</li>
+</ul>
 
-    <div id="lamp"><h5>lamp</h5>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquam dapibus blandit. Donec porta, enim hendrerit venenatis vulputate, orci diam lacinia nibh, faucibus rutrum dolor dui ut quam.</div>
+<p><strong>contract</strong> is also of type <strong>relationship</strong> that has two role players:</p>
 
-    <div id="manifold"><h5>manifold</h5>Donec finibus massa vel nisi ullamcorper, vitae ornare enim euismod. Aliquam auctor quam erat. Duis interdum rutrum orci, ac interdum urna pharetra eget.</div>
+<ul>
+  <li><strong>company</strong> who plays the role of a <strong>provider</strong>, and</li>
+  <li><strong>person</strong> who plays the role of a <strong>customer</strong>.</li>
+</ul>
 
-    <div id="octopus"><h5>octopus</h5>Nulla id egestas enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Curabitur eu lobortis ligula.</div>
+<p><strong>company</strong> and <strong>person</strong> are of type <strong>entity</strong>.</p>
 
-    <div id="paranoia"><h5>paranoia</h5>Aenean hendrerit mauris ipsum, non laoreet ipsum luctus vel. Curabitur tristique auctor elit ut pulvinar. Quisque arcu arcu, condimentum aliquam sodales nec, dignissim nec justo. Nunc tristique sem felis, pharetra euismod lorem volutpat sed. Ut porttitor metus sit amet elit rhoncus semper.</div>
+<p><strong>first-name</strong>, <strong>last-name</strong>, <strong>phone-number</strong>, <strong>city</strong>, <strong>age</strong>, <strong>started-at</strong> and <strong>duration</strong> are of type <strong>attribute</strong>.</p>
 
-    <div id="qui"><h5>qui</h5>Quisque rhoncus cursus felis vel elementum. Vestibulum dignissim molestie tortor nec facilisis. Praesent a nibh condimentum, porta nulla egestas, auctor eros</div>
+<p>That’s all well and good, but how do we get our knowledge graph to reflect this model?</p>
 
-    <div id="radical"><h5>radical</h5>Etiam hendrerit interdum tellus, at aliquet sapien egestas in. Aenean eu urna nisl. Cras vitae risus pharetra, elementum mauris nec, auctor lectus. Fusce pellentesque venenatis dictum. Proin at augue at mauris finibus semper ultricies sed eros.</div>
+<h2 id="time-to-talkgraql">Time to talk Graql</h2>
 
-    <div id="silly"><h5>silly</h5>Praesent pulvinar consequat posuere. Morbi egestas rhoncus felis, id fermentum metus lobortis in. Vestibulum nibh orci, euismod eget vestibulum nec, vehicula vitae tortor. Aenean ullamcorper enim nunc, eu auctor ligula auctor eget.</div>
+<p>Open a new file in your favourite text editor, preferably one with syntax highlighting for Graql (.gql) files. Here are the ones for <a href="https://atom.io/packages/language-graql">atom</a>, <a href="https://marketplace.visualstudio.com/items?itemName=idealley.gql">visual studio code</a> and <a href="https://github.com/graknlabs/graql_syntax_sublime">sublime 3</a>.</p>
 
-    <div id="taffy"><h5>taffy</h5>Etiam et arcu vel lacus aliquet lobortis in in massa. Nunc non mollis elit. Aenean accumsan orci quis risus aliquam, non gravida nulla molestie. Mauris pharetra libero et magna aliquam aliquam. Integer quis luctus dolor. </div>
+<p>You can define the elements of a Grakn schema in any order you wish. I personally prefer to start from the relationships, as I see them to be the source of interactions — where knowledge is derived from.</p>
 
-    <div id="umbrella"><h5>umbrella</h5>Fusce molestie finibus malesuada. Nullam ac egestas quam, id venenatis ligula. Pellentesque pulvinar elit et vestibulum fringilla. Cras volutpat sed quam ornare scelerisque. Vivamus volutpat ante pretium scelerisque tempus. Etiam venenatis tempor nisl dignissim sollicitudin. Curabitur ac risus vitae dolor pretium posuere vel vitae diam. Donec in odio arcu.</div>
+<p>Any <strong>relationship</strong> relates to at least one <strong>role</strong> that is played by at least 2 <strong>concepts</strong>.</p>
 
-    <div id="vampire"><h5>vampire</h5>Vestibulum pretium condimentum commodo. Integer placerat leo non ipsum ultrices, ac convallis elit varius. Vestibulum ultricies, justo eu rutrum molestie, quam arcu euismod sapien, vel gravida ipsum nulla eget erat. </div>
+<p>In our case, a <strong>call</strong> relates to <strong>caller</strong> played by a <strong>person</strong> and to <strong>callee</strong> played by another <strong>person</strong>.</p>
 
-    <div id="washington"><h5>washington</h5>Nunc ac quam eu risus dictum sodales. Nam ac risus iaculis, aliquet sem eu, mollis mauris. Curabitur pretium facilisis orci ut lacinia. Sed fermentum leo a odio blandit rutrum. Phasellus at nibh vel odio interdum vulputate ac eget urna. Nam eu arcu dapibus, sodales ligula nec, volutpat ipsum. Suspendisse auctor tellus vitae libero euismod venenatis. </div>
+<p>Likewise for a <strong>contract</strong>. It relates to <strong>provider</strong> played by a <strong>company</strong> and to <strong>customer</strong> played by a <strong>person</strong>.</p>
 
-    <div id="xylophone"><h5>xylophone</h5>Sed molestie lobortis ante sit amet hendrerit. Sed pharetra nisi sed interdum pulvinar. Nunc efficitur erat non aliquam mattis. Sed id nisl mattis lacus vehicula volutpat vitae vel massa. Curabitur interdum velit odio, vitae sollicitudin nunc rutrum non. </div>
+<pre><code class="language-graq-test-ignore">define
 
-    <div id="yahoo"><h5>yahoo</h5>Nunc commodo consectetur scelerisque. Proin fermentum ligula ac quam finibus tincidunt. Aenean venenatis nisi et semper semper. Nunc sodales velit ipsum, ac pellentesque augue placerat eu.</div>
+  contract sub relationship,
+    relates provider,
+    relates customer;
 
-    <div id="zeta"><h5>zeta</h5>Nullam ac suscipit odio. Curabitur viverra arcu ut egestas sollicitudin. Fusce sodales varius lectus ut tristique. Etiam eget nunc ornare, aliquet tortor eget, consequat mauris. Integer sit amet fermentum augue. </div>
+  call sub relationship,
+    relates caller,
+    relates callee;
 
-    <div id="alpha"><h5>alpha</h5>Praesent nec neque ac tellus sodales eleifend nec vel ipsum. Cras et semper risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer mattis leo nisl, a tincidunt lectus tristique eget. Donec finibus lobortis viverra. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus egestas pulvinar odio non vehicula. Morbi malesuada leo eget nisl sagittis aliquet.</div>
+  company sub entity,
+    plays provider;
 
+  person sub entity,
+    plays customer,
+    plays caller,
+    plays callee;
+</code></pre>
 
-    <div id="beta"><h5>beta</h5>Mauris a libero vel enim pharetra interdum non a quam. Sed tincidunt ut elit sed dignissim. Suspendisse vitae tellus dapibus, fermentum lacus ac, fermentum lacus. Nam ante odio, fringilla ac elementum a, mollis sed tellus.</div>
+<p>To define the attributes, we use the has keyword.</p>
 
-    <div id="cappa"><h5>cappa</h5>Nam molestie semper nulla et molestie. Ut facilisis, ipsum sed convallis posuere, mi mauris bibendum erat, nec egestas ipsum est nec dolor. </div>
+<pre><code class="language-graq-test-ignore">define
 
-    <div id="dunno"><h5>dunno</h5>Etiam et metus congue, commodo libero et, accumsan sem. Aliquam erat volutpat. Quisque tincidunt, tortor non blandit ullamcorper, orci mauris dignissim augue, eget vehicula nulla justo sed dolor. Nunc ac urna quis nisi maximus pharetra in a mauris. Proin metus mi, venenatis vitae tristique sed, fermentum at purus. Aliquam erat volutpat. Maecenas efficitur sodales nibh, ac hendrerit felis facilisis et. Interdum et malesuada fames ac ante ipsum primis in faucibus.</div>
-
-
-</div> <!-- end definition-box-container -->
-</div> <!-- end col-md-3-->
-</div> <!-- end small-box-links -->
-</div> <!-- end row -->
-</div> <!-- end container -->
-
-
-<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note: </b> This was mostly an experiment to see if there was a better way to document a long JSON code example. I haven't actually used this approach in my own documentation.</div>
-
-
-
+  contract sub relationship,
+    relates provider,
+    relates customer;
+
+  call sub relationship,
+    relates provider,
+    relates customer,
+    has started-at,
+    has duration;
+
+  company sub entity,
+    plays provider,
+    has name;
+
+  person sub entity,
+    plays customer,
+    plays caller,
+    plays callee,
+    has first-name,
+    has last-name,
+    has phone-number,
+    has city,
+    has age
+    has is-customer;
+</code></pre>
+
+<p>Lastly we need to define the type of each attribute.</p>
+
+<pre><code class="language-graql">define
+
+  contract sub relationship,
+    relates provider,
+    relates customer;
+
+  call sub relationship,
+    relates caller,
+    relates callee,
+    has started-at,
+    has duration;
+
+  company sub entity,
+    plays provider,
+    has name;
+
+person sub entity,
+    plays customer,
+    plays caller,
+    plays callee,
+    has first-name,
+    has last-name,
+    has phone-number,
+    has city,
+    has age,
+    has is-customer;
+
+  name sub attribute datatype string;
+  started-at sub attribute datatype date;
+  duration sub attribute datatype long;
+  first-name sub attribute datatype string;
+  last-name sub attribute datatype string;
+  phone-number sub attribute datatype string;
+  city sub attribute datatype string;
+  age sub attribute datatype long;
+  is-customer sub attribute datatype boolean;
+</code></pre>
+
+<p>Note that we don’t need to define any id attribute. Grakn takes care of that for us.
+Save the schema.gql file. In a few minutes, we’ll have it loaded into a brand new Grakn keyspace.</p>
+
+<h2 id="load-and-test-theschema">Load and test the schema</h2>
+
+<p>In order to load this schema in a keyspace, we first need to run the Grakn server.</p>
+
+<p><strong>1 -</strong> <a href="http://dev.grakn.ai/docs/get-started/setup-guide#install-graknai">Download Grakn</a>
+For the rest of these instructions, I will assume that you have downloaded the Grakn zip file and navigated into the unzipped folder via terminal.</p>
+
+<p><strong>2 -</strong> Run the Grakn server:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./grakn server start
+</code></pre></div></div>
+
+<p><strong>3 -</strong> Load the schema into a Grakn keyspace. Run:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./graql console --keyspace phone_calls --file path/to/the/schema.gql
+</code></pre></div></div>
+
+<p><strong>4 -</strong> Open the Graql console in interactive mode. Run:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./graql console --keyspace phone_calls
+</code></pre></div></div>
+
+<p><strong>5 -</strong> Make sure the schema is properly defined in our newly created knowledge graph. While in the Graql console, run:</p>
+
+<pre><code class="language-graql">match $x sub thing; get;
+</code></pre>
+
+<p>The result should be as follows:</p>
+
+<pre><code class="language-graq-test-ignore">{$x label thing;}
+{$x label entity;}
+{$x label relationship;}
+{$x label attribute;}
+{$x label company sub entity;}
+{$x label person sub entity;}
+{$x label call sub relationship;}
+{$x label "@has-attribute" sub relationship;}
+{$x label contract sub relationship;}
+{$x label name sub attribute;}
+{$x label started-at sub attribute;}
+{$x label age sub attribute;}
+{$x label city sub attribute;}
+{$x label last-name sub attribute;}
+{$x label first-name sub attribute;}
+{$x label duration sub attribute;}
+{$x label phone-number sub attribute;}
+{$x label is-customer sub attribute;}
+{$x label "@has-started-at" sub "@has-attribute";}
+{$x label "@has-first-name" sub "@has-attribute";}
+{$x label "@has-city" sub "@has-attribute";}
+{$x label "@has-name" sub "@has-attribute";}
+{$x label "@has-duration" sub "@has-attribute";}
+{$x label "@has-age" sub "@has-attribute";}
+{$x label "@has-last-name" sub "@has-attribute";}
+{$x label "@has-phone-number" sub "@has-attribute";}
+{$x label "@has-is-customer" sub "@has-attribute";}
+</code></pre>
+
+<h2 id="to-recap">To Recap</h2>
+
+<p>We started off by describing our dataset in the most natural way possible.
+Next we went on to visualise that dataset by how we perceive it in the real world.
+Then, by identifying the Grakn concepts in the visualised schema, we went ahead and wrote our schema in Graql.
+Lastly we loaded the schema into a Grakn keyspace and ran a generic match query to ensure it was indeed loaded correctly.</p>
+
+<h2 id="next">Next</h2>
+
+<p>Now that we have a model for our knowledge graph, aka. the schema, we can go ahead and migrate some actual data into it so that we can proceed to query for those insights.</p>
 
 
     <div class="tags">
@@ -1071,6 +1053,14 @@ $('#small-box-links').localScroll({
         <b>Tags: </b>
         
         
+        
+        
+        
+        
+        
+        
+        
+        <a href="/tag_migration.html" class="btn btn-default navbar-btn cursorNorm" role="button">migration</a>
         
         
         

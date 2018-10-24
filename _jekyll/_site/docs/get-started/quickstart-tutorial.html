@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definit...">
-<meta name="keywords" content="special_layouts,  json, scrolling, scrollto, jquery plugin, GRAKN.AI, Grakn Labs, grakn, graql, grakn.ai, knowledge graph, knowledge engineering, knowledge base, distributed knowledge graph, development platform, developer tool, data platform, programming langauge, query langauge, database, semantic database, distributed semantic database, distributed database, graph database, semantic search, data exploration, recommendation system, knowledge management, real-time analytics, advanced analytics, reasoning engine, inference engine, expert systems, semantic applications, research engines, data management, business intelligence, big data, semantic web, semantic data, knowledge representation, automated reasoning, semantic network, knowledge ontology, semantic graph, ontology engineering, graph based knowledge representation, artificial intelligence,">
-<title>Scroll layout | GRAKN.AI</title>
-<meta property="og:description" content="This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definit...">
-<meta property="og:title" content="Scroll layout | GRAKN.AI" >
+<meta name="description" content="This document will work through a simple example using the Graql shell to show how to get started with GRAKN.AI.">
+<meta name="keywords" content="getting-startedgraql,  setup, getting started, GRAKN.AI, Grakn Labs, grakn, graql, grakn.ai, knowledge graph, knowledge engineering, knowledge base, distributed knowledge graph, development platform, developer tool, data platform, programming langauge, query langauge, database, semantic database, distributed semantic database, distributed database, graph database, semantic search, data exploration, recommendation system, knowledge management, real-time analytics, advanced analytics, reasoning engine, inference engine, expert systems, semantic applications, research engines, data management, business intelligence, big data, semantic web, semantic data, knowledge representation, automated reasoning, semantic network, knowledge ontology, semantic graph, ontology engineering, graph based knowledge representation, artificial intelligence,">
+<title>Quickstart Tutorial | GRAKN.AI</title>
+<meta property="og:description" content="This document will work through a simple example using the Graql shell to show how to get started with GRAKN.AI.">
+<meta property="og:title" content="Quickstart Tutorial | GRAKN.AI" >
 <meta property="og:image" content="/images/og-image.png" >
 <link rel="stylesheet" href="/css/syntax.css">
 
@@ -251,7 +251,7 @@ src="https://www.facebook.com/tr?id=2009892122581066&ev=PageView&noscript=1" alt
                 
                 dataSource: '/search.json',
                 
-                searchResultTemplate: '<li><a href="{url}" title="Scroll layout">{title}</a></li>',
+                searchResultTemplate: '<li><a href="{url}" title="Quickstart Tutorial">{title}</a></li>',
                 noResultsText: '<li><a class="empty">No results found</a></li>',
                 limit: 10,
                 fuzzy: true
@@ -282,7 +282,7 @@ src="https://www.facebook.com/tr?id=2009892122581066&ev=PageView&noscript=1" alt
             
             
             
-            <li><a href="/docs/get-started/quickstart-tutorial">Quickstart Tutorial</a></li>
+            <li class="active"><a href="/docs/get-started/quickstart-tutorial">Quickstart Tutorial</a></li>
             
             
             
@@ -789,7 +789,7 @@ src="https://www.facebook.com/tr?id=2009892122581066&ev=PageView&noscript=1" alt
             
 
 <div class="post-header">
-   <h1 class="post-title-main">Scroll layout</h1>
+   <h1 class="post-title-main">Quickstart Tutorial</h1>
 </div>
 
 
@@ -799,7 +799,7 @@ src="https://www.facebook.com/tr?id=2009892122581066&ev=PageView&noscript=1" alt
 <div class="post-content">
 
    
-    <div class="summary">This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definitions for that particular term. The scenario here is that the JSON blocks are really long, with extensive nesting and subnesting, which makes it difficult for tables below the JSON to adequately explain the term in a usable way.</div>
+    <div class="summary">This document will work through a simple example using the Graql shell to show how to get started with GRAKN.AI.</div>
    
 
     
@@ -834,236 +834,355 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  
+  <h2 id="summary">Summary</h2>
 
+<p>This example takes a simple genealogy dataset and briefly reviews its schema, then illustrates how to query, extend and visualise the knowledge graph, before demonstrating reasoning and analytics with Graql.</p>
 
+<h2 id="introduction">Introduction</h2>
 
-<script src="../js/jquery.scrollTo.min.js"></script>
-    <!-- local scroll must come after scrollTo, because localScroll is based on scrollTo, which is based on jQuery -->
-<script src="../js/jquery.localScroll.min.js"></script>
+<p>If you have not yet set up GRAKN.AI, please see the <a href="./setup-guide">Setup guide</a>. In this tutorial, we will load a simple schema and some data from a file, <em>basic-genealogy.gql</em> and use the Graql shell and Grakn visualiser to illustrate some key features of GRAKN.AI.</p>
 
-<script>
+<h2 id="the-graql-shell">The Graql Shell</h2>
 
-$( document ).ready(function() {
-$('#small-box-links').localScroll({
-           target:'#definition-box-container',
-           showSpeed: 1000,
-           hash: true,
-           easing: 'swing',
-           onAfter:function(){
-          $("#definition-box-container div a").addClass("active");
-          $("#definition-box-container div a").removeClass("active");
-          $("#definition-box-container div").removeClass("active");
-           $(window.location.hash).addClass("active");
-  }
-});
+<p>The first few steps mirror those in the <a href="./setup-guide">Setup Guide</a>, and you can skip to <a href="#the-schema">The Schema</a> if you have already run through that example. Start Grakn and load the example knowledge graph:</p>
 
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./grakn server start
+./graql console <span class="nt">-f</span> ./examples/basic-genealogy.gql
+</code></pre></div></div>
 
-});
-</script>
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Above, we are invoking the Graql shell and passing the -f flag to indicate the file to load into a knowledge graph. This starts the Graql shell in non-interactive mode, loading the specified file and exiting after the load is complete.
+If you are interested, please see our documentation about other <a href="./graql-console">flags supported by the Graql shell</a>.</div>
 
-<!-- documentation for localScroll function: http://flesler.blogspot.com/2007/10/jquerylocalscroll-10.html -->
-    <style type="text/css">
- 
-   #definition-box-container {
-        border: 0px solid #dedede;
-        border-radius: 4px;
-        max-height: 500px;
-        overflow: scroll;
-        padding-left:5px;
-        border-radius:5px;
-    }
+<p>Then start the Graql shell in its interactive (REPL) mode:</p>
 
-    #json-box-container {
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./graql console
+</code></pre></div></div>
 
-      border: 1px solid #dedede;
-      border-radius: 4px;
-      max-height:500px;
-      overflow: scroll;
-    }
+<p>You will see a <code class="highlighter-rouge">&gt;&gt;&gt;</code> prompt. Type in a query to check that everything is working:</p>
 
-    #small-box-links {
-      float: left;
-    }
+<pre><code class="language-graql">match $x isa person, has identifier $n; get;
+</code></pre>
 
-    #definition-box-container .active {
-     background-color: #FFFBCC;
-    }
-    
-    div#definition-box-container div {
-      padding: 10px;
+<p>You should see a printout of a number of lines of text, each of which includes a name, such as “William Sanford Titus” or “Elizabeth Niesz”.</p>
+
+<h3 id="the-schema">The Schema</h3>
+
+<p>You can find out much more about the Grakn schema in our documentation about the <a href="../knowledge-model/model">Grakn knowledge model</a>, which states that</p>
+
+<blockquote>
+  <p>“The schema is a formal specification of all the relevant concepts and their meaningful associations in a given application domain. It allows objects and relationships to be categorised into distinct types, and for generic properties about those types to be expressed”.</p>
+</blockquote>
+
+<p>For the purposes of this guide, the schema describes items of data and defines how they relate to one another. You need to have a basic understanding of the schema to be able to make useful queries on the data, so let’s review the chunks of it that are important for our initial demonstration:</p>
+
+<pre><code class="language-graql">define
+
+# Entities
+
+person sub entity
+  plays parent
+  plays child
+  plays spouse1
+  plays spouse2
+
+  has identifier
+  has firstname
+  has surname
+  has middlename
+  has picture
+  has age
+  has birth-date
+  has death-date
+  has gender;
+
+# Attributes
+
+identifier sub attribute datatype string;
+name sub attribute datatype string;
+firstname sub name datatype string;
+surname sub name datatype string;
+middlename sub name datatype string;
+picture sub attribute datatype string;
+age sub attribute datatype long;
+event-date sub attribute datatype date;
+birth-date sub event-date datatype date;
+death-date sub event-date datatype date;
+gender sub attribute datatype string;
+
+# Roles and Relations
+
+marriage sub relationship
+  relates spouse1
+  relates spouse2
+  has picture;
+
+parentship sub relationship
+  relates parent
+  relates child;
+</code></pre>
+
+<p>There are a number of things we can say about schema shown above:</p>
+
+<ul>
+  <li>there is one entity, <code class="highlighter-rouge">person</code>, which represents a person in the family whose genealogy data we are studying.</li>
+  <li>the <code class="highlighter-rouge">person</code> entity has a number of attributes to describe aspects of them, such as their name, age, dates of birth and death, gender and a URL to a picture of them (if one exists). Those attributes are expressed as strings, long, or date. Grakn also supports double and boolean.</li>
+  <li>there are two relationships that a <code class="highlighter-rouge">person</code> can participate in: <code class="highlighter-rouge">marriage</code> and <code class="highlighter-rouge">parentship</code></li>
+  <li>the person can play different roles in those relationships, as a spouse (<code class="highlighter-rouge">spouse1</code> or <code class="highlighter-rouge">spouse2</code> - we aren’t assigning them by gender to be husband or wife) and as a <code class="highlighter-rouge">parent</code> or <code class="highlighter-rouge">child</code> (again, we are not assigning a gender such as mother or father).</li>
+  <li>the <code class="highlighter-rouge">marriage</code> relationship has an attribute, which is a URL to a wedding picture, if one exists.</li>
+</ul>
+
+<h3 id="the-data">The Data</h3>
+
+<p>The data is rather cumbersome, so we will not reproduce it all here. It is part of our <a href="https://github.com/graknlabs/sample-datasets/tree/master/genealogy-graph">genealogy-knowledge-base</a> project, and you can find out much more about the Niesz family in our <a href="../examples/CSV-migration">CSV migration</a> and <a href="../examples/graql-reasoning">Graql reasoning</a> example documentation. Here is a snippet of some of the data that you added to the graph when you loaded the <em>basic-genealogy.gql</em> file:</p>
+
+<pre><code class="language-graql-skip-test">$57472 isa person has firstname "Mary" has identifier "Mary Guthrie" has surname "Guthrie" has gender "female";
+$86144 has surname "Dudley" isa person has identifier "Susan Josephine Dudley" has gender "female" has firstname "Susan" has middlename "Josephine";
+$118912 has age 74 isa person has firstname "Margaret" has surname "Newman" has gender "female" has identifier "Margaret Newman";
+...
+$8304 (parent: $57472, child: $41324624) isa parentship;
+$24816 (parent: $81976, child: $41096) isa parentship;
+$37104 isa parentship (parent: $49344, child: $41127960);
+...
+$122884216 (spouse2: $57472, spouse1: $41406488) isa marriage;
+$40972456 (spouse2: $40964120, spouse1: $8248) isa marriage;
+$81940536 (spouse2: $233568, spouse1: $41361488) has picture "http:\/\/1.bp.blogspot.com\/-Ty9Ox8v7LUw\/VKoGzIlsMII\/AAAAAAAAAZw\/UtkUvrujvBQ\/s1600\/johnandmary.jpg" isa marriage;
+</code></pre>
+
+<p>Don’t worry about the numbers such as <code class="highlighter-rouge">$57472</code>. These are variables in Graql, and happen to have randomly assigned numbers to make them unique. Each statement is adding either a <code class="highlighter-rouge">person</code>, a <code class="highlighter-rouge">parentship</code> or a <code class="highlighter-rouge">marriage</code> to the knowledge graph.  We will show how to add more data in the <a href="#extending-the-knowledge-base">Extending The Knowledge Graph</a> section. First, however, it is time to query the graph in the Graql shell.</p>
+
+<h2 id="querying-the-knowledge-graph">Querying the Knowledge Graph</h2>
+
+<p>Having started Grakn engine and the Graql shell in its interactive mode, we are ready to make a number queries. First, we will make a couple of <code class="highlighter-rouge">get</code> queries.</p>
+
+<p>Find all the people in the knowledge graph, and list their <code class="highlighter-rouge">identifier</code> attributes (a string that represents their full name):</p>
+
+<pre><code class="language-graql">match $p isa person, has identifier $i; get;
+</code></pre>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> In queries, Graql variables start with a <code class="highlighter-rouge">$</code>, which represent wildcards, and are returned as results in <code class="highlighter-rouge">get</code> queries. A variable name can contain alphanumeric characters, dashes and underscores.</div>
+
+<p>Find all the people who are married:</p>
+
+<pre><code class="language-graql">match (spouse1: $x, spouse2: $y) isa marriage; $x has identifier $xi; $y has identifier $yi; get;
+</code></pre>
+
+<p>List parent-child relationships with the names of each person:</p>
+
+<pre><code class="language-graql">match (parent: $p, child: $c) isa parentship; $p has identifier $pi; $c has identifier $ci; get;
+</code></pre>
+
+<p>Find all the people who are named ‘Elizabeth’:</p>
+
+<pre><code class="language-graql">match $x isa person, has identifier $y; $y contains "Elizabeth"; get;
+</code></pre>
+
+<p>Querying the knowledge graph is more fully described in the <a href="../querying-data/overview">Graql documentation</a>.</p>
+
+<h2 id="extending-the-knowledge-graph">Extending the Knowledge Graph</h2>
+
+<p>Besides making <code class="highlighter-rouge">get</code> queries, it is also possible to <code class="highlighter-rouge">insert</code> data
+<a href="../querying-data/insert-queries">(see further documentation)</a> and <code class="highlighter-rouge">delete</code> items
+<a href="../querying-data/delete-queries">(see further documentation)</a> through the Graql shell. To illustrate inserting a
+fictional person:</p>
+
+<pre><code class="language-graql">insert $g isa person has firstname "Titus" has identifier "Titus Groan" has surname "Groan" has gender "male";
+commit
+</code></pre>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> <b>Don’t forget to <code class="highlighter-rouge">commit</code>!</b> <br /> Nothing you have entered into the Graql shell has yet been committed to the knowledge graph, nor has it been validated. To save any changes you make you need to type <code class="highlighter-rouge">commit</code> in the shell. It is a good habit to get into regularly committing what you have entered.</div>
+
+<p>To find your inserted <code class="highlighter-rouge">person</code>:</p>
+
+<pre><code class="language-graql">match $x isa person has identifier "Titus Groan"; get;
+</code></pre>
+
+<p>To delete the <code class="highlighter-rouge">person</code> again:</p>
+
+<pre><code class="language-graql">match $x isa person has identifier "Titus Groan"; delete $x;
+commit
+</code></pre>
+
+<p>Alternatively, we can use <code class="highlighter-rouge">match...insert</code> syntax, to insert additional data associated with something already in the knowledge graph. Adding some fictional information (middle name, birth date, death date and age at death) for one of our family, Mary Guthrie:</p>
+
+<pre><code class="language-graql">match $p has identifier "Mary Guthrie"; insert $p has middlename "Mathilda"; $p has birth-date 1902-01-01; $p has death-date 1952-01-01; $p has age 50;
+commit
+</code></pre>
+
+<h2 id="using-the-grakn-visualiser">Using the Grakn Visualiser</h2>
+
+<p>You can open the <a href="../visualisation-dashboard/visualiser">Grakn visualiser</a> by navigating to <a href="http://localhost:4567">localhost:4567</a> in your web browser. The visualiser allows you to make queries or simply browse the schema within the knowledge graph. The screenshot below shows a basic query typed into the form at the top of the main pane, and visualised by pressing “&gt;”:</p>
+
+<p><img src="/images/match-$x-isa-person.png" alt="Person query" /></p>
+
+<p>You can zoom the display in and out, and move the nodes around for better visibility. Please see our <a href="../visualisation-dashboard/visualiser">Grakn visualiser</a> documentation for further details.</p>
+
+<h2 id="using-inference">Using Inference</h2>
+
+<p>We will move on to discuss the use of GRAKN.AI to infer new information about a dataset. In the schema, so far, we have dealt only with a person, not a man or woman, and the parentship relationships were simply between parent and child roles. We did not directly add information about the nature of the parent and child in each relationship - they could be father and son, father and daughter, mother and son or mother and daughter.</p>
+
+<p>However, the <code class="highlighter-rouge">person</code> entity does have a gender attribute, and we can use Grakn to infer more information about each relationship by using that property. The schema accommodates the more specific roles of mother, father, daughter and son:</p>
+
+<pre><code class="language-graql">define
+
+person
+  plays son
+  plays daughter
+  plays mother
+  plays father;
+
+parentship sub relationship
+  relates mother
+  relates father
+  relates son
+  relates daughter;
+
+mother sub parent;
+father sub parent;
+son sub child;
+daughter sub child;
+</code></pre>
+
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> You don’t need to reload the <em>basic-genealogy.gql</em> file into Grakn pick up these extra roles. We simply didn’t show this part in our earlier discussion of the schema, to keep things as simple as possible.</div>
+
+<p>Included in <em>basic-genealogy.gql</em> are a set of Graql rules to instruct Grakn’s reasoner on how to label each parentship relationship:</p>
+
+<pre><code class="language-graql">define
+
+genderizeParentships1 sub rule
+when
+{(parent: $p, child: $c) isa parentship;
+$p has gender "male";
+$c has gender "male";
 }
+then
+{(father: $p, son: $c) isa parentship;};
 
-    @media (min-height: 700px)  {
-       #json-box-container {
-           max-height:500px;
-         }
-           #definition-box-container  {
-          max-height: 500px;
-  }
-    }
+genderizeParentships2 sub rule
+when
+{(parent: $p, child: $c) isa parentship;
+$p has gender "male";
+$c has gender "female";
+}
+then
+{(father: $p, daughter: $c) isa parentship;};
 
-     @media (min-height: 800px)  {
-       #json-box-container {
-           max-height:600px;
-    }
-        #definition-box-container  {
-          max-height: 600px;
-  }
-  }
+genderizeParentships3 sub rule
+when
+{(parent: $p, child: $c) isa parentship;
+$p has gender "female";
+$c has gender "male";
+}
+then
+{(mother: $p, son: $c) isa parentship;};
 
-    @media (min-height: 900px)  {
-       #json-box-container {
-           max-height:700px;
-    }
-        #definition-box-container  {
-          max-height: 700px;
-  }
-  }
+genderizeParentships4 sub rule
+when
+{(parent: $p, child: $c) isa parentship;
+$p has gender "female";
+$c has gender "female";
+}
+then
+{(mother: $p, daughter: $c) isa parentship;};
+</code></pre>
 
-     @media (min-height: 1000px)  {
-       #json-box-container {
-           max-height:800px;
-    }
-        #definition-box-container  {
-          max-height: 800px;
-  }
-  }
+<p>If you’re unfamiliar with the syntax of rules, don’t worry too much about it for now. It is sufficient to know that, for each <code class="highlighter-rouge">parentship</code> relationship, Graql checks whether the pattern in the first block (when) can be verified and, if it can, infers the statement in the second block (then) to be true, so inserts a relationship between gendered parents and children.</p>
 
-    @media (min-height: 1100px)  {
-       #json-box-container {
-           max-height:900px;
-    }
-        #definition-box-container  {
-          max-height: 900px;
-  }
-  }
+<p>Let’s test it out!</p>
 
+<p>First, try making a get query to find <code class="highlighter-rouge">parentship</code> relationships between fathers and sons in the Graql shell:</p>
 
-    </style>
+<pre><code class="language-graql">match (father: $p, son: $c) isa parentship; $p has identifier $n1; $c has identifier $n2; get;
+</code></pre>
 
+<p>There may be a pause, and then you should see a stream of results as Grakn infers the <code class="highlighter-rouge">parentships</code> between male <code class="highlighter-rouge">parent</code> and <code class="highlighter-rouge">child</code> entities. It is, in effect, building new information about the family which was not explicit in the dataset.</p>
 
-<div class="container">
-<div class="row">
- 
-<div id="small-box-links">
+<p>You may want to take a look at the results of this query in the Grakn visualiser and, as for the shell, you will need to activate inference before you see any results.</p>
 
-<div class="col-md-6">
-<div id="json-box-container">
-<pre>
-{
-  <a href="#apples">"apples"</a>: "red fruit at the store",
-  <a href="#bananas">"bananas"</a>: "yellow bananas in a bunch",
-  <a href="#carrots">"carrots"</a>: "orange vegetables that grow in the ground",
-  <a href="#dingbats">"dingbats"</a>: "a type of character symbol on a computer",
-  <a href="#eggs">"eggs"</a>: "chickens lay them, and people eat them",
-  <a href="#falafel">"falafel"</a>: "a Mediterranean sandwich consisting of lots of different stuff i don't know much about",
-  <a href="#giraffe">"giraffe"</a>: "tall animal, has purple tongue",
-  <a href="#hippo">"hippo"</a>: "surprisingly dangerous amphibian",
-  <a href="#igloo">"igloo"</a>: "an ice shelter made by eskimos",
-  <a href="#jeep">"jeep</a>: "the only car that starts with a j",
-  <a href="#kilt">"kilt"</a>: "something worn by scottish people, not a dress",
-  <a href="#lamp">"lamp"</a>: "you use it to read by your bedside at night"
-  <a href="#manifold">"manifold"</a>: "an intake mechanism on a car, like a valve, i think",
-  <a href="#octopus">"octopus"</a>: "eight tentacles, shoots ink, lives in dark caves, very mysterious",
-  <a href="#paranoia">"paranoia"</a>: "the constant feeling that others are out to get you, conspiring against your success",
-  <a href="#qui">"qui"</a>: "a life force that runs through your body",
-  <a href="#radical">"radical"</a>: "someone who opposes the status quo in major ways",
-  <a href="#silly">"silly"</a>: "how I feel writing this dummy copy",
-  <a href="#taffy">"taffy"</a>: "the sweets children like the most and dentists hate the worst",
-  <a href="#umbrella">"umbrella"</a>: "an invention that has not had any advancements in 200 years",
-  <a href="#vampire">"vampire"</a>: "a paranormal figure that is surprisingly in vogue despite its basic nature",
-  <a href="#washington">"washington"</a>: "the place where tom was born",
-  <a href="#xylophone">"xylophone"</a>: "some kind of pinging instrument used to sound chime-like notes",
-  <a href="#yahoo">"yahoo"</a>: "an expression of exuberance, said under breath when something works right",
-  <a href="#zeta">"zeta"</a>: "the way british people pronounce z",
-  <a href="#alpha">"alpha"</a>: "the original letter of the alphabet, which has since come to mean the first. however, i think the original symbol of alpha is actually an ox. it is somewhat of a mystery to linquists as to the exact origin of the letter alpha, but it basically represents the dawn of the alphabet, which proved to be a huge step forward for human thought and expression.",
-  <a href="#beta">"beta"</a>: "the period of time when something is finished but undergoing testing by a group of people.",
-  <a href="#cappa">"cappa"</a>: "how italians refer to their baseball caps",
-  <a href="#dunno">"dunno"</a>: "informal expression for 'don't know'"
-  }
-      
-</pre>
+<ol>
+  <li>Browse to the visualiser at <a href="http://localhost:4567">localhost:4567</a>.</li>
+  <li>Open the Query settings under the cog button, which is on the far right hand side of the horizontal icon menu (at the top of the screen).</li>
+  <li>You will see the “Activate inference” checkbox. Ensure that it is checked.</li>
+</ol>
 
-</div><!-- end json-box-container-->
-</div> <!-- end col-md-6-->
+<p>Now try submitting the query above or a variation of it for mothers and sons, fathers and daughters etc. Or, you can even go one step further and find out fathers who have the same name as their sons:</p>
 
-<div class="col-md-3">
+<pre><code class="language-graql">match (father: $p, son: $c) isa parentship; $p has firstname $n; $c has firstname $n; get;
+</code></pre>
 
-<div id="definition-box-container">
+<p><img src="/images/father-son-shared-names.png" alt="Father-Son Shared Names query" /></p>
 
+<p>If you want to find out more about the Graql reasoner, we have a <a href="../examples/graql-reasoning">detailed example</a>. An additional discussion on the same topic can be found in our <a href="https://blog.grakn.ai/family-matters-1bb639396a24#.525ozq2zy">“Family Matters” blog post</a>.</p>
 
-    <div id="apples"><h5>apples</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer magna massa, euismod sed rutrum at, ullamcorper quis tellus. Vestibulum erat purus, aliquet sit amet pellentesque eget, tempus at ante. Nulla justo nisi, elementum nec nisi eget, consectetur varius tortor. </div>
+<h2 id="using-analytics">Using Analytics</h2>
 
-    <div id="bananas"><h5>bananas</h5>Curabitur quis nibh sed eros viverra tempus et quis lorem. Nulla convallis sit amet risus vitae rutrum. Nulla at faucibus lectus. Pellentesque tortor nisl, interdum ac quam non, egestas congue massa. Vestibulum non porttitor lacus. Nam tincidunt arcu lectus. Donec eget ornare neque, hendrerit ornare lectus. In ac pretium odio.</div>
+<p>Turning to <a href="../distributed-analytics/overview">Graql analytics</a>, we can illustrate some basic queries in the Grakn visualiser.</p>
 
-    <div id="carrots"><h5>carrots</h5>Vivamus pulvinar vestibulum pharetra. Vivamus vitae diam iaculis, posuere mi sed, dignissim massa. Nunc vitae aliquet urna. Proin sed pulvinar ex. Maecenas nisl lorem, rutrum sit amet hendrerit sed, posuere at odio. Sed consectetur semper tristique. Vivamus finibus varius felis at convallis. Fusce in dictum nunc.</div>
+<h3 id="statistics">Statistics</h3>
+<p>The mean age at death can be calculated using <code class="highlighter-rouge">compute mean</code> as follows, entering it into the visualiser’s query form:</p>
 
-    <div id="dingbats"><h5>dingbats</h5>Curabitur feugiat lorem eget elit ullamcorper tincidunt. In euismod diam aliquet tortor fermentum tempor. Fusce quam felis, commodo viverra orci vitae, scelerisque aliquet risus. </div>
+<pre><code class="language-graql">compute mean of age, in person; # returns 77.0 (rounded to 2 decimal places)
+</code></pre>
 
-    <div id="eggs"><h5>eggs</h5>Duis est nunc, fringilla eu ligula et, varius dignissim dui. Vivamus in tellus vitae ipsum vehicula fermentum at congue tellus. Suspendisse fermentum, magna vitae aliquet sodales, tellus nisi rutrum arcu, vitae auctor dolor quam ac tellus. Cras posuere augue erat, in sagittis quam lacinia id.</div>
+<p>Other statistical values can be calculated similarly, e.g. values for <code class="highlighter-rouge">count</code>:</p>
 
-    <div id="falafel"><h5>falafel</h5>Praesent auctor a enim non lacinia. Integer sodales aliquet mi vel dapibus. Donec consequat justo eget nisi lacinia, eu sodales ligula molestie. Sed sapien nulla, rhoncus at elementum a, </div>
+<pre><code class="language-graql">compute count in person; # 60
+</code></pre>
 
-    <div id="giraffe"><h5>giraffe</h5>Nullam venenatis at lectus sed pharetra. Sed hendrerit ligula lectus, non pellentesque diam faucibus sit amet. Aliquam dictum hendrerit pellentesque. Cras eu nisl sagittis, faucibus velit sit amet, sagittis odio. Donec vulputate ex vitae purus</div>
+<p>A full list of statistics that can be explored is documented in the <a href="../distributed-analytics/compute-queries">Compute Queries</a> documentation.</p>
 
-    <div id="hippo"><h5>hippo</h5>Cras nec pretium nulla. Suspendisse tempus tortor vel venenatis pulvinar. Integer varius tempor enim fringilla tincidunt. Phasellus magna turpis, auctor vitae elit eget, fringilla pellentesque est. Phasellus ut porta risus. Curabitur iaculis sapien sed venenatis auctor. Integer eu orci at lectus eleifend auctor id rutrum urna.</div>
+<h3 id="shortest-path">Shortest Path</h3>
 
-    <div id="igloo"><h5>igloo</h5>Suspendisse tempus tortor vel venenatis pulvinar. Integer varius tempor enim fringilla tincidunt. Phasellus magna turpis, auctor vitae elit eget, fringilla pellentesque est. Phasellus ut porta risus.  </div>
+<p>It is also possible to find the shortest path(s) between two nodes in the knowledge graph. The documentation for the Grakn
+visualiser describes how to use the <a href="../visualisation-dashboard/visualiser#shortest-path">query builder tool</a>, and includes
+a video.</p>
 
-    <div id="jeep"><h5>jeep</h5>Nulla vitae metus rutrum, condimentum orci nec, maximus est. Aenean sit amet ante nec elit dignissim faucibus eget quis quam. </div>
+<p>In brief, let’s select two people from the genealogy dataset:</p>
 
-    <div id="kilt"><h5>kilt</h5>Morbi maximus, erat vel rhoncus sagittis, dolor purus dignissim ante, sit amet pharetra ex justo vitae ipsum. Nulla consequat interdum neque</div>
+<pre><code class="language-graql">match $x has identifier "Barbara Shafner"; $y has identifier "Jacob J. Niesz"; get;
+</code></pre>
 
-    <div id="lamp"><h5>lamp</h5>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquam dapibus blandit. Donec porta, enim hendrerit venenatis vulputate, orci diam lacinia nibh, faucibus rutrum dolor dui ut quam.</div>
+<p>and then search for relationships joining two of them using:</p>
 
-    <div id="manifold"><h5>manifold</h5>Donec finibus massa vel nisi ullamcorper, vitae ornare enim euismod. Aliquam auctor quam erat. Duis interdum rutrum orci, ac interdum urna pharetra eget.</div>
+<!-- Ignoring because uses fake IDs -->
+<pre><code class="language-graql-test-ignore">compute path from "id1", to "id2"; # Use the actual values of identifier for each person
+# e.g. compute path from "114848", to "348264";
+</code></pre>
 
-    <div id="octopus"><h5>octopus</h5>Nulla id egestas enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Curabitur eu lobortis ligula.</div>
+<p>You can see below that the two people selected are married.</p>
 
-    <div id="paranoia"><h5>paranoia</h5>Aenean hendrerit mauris ipsum, non laoreet ipsum luctus vel. Curabitur tristique auctor elit ut pulvinar. Quisque arcu arcu, condimentum aliquam sodales nec, dignissim nec justo. Nunc tristique sem felis, pharetra euismod lorem volutpat sed. Ut porttitor metus sit amet elit rhoncus semper.</div>
+<p>The path query uses a scalable shortest path algorithm to determine the smallest number of relationships required to get from once concept to the other.</p>
 
-    <div id="qui"><h5>qui</h5>Quisque rhoncus cursus felis vel elementum. Vestibulum dignissim molestie tortor nec facilisis. Praesent a nibh condimentum, porta nulla egestas, auctor eros</div>
+<p><img src="/images/analytics_path_marriage.png" alt="Shortest path between people" /></p>
 
-    <div id="radical"><h5>radical</h5>Etiam hendrerit interdum tellus, at aliquet sapien egestas in. Aenean eu urna nisl. Cras vitae risus pharetra, elementum mauris nec, auctor lectus. Fusce pellentesque venenatis dictum. Proin at augue at mauris finibus semper ultricies sed eros.</div>
+<p>To scope the specific types of entities an relationships to be considered in the shortest path computation, you can provide a list of types to the query.</p>
 
-    <div id="silly"><h5>silly</h5>Praesent pulvinar consequat posuere. Morbi egestas rhoncus felis, id fermentum metus lobortis in. Vestibulum nibh orci, euismod eget vestibulum nec, vehicula vitae tortor. Aenean ullamcorper enim nunc, eu auctor ligula auctor eget.</div>
+<!-- Ignoring because uses fake IDs -->
+<pre><code class="language-graql-test-ignore">compute path from "id1", to "id2", in [person, parentship];
+</code></pre>
 
-    <div id="taffy"><h5>taffy</h5>Etiam et arcu vel lacus aliquet lobortis in in massa. Nunc non mollis elit. Aenean accumsan orci quis risus aliquam, non gravida nulla molestie. Mauris pharetra libero et magna aliquam aliquam. Integer quis luctus dolor. </div>
+<p>The above limits the path to blood relationships (parent/child relationships) thus excludes marriage. As a result, the shortest path between the two people is now longer: Barbara Shafner and Jacob J. Niesz are cousins (their mothers, Mary Young and Catherine Young, are sisters, with <em>their</em> father being Jacob Young).</p>
 
-    <div id="umbrella"><h5>umbrella</h5>Fusce molestie finibus malesuada. Nullam ac egestas quam, id venenatis ligula. Pellentesque pulvinar elit et vestibulum fringilla. Cras volutpat sed quam ornare scelerisque. Vivamus volutpat ante pretium scelerisque tempus. Etiam venenatis tempor nisl dignissim sollicitudin. Curabitur ac risus vitae dolor pretium posuere vel vitae diam. Donec in odio arcu.</div>
+<p><img src="/images/analytics_path_parentship.png" alt="Shortest path between people" /></p>
 
-    <div id="vampire"><h5>vampire</h5>Vestibulum pretium condimentum commodo. Integer placerat leo non ipsum ultrices, ac convallis elit varius. Vestibulum ultricies, justo eu rutrum molestie, quam arcu euismod sapien, vel gravida ipsum nulla eget erat. </div>
+<h2 id="data-migration">Data Migration</h2>
 
-    <div id="washington"><h5>washington</h5>Nunc ac quam eu risus dictum sodales. Nam ac risus iaculis, aliquet sem eu, mollis mauris. Curabitur pretium facilisis orci ut lacinia. Sed fermentum leo a odio blandit rutrum. Phasellus at nibh vel odio interdum vulputate ac eget urna. Nam eu arcu dapibus, sodales ligula nec, volutpat ipsum. Suspendisse auctor tellus vitae libero euismod venenatis. </div>
+<p>In this example we loaded data from <em>basic-genealogy.gql</em> directly into a knowledge graph. However, data isn’t often conveniently stored in .gql files and, indeed, the data that we used was originally in CSV format. Our <a href="../examples/CSV-migration">CSV migration example</a> explains in detail the steps we took to migrate the CSV data into Grakn.</p>
 
-    <div id="xylophone"><h5>xylophone</h5>Sed molestie lobortis ante sit amet hendrerit. Sed pharetra nisi sed interdum pulvinar. Nunc efficitur erat non aliquam mattis. Sed id nisl mattis lacus vehicula volutpat vitae vel massa. Curabitur interdum velit odio, vitae sollicitudin nunc rutrum non. </div>
+<p>Migrating data in formats such as CSV, SQL, and JSON into Grakn is a key use case. More information about each of these can be found in the <a href="../migrating-data/overview">migration documentation</a>.</p>
 
-    <div id="yahoo"><h5>yahoo</h5>Nunc commodo consectetur scelerisque. Proin fermentum ligula ac quam finibus tincidunt. Aenean venenatis nisi et semper semper. Nunc sodales velit ipsum, ac pellentesque augue placerat eu.</div>
+<h2 id="where-next">Where Next?</h2>
 
-    <div id="zeta"><h5>zeta</h5>Nullam ac suscipit odio. Curabitur viverra arcu ut egestas sollicitudin. Fusce sodales varius lectus ut tristique. Etiam eget nunc ornare, aliquet tortor eget, consequat mauris. Integer sit amet fermentum augue. </div>
+<p>This page was a very high-level overview of some of the key use cases for Grakn, and has hardly touched the surface or gone into detail. The rest of our developer documentation and examples are more in-depth and should answer any questions that you may have, but if you need extra information, please <a href="https://grakn.ai/community">get in touch</a>.</p>
 
-    <div id="alpha"><h5>alpha</h5>Praesent nec neque ac tellus sodales eleifend nec vel ipsum. Cras et semper risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer mattis leo nisl, a tincidunt lectus tristique eget. Donec finibus lobortis viverra. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus egestas pulvinar odio non vehicula. Morbi malesuada leo eget nisl sagittis aliquet.</div>
+<p>A good place to start is to explore our additional <a href="../examples/examples-overview">example code</a> and the documentation for:</p>
 
-
-    <div id="beta"><h5>beta</h5>Mauris a libero vel enim pharetra interdum non a quam. Sed tincidunt ut elit sed dignissim. Suspendisse vitae tellus dapibus, fermentum lacus ac, fermentum lacus. Nam ante odio, fringilla ac elementum a, mollis sed tellus.</div>
-
-    <div id="cappa"><h5>cappa</h5>Nam molestie semper nulla et molestie. Ut facilisis, ipsum sed convallis posuere, mi mauris bibendum erat, nec egestas ipsum est nec dolor. </div>
-
-    <div id="dunno"><h5>dunno</h5>Etiam et metus congue, commodo libero et, accumsan sem. Aliquam erat volutpat. Quisque tincidunt, tortor non blandit ullamcorper, orci mauris dignissim augue, eget vehicula nulla justo sed dolor. Nunc ac urna quis nisi maximus pharetra in a mauris. Proin metus mi, venenatis vitae tristique sed, fermentum at purus. Aliquam erat volutpat. Maecenas efficitur sodales nibh, ac hendrerit felis facilisis et. Interdum et malesuada fames ac ante ipsum primis in faucibus.</div>
-
-
-</div> <!-- end definition-box-container -->
-</div> <!-- end col-md-3-->
-</div> <!-- end small-box-links -->
-</div> <!-- end row -->
-</div> <!-- end container -->
-
-
-<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note: </b> This was mostly an experiment to see if there was a better way to document a long JSON code example. I haven't actually used this approach in my own documentation.</div>
-
-
-
+<ul>
+  <li>The <a href="../knowledge-model/model">Grakn knowledge model</a></li>
+  <li><a href="../querying-data/overview">Graql</a>, including reasoning</li>
+  <li><a href="../migrating-data/overview">Migration</a></li>
+  <li><a href="../distributed-analytics/overview">Analytics</a></li>
+  <li><a href="https://javadoc.io/doc/ai.grakn/grakn">Grakn’s Java API</a>.</li>
+</ul>
 
 
     <div class="tags">
@@ -1071,6 +1190,12 @@ $('#small-box-links').localScroll({
         <b>Tags: </b>
         
         
+        
+        <a href="/tag_getting-started.html" class="btn btn-default navbar-btn cursorNorm" role="button">getting-started</a>
+        
+        
+        
+        <a href="/tag_graql.html" class="btn btn-default navbar-btn cursorNorm" role="button">graql</a>
         
         
         

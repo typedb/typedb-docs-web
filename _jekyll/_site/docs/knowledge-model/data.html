@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definit...">
-<meta name="keywords" content="special_layouts,  json, scrolling, scrollto, jquery plugin, GRAKN.AI, Grakn Labs, grakn, graql, grakn.ai, knowledge graph, knowledge engineering, knowledge base, distributed knowledge graph, development platform, developer tool, data platform, programming langauge, query langauge, database, semantic database, distributed semantic database, distributed database, graph database, semantic search, data exploration, recommendation system, knowledge management, real-time analytics, advanced analytics, reasoning engine, inference engine, expert systems, semantic applications, research engines, data management, business intelligence, big data, semantic web, semantic data, knowledge representation, automated reasoning, semantic network, knowledge ontology, semantic graph, ontology engineering, graph based knowledge representation, artificial intelligence,">
-<title>Scroll layout | GRAKN.AI</title>
-<meta property="og:description" content="This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definit...">
-<meta property="og:title" content="Scroll layout | GRAKN.AI" >
+<meta name="description" content="Introduction to what data looks like in Grakn">
+<meta name="keywords" content="getting-startedreasoninggraql,  setup, getting started, basics, GRAKN.AI, Grakn Labs, grakn, graql, grakn.ai, knowledge graph, knowledge engineering, knowledge base, distributed knowledge graph, development platform, developer tool, data platform, programming langauge, query langauge, database, semantic database, distributed semantic database, distributed database, graph database, semantic search, data exploration, recommendation system, knowledge management, real-time analytics, advanced analytics, reasoning engine, inference engine, expert systems, semantic applications, research engines, data management, business intelligence, big data, semantic web, semantic data, knowledge representation, automated reasoning, semantic network, knowledge ontology, semantic graph, ontology engineering, graph based knowledge representation, artificial intelligence,">
+<title>The Data | GRAKN.AI</title>
+<meta property="og:description" content="Introduction to what data looks like in Grakn">
+<meta property="og:title" content="The Data | GRAKN.AI" >
 <meta property="og:image" content="/images/og-image.png" >
 <link rel="stylesheet" href="/css/syntax.css">
 
@@ -251,7 +251,7 @@ src="https://www.facebook.com/tr?id=2009892122581066&ev=PageView&noscript=1" alt
                 
                 dataSource: '/search.json',
                 
-                searchResultTemplate: '<li><a href="{url}" title="Scroll layout">{title}</a></li>',
+                searchResultTemplate: '<li><a href="{url}" title="The Data">{title}</a></li>',
                 noResultsText: '<li><a class="empty">No results found</a></li>',
                 limit: 10,
                 fuzzy: true
@@ -375,7 +375,7 @@ src="https://www.facebook.com/tr?id=2009892122581066&ev=PageView&noscript=1" alt
             
             
             
-            <li><a href="/docs/knowledge-model/data">The Data</a></li>
+            <li class="active"><a href="/docs/knowledge-model/data">The Data</a></li>
             
             
             
@@ -789,7 +789,7 @@ src="https://www.facebook.com/tr?id=2009892122581066&ev=PageView&noscript=1" alt
             
 
 <div class="post-header">
-   <h1 class="post-title-main">Scroll layout</h1>
+   <h1 class="post-title-main">The Data</h1>
 </div>
 
 
@@ -799,7 +799,7 @@ src="https://www.facebook.com/tr?id=2009892122581066&ev=PageView&noscript=1" alt
 <div class="post-content">
 
    
-    <div class="summary">This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definitions for that particular term. The scenario here is that the JSON blocks are really long, with extensive nesting and subnesting, which makes it difficult for tables below the JSON to adequately explain the term in a usable way.</div>
+    <div class="summary">Introduction to what data looks like in Grakn</div>
    
 
     
@@ -834,236 +834,137 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  
+  <h2 id="data">Data</h2>
 
+<p>The data is expressed by instantiating specific types of entities, relationships, and concrete resources they are associated with, and assigning roles to the instances played for particular relationships. There are three types of data instances:</p>
 
+<p><strong>Entities</strong>: instances of entity types, for example, <code class="highlighter-rouge">insert $x isa person</code> creates an instance of the entity type <code class="highlighter-rouge">person</code>,</p>
 
-<script src="../js/jquery.scrollTo.min.js"></script>
-    <!-- local scroll must come after scrollTo, because localScroll is based on scrollTo, which is based on jQuery -->
-<script src="../js/jquery.localScroll.min.js"></script>
+<p><strong>Resources</strong>: instances of attribute types being associated with particular instances, for example, <code class="highlighter-rouge">insert $x isa person, has name "Elisabeth Niesz"</code> creates an instance of a <code class="highlighter-rouge">person</code> with the attribute type <code class="highlighter-rouge">name</code> given the value “Elizabeth Niesz”. The unique identifiers for all instances are defined internally within the Grakn system.</p>
 
-<script>
+<p><strong>Relations</strong>: instances of relationship types, for example, <code class="highlighter-rouge">insert (employee:$x, employer:$y) isa employment</code> creates an instance of the relationship type <code class="highlighter-rouge">employment</code> between <code class="highlighter-rouge">$x</code>, playing the role of <code class="highlighter-rouge">employee</code>, and <code class="highlighter-rouge">$y</code>, playing the role of <code class="highlighter-rouge">employer</code>.</p>
 
-$( document ).ready(function() {
-$('#small-box-links').localScroll({
-           target:'#definition-box-container',
-           showSpeed: 1000,
-           hash: true,
-           easing: 'swing',
-           onAfter:function(){
-          $("#definition-box-container div a").addClass("active");
-          $("#definition-box-container div a").removeClass("active");
-          $("#definition-box-container div").removeClass("active");
-           $(window.location.hash).addClass("active");
-  }
-});
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> There are no instances of role types in the data layer.</div>
 
+<pre><code class="language-graql-test-ignore">insert
+  $x isa person, has name "Elizabeth Niesz";
+  $y isa company, has name "Grakn Labs";
+  (employee: $x, employer: $y) isa employment;
+commit
+</code></pre>
 
-});
-</script>
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> <code class="highlighter-rouge">commit</code> is useful only when you interact with graql console, do not use it when you import data from terminal</div>
 
-<!-- documentation for localScroll function: http://flesler.blogspot.com/2007/10/jquerylocalscroll-10.html -->
-    <style type="text/css">
- 
-   #definition-box-container {
-        border: 0px solid #dedede;
-        border-radius: 4px;
-        max-height: 500px;
-        overflow: scroll;
-        padding-left:5px;
-        border-radius:5px;
-    }
+<p><br /> <img src="/images/knowledge-model7.png" style="width: 400px;" alt=" An image showing the same schema as before, containing 'person', 'company', 'name' and 'employment'. " /> <br /></p>
 
-    #json-box-container {
+<h3 id="data-validation">Data Validation</h3>
 
-      border: 1px solid #dedede;
-      border-radius: 4px;
-      max-height:500px;
-      overflow: scroll;
-    }
+<p>To ensure data is correctly structured (i.e. consistent) with respect to the schema, all data instances are validated against the schema constraints. All the explicitly represented schema constraints, together with the inherited ones, form complete schema templates for particular concept types, which guide the validation.</p>
 
-    #small-box-links {
-      float: left;
-    }
+<p>We will consider the structural validation rules that are enforced in a Grakn knowledge graph. The following consistency checks are executed upon <code class="highlighter-rouge">commit</code> depending on what is being committed:</p>
 
-    #definition-box-container .active {
-     background-color: #FFFBCC;
-    }
-    
-    div#definition-box-container div {
-      padding: 10px;
-}
+<h4 id="plays-role-validation">Plays Role Validation</h4>
 
-    @media (min-height: 700px)  {
-       #json-box-container {
-           max-height:500px;
-         }
-           #definition-box-container  {
-          max-height: 500px;
-  }
-    }
+<p>This validation rule simply checks if an entity (which is a role player in a relationship) is allowed to play the role it has been allocated to.</p>
 
-     @media (min-height: 800px)  {
-       #json-box-container {
-           max-height:600px;
-    }
-        #definition-box-container  {
-          max-height: 600px;
-  }
-  }
+<p>The following insertion will fail, because it is attempting to form an <code class="highlighter-rouge">employment</code> relationship between two <code class="highlighter-rouge">person</code> entities, rather than a <code class="highlighter-rouge">person</code> and a <code class="highlighter-rouge">company</code>:</p>
 
-    @media (min-height: 900px)  {
-       #json-box-container {
-           max-height:700px;
-    }
-        #definition-box-container  {
-          max-height: 700px;
-  }
-  }
+<pre><code class="language-graql-test-ignore">insert
+  $x isa person, has name "Elizabeth Niesz";
+  $y isa person, has name "John Niesz";
+  (employee: $x, employer: $y) isa employment;
+commit
+</code></pre>
 
-     @media (min-height: 1000px)  {
-       #json-box-container {
-           max-height:800px;
-    }
-        #definition-box-container  {
-          max-height: 800px;
-  }
-  }
+<h4 id="type-validation">Type Validation</h4>
 
-    @media (min-height: 1100px)  {
-       #json-box-container {
-           max-height:900px;
-    }
-        #definition-box-container  {
-          max-height: 900px;
-  }
-  }
+<p>This validation rule ensures that abstract types do not have any instances. For example if we declare the type <code class="highlighter-rouge">vehicle</code> to be abstract, with <code class="highlighter-rouge">car</code> and <code class="highlighter-rouge">motorbike</code> to be sub types of <code class="highlighter-rouge">vehicle</code>, then only cars and motorbikes are allowed to have instances.</p>
 
+<h4 id="role-validation">Role Validation</h4>
 
-    </style>
+<p>This rule checks that non abstract roles are part of a relationship. For example if we declare the role <code class="highlighter-rouge">husband</code> and forget to link it to any relationship, then this check will fail.</p>
 
+<h4 id="relationship-validation">Relationship Validation</h4>
 
-<div class="container">
-<div class="row">
- 
-<div id="small-box-links">
+<p>A relationship is valid if:</p>
 
-<div class="col-md-6">
-<div id="json-box-container">
-<pre>
-{
-  <a href="#apples">"apples"</a>: "red fruit at the store",
-  <a href="#bananas">"bananas"</a>: "yellow bananas in a bunch",
-  <a href="#carrots">"carrots"</a>: "orange vegetables that grow in the ground",
-  <a href="#dingbats">"dingbats"</a>: "a type of character symbol on a computer",
-  <a href="#eggs">"eggs"</a>: "chickens lay them, and people eat them",
-  <a href="#falafel">"falafel"</a>: "a Mediterranean sandwich consisting of lots of different stuff i don't know much about",
-  <a href="#giraffe">"giraffe"</a>: "tall animal, has purple tongue",
-  <a href="#hippo">"hippo"</a>: "surprisingly dangerous amphibian",
-  <a href="#igloo">"igloo"</a>: "an ice shelter made by eskimos",
-  <a href="#jeep">"jeep</a>: "the only car that starts with a j",
-  <a href="#kilt">"kilt"</a>: "something worn by scottish people, not a dress",
-  <a href="#lamp">"lamp"</a>: "you use it to read by your bedside at night"
-  <a href="#manifold">"manifold"</a>: "an intake mechanism on a car, like a valve, i think",
-  <a href="#octopus">"octopus"</a>: "eight tentacles, shoots ink, lives in dark caves, very mysterious",
-  <a href="#paranoia">"paranoia"</a>: "the constant feeling that others are out to get you, conspiring against your success",
-  <a href="#qui">"qui"</a>: "a life force that runs through your body",
-  <a href="#radical">"radical"</a>: "someone who opposes the status quo in major ways",
-  <a href="#silly">"silly"</a>: "how I feel writing this dummy copy",
-  <a href="#taffy">"taffy"</a>: "the sweets children like the most and dentists hate the worst",
-  <a href="#umbrella">"umbrella"</a>: "an invention that has not had any advancements in 200 years",
-  <a href="#vampire">"vampire"</a>: "a paranormal figure that is surprisingly in vogue despite its basic nature",
-  <a href="#washington">"washington"</a>: "the place where tom was born",
-  <a href="#xylophone">"xylophone"</a>: "some kind of pinging instrument used to sound chime-like notes",
-  <a href="#yahoo">"yahoo"</a>: "an expression of exuberance, said under breath when something works right",
-  <a href="#zeta">"zeta"</a>: "the way british people pronounce z",
-  <a href="#alpha">"alpha"</a>: "the original letter of the alphabet, which has since come to mean the first. however, i think the original symbol of alpha is actually an ox. it is somewhat of a mystery to linquists as to the exact origin of the letter alpha, but it basically represents the dawn of the alphabet, which proved to be a huge step forward for human thought and expression.",
-  <a href="#beta">"beta"</a>: "the period of time when something is finished but undergoing testing by a group of people.",
-  <a href="#cappa">"cappa"</a>: "how italians refer to their baseball caps",
-  <a href="#dunno">"dunno"</a>: "informal expression for 'don't know'"
-  }
-      
-</pre>
+<ul>
+  <li>all of the role players of the relationship are allowed to play their corresponding roles.</li>
+  <li>it has, at minimum, two roles. For example, a <code class="highlighter-rouge">marriage</code> with only one role <code class="highlighter-rouge">husband</code> would fail this check.</li>
+</ul>
 
-</div><!-- end json-box-container-->
-</div> <!-- end col-md-6-->
+<h4 id="an-example-of-validation">An Example of Validation</h4>
 
-<div class="col-md-3">
+<p>Let us say that we want to model a marriage between a man <code class="highlighter-rouge">Bob</code> and woman <code class="highlighter-rouge">Alice</code>.
+This will be our first attempt:</p>
 
-<div id="definition-box-container">
+<!-- This example is meant to fail TODO: Make this only parse, not execute -->
+<pre><code class="language-graql-test-ignore">define
+  human is-abstract sub entity;
+  human has name;
+  name sub attribute datatype string;
 
+  man is-abstract sub human;
+  woman sub human;
 
-    <div id="apples"><h5>apples</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer magna massa, euismod sed rutrum at, ullamcorper quis tellus. Vestibulum erat purus, aliquet sit amet pellentesque eget, tempus at ante. Nulla justo nisi, elementum nec nisi eget, consectetur varius tortor. </div>
+  marriage sub relationship;
+  marriage relates husband;
 
-    <div id="bananas"><h5>bananas</h5>Curabitur quis nibh sed eros viverra tempus et quis lorem. Nulla convallis sit amet risus vitae rutrum. Nulla at faucibus lectus. Pellentesque tortor nisl, interdum ac quam non, egestas congue massa. Vestibulum non porttitor lacus. Nam tincidunt arcu lectus. Donec eget ornare neque, hendrerit ornare lectus. In ac pretium odio.</div>
+  woman plays wife;
 
-    <div id="carrots"><h5>carrots</h5>Vivamus pulvinar vestibulum pharetra. Vivamus vitae diam iaculis, posuere mi sed, dignissim massa. Nunc vitae aliquet urna. Proin sed pulvinar ex. Maecenas nisl lorem, rutrum sit amet hendrerit sed, posuere at odio. Sed consectetur semper tristique. Vivamus finibus varius felis at convallis. Fusce in dictum nunc.</div>
+insert
+  $x has name 'Bob' isa man;
+  $y has name 'Alice' isa woman;
+  (husband: $x, wife: $y) isa marriage;
+</code></pre>
 
-    <div id="dingbats"><h5>dingbats</h5>Curabitur feugiat lorem eget elit ullamcorper tincidunt. In euismod diam aliquet tortor fermentum tempor. Fusce quam felis, commodo viverra orci vitae, scelerisque aliquet risus. </div>
+<p>This first attempt was horrible as we ended up failing all the validation rules.
+On commit we will see an error similar to this:</p>
 
-    <div id="eggs"><h5>eggs</h5>Duis est nunc, fringilla eu ligula et, varius dignissim dui. Vivamus in tellus vitae ipsum vehicula fermentum at congue tellus. Suspendisse fermentum, magna vitae aliquet sodales, tellus nisi rutrum arcu, vitae auctor dolor quam ac tellus. Cras posuere augue erat, in sagittis quam lacinia id.</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>The Type <span class="o">[</span>man] is abstract and cannot have any instances <span class="c"># (1)</span>
+</code></pre></div></div>
 
-    <div id="falafel"><h5>falafel</h5>Praesent auctor a enim non lacinia. Integer sodales aliquet mi vel dapibus. Donec consequat justo eget nisi lacinia, eu sodales ligula molestie. Sed sapien nulla, rhoncus at elementum a, </div>
+<p>Then we will see also the following ones:</p>
 
-    <div id="giraffe"><h5>giraffe</h5>Nullam venenatis at lectus sed pharetra. Sed hendrerit ligula lectus, non pellentesque diam faucibus sit amet. Aliquam dictum hendrerit pellentesque. Cras eu nisl sagittis, faucibus velit sit amet, sagittis odio. Donec vulputate ex vitae purus</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>A structural validation error has occurred. Please correct the <span class="o">[</span><span class="sb">`</span>3<span class="sb">`</span><span class="o">]</span> errors found.
+Role <span class="o">[</span>wife] does not have a relates connection to any Relationship Type. <span class="c"># (2)</span>
+The relation <span class="o">[</span>V24656] has a role player playing the role <span class="o">[</span>wife] which it<span class="s1">'s type [marriage] is not connecting to via a relates connection # (3)
+The type [man] of role player [V41176] is not allowed to play Role [husband] # (4)
+</span></code></pre></div></div>
 
-    <div id="hippo"><h5>hippo</h5>Cras nec pretium nulla. Suspendisse tempus tortor vel venenatis pulvinar. Integer varius tempor enim fringilla tincidunt. Phasellus magna turpis, auctor vitae elit eget, fringilla pellentesque est. Phasellus ut porta risus. Curabitur iaculis sapien sed venenatis auctor. Integer eu orci at lectus eleifend auctor id rutrum urna.</div>
+<p>Lets see why:</p>
 
-    <div id="igloo"><h5>igloo</h5>Suspendisse tempus tortor vel venenatis pulvinar. Integer varius tempor enim fringilla tincidunt. Phasellus magna turpis, auctor vitae elit eget, fringilla pellentesque est. Phasellus ut porta risus.  </div>
+<ol>
+  <li><strong>Type Validation</strong> failed because we accidentally made <code class="highlighter-rouge">man</code> abstract and we declared <code class="highlighter-rouge">Bob</code> to be an instance of <code class="highlighter-rouge">man</code>.</li>
+  <li><strong>Role Validation</strong> failed because the role <code class="highlighter-rouge">wife</code> is not connected to any relationship</li>
+  <li><strong>Relationship Validation</strong> failed because <code class="highlighter-rouge">marriage</code> only has one role <code class="highlighter-rouge">husband</code>.</li>
+  <li><strong>Plays Role Validation</strong> failed because we forgot to say that a <code class="highlighter-rouge">man</code> can play the role of <code class="highlighter-rouge">husband</code>.</li>
+</ol>
 
-    <div id="jeep"><h5>jeep</h5>Nulla vitae metus rutrum, condimentum orci nec, maximus est. Aenean sit amet ante nec elit dignissim faucibus eget quis quam. </div>
+<p>Let’s fix these issues and try again:</p>
 
-    <div id="kilt"><h5>kilt</h5>Morbi maximus, erat vel rhoncus sagittis, dolor purus dignissim ante, sit amet pharetra ex justo vitae ipsum. Nulla consequat interdum neque</div>
+<pre><code class="language-graql">define
+  human is-abstract sub entity;
+  human has name;
+  name sub attribute datatype string;
 
-    <div id="lamp"><h5>lamp</h5>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquam dapibus blandit. Donec porta, enim hendrerit venenatis vulputate, orci diam lacinia nibh, faucibus rutrum dolor dui ut quam.</div>
+  man sub human; # Fix (1)
+  woman sub human;
 
-    <div id="manifold"><h5>manifold</h5>Donec finibus massa vel nisi ullamcorper, vitae ornare enim euismod. Aliquam auctor quam erat. Duis interdum rutrum orci, ac interdum urna pharetra eget.</div>
+  marriage sub relationship;
+  marriage relates husband;
+  marriage relates wife; # Fix (2) and (3)
 
-    <div id="octopus"><h5>octopus</h5>Nulla id egestas enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Curabitur eu lobortis ligula.</div>
+  man plays husband; # Fix (4)
+  woman plays wife;
 
-    <div id="paranoia"><h5>paranoia</h5>Aenean hendrerit mauris ipsum, non laoreet ipsum luctus vel. Curabitur tristique auctor elit ut pulvinar. Quisque arcu arcu, condimentum aliquam sodales nec, dignissim nec justo. Nunc tristique sem felis, pharetra euismod lorem volutpat sed. Ut porttitor metus sit amet elit rhoncus semper.</div>
+insert
+  $x has name 'Bob' isa man;
+  $y has name 'Alice' isa woman;
+  (husband: $x, wife: $y) isa marriage;
+</code></pre>
 
-    <div id="qui"><h5>qui</h5>Quisque rhoncus cursus felis vel elementum. Vestibulum dignissim molestie tortor nec facilisis. Praesent a nibh condimentum, porta nulla egestas, auctor eros</div>
-
-    <div id="radical"><h5>radical</h5>Etiam hendrerit interdum tellus, at aliquet sapien egestas in. Aenean eu urna nisl. Cras vitae risus pharetra, elementum mauris nec, auctor lectus. Fusce pellentesque venenatis dictum. Proin at augue at mauris finibus semper ultricies sed eros.</div>
-
-    <div id="silly"><h5>silly</h5>Praesent pulvinar consequat posuere. Morbi egestas rhoncus felis, id fermentum metus lobortis in. Vestibulum nibh orci, euismod eget vestibulum nec, vehicula vitae tortor. Aenean ullamcorper enim nunc, eu auctor ligula auctor eget.</div>
-
-    <div id="taffy"><h5>taffy</h5>Etiam et arcu vel lacus aliquet lobortis in in massa. Nunc non mollis elit. Aenean accumsan orci quis risus aliquam, non gravida nulla molestie. Mauris pharetra libero et magna aliquam aliquam. Integer quis luctus dolor. </div>
-
-    <div id="umbrella"><h5>umbrella</h5>Fusce molestie finibus malesuada. Nullam ac egestas quam, id venenatis ligula. Pellentesque pulvinar elit et vestibulum fringilla. Cras volutpat sed quam ornare scelerisque. Vivamus volutpat ante pretium scelerisque tempus. Etiam venenatis tempor nisl dignissim sollicitudin. Curabitur ac risus vitae dolor pretium posuere vel vitae diam. Donec in odio arcu.</div>
-
-    <div id="vampire"><h5>vampire</h5>Vestibulum pretium condimentum commodo. Integer placerat leo non ipsum ultrices, ac convallis elit varius. Vestibulum ultricies, justo eu rutrum molestie, quam arcu euismod sapien, vel gravida ipsum nulla eget erat. </div>
-
-    <div id="washington"><h5>washington</h5>Nunc ac quam eu risus dictum sodales. Nam ac risus iaculis, aliquet sem eu, mollis mauris. Curabitur pretium facilisis orci ut lacinia. Sed fermentum leo a odio blandit rutrum. Phasellus at nibh vel odio interdum vulputate ac eget urna. Nam eu arcu dapibus, sodales ligula nec, volutpat ipsum. Suspendisse auctor tellus vitae libero euismod venenatis. </div>
-
-    <div id="xylophone"><h5>xylophone</h5>Sed molestie lobortis ante sit amet hendrerit. Sed pharetra nisi sed interdum pulvinar. Nunc efficitur erat non aliquam mattis. Sed id nisl mattis lacus vehicula volutpat vitae vel massa. Curabitur interdum velit odio, vitae sollicitudin nunc rutrum non. </div>
-
-    <div id="yahoo"><h5>yahoo</h5>Nunc commodo consectetur scelerisque. Proin fermentum ligula ac quam finibus tincidunt. Aenean venenatis nisi et semper semper. Nunc sodales velit ipsum, ac pellentesque augue placerat eu.</div>
-
-    <div id="zeta"><h5>zeta</h5>Nullam ac suscipit odio. Curabitur viverra arcu ut egestas sollicitudin. Fusce sodales varius lectus ut tristique. Etiam eget nunc ornare, aliquet tortor eget, consequat mauris. Integer sit amet fermentum augue. </div>
-
-    <div id="alpha"><h5>alpha</h5>Praesent nec neque ac tellus sodales eleifend nec vel ipsum. Cras et semper risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer mattis leo nisl, a tincidunt lectus tristique eget. Donec finibus lobortis viverra. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus egestas pulvinar odio non vehicula. Morbi malesuada leo eget nisl sagittis aliquet.</div>
-
-
-    <div id="beta"><h5>beta</h5>Mauris a libero vel enim pharetra interdum non a quam. Sed tincidunt ut elit sed dignissim. Suspendisse vitae tellus dapibus, fermentum lacus ac, fermentum lacus. Nam ante odio, fringilla ac elementum a, mollis sed tellus.</div>
-
-    <div id="cappa"><h5>cappa</h5>Nam molestie semper nulla et molestie. Ut facilisis, ipsum sed convallis posuere, mi mauris bibendum erat, nec egestas ipsum est nec dolor. </div>
-
-    <div id="dunno"><h5>dunno</h5>Etiam et metus congue, commodo libero et, accumsan sem. Aliquam erat volutpat. Quisque tincidunt, tortor non blandit ullamcorper, orci mauris dignissim augue, eget vehicula nulla justo sed dolor. Nunc ac urna quis nisi maximus pharetra in a mauris. Proin metus mi, venenatis vitae tristique sed, fermentum at purus. Aliquam erat volutpat. Maecenas efficitur sodales nibh, ac hendrerit felis facilisis et. Interdum et malesuada fames ac ante ipsum primis in faucibus.</div>
-
-
-</div> <!-- end definition-box-container -->
-</div> <!-- end col-md-3-->
-</div> <!-- end small-box-links -->
-</div> <!-- end row -->
-</div> <!-- end container -->
-
-
-<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note: </b> This was mostly an experiment to see if there was a better way to document a long JSON code example. I haven't actually used this approach in my own documentation.</div>
-
-
-
+<p>Now we are correctly modelling the marriage between <code class="highlighter-rouge">Alice</code> and <code class="highlighter-rouge">Bob</code>.</p>
 
 
     <div class="tags">
@@ -1071,6 +972,16 @@ $('#small-box-links').localScroll({
         <b>Tags: </b>
         
         
+        
+        <a href="/tag_getting-started.html" class="btn btn-default navbar-btn cursorNorm" role="button">getting-started</a>
+        
+        
+        
+        <a href="/tag_reasoning.html" class="btn btn-default navbar-btn cursorNorm" role="button">reasoning</a>
+        
+        
+        
+        <a href="/tag_graql.html" class="btn btn-default navbar-btn cursorNorm" role="button">graql</a>
         
         
         

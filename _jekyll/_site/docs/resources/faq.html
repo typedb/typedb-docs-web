@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definit...">
-<meta name="keywords" content="special_layouts,  json, scrolling, scrollto, jquery plugin, GRAKN.AI, Grakn Labs, grakn, graql, grakn.ai, knowledge graph, knowledge engineering, knowledge base, distributed knowledge graph, development platform, developer tool, data platform, programming langauge, query langauge, database, semantic database, distributed semantic database, distributed database, graph database, semantic search, data exploration, recommendation system, knowledge management, real-time analytics, advanced analytics, reasoning engine, inference engine, expert systems, semantic applications, research engines, data management, business intelligence, big data, semantic web, semantic data, knowledge representation, automated reasoning, semantic network, knowledge ontology, semantic graph, ontology engineering, graph based knowledge representation, artificial intelligence,">
-<title>Scroll layout | GRAKN.AI</title>
-<meta property="og:description" content="This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definit...">
-<meta property="og:title" content="Scroll layout | GRAKN.AI" >
+<meta name="description" content="Frequently asked questions about Grakn.">
+<meta name="keywords" content="getting-started,  troubleshooting, GRAKN.AI, Grakn Labs, grakn, graql, grakn.ai, knowledge graph, knowledge engineering, knowledge base, distributed knowledge graph, development platform, developer tool, data platform, programming langauge, query langauge, database, semantic database, distributed semantic database, distributed database, graph database, semantic search, data exploration, recommendation system, knowledge management, real-time analytics, advanced analytics, reasoning engine, inference engine, expert systems, semantic applications, research engines, data management, business intelligence, big data, semantic web, semantic data, knowledge representation, automated reasoning, semantic network, knowledge ontology, semantic graph, ontology engineering, graph based knowledge representation, artificial intelligence,">
+<title>FAQ about Grakn | GRAKN.AI</title>
+<meta property="og:description" content="Frequently asked questions about Grakn.">
+<meta property="og:title" content="FAQ about Grakn | GRAKN.AI" >
 <meta property="og:image" content="/images/og-image.png" >
 <link rel="stylesheet" href="/css/syntax.css">
 
@@ -251,7 +251,7 @@ src="https://www.facebook.com/tr?id=2009892122581066&ev=PageView&noscript=1" alt
                 
                 dataSource: '/search.json',
                 
-                searchResultTemplate: '<li><a href="{url}" title="Scroll layout">{title}</a></li>',
+                searchResultTemplate: '<li><a href="{url}" title="FAQ about Grakn">{title}</a></li>',
                 noResultsText: '<li><a class="empty">No results found</a></li>',
                 limit: 10,
                 fuzzy: true
@@ -706,7 +706,7 @@ src="https://www.facebook.com/tr?id=2009892122581066&ev=PageView&noscript=1" alt
             
             
             
-            <li><a href="/docs/resources/faq">Grakn FAQ</a></li>
+            <li class="active"><a href="/docs/resources/faq">Grakn FAQ</a></li>
             
             
             
@@ -789,7 +789,7 @@ src="https://www.facebook.com/tr?id=2009892122581066&ev=PageView&noscript=1" alt
             
 
 <div class="post-header">
-   <h1 class="post-title-main">Scroll layout</h1>
+   <h1 class="post-title-main">FAQ about Grakn</h1>
 </div>
 
 
@@ -799,7 +799,7 @@ src="https://www.facebook.com/tr?id=2009892122581066&ev=PageView&noscript=1" alt
 <div class="post-content">
 
    
-    <div class="summary">This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definitions for that particular term. The scenario here is that the JSON blocks are really long, with extensive nesting and subnesting, which makes it difficult for tables below the JSON to adequately explain the term in a usable way.</div>
+    <div class="summary">Frequently asked questions about Grakn.</div>
    
 
     
@@ -835,235 +835,153 @@ $('#toc').on('click', 'a', function() {
     
 
   
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> This page contains some of the questions were are mostly commonly asked, and is updated regularly. There is also a separate <a href="../../contributors/contributor-faq.html">Contributor FAQ</a> for those collaborating with us on GRAKN.AI. You may find an answer here but, if you do not, please feel free to use our <a href="http://discuss.grakn.ai">discussion forums</a> to ask us for help or advice.</div>
 
+<h2 id="about-graknai">About GRAKN.AI</h2>
 
+<h3 id="why-did-you-develop-a-new-query-language">Why did you develop a new query language?</h3>
 
-<script src="../js/jquery.scrollTo.min.js"></script>
-    <!-- local scroll must come after scrollTo, because localScroll is based on scrollTo, which is based on jQuery -->
-<script src="../js/jquery.localScroll.min.js"></script>
+<p>We are often asked why we have developed a new schema and query language rather than use existing standards like <a href="https://en.wikipedia.org/wiki/Resource_Description_Framework">RDF</a>, <a href="https://en.wikipedia.org/wiki/Web_Ontology_Language">OWL</a> and <a href="https://en.wikipedia.org/wiki/SPARQL">SPARQL</a>.</p>
 
-<script>
+<p>We have written a <a href="https://blog.grakn.ai/knowledge-graph-representation-grakn-ai-or-owl-506065bd3f24#.5zjvkta9u">substantial explanation</a> to this question on our blog. In summary, our underlying data model is that of a property graph, so in principle we’re able to import and export from/to RDF if needed. However, our language is designed to strike a different and better balance between expressiveness and complexity than offered by the existing OWL profiles, especially in the context of knowledge graph structures. In consequence, our query language, Graql, is aligned with our schema formalism to enable higher level query capabilities than supported by SPARQL over an RDF data model.</p>
 
-$( document ).ready(function() {
-$('#small-box-links').localScroll({
-           target:'#definition-box-container',
-           showSpeed: 1000,
-           hash: true,
-           easing: 'swing',
-           onAfter:function(){
-          $("#definition-box-container div a").addClass("active");
-          $("#definition-box-container div a").removeClass("active");
-          $("#definition-box-container div").removeClass("active");
-           $(window.location.hash).addClass("active");
-  }
-});
+<p>OWL is not well-suited for graph-structures. Because of its formal foundations and computational limitations it is in fact a more natural language for managing tree-shaped data instead. OWL also makes it hard to help validate consistency of data and ensure it is well-structured, and this is what knowledge graph applications require.</p>
 
+<h3 id="how-can-i-contribute-to-graknai">How can I contribute to GRAKN.AI</h3>
 
-});
-</script>
+<p>There are lots of ways you can get involved! Please take a look at our <a href="../../contributors/index.html">contributor documentation</a>. You may be a Java developer and able to help us fix bugs or add new features, but if you’re not, there are still loads of projects to get into. We are always keen to see products developed on top of our platform, and have a list of <a href="../examples/projects">potential projects</a> you could work on using Java, Graql, a JVM-language like Groovy, or even something completely different, like Python, R or Haskell.  And if you’re not a programmer, you can still contribute. Our documentation changes regularly and needs review or translation. Please just get in touch using one of our <a href="https://grakn.ai/community">community channels</a>!</p>
 
-<!-- documentation for localScroll function: http://flesler.blogspot.com/2007/10/jquerylocalscroll-10.html -->
-    <style type="text/css">
- 
-   #definition-box-container {
-        border: 0px solid #dedede;
-        border-radius: 4px;
-        max-height: 500px;
-        overflow: scroll;
-        padding-left:5px;
-        border-radius:5px;
-    }
+<h2 id="bugs-and-strange-behaviour">Bugs and strange behaviour</h2>
 
-    #json-box-container {
+<h3 id="why-does-grakn-hang-when-i-try-to-start-it">Why does Grakn hang when I try to start it?</h3>
 
-      border: 1px solid #dedede;
-      border-radius: 4px;
-      max-height:500px;
-      overflow: scroll;
-    }
+<p>I am running <code class="highlighter-rouge">grakn server start</code> but it hangs on <code class="highlighter-rouge">Starting ...</code>. Why?</p>
 
-    #small-box-links {
-      float: left;
-    }
+<p>This may be because you have cloned the Grakn repo into a directory which has a space in its name (e.g. <code class="highlighter-rouge">/grakn test</code>).
+You can build our code successfully, but when you run <code class="highlighter-rouge">./grakn server start</code>, it hangs because the database needs you to have single word pathnames.
+Remove the spaces (e.g. <code class="highlighter-rouge">/grakn_test</code>) and try again.</p>
 
-    #definition-box-container .active {
-     background-color: #FFFBCC;
-    }
-    
-    div#definition-box-container div {
-      padding: 10px;
-}
+<h3 id="why-am-i-getting-ghost-vertices">Why am I getting ghost vertices?</h3>
 
-    @media (min-height: 700px)  {
-       #json-box-container {
-           max-height:500px;
-         }
-           #definition-box-container  {
-          max-height: 500px;
-  }
-    }
+<p>In a transaction based environment it is possible to have one transaction removing a concept while another concurrently modifies the same concept.
+Both transactions may successfully commit in an eventually consistent environment.</p>
 
-     @media (min-height: 800px)  {
-       #json-box-container {
-           max-height:600px;
-    }
-        #definition-box-container  {
-          max-height: 600px;
-  }
-  }
+<p>The concept is likely to still exist with only the modified properties.
+It is possible to safeguard against this by setting the <code class="highlighter-rouge">checkInternalVertexExistence</code> property to true.
+However, this will result in slower transaction as more reads will be necessary.</p>
 
-    @media (min-height: 900px)  {
-       #json-box-container {
-           max-height:700px;
-    }
-        #definition-box-container  {
-          max-height: 700px;
-  }
-  }
+<h2 id="working-with--grakn">Working with  Grakn</h2>
 
-     @media (min-height: 1000px)  {
-       #json-box-container {
-           max-height:800px;
-    }
-        #definition-box-container  {
-          max-height: 800px;
-  }
-  }
+<h3 id="which-os-can-i-use-with-grakn">Which OS can I use with Grakn?</h3>
 
-    @media (min-height: 1100px)  {
-       #json-box-container {
-           max-height:900px;
-    }
-        #definition-box-container  {
-          max-height: 900px;
-  }
-  }
+<p>You can use Mac OS X or Linux right now. We plan to support Windows at a later date.</p>
 
+<h3 id="why-is-there-no-logger">Why is there no logger?</h3>
 
-    </style>
+<p>The Grakn libraries do not come bundled with a logger. If you are running GRAKN.AI and do not include on a logger dependency, you will see the following message, printed by slf4j.</p>
 
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+SLF4J: Defaulting to no-operation (NOP) logger implementation
+SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+</code></pre></div></div>
 
-<div class="container">
-<div class="row">
- 
-<div id="small-box-links">
+<p>So you need to include a logger dependency. In the GRAKN.AI distribution we use <a href="https://logback.qos.ch/">Logback</a>. Take a look at the <a href="https://github.com/graknlabs/grakn/blob/master/conf/main/server/logback.xml"><code class="highlighter-rouge">server/logback.xml</code></a> used in the Grakn project for an idea how to configure your own.</p>
 
-<div class="col-md-6">
-<div id="json-box-container">
-<pre>
-{
-  <a href="#apples">"apples"</a>: "red fruit at the store",
-  <a href="#bananas">"bananas"</a>: "yellow bananas in a bunch",
-  <a href="#carrots">"carrots"</a>: "orange vegetables that grow in the ground",
-  <a href="#dingbats">"dingbats"</a>: "a type of character symbol on a computer",
-  <a href="#eggs">"eggs"</a>: "chickens lay them, and people eat them",
-  <a href="#falafel">"falafel"</a>: "a Mediterranean sandwich consisting of lots of different stuff i don't know much about",
-  <a href="#giraffe">"giraffe"</a>: "tall animal, has purple tongue",
-  <a href="#hippo">"hippo"</a>: "surprisingly dangerous amphibian",
-  <a href="#igloo">"igloo"</a>: "an ice shelter made by eskimos",
-  <a href="#jeep">"jeep</a>: "the only car that starts with a j",
-  <a href="#kilt">"kilt"</a>: "something worn by scottish people, not a dress",
-  <a href="#lamp">"lamp"</a>: "you use it to read by your bedside at night"
-  <a href="#manifold">"manifold"</a>: "an intake mechanism on a car, like a valve, i think",
-  <a href="#octopus">"octopus"</a>: "eight tentacles, shoots ink, lives in dark caves, very mysterious",
-  <a href="#paranoia">"paranoia"</a>: "the constant feeling that others are out to get you, conspiring against your success",
-  <a href="#qui">"qui"</a>: "a life force that runs through your body",
-  <a href="#radical">"radical"</a>: "someone who opposes the status quo in major ways",
-  <a href="#silly">"silly"</a>: "how I feel writing this dummy copy",
-  <a href="#taffy">"taffy"</a>: "the sweets children like the most and dentists hate the worst",
-  <a href="#umbrella">"umbrella"</a>: "an invention that has not had any advancements in 200 years",
-  <a href="#vampire">"vampire"</a>: "a paranormal figure that is surprisingly in vogue despite its basic nature",
-  <a href="#washington">"washington"</a>: "the place where tom was born",
-  <a href="#xylophone">"xylophone"</a>: "some kind of pinging instrument used to sound chime-like notes",
-  <a href="#yahoo">"yahoo"</a>: "an expression of exuberance, said under breath when something works right",
-  <a href="#zeta">"zeta"</a>: "the way british people pronounce z",
-  <a href="#alpha">"alpha"</a>: "the original letter of the alphabet, which has since come to mean the first. however, i think the original symbol of alpha is actually an ox. it is somewhat of a mystery to linquists as to the exact origin of the letter alpha, but it basically represents the dawn of the alphabet, which proved to be a huge step forward for human thought and expression.",
-  <a href="#beta">"beta"</a>: "the period of time when something is finished but undergoing testing by a group of people.",
-  <a href="#cappa">"cappa"</a>: "how italians refer to their baseball caps",
-  <a href="#dunno">"dunno"</a>: "informal expression for 'don't know'"
-  }
-      
-</pre>
+<h3 id="how-do-i-load-data-into-grakn">How do I load data into Grakn?</h3>
 
-</div><!-- end json-box-container-->
-</div> <!-- end col-md-6-->
+<p>There are several ways to load data into Grakn. For small amounts of data (&lt;1000 lines), you an load it directly via the Graql shell. For example, the following loads up the an example file called <code class="highlighter-rouge">family-data.gql</code>:</p>
 
-<div class="col-md-3">
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./graql console <span class="nt">-f</span> examples/family-data.gql
+</code></pre></div></div>
 
-<div id="definition-box-container">
+<p>If you have a larger file, you will need to batch load it. The file will be divided in batches that will be committed concurrently. This differs from a regular load, where the whole file is committed in a single chunk when you call commit. See the example below, which loads the Graql file FILENAME.gql, from PATH.</p>
 
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./graql console <span class="nt">-b</span> PATH/FILENAME.gql
+</code></pre></div></div>
 
-    <div id="apples"><h5>apples</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer magna massa, euismod sed rutrum at, ullamcorper quis tellus. Vestibulum erat purus, aliquet sit amet pellentesque eget, tempus at ante. Nulla justo nisi, elementum nec nisi eget, consectetur varius tortor. </div>
+<p>In order to check the status of the loading, you can open a new terminal window and run the command:</p>
 
-    <div id="bananas"><h5>bananas</h5>Curabitur quis nibh sed eros viverra tempus et quis lorem. Nulla convallis sit amet risus vitae rutrum. Nulla at faucibus lectus. Pellentesque tortor nisl, interdum ac quam non, egestas congue massa. Vestibulum non porttitor lacus. Nam tincidunt arcu lectus. Donec eget ornare neque, hendrerit ornare lectus. In ac pretium odio.</div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tail</span> <span class="nt">-f</span> logs/grakn.log
+</code></pre></div></div>
 
-    <div id="carrots"><h5>carrots</h5>Vivamus pulvinar vestibulum pharetra. Vivamus vitae diam iaculis, posuere mi sed, dignissim massa. Nunc vitae aliquet urna. Proin sed pulvinar ex. Maecenas nisl lorem, rutrum sit amet hendrerit sed, posuere at odio. Sed consectetur semper tristique. Vivamus finibus varius felis at convallis. Fusce in dictum nunc.</div>
+<h3 id="i-want-to-load-a-large-amount-of-data-into-a-knowledge-graph---how-do-i-do-it">I want to load a large amount of data into a knowledge graph - how do I do it?</h3>
+<p>Graql is single-threaded and doesn’t support batch-loading. You may want to use the Java <a href="../java-library/loader-api">loader client</a>, which provides multi-threaded batch loading, or the <code class="highlighter-rouge">-b</code> flag if you are using the <a href="../get-started/graql-console">Graql shell</a>.</p>
 
-    <div id="dingbats"><h5>dingbats</h5>Curabitur feugiat lorem eget elit ullamcorper tincidunt. In euismod diam aliquet tortor fermentum tempor. Fusce quam felis, commodo viverra orci vitae, scelerisque aliquet risus. </div>
+<h3 id="what-are-the-differences-between-a-batch-load-and-a-normal-load">What are the differences between a batch load and a normal load?</h3>
 
-    <div id="eggs"><h5>eggs</h5>Duis est nunc, fringilla eu ligula et, varius dignissim dui. Vivamus in tellus vitae ipsum vehicula fermentum at congue tellus. Suspendisse fermentum, magna vitae aliquet sodales, tellus nisi rutrum arcu, vitae auctor dolor quam ac tellus. Cras posuere augue erat, in sagittis quam lacinia id.</div>
+<p>The batch load is faster for larger datasets because it ignores some consistency checks, on the assumption that you have pre-filtered your data. Checks ignored include:</p>
 
-    <div id="falafel"><h5>falafel</h5>Praesent auctor a enim non lacinia. Integer sodales aliquet mi vel dapibus. Donec consequat justo eget nisi lacinia, eu sodales ligula molestie. Sed sapien nulla, rhoncus at elementum a, </div>
+<ul>
+  <li>When looking up concepts any duplicates which are found are ignored and a random one is returned.</li>
+  <li>When creating a relationship it is possible for an entity to be doubly associated with a role. This is later cleaned up by engine.</li>
+  <li>Concepts with duplicate ids can be inserted.</li>
+  <li>Duplicate relationships can also be inserted.</li>
+</ul>
 
-    <div id="giraffe"><h5>giraffe</h5>Nullam venenatis at lectus sed pharetra. Sed hendrerit ligula lectus, non pellentesque diam faucibus sit amet. Aliquam dictum hendrerit pellentesque. Cras eu nisl sagittis, faucibus velit sit amet, sagittis odio. Donec vulputate ex vitae purus</div>
+<p>Ignoring these checks allows data to be processed much faster at the risk of breaking consistency.</p>
 
-    <div id="hippo"><h5>hippo</h5>Cras nec pretium nulla. Suspendisse tempus tortor vel venenatis pulvinar. Integer varius tempor enim fringilla tincidunt. Phasellus magna turpis, auctor vitae elit eget, fringilla pellentesque est. Phasellus ut porta risus. Curabitur iaculis sapien sed venenatis auctor. Integer eu orci at lectus eleifend auctor id rutrum urna.</div>
+<h3 id="what-is-post-processing">What is post-processing?</h3>
 
-    <div id="igloo"><h5>igloo</h5>Suspendisse tempus tortor vel venenatis pulvinar. Integer varius tempor enim fringilla tincidunt. Phasellus magna turpis, auctor vitae elit eget, fringilla pellentesque est. Phasellus ut porta risus.  </div>
+<p>The distributed and concurrent nature of the Grakn system means that, sometimes, post processing is required to ensure the data remains consistent.</p>
 
-    <div id="jeep"><h5>jeep</h5>Nulla vitae metus rutrum, condimentum orci nec, maximus est. Aenean sit amet ante nec elit dignissim faucibus eget quis quam. </div>
+<p><strong>Role Player Optimisation</strong></p>
 
-    <div id="kilt"><h5>kilt</h5>Morbi maximus, erat vel rhoncus sagittis, dolor purus dignissim ante, sit amet pharetra ex justo vitae ipsum. Nulla consequat interdum neque</div>
+<p>When allocating entities as role players to multiple relationships for the first time it is possible to create duplicate associations. These associations do not affect the results of any queries or computations. For example, if in a new system we process simultaneously the following three statements in different transactions:</p>
 
-    <div id="lamp"><h5>lamp</h5>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquam dapibus blandit. Donec porta, enim hendrerit venenatis vulputate, orci diam lacinia nibh, faucibus rutrum dolor dui ut quam.</div>
+<pre><code class="language-graql-test-ignore">1. insert $x has name 'Brad Pitt' isa person; $y has name 'Fury'; (actor: $x, movie: $y) isa acted-in;
+2. insert $x has name 'Brad Pitt' isa person; $y has name 'Troy'; (actor: $x, movie: $y) isa acted-in;
+3. insert $x has name 'Brad Pitt' isa person; $y has name 'Seven'; (actor: $x, movie: $y) isa acted-in;
+</code></pre>
 
-    <div id="manifold"><h5>manifold</h5>Donec finibus massa vel nisi ullamcorper, vitae ornare enim euismod. Aliquam auctor quam erat. Duis interdum rutrum orci, ac interdum urna pharetra eget.</div>
+<p>It is possible for the system to record that <code class="highlighter-rouge">Brad Pitt</code> is an actor multiple times. The duplications will later be resolved and merged by Grakn engine.</p>
 
-    <div id="octopus"><h5>octopus</h5>Nulla id egestas enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Curabitur eu lobortis ligula.</div>
+<p><strong>Merging Resources</strong></p>
 
-    <div id="paranoia"><h5>paranoia</h5>Aenean hendrerit mauris ipsum, non laoreet ipsum luctus vel. Curabitur tristique auctor elit ut pulvinar. Quisque arcu arcu, condimentum aliquam sodales nec, dignissim nec justo. Nunc tristique sem felis, pharetra euismod lorem volutpat sed. Ut porttitor metus sit amet elit rhoncus semper.</div>
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> This only happens when batch loading.</div>
 
-    <div id="qui"><h5>qui</h5>Quisque rhoncus cursus felis vel elementum. Vestibulum dignissim molestie tortor nec facilisis. Praesent a nibh condimentum, porta nulla egestas, auctor eros</div>
+<p>When using a batch load, many safety checks are skipped in favour of speed. One such check is the possible existence of an attribute before creating it. So if the following transactions are executed simultaneously while batch loading:</p>
 
-    <div id="radical"><h5>radical</h5>Etiam hendrerit interdum tellus, at aliquet sapien egestas in. Aenean eu urna nisl. Cras vitae risus pharetra, elementum mauris nec, auctor lectus. Fusce pellentesque venenatis dictum. Proin at augue at mauris finibus semper ultricies sed eros.</div>
+<pre><code class="language-graql-test-ignore">1. insert $a has unique-id '1'
+2. insert $b has unique-id '1'
+3. insert $c has unique-id '1'
+</code></pre>
 
-    <div id="silly"><h5>silly</h5>Praesent pulvinar consequat posuere. Morbi egestas rhoncus felis, id fermentum metus lobortis in. Vestibulum nibh orci, euismod eget vestibulum nec, vehicula vitae tortor. Aenean ullamcorper enim nunc, eu auctor ligula auctor eget.</div>
+<p>It would be possible to create multiple resources of the type <code class="highlighter-rouge">unique-id</code> with the value <code class="highlighter-rouge">1</code>. These duplicate resources are similarly merged and resolved by Grakn engine.</p>
 
-    <div id="taffy"><h5>taffy</h5>Etiam et arcu vel lacus aliquet lobortis in in massa. Nunc non mollis elit. Aenean accumsan orci quis risus aliquam, non gravida nulla molestie. Mauris pharetra libero et magna aliquam aliquam. Integer quis luctus dolor. </div>
+<h3 id="do-applications-written-on-top-of-grakn-have-to-be-in-java">Do applications written on top of Grakn have to be in Java?</h3>
 
-    <div id="umbrella"><h5>umbrella</h5>Fusce molestie finibus malesuada. Nullam ac egestas quam, id venenatis ligula. Pellentesque pulvinar elit et vestibulum fringilla. Cras volutpat sed quam ornare scelerisque. Vivamus volutpat ante pretium scelerisque tempus. Etiam venenatis tempor nisl dignissim sollicitudin. Curabitur ac risus vitae dolor pretium posuere vel vitae diam. Donec in odio arcu.</div>
+<p>Currently, there is no official support for languages other than Java, although you can find blog posts that describe our experiments with <a href="https://blog.grakn.ai/grakn-ai-and-haskell-c166c7cc1d23">Haskell</a>, <a href="https://blog.grakn.ai/grakn-pandas-celebrities-5854ad688a4f">Python</a> and <a href="https://blog.grakn.ai/there-r-pandas-in-my-graph-b8b5f40a2f99">R</a>. We would be very willing to accept proposals from our community and work with contributors to extend these initial offerings, and/or create bindings to other languages.</p>
 
-    <div id="vampire"><h5>vampire</h5>Vestibulum pretium condimentum commodo. Integer placerat leo non ipsum ultrices, ac convallis elit varius. Vestibulum ultricies, justo eu rutrum molestie, quam arcu euismod sapien, vel gravida ipsum nulla eget erat. </div>
+<h3 id="how-do-i-visualise-a-knowledge-graph">How do I visualise a knowledge graph?</h3>
 
-    <div id="washington"><h5>washington</h5>Nunc ac quam eu risus dictum sodales. Nam ac risus iaculis, aliquet sem eu, mollis mauris. Curabitur pretium facilisis orci ut lacinia. Sed fermentum leo a odio blandit rutrum. Phasellus at nibh vel odio interdum vulputate ac eget urna. Nam eu arcu dapibus, sodales ligula nec, volutpat ipsum. Suspendisse auctor tellus vitae libero euismod venenatis. </div>
+<p>Grakn comes with a basic <a href="../visualisation-dashboard/visualiser">visualiser</a>, with a web-interface. We appreciate any feedback you give us about it via the <a href="https://discuss.grakn.ai/t/visualise-my-data/57">discussion boards</a>. You will need to start Grakn, and then use your web browser to visit <a href="http://localhost:4567/">localhost:4567</a> to visualise a knowledge graph.  Please see the <a href="../get-started/setup-guide#test-the-visualiser">Get Started Guide</a> for more information about the visualiser.</p>
 
-    <div id="xylophone"><h5>xylophone</h5>Sed molestie lobortis ante sit amet hendrerit. Sed pharetra nisi sed interdum pulvinar. Nunc efficitur erat non aliquam mattis. Sed id nisl mattis lacus vehicula volutpat vitae vel massa. Curabitur interdum velit odio, vitae sollicitudin nunc rutrum non. </div>
+<h3 id="how-do-i-clear-a-knowledge-graph">How do I clear a knowledge graph?</h3>
 
-    <div id="yahoo"><h5>yahoo</h5>Nunc commodo consectetur scelerisque. Proin fermentum ligula ac quam finibus tincidunt. Aenean venenatis nisi et semper semper. Nunc sodales velit ipsum, ac pellentesque augue placerat eu.</div>
+<p>I want to clear the knowledge graph I’ve been experimenting with and try something with a new, different schema and dataset. How do I do it?</p>
 
-    <div id="zeta"><h5>zeta</h5>Nullam ac suscipit odio. Curabitur viverra arcu ut egestas sollicitudin. Fusce sodales varius lectus ut tristique. Etiam eget nunc ornare, aliquet tortor eget, consequat mauris. Integer sit amet fermentum augue. </div>
+<p>If you are using the Java API, it’s a simple as:</p>
 
-    <div id="alpha"><h5>alpha</h5>Praesent nec neque ac tellus sodales eleifend nec vel ipsum. Cras et semper risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer mattis leo nisl, a tincidunt lectus tristique eget. Donec finibus lobortis viverra. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus egestas pulvinar odio non vehicula. Morbi malesuada leo eget nisl sagittis aliquet.</div>
+<pre><code class="language-java-test-ignore">Grakn grakn = new Grakn(Grakn.DEFAULT_URI);
+grakn.keyspaces().delete("my-knowledge-base");
+</code></pre>
 
+<p>If you are using the Graql shell and have not committed what you have in the knowledge graph, you can just quit the shell and restart it, and all is clean.</p>
 
-    <div id="beta"><h5>beta</h5>Mauris a libero vel enim pharetra interdum non a quam. Sed tincidunt ut elit sed dignissim. Suspendisse vitae tellus dapibus, fermentum lacus ac, fermentum lacus. Nam ante odio, fringilla ac elementum a, mollis sed tellus.</div>
+<p>If you’ve committed, then you must stop Grakn and specifically clean the knowledge graph:</p>
 
-    <div id="cappa"><h5>cappa</h5>Nam molestie semper nulla et molestie. Ut facilisis, ipsum sed convallis posuere, mi mauris bibendum erat, nec egestas ipsum est nec dolor. </div>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./grakn server stop
+./grakn server clean
+</code></pre></div></div>
 
-    <div id="dunno"><h5>dunno</h5>Etiam et metus congue, commodo libero et, accumsan sem. Aliquam erat volutpat. Quisque tincidunt, tortor non blandit ullamcorper, orci mauris dignissim augue, eget vehicula nulla justo sed dolor. Nunc ac urna quis nisi maximus pharetra in a mauris. Proin metus mi, venenatis vitae tristique sed, fermentum at purus. Aliquam erat volutpat. Maecenas efficitur sodales nibh, ac hendrerit felis facilisis et. Interdum et malesuada fames ac ante ipsum primis in faucibus.</div>
+<h3 id="how-do-i-run-graql-from-a-bash-script">How do I run Graql from a bash script?</h3>
 
+<p>If you want to run Graql from a bash script, for example, to grep the results, you don’t want to have to filter out stuff the license and command prompt. The best way therefor, is to use the -e flag or -f flag, which lets you provide a query to the shell. The -e flag accepts a query, while the -f flag accepts a filename. For example:</p>
 
-</div> <!-- end definition-box-container -->
-</div> <!-- end col-md-3-->
-</div> <!-- end small-box-links -->
-</div> <!-- end row -->
-</div> <!-- end container -->
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./graql console -e "match \$x isa movie;"
+</code></pre></div></div>
 
-
-<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note: </b> This was mostly an experiment to see if there was a better way to document a long JSON code example. I haven't actually used this approach in my own documentation.</div>
-
-
-
+<p>Notice that you have to escape the dollars to stop the shell interpreting them. You can then pipe the output into a command or a file.</p>
 
 
     <div class="tags">
@@ -1071,6 +989,8 @@ $('#small-box-links').localScroll({
         <b>Tags: </b>
         
         
+        
+        <a href="/tag_getting-started.html" class="btn btn-default navbar-btn cursorNorm" role="button">getting-started</a>
         
         
         

@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definit...">
-<meta name="keywords" content="special_layouts,  json, scrolling, scrollto, jquery plugin, GRAKN.AI, Grakn Labs, grakn, graql, grakn.ai, knowledge graph, knowledge engineering, knowledge base, distributed knowledge graph, development platform, developer tool, data platform, programming langauge, query langauge, database, semantic database, distributed semantic database, distributed database, graph database, semantic search, data exploration, recommendation system, knowledge management, real-time analytics, advanced analytics, reasoning engine, inference engine, expert systems, semantic applications, research engines, data management, business intelligence, big data, semantic web, semantic data, knowledge representation, automated reasoning, semantic network, knowledge ontology, semantic graph, ontology engineering, graph based knowledge representation, artificial intelligence,">
-<title>Scroll layout | GRAKN.AI</title>
-<meta property="og:description" content="This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definit...">
-<meta property="og:title" content="Scroll layout | GRAKN.AI" >
+<meta name="description" content="Introduction to Grakn's knowledge model">
+<meta name="keywords" content="getting-startedreasoninggraql,  setup, getting started, basics, GRAKN.AI, Grakn Labs, grakn, graql, grakn.ai, knowledge graph, knowledge engineering, knowledge base, distributed knowledge graph, development platform, developer tool, data platform, programming langauge, query langauge, database, semantic database, distributed semantic database, distributed database, graph database, semantic search, data exploration, recommendation system, knowledge management, real-time analytics, advanced analytics, reasoning engine, inference engine, expert systems, semantic applications, research engines, data management, business intelligence, big data, semantic web, semantic data, knowledge representation, automated reasoning, semantic network, knowledge ontology, semantic graph, ontology engineering, graph based knowledge representation, artificial intelligence,">
+<title>The Model | GRAKN.AI</title>
+<meta property="og:description" content="Introduction to Grakn's knowledge model">
+<meta property="og:title" content="The Model | GRAKN.AI" >
 <meta property="og:image" content="/images/og-image.png" >
 <link rel="stylesheet" href="/css/syntax.css">
 
@@ -251,7 +251,7 @@ src="https://www.facebook.com/tr?id=2009892122581066&ev=PageView&noscript=1" alt
                 
                 dataSource: '/search.json',
                 
-                searchResultTemplate: '<li><a href="{url}" title="Scroll layout">{title}</a></li>',
+                searchResultTemplate: '<li><a href="{url}" title="The Model">{title}</a></li>',
                 noResultsText: '<li><a class="empty">No results found</a></li>',
                 limit: 10,
                 fuzzy: true
@@ -368,7 +368,7 @@ src="https://www.facebook.com/tr?id=2009892122581066&ev=PageView&noscript=1" alt
             
             
             
-            <li><a href="/docs/knowledge-model/model">The Model</a></li>
+            <li class="active"><a href="/docs/knowledge-model/model">The Model</a></li>
             
             
             
@@ -789,7 +789,7 @@ src="https://www.facebook.com/tr?id=2009892122581066&ev=PageView&noscript=1" alt
             
 
 <div class="post-header">
-   <h1 class="post-title-main">Scroll layout</h1>
+   <h1 class="post-title-main">The Model</h1>
 </div>
 
 
@@ -799,7 +799,7 @@ src="https://www.facebook.com/tr?id=2009892122581066&ev=PageView&noscript=1" alt
 <div class="post-content">
 
    
-    <div class="summary">This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definitions for that particular term. The scenario here is that the JSON blocks are really long, with extensive nesting and subnesting, which makes it difficult for tables below the JSON to adequately explain the term in a usable way.</div>
+    <div class="summary">Introduction to Grakn's knowledge model</div>
    
 
     
@@ -834,236 +834,188 @@ $('#toc').on('click', 'a', function() {
 
     
 
-  
+  <p>In Grakn, a knowledge graph is made of two layers: the schema layer and the data layer.</p>
 
+<h2 id="schema">Schema</h2>
 
+<p>In Grakn, the <a href="https://en.wikipedia.org/wiki/Database_schema">schema</a> is the formal specification of all the relevant concepts and their meaningful associations in a given domain. It allows objects and relationships to be categorised into distinct types, and for generic properties of those types to be expressed. Specifying the schema enables <a href="https://en.wikipedia.org/wiki/Inference_engine">automated reasoning</a> over the represented knowledge, such as the extraction of implicit information from explicit data (<a href="./inference#rule-and-sub-type-inference">inference</a>) or discovery of inconsistencies in the data (<a href="./data#data-validation">validation</a>).  For this reason, the schema must be clearly defined before loading data into the knowledge graph.</p>
 
-<script src="../js/jquery.scrollTo.min.js"></script>
-    <!-- local scroll must come after scrollTo, because localScroll is based on scrollTo, which is based on jQuery -->
-<script src="../js/jquery.localScroll.min.js"></script>
+<p><a href="https://blog.grakn.ai/knowledge-graph-representation-grakn-ai-or-owl-506065bd3f24#.d6mtn9ic2">Grakn uses its own declarative language, Graql</a>, and Grakn ontologies use four types of concepts for modeling domain knowledge. The categorization of concept types is enforced in the Grakn knowledge model by declaring every concept type as a subtype (i.e. an extension) of exactly one of the four corresponding, built-in concept types:</p>
 
-<script>
+<p><strong><code class="highlighter-rouge">entity</code></strong>: Objects or things in the domain. For example, <code class="highlighter-rouge">person</code>, <code class="highlighter-rouge">man</code>, <code class="highlighter-rouge">woman</code>.</p>
 
-$( document ).ready(function() {
-$('#small-box-links').localScroll({
-           target:'#definition-box-container',
-           showSpeed: 1000,
-           hash: true,
-           easing: 'swing',
-           onAfter:function(){
-          $("#definition-box-container div a").addClass("active");
-          $("#definition-box-container div a").removeClass("active");
-          $("#definition-box-container div").removeClass("active");
-           $(window.location.hash).addClass("active");
-  }
-});
+<p><strong><code class="highlighter-rouge">relationship</code></strong>: Relationships between different domain instances. For example, <code class="highlighter-rouge">marriage</code>, which is typically a relationship between two instances of entity types (<code class="highlighter-rouge">woman</code> and <code class="highlighter-rouge">man</code>), playing roles of <code class="highlighter-rouge">wife</code> and <code class="highlighter-rouge">husband</code>, respectively.</p>
 
+<p><strong><code class="highlighter-rouge">role</code></strong>: Roles involved in specific relationships. For example, <code class="highlighter-rouge">wife</code>, <code class="highlighter-rouge">husband</code>.</p>
 
-});
-</script>
+<p><strong><code class="highlighter-rouge">attribute</code></strong>: Attributes associated with domain instances. For example, <code class="highlighter-rouge">name</code>. Resources consist of primitive types and values. They are very much like “data properties” in OWL, and have the following properties:</p>
 
-<!-- documentation for localScroll function: http://flesler.blogspot.com/2007/10/jquerylocalscroll-10.html -->
-    <style type="text/css">
- 
-   #definition-box-container {
-        border: 0px solid #dedede;
-        border-radius: 4px;
-        max-height: 500px;
-        overflow: scroll;
-        padding-left:5px;
-        border-radius:5px;
-    }
+<ul>
+  <li>Datatype - Indicates the datatype of the attribute. For example if the attribute type is age the datatype would be long.</li>
+  <li>Regex - Optional. Can be used to constrain string data types to specific regex patterns.</li>
+</ul>
 
-    #json-box-container {
+<p><br /> <img src="/images/knowledge-model1.png" style="width: 600px;" alt=" Image showing a schema where an entity 'person' has an attribute 'name' and plays the roles 'wife' and 'husband' in a 'marriage' relationship" /> <br /></p>
 
-      border: 1px solid #dedede;
-      border-radius: 4px;
-      max-height:500px;
-      overflow: scroll;
-    }
+<h3 id="building-a-schema">Building a Schema</h3>
 
-    #small-box-links {
-      float: left;
-    }
+<p>In this section, we build up a simple schema to illustrate the concept types in the Grakn knowledge model.</p>
 
-    #definition-box-container .active {
-     background-color: #FFFBCC;
-    }
-    
-    div#definition-box-container div {
-      padding: 10px;
-}
+<p>We define two entities, <code class="highlighter-rouge">person</code> and <code class="highlighter-rouge">company</code>, each of which have a <code class="highlighter-rouge">name</code> attribute.</p>
 
-    @media (min-height: 700px)  {
-       #json-box-container {
-           max-height:500px;
-         }
-           #definition-box-container  {
-          max-height: 500px;
-  }
-    }
+<pre><code class="language-graql">define
+  person sub entity,
+  has name;
 
-     @media (min-height: 800px)  {
-       #json-box-container {
-           max-height:600px;
-    }
-        #definition-box-container  {
-          max-height: 600px;
-  }
-  }
+  company sub entity,
+  has name;
 
-    @media (min-height: 900px)  {
-       #json-box-container {
-           max-height:700px;
-    }
-        #definition-box-container  {
-          max-height: 700px;
-  }
-  }
+  name sub attribute, datatype string;
 
-     @media (min-height: 1000px)  {
-       #json-box-container {
-           max-height:800px;
-    }
-        #definition-box-container  {
-          max-height: 800px;
-  }
-  }
+</code></pre>
 
-    @media (min-height: 1100px)  {
-       #json-box-container {
-           max-height:900px;
-    }
-        #definition-box-container  {
-          max-height: 900px;
-  }
-  }
+<p><br /> <img src="/images/knowledge-model2.png" style="width: 400px;" alt=" Image showing a schema where types 'person' and 'company' have an attribute 'name' " /> <br /></p>
 
+<p><br /></p>
 
-    </style>
+<p>We subtype the entities:</p>
 
+<pre><code class="language-graql">define
+  person sub entity,
+  has name;
 
-<div class="container">
-<div class="row">
- 
-<div id="small-box-links">
+  company sub entity,
+  has name;
 
-<div class="col-md-6">
-<div id="json-box-container">
-<pre>
-{
-  <a href="#apples">"apples"</a>: "red fruit at the store",
-  <a href="#bananas">"bananas"</a>: "yellow bananas in a bunch",
-  <a href="#carrots">"carrots"</a>: "orange vegetables that grow in the ground",
-  <a href="#dingbats">"dingbats"</a>: "a type of character symbol on a computer",
-  <a href="#eggs">"eggs"</a>: "chickens lay them, and people eat them",
-  <a href="#falafel">"falafel"</a>: "a Mediterranean sandwich consisting of lots of different stuff i don't know much about",
-  <a href="#giraffe">"giraffe"</a>: "tall animal, has purple tongue",
-  <a href="#hippo">"hippo"</a>: "surprisingly dangerous amphibian",
-  <a href="#igloo">"igloo"</a>: "an ice shelter made by eskimos",
-  <a href="#jeep">"jeep</a>: "the only car that starts with a j",
-  <a href="#kilt">"kilt"</a>: "something worn by scottish people, not a dress",
-  <a href="#lamp">"lamp"</a>: "you use it to read by your bedside at night"
-  <a href="#manifold">"manifold"</a>: "an intake mechanism on a car, like a valve, i think",
-  <a href="#octopus">"octopus"</a>: "eight tentacles, shoots ink, lives in dark caves, very mysterious",
-  <a href="#paranoia">"paranoia"</a>: "the constant feeling that others are out to get you, conspiring against your success",
-  <a href="#qui">"qui"</a>: "a life force that runs through your body",
-  <a href="#radical">"radical"</a>: "someone who opposes the status quo in major ways",
-  <a href="#silly">"silly"</a>: "how I feel writing this dummy copy",
-  <a href="#taffy">"taffy"</a>: "the sweets children like the most and dentists hate the worst",
-  <a href="#umbrella">"umbrella"</a>: "an invention that has not had any advancements in 200 years",
-  <a href="#vampire">"vampire"</a>: "a paranormal figure that is surprisingly in vogue despite its basic nature",
-  <a href="#washington">"washington"</a>: "the place where tom was born",
-  <a href="#xylophone">"xylophone"</a>: "some kind of pinging instrument used to sound chime-like notes",
-  <a href="#yahoo">"yahoo"</a>: "an expression of exuberance, said under breath when something works right",
-  <a href="#zeta">"zeta"</a>: "the way british people pronounce z",
-  <a href="#alpha">"alpha"</a>: "the original letter of the alphabet, which has since come to mean the first. however, i think the original symbol of alpha is actually an ox. it is somewhat of a mystery to linquists as to the exact origin of the letter alpha, but it basically represents the dawn of the alphabet, which proved to be a huge step forward for human thought and expression.",
-  <a href="#beta">"beta"</a>: "the period of time when something is finished but undergoing testing by a group of people.",
-  <a href="#cappa">"cappa"</a>: "how italians refer to their baseball caps",
-  <a href="#dunno">"dunno"</a>: "informal expression for 'don't know'"
-  }
-      
-</pre>
+  customer sub person,
+  has rating;
 
-</div><!-- end json-box-container-->
-</div> <!-- end col-md-6-->
+  startup sub company,
+  has funding;
 
-<div class="col-md-3">
+  name sub attribute, datatype string;
+  rating sub attribute, datatype double;
+  funding sub attribute, datatype long;
+</code></pre>
 
-<div id="definition-box-container">
+<p><br /> <img src="/images/knowledge-model3.png" style="width: 400px;" alt=" Image showing the above schema, but with additional types 'customer' which subs 'person' and 'startup' subs 'company' " /> <br /></p>
 
+<p><br /></p>
 
-    <div id="apples"><h5>apples</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer magna massa, euismod sed rutrum at, ullamcorper quis tellus. Vestibulum erat purus, aliquet sit amet pellentesque eget, tempus at ante. Nulla justo nisi, elementum nec nisi eget, consectetur varius tortor. </div>
+<p>We introduce a relationship between a <code class="highlighter-rouge">company</code> and a <code class="highlighter-rouge">person</code>:</p>
 
-    <div id="bananas"><h5>bananas</h5>Curabitur quis nibh sed eros viverra tempus et quis lorem. Nulla convallis sit amet risus vitae rutrum. Nulla at faucibus lectus. Pellentesque tortor nisl, interdum ac quam non, egestas congue massa. Vestibulum non porttitor lacus. Nam tincidunt arcu lectus. Donec eget ornare neque, hendrerit ornare lectus. In ac pretium odio.</div>
+<pre><code class="language-graql">define
+  person sub entity,
+  has name,
+  plays employee;
 
-    <div id="carrots"><h5>carrots</h5>Vivamus pulvinar vestibulum pharetra. Vivamus vitae diam iaculis, posuere mi sed, dignissim massa. Nunc vitae aliquet urna. Proin sed pulvinar ex. Maecenas nisl lorem, rutrum sit amet hendrerit sed, posuere at odio. Sed consectetur semper tristique. Vivamus finibus varius felis at convallis. Fusce in dictum nunc.</div>
+  company sub entity,
+  has name,
+  plays employer;
 
-    <div id="dingbats"><h5>dingbats</h5>Curabitur feugiat lorem eget elit ullamcorper tincidunt. In euismod diam aliquet tortor fermentum tempor. Fusce quam felis, commodo viverra orci vitae, scelerisque aliquet risus. </div>
+  customer sub person,
+  has rating;
 
-    <div id="eggs"><h5>eggs</h5>Duis est nunc, fringilla eu ligula et, varius dignissim dui. Vivamus in tellus vitae ipsum vehicula fermentum at congue tellus. Suspendisse fermentum, magna vitae aliquet sodales, tellus nisi rutrum arcu, vitae auctor dolor quam ac tellus. Cras posuere augue erat, in sagittis quam lacinia id.</div>
+  startup sub company,
+  has funding;
 
-    <div id="falafel"><h5>falafel</h5>Praesent auctor a enim non lacinia. Integer sodales aliquet mi vel dapibus. Donec consequat justo eget nisi lacinia, eu sodales ligula molestie. Sed sapien nulla, rhoncus at elementum a, </div>
+  name sub attribute, datatype string;
+  rating sub attribute, datatype double;
+  funding sub attribute, datatype long;
 
-    <div id="giraffe"><h5>giraffe</h5>Nullam venenatis at lectus sed pharetra. Sed hendrerit ligula lectus, non pellentesque diam faucibus sit amet. Aliquam dictum hendrerit pellentesque. Cras eu nisl sagittis, faucibus velit sit amet, sagittis odio. Donec vulputate ex vitae purus</div>
+  employment sub relationship,
+    relates employee, relates employer;
+</code></pre>
 
-    <div id="hippo"><h5>hippo</h5>Cras nec pretium nulla. Suspendisse tempus tortor vel venenatis pulvinar. Integer varius tempor enim fringilla tincidunt. Phasellus magna turpis, auctor vitae elit eget, fringilla pellentesque est. Phasellus ut porta risus. Curabitur iaculis sapien sed venenatis auctor. Integer eu orci at lectus eleifend auctor id rutrum urna.</div>
+<p><br /> <img src="/images/knowledge-model4.png" style="width: 400px;" alt=" Image showing the same schema with an 'employment' relationship comprising the roles 'employee' and 'employer'. 'person' plays 'employee' and 'company' plays 'employer' " /> <br /></p>
 
-    <div id="igloo"><h5>igloo</h5>Suspendisse tempus tortor vel venenatis pulvinar. Integer varius tempor enim fringilla tincidunt. Phasellus magna turpis, auctor vitae elit eget, fringilla pellentesque est. Phasellus ut porta risus.  </div>
+<p><br /></p>
 
-    <div id="jeep"><h5>jeep</h5>Nulla vitae metus rutrum, condimentum orci nec, maximus est. Aenean sit amet ante nec elit dignissim faucibus eget quis quam. </div>
+<p>In the simple example above, we have illustrated the four constructs that relate Grakn concept types to each other:</p>
 
-    <div id="kilt"><h5>kilt</h5>Morbi maximus, erat vel rhoncus sagittis, dolor purus dignissim ante, sit amet pharetra ex justo vitae ipsum. Nulla consequat interdum neque</div>
+<p><strong><code class="highlighter-rouge">sub</code></strong>:  expresses that a concept type is a subtype of (i.e., inherits from) another one.</p>
 
-    <div id="lamp"><h5>lamp</h5>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquam dapibus blandit. Donec porta, enim hendrerit venenatis vulputate, orci diam lacinia nibh, faucibus rutrum dolor dui ut quam.</div>
+<ul>
+  <li>For example, <code class="highlighter-rouge">customer sub person</code>, <code class="highlighter-rouge">startup sub company</code>.</li>
+</ul>
 
-    <div id="manifold"><h5>manifold</h5>Donec finibus massa vel nisi ullamcorper, vitae ornare enim euismod. Aliquam auctor quam erat. Duis interdum rutrum orci, ac interdum urna pharetra eget.</div>
+<p><strong><code class="highlighter-rouge">has</code></strong>: expresses that a concept type can be associated with a given attribute type.</p>
 
-    <div id="octopus"><h5>octopus</h5>Nulla id egestas enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Curabitur eu lobortis ligula.</div>
+<ul>
+  <li>For example, <code class="highlighter-rouge">person has name</code>.</li>
+</ul>
 
-    <div id="paranoia"><h5>paranoia</h5>Aenean hendrerit mauris ipsum, non laoreet ipsum luctus vel. Curabitur tristique auctor elit ut pulvinar. Quisque arcu arcu, condimentum aliquam sodales nec, dignissim nec justo. Nunc tristique sem felis, pharetra euismod lorem volutpat sed. Ut porttitor metus sit amet elit rhoncus semper.</div>
+<p><strong><code class="highlighter-rouge">plays</code></strong>: expresses that instances of a given concept type are allowed to play a specific role.</p>
 
-    <div id="qui"><h5>qui</h5>Quisque rhoncus cursus felis vel elementum. Vestibulum dignissim molestie tortor nec facilisis. Praesent a nibh condimentum, porta nulla egestas, auctor eros</div>
+<ul>
+  <li>For example, <code class="highlighter-rouge">person plays employee</code>, <code class="highlighter-rouge">company plays employer</code>.</li>
+</ul>
 
-    <div id="radical"><h5>radical</h5>Etiam hendrerit interdum tellus, at aliquet sapien egestas in. Aenean eu urna nisl. Cras vitae risus pharetra, elementum mauris nec, auctor lectus. Fusce pellentesque venenatis dictum. Proin at augue at mauris finibus semper ultricies sed eros.</div>
+<p><strong><code class="highlighter-rouge">relates</code></strong>: expresses that a given relationship type involves a specific role.</p>
 
-    <div id="silly"><h5>silly</h5>Praesent pulvinar consequat posuere. Morbi egestas rhoncus felis, id fermentum metus lobortis in. Vestibulum nibh orci, euismod eget vestibulum nec, vehicula vitae tortor. Aenean ullamcorper enim nunc, eu auctor ligula auctor eget.</div>
+<ul>
+  <li>For example, <code class="highlighter-rouge">employment relates employee</code>, <code class="highlighter-rouge">employment relates employer</code>.</li>
+</ul>
 
-    <div id="taffy"><h5>taffy</h5>Etiam et arcu vel lacus aliquet lobortis in in massa. Nunc non mollis elit. Aenean accumsan orci quis risus aliquam, non gravida nulla molestie. Mauris pharetra libero et magna aliquam aliquam. Integer quis luctus dolor. </div>
+<h3 id="relations">Relations</h3>
 
-    <div id="umbrella"><h5>umbrella</h5>Fusce molestie finibus malesuada. Nullam ac egestas quam, id venenatis ligula. Pellentesque pulvinar elit et vestibulum fringilla. Cras volutpat sed quam ornare scelerisque. Vivamus volutpat ante pretium scelerisque tempus. Etiam venenatis tempor nisl dignissim sollicitudin. Curabitur ac risus vitae dolor pretium posuere vel vitae diam. Donec in odio arcu.</div>
+<p>Relationships are inherently non-directional and are defined in terms of roles of entities in the relationship. Relations can have multiple attributes. Here we give the employment relationship a date attribute.</p>
 
-    <div id="vampire"><h5>vampire</h5>Vestibulum pretium condimentum commodo. Integer placerat leo non ipsum ultrices, ac convallis elit varius. Vestibulum ultricies, justo eu rutrum molestie, quam arcu euismod sapien, vel gravida ipsum nulla eget erat. </div>
+<pre><code class="language-graql">define
+  person sub entity,
+  has name,
+  plays employee;
 
-    <div id="washington"><h5>washington</h5>Nunc ac quam eu risus dictum sodales. Nam ac risus iaculis, aliquet sem eu, mollis mauris. Curabitur pretium facilisis orci ut lacinia. Sed fermentum leo a odio blandit rutrum. Phasellus at nibh vel odio interdum vulputate ac eget urna. Nam eu arcu dapibus, sodales ligula nec, volutpat ipsum. Suspendisse auctor tellus vitae libero euismod venenatis. </div>
+  company sub entity,
+  has name,
+  plays employer;
 
-    <div id="xylophone"><h5>xylophone</h5>Sed molestie lobortis ante sit amet hendrerit. Sed pharetra nisi sed interdum pulvinar. Nunc efficitur erat non aliquam mattis. Sed id nisl mattis lacus vehicula volutpat vitae vel massa. Curabitur interdum velit odio, vitae sollicitudin nunc rutrum non. </div>
+  name sub attribute, datatype string;
+  event-date sub attribute, datatype date;
 
-    <div id="yahoo"><h5>yahoo</h5>Nunc commodo consectetur scelerisque. Proin fermentum ligula ac quam finibus tincidunt. Aenean venenatis nisi et semper semper. Nunc sodales velit ipsum, ac pellentesque augue placerat eu.</div>
+  employment sub relationship,
+    relates employee, relates employer,
+    has event-date;
+</code></pre>
 
-    <div id="zeta"><h5>zeta</h5>Nullam ac suscipit odio. Curabitur viverra arcu ut egestas sollicitudin. Fusce sodales varius lectus ut tristique. Etiam eget nunc ornare, aliquet tortor eget, consequat mauris. Integer sit amet fermentum augue. </div>
+<p><br /> <img src="/images/knowledge-model6.png" style="width: 400px;" alt=" An image showing the schema where the relationship 'employment' now has the attribute 'date'. " /> <br />
+<br /></p>
 
-    <div id="alpha"><h5>alpha</h5>Praesent nec neque ac tellus sodales eleifend nec vel ipsum. Cras et semper risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer mattis leo nisl, a tincidunt lectus tristique eget. Donec finibus lobortis viverra. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus egestas pulvinar odio non vehicula. Morbi malesuada leo eget nisl sagittis aliquet.</div>
+<p>N-ary relationships are also allowed by Grakn. For example, a three way <code class="highlighter-rouge">employment</code> relationship that has <code class="highlighter-rouge">employer</code>, <code class="highlighter-rouge">employee</code> and <code class="highlighter-rouge">office</code> roles:</p>
 
+<pre><code class="language-graql">define
+  employment sub relationship,
+    relates employee,
+    relates employer,
+    relates office;
+</code></pre>
 
-    <div id="beta"><h5>beta</h5>Mauris a libero vel enim pharetra interdum non a quam. Sed tincidunt ut elit sed dignissim. Suspendisse vitae tellus dapibus, fermentum lacus ac, fermentum lacus. Nam ante odio, fringilla ac elementum a, mollis sed tellus.</div>
+<p><br /> <img src="/images/knowledge-model8.png" style="width: 400px;" alt=" An image showing a relationship 'employment' relating three roles: 'employee', 'employer' and 'office' " /> <br /></p>
 
-    <div id="cappa"><h5>cappa</h5>Nam molestie semper nulla et molestie. Ut facilisis, ipsum sed convallis posuere, mi mauris bibendum erat, nec egestas ipsum est nec dolor. </div>
+<h3 id="inheritance">Inheritance</h3>
 
-    <div id="dunno"><h5>dunno</h5>Etiam et metus congue, commodo libero et, accumsan sem. Aliquam erat volutpat. Quisque tincidunt, tortor non blandit ullamcorper, orci mauris dignissim augue, eget vehicula nulla justo sed dolor. Nunc ac urna quis nisi maximus pharetra in a mauris. Proin metus mi, venenatis vitae tristique sed, fermentum at purus. Aliquam erat volutpat. Maecenas efficitur sodales nibh, ac hendrerit felis facilisis et. Interdum et malesuada fames ac ante ipsum primis in faucibus.</div>
+<p>As in object-oriented programming, the inheritance mechanism in Grakn enables subtypes to automatically take on some of the properties of their supertypes. This simplifies the construction of ontologies and helps keep them succinct.</p>
 
+<p><br />The Grakn knowledge model imposes inheritance of all <code class="highlighter-rouge">has</code> and <code class="highlighter-rouge">plays</code> constraints on entity, relationship and attribute types. As a result, the entity type <code class="highlighter-rouge">customer</code> inherits <code class="highlighter-rouge">has name</code> and <code class="highlighter-rouge">plays employee</code> from the <code class="highlighter-rouge">person</code> supertype, as shown in the diagram below.</p>
 
-</div> <!-- end definition-box-container -->
-</div> <!-- end col-md-3-->
-</div> <!-- end small-box-links -->
-</div> <!-- end row -->
-</div> <!-- end container -->
+<p>Likewise, the <code class="highlighter-rouge">startup</code> entity type inherits <code class="highlighter-rouge">has name</code> and <code class="highlighter-rouge">plays employer</code> from the <code class="highlighter-rouge">company</code> supertype.</p>
 
+<p><br /> <img src="/images/knowledge-model5.png" style="width: 400px;" alt=" An image showing that 'customer' inherits the property of playing 'employee' from its super-type 'person'. " /> <br /></p>
 
-<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note: </b> This was mostly an experiment to see if there was a better way to document a long JSON code example. I haven't actually used this approach in my own documentation.</div>
+<p><br /></p>
 
+<p>Therefore, the <code class="highlighter-rouge">employment</code> relationship between a <code class="highlighter-rouge">company</code> and <code class="highlighter-rouge">person</code> is also, implicitly, between <code class="highlighter-rouge">startup</code> and <code class="highlighter-rouge">customer</code>.</p>
 
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> Concept types can be declared as <code class="highlighter-rouge">is-abstract</code>, meaning that they cannot have any direct instances. For example, <code class="highlighter-rouge">person sub entity is-abstract</code> expresses that the only instances of <code class="highlighter-rouge">person</code> can be those that belong to more specialised subtypes of <code class="highlighter-rouge">person</code>, e.g., <code class="highlighter-rouge">customer</code>.</div>
 
+<h3 id="structural-properties">Structural Properties</h3>
+<p>A well-formed Grakn schema is required to satisfy the following structural properties:</p>
+
+<ul>
+  <li>each concept type can have at most one direct supertype,</li>
+  <li>each relationship type must involve at least two distinct role types,</li>
+  <li>each relationship type must involve the same number of roles as its direct supertype. In such a case, every role type involved in the subtype relationship must be a (possibly indirect) subtype of exactly one role type involved in the supertype relationship.</li>
+</ul>
 
 
     <div class="tags">
@@ -1071,6 +1023,16 @@ $('#small-box-links').localScroll({
         <b>Tags: </b>
         
         
+        
+        <a href="/tag_getting-started.html" class="btn btn-default navbar-btn cursorNorm" role="button">getting-started</a>
+        
+        
+        
+        <a href="/tag_reasoning.html" class="btn btn-default navbar-btn cursorNorm" role="button">reasoning</a>
+        
+        
+        
+        <a href="/tag_graql.html" class="btn btn-default navbar-btn cursorNorm" role="button">graql</a>
         
         
         

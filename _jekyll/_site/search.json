@@ -2,6 +2,824 @@
 
 
 
+{
+"title": "Introduction to GRAKN.AI",
+"tags": "overview",
+"keywords": "intro",
+"url": "/overview/index.html",
+"summary": "GRAKN.AI is the database for AI. It is a knowledge graph for knowledge-oriented systems. Grakn enables machines to manage complex data that serves as a knowledge graph for cognitive/AI systems."
+}
+
+
+
+,
+{
+"title": "Contribute to GRAKN.AI",
+"tags": "overview",
+"keywords": "contributors, developers",
+"url": "/contributors/index.html",
+"summary": "This is an area for documentation specific to contributors working on the GRAKN.AI platform, documentation or examples."
+}
+
+
+
+,
+{
+"title": "Grakn Documentation Portal",
+"tags": "getting-startedgraqljavacore-api",
+"keywords": "sample homepage",
+"url": "/docs/index",
+"summary": "Welcome to Grakn Documentation Portal, where you can find everything you need to get up to speed."
+}
+
+
+
+,
+{
+"title": "Grakn Academy",
+"tags": "getting-started",
+"keywords": "getting started",
+"url": "/academy/index.html",
+"summary": "This is a brief introduction to topics that will be covered in the Grakn Academy."
+}
+
+
+
+,
+{
+"title": "Graql - the language of knowledge",
+"tags": "getting-startedgraql",
+"keywords": "setup, getting started",
+"url": "/academy/graql-intro.html",
+"summary": "In this lesson you will learn about the dataset you will be dealing with in the Academy and will get a first taste of the Graql language"
+}
+
+
+
+,
+{
+"title": "Why use GRAKN.AI?",
+"tags": "overview",
+"keywords": "advantages",
+"url": "/overview/advantages.html",
+"summary": "GRAKN.AI provides a flexible and rich data model, logical integrity, optimized and intelligent querying capabilities, and distributed analytics out-of-the-box."
+}
+
+
+
+,
+{
+"title": "Analytics - From Knowledge to Wisdom",
+"tags": "getting-startedgraql",
+"keywords": "getting started",
+"url": "/academy/analytics-intro.html",
+"summary": "In this lesson you will learn about the different types of Graql Analytics queries and when to use them"
+}
+
+
+
+,
+{
+"title": "Code of Conduct",
+"tags": "overview",
+"keywords": "contributors",
+"url": "/contributors/conduct.html",
+"summary": "This is the code of conduct for everyone working with GRAKN.AI"
+}
+
+
+
+,
+{
+"title": "Introduction to Grakn",
+"tags": "getting-started",
+"keywords": "getting started",
+"url": "/academy/grakn-intro.html",
+"summary": "This is a brief introduction to what a knowledge graph system is, how Grakn fits into the picture and the broad topics that will be covered in later parts of the Grakn Academy."
+}
+
+
+
+,
+{
+"title": "Loading data - Building knowledge",
+"tags": "getting-startedgraql",
+"keywords": "setup, getting started",
+"url": "/academy/loading-files.html",
+"summary": "In this lesson you will learn how to load schema and data Graql files into your Grakn distribution."
+}
+
+
+
+,
+{
+"title": "Logic inference - The power of knowledge",
+"tags": "getting-startedgraql",
+"keywords": "setup, getting started",
+"url": "/academy/reasoner-intro.html",
+"summary": "In this lesson you will be introduced to logic inference and the the Grakn reasoning engine."
+}
+
+
+
+,
+{
+"title": "Schemas - The structure of knowledge",
+"tags": "getting-startedgraql",
+"keywords": "setup, getting started",
+"url": "/academy/schema-elements.html",
+"summary": "In this lesson you will learn what a Grakn schema is and what its main elements are"
+}
+
+
+
+,
+{
+"title": "What can you build with GRAKN.AI?",
+"tags": "overview",
+"keywords": "applications",
+"url": "/overview/applications.html",
+"summary": "GRAKN.AI makes building intelligent systems for complex data easy."
+}
+
+
+
+,
+{
+"title": "Conceptual modeling",
+"tags": "getting-startedgraql",
+"keywords": "setup, getting started",
+"url": "/academy/conceptual-modeling-intro.html",
+"summary": "In this lesson you will learn how to build a conceptual Entity-Relationships model"
+}
+
+
+
+,
+{
+"title": "Contributor FAQ",
+"tags": "overview",
+"keywords": "contributors",
+"url": "/contributors/contributor-faq.html",
+"summary": "This is an FAQ for developers working on the GRAKN.AI platform"
+}
+
+
+
+,
+{
+"title": "Migrating CSV files - Graql templates",
+"tags": "getting-startedgraql",
+"keywords": "setup, getting started",
+"url": "/academy/csv-migration.html",
+"summary": "In this lesson you will learn about Graql templating and how to migrate data from CSV files into Grakn."
+}
+
+
+
+,
+{
+"title": "Get Queries",
+"tags": "getting-startedgraql",
+"keywords": "setup, getting started",
+"url": "/academy/get-queries.html",
+"summary": "In this lesson you will learn about get queries, the fundamental query type used to explore Grakn Knowledge bases"
+}
+
+
+
+,
+{
+"title": "Inference rules",
+"tags": "getting-startedgraql",
+"keywords": "setup, getting started",
+"url": "/academy/inference-rules.html",
+"summary": "In this lesson you will learn how to build inference rules to turn your data into knowledge"
+}
+
+
+
+,
+{
+"title": "Getting ready",
+"tags": "getting-started",
+"keywords": "setup, getting started",
+"url": "/academy/setup.html",
+"summary": "In this lesson you will find out what the prerequisites for the rest of the Academy are and you will have a first taste of Grakn"
+}
+
+
+
+,
+{
+"title": "Statistics queries",
+"tags": "getting-startedgraql",
+"keywords": "getting started",
+"url": "/academy/statistics-queries.html",
+"summary": "In this lesson you will learn about the details of the statistics type of analytics queries"
+}
+
+
+
+,
+{
+"title": "Advanced inference rules",
+"tags": "getting-startedgraql",
+"keywords": "setup, getting started",
+"url": "/academy/advanced-rules.html",
+"summary": "In this lesson you will learn more advanced uses of reasoning and how to chain inference rules."
+}
+
+
+
+,
+{
+"title": "Comparison with other Databases",
+"tags": "overview",
+"keywords": "comparison",
+"url": "/overview/comparison.html",
+"summary": "false"
+}
+
+
+
+,
+{
+"title": "Graph analytics - The GRAph of KNowledge",
+"tags": "getting-startedgraql",
+"keywords": "getting started",
+"url": "/academy/graph-analytics.html",
+"summary": "In this lesson you will learn about the graph analytics capabilities of Grakn and its syntax"
+}
+
+
+
+,
+{
+"title": "Insert and Delete Queries",
+"tags": "getting-startedgraql",
+"keywords": "setup, getting started",
+"url": "/academy/insert-delete-queries.html",
+"summary": "In this lesson you will learn the Graql syntax to insert and delete things from your knowledge graph"
+}
+
+
+
+,
+{
+"title": "Building the schema",
+"tags": "getting-startedgraql",
+"keywords": "setup, getting started",
+"url": "/academy/schema-building.html",
+"summary": "In this lesson you will learn the basics of Grakn data model and start turning your conceptual model into a Grakn schema"
+}
+
+
+
+,
+{
+"title": "Migrating structured data - XML and JSON files",
+"tags": "getting-startedgraql",
+"keywords": "setup, getting started",
+"url": "/academy/xml-migration.html",
+"summary": "In this lesson you will deepen your knowledge of Graql templating and learn about loading non-tabular data files, like XML and JSON files."
+}
+
+
+
+,
+{
+"title": "Query variations",
+"tags": "getting-startedgraql",
+"keywords": "setup, getting started",
+"url": "/academy/other-queries.html",
+"summary": "In this lesson you will get an introduction to aggregate and compute queries."
+}
+
+
+
+,
+{
+"title": "Building the schema (Continued)",
+"tags": "getting-startedgraql",
+"keywords": "setup, getting started",
+"url": "/academy/schema-building-continued.html",
+"summary": "In this lesson you will complete your first Grakn schema, adding roles to what you have built in the last lesson."
+}
+
+
+
+,
+{
+"title": "GRAKN.AI System Properties",
+"tags": "overview",
+"keywords": "system, properties, db-engines",
+"url": "/overview/system-properties.html",
+"summary": "A look-up table of GRAKN.AI's system properties"
+}
+
+
+
+
+
+,
+{
+"title": "Module Review",
+"tags": "getting-startedgraql",
+"keywords": "setup, getting started",
+"url": "/academy/graql-review.html",
+"summary": ""
+}
+
+
+
+,
+{
+"title": "GRAKN.AI Ideology - Simplicity and Maintainability",
+"tags": "overviewfaq",
+"keywords": "overview",
+"url": "/overview/ideology.html",
+"summary": ""
+}
+
+
+
+,
+{
+"title": "Module Review",
+"tags": "getting-startedgraql",
+"keywords": "setup, getting started",
+"url": "/academy/schema-review.html",
+"summary": ""
+}
+
+
+
+,
+{
+"title": "GRAKN.AI FAQs",
+"tags": "overviewfaq",
+"keywords": "overview",
+"url": "/overview/faqs.html",
+"summary": ""
+}
+
+
+
+,
+{
+"title": "When to use Grakn?",
+"tags": "overview",
+"keywords": "use case",
+"url": "/overview/use-case.html",
+"summary": "false"
+}
+
+
+
+,
+{
+"title": "Advanced Java Development",
+"tags": "java",
+"keywords": "java",
+"url": "/docs/java-library/advanced",
+"summary": "Transaction Processing & Multithreading in Java"
+}
+
+
+
+,
+{
+"title": "Aggregate Queries",
+"tags": "graql",
+"keywords": "graql, query, aggregate",
+"url": "/docs/querying-data/aggregate-queries",
+"summary": "Graql Aggregate Queries"
+}
+
+
+
+,
+{
+"title": "Grakn API Reference",
+"tags": "graqljavajava-api",
+"keywords": "API Reference Documentation",
+"url": "/docs/api-references/rest-api",
+"summary": ""
+}
+
+
+
+,
+{
+"title": "AWS Deployment",
+"tags": "getting-starteddeploymentcloudaws",
+"keywords": "cloud, deployment, aws",
+"url": "/docs/cloud-deployment/aws-deployment",
+"summary": "Deploying Grakn on AWS"
+}
+
+
+
+,
+{
+"title": "Define a Basic Schema",
+"tags": "java-apijavaadvanced-grakn",
+"keywords": "schema",
+"url": "/docs/building-schema/basic-schema",
+"summary": "Example of building a basic schema"
+}
+
+
+
+,
+{
+"title": "Deployment Best Practices",
+"tags": "getting-starteddeploymentcloud",
+"keywords": "cloud, deployment, google",
+"url": "/docs/cloud-deployment/best-practices",
+"summary": "Best Practices for deploying Grakn on Google Cloud Platform"
+}
+
+
+
+,
+{
+"title": "Centrality",
+"tags": "analytics",
+"keywords": "",
+"url": "/docs/distributed-analytics/compute-centrality",
+"summary": "This page introduces the computation of centrality in a graph."
+}
+
+
+
+,
+{
+"title": "Connected Components",
+"tags": "analytics",
+"keywords": "",
+"url": "/docs/distributed-analytics/compute-cluster",
+"summary": "This page introduces the cluster queries."
+}
+
+
+
+,
+{
+"title": "Compute Queries",
+"tags": "graql",
+"keywords": "graql, compute, match",
+"url": "/docs/distributed-analytics/compute-queries",
+"summary": "Graql Compute Queries"
+}
+
+
+
+,
+{
+"title": "Shortest Path",
+"tags": "analytics",
+"keywords": "",
+"url": "/docs/distributed-analytics/compute-shortest-path",
+"summary": "This page introduces the shortest path functionality of analytics."
+}
+
+
+
+,
+{
+"title": "Statistics",
+"tags": "analytics",
+"keywords": "",
+"url": "/docs/distributed-analytics/compute-statistics",
+"summary": "This page introduces the statistics functionality of analytics."
+}
+
+
+
+,
+{
+"title": "Core API",
+"tags": "java",
+"keywords": "java",
+"url": "/docs/java-library/core-api",
+"summary": "The Core API."
+}
+
+
+
+,
+{
+"title": "The Data",
+"tags": "getting-startedreasoninggraql",
+"keywords": "setup, getting started, basics",
+"url": "/docs/knowledge-model/data",
+"summary": "Introduction to what data looks like in Grakn"
+}
+
+
+
+,
+{
+"title": "Data Definition Language",
+"tags": "graql",
+"keywords": "graql, query, data definition language",
+"url": "/docs/api-references/ddl",
+"summary": "Data Definition Language"
+}
+
+
+
+,
+{
+"title": "Defining Rules",
+"tags": "graqlreasoning",
+"keywords": "graql, reasoner",
+"url": "/docs/building-schema/defining-rules",
+"summary": "Graql Rules"
+}
+
+
+
+,
+{
+"title": "Defining Schema",
+"tags": "graql",
+"keywords": "graql, query, define",
+"url": "/docs/building-schema/defining-schema",
+"summary": "Defining Grakn Schema using Graql"
+}
+
+
+
+,
+{
+"title": "Defining the Schema",
+"tags": "schemaknowledge graphontologymigration",
+"keywords": "schema, knowledge graph, ontology, migration",
+"url": "/docs/examples/defining-the-schema",
+"summary": "How to model and load a schema into Grakn"
+}
+
+
+
+,
+{
+"title": "Delete Queries",
+"tags": "graql",
+"keywords": "graql, query, delete",
+"url": "/docs/querying-data/delete-queries",
+"summary": "Graql Delete Queries"
+}
+
+
+
+,
+{
+"title": "Data Manipulation Language",
+"tags": "graql",
+"keywords": "graql, query, data manipulation language",
+"url": "/docs/api-references/dml",
+"summary": "Data Manipulation Language"
+}
+
+
+
+,
+{
+"title": "Downloads",
+"tags": "getting-started",
+"keywords": "setup, getting started, download",
+"url": "/docs/resources/downloads",
+"summary": "This is a list of Grakn releases. It's the place to come to download the most recent versions of Grakn."
+}
+
+
+
+,
+{
+"title": "Examples Overview",
+"tags": "getting-startedexamples",
+"keywords": "examples",
+"url": "/docs/examples/examples-overview",
+"summary": "Landing page for Grakn examples."
+}
+
+
+
+,
+{
+"title": "FAQ about Grakn",
+"tags": "getting-started",
+"keywords": "troubleshooting",
+"url": "/docs/resources/faq",
+"summary": "Frequently asked questions about Grakn."
+}
+
+
+
+
+
+,
+{
+"title": "Google Cloud Deployment",
+"tags": "getting-starteddeploymentcloudgc",
+"keywords": "cloud, deployment, google",
+"url": "/docs/cloud-deployment/gc-deployment",
+"summary": "Deploying Grakn on Google Cloud Platform"
+}
+
+
+
+,
+{
+"title": "Get Queries",
+"tags": "graql",
+"keywords": "graql, query, get",
+"url": "/docs/querying-data/get-queries",
+"summary": "Graql Get Queries"
+}
+
+
+
+,
+{
+"title": "Grakn Console (KGMS only)",
+"tags": "kgms",
+"keywords": "grakn, kgms",
+"url": "/docs/get-started/grakn-console",
+"summary": "The Grakn Console is used to manage KGMS users."
+}
+
+
+
+,
+{
+"title": "Grakn Deployment Guide",
+"tags": "getting-started",
+"keywords": "setup, getting started, download",
+"url": "/docs/get-started/grakn-server",
+"summary": "A guide to setting up a production deployment of GRAKN.AI."
+}
+
+
+
+,
+{
+"title": "Java Graql",
+"tags": "graqljava",
+"keywords": "graql, java",
+"url": "/docs/java-library/graql-api",
+"summary": "How to construct and execute Graql queries programmatically in Java."
+}
+
+
+
+,
+{
+"title": "Graql Cheatsheet",
+"tags": "graql",
+"keywords": "graql",
+"url": "/docs/api-references/graql-cheatsheet",
+"summary": "A reference card (cheatsheet) for Graql"
+}
+
+
+
+,
+{
+"title": "Graql Console",
+"tags": "graql",
+"keywords": "graql, shell",
+"url": "/docs/get-started/graql-console",
+"summary": "The Graql Console is used to execute Graql queries from the command line, or to let Graql be invoked from other applications."
+}
+
+
+
+,
+{
+"title": "Define a Hierarchical Schema",
+"tags": "graqljavajava-api",
+"keywords": "overview",
+"url": "/docs/building-schema/hierarchical-schema",
+"summary": "How to build a hierarchical schema"
+}
+
+
+
+
+
+,
+{
+"title": "The Inference",
+"tags": "getting-startedreasoninggraql",
+"keywords": "setup, getting started, basics",
+"url": "/docs/knowledge-model/inference",
+"summary": "Introduction to Grakn's inference strategy"
+}
+
+
+
+,
+{
+"title": "Insert Queries",
+"tags": "graql",
+"keywords": "graql, query, insert",
+"url": "/docs/querying-data/insert-queries",
+"summary": "Graql Insert Queries"
+}
+
+
+
+,
+{
+"title": "Loader Client API",
+"tags": "java",
+"keywords": "java",
+"url": "/docs/java-library/loader-api",
+"summary": "The Loader Client API"
+}
+
+
+
+,
+{
+"title": "Match Clause",
+"tags": "graql",
+"keywords": "graql, query, match",
+"url": "/docs/querying-data/match-clause",
+"summary": "Graql Match Clause"
+}
+
+
+
+,
+{
+"title": "Migrating CSV, JSON and XML Data",
+"tags": "migrationcsvjsonxmlknowledge graph",
+"keywords": "migration, csv, json, xml, knowledge graph",
+"url": "/docs/examples/migrating-csv-json-xml",
+"summary": "How to migrate csv, json and xml data to a Grakn knolwedge graph"
+}
+
+
+
+,
+{
+"title": "Migration API",
+"tags": "javamigration",
+"keywords": "java",
+"url": "/docs/java-library/migration-api",
+"summary": "The Java Migration API"
+}
+
+
+
+,
+{
+"title": "The Model",
+"tags": "getting-startedreasoninggraql",
+"keywords": "setup, getting started, basics",
+"url": "/docs/knowledge-model/model",
+"summary": "Introduction to Grakn's knowledge model"
+}
+
+
+
+,
+{
+"title": "Module review",
+"tags": "getting-startedgraql",
+"keywords": "setup, getting started",
+"url": "/academy/migration-review.html",
+"summary": ""
+}
+
+
+
+,
+{
+"title": "Module review",
+"tags": "getting-startedgraql",
+"keywords": "setup, getting started",
+"url": "/academy/reasoner-review.html",
+"summary": ""
+}
+
+
+
+,
+{
+"title": "Module review",
+"tags": "getting-startedgraql",
+"keywords": "setup, getting started",
+"url": "/academy/analytics-review.html",
+"summary": ""
+}
+
+
 
 ,
 {
@@ -14,11 +832,198 @@
 
 
 
+,
+{
+"title": "Analytics Overview",
+"tags": "analytics",
+"keywords": "",
+"url": "/docs/distributed-analytics/overview",
+"summary": "This page provides an overview of the Graql analytics capabilities."
+}
+
+
+
+,
+{
+"title": "Cloud Deployments Overview",
+"tags": "getting-starteddeploymentcloud",
+"keywords": "cloud, deployment, aws",
+"url": "/docs/cloud-deployment/overview",
+"summary": "Deploying Grakn in the cloud"
+}
+
+
+
+,
+{
+"title": "Graql Overview",
+"tags": "graql",
+"keywords": "graql, overview",
+"url": "/docs/querying-data/overview",
+"summary": "An introduction to Graql"
+}
+
+
+
+,
+{
+"title": "Resources Overview",
+"tags": "getting-started",
+"keywords": "setup, getting started, download",
+"url": "/docs/resources/overview",
+"summary": "Resources to help you learn more about databases."
+}
+
+
+
+,
+{
+"title": "Post Deployment",
+"tags": "getting-starteddeploymentcloud",
+"keywords": "cloud, deployment, google",
+"url": "/docs/cloud-deployment/post-deployment",
+"summary": "Post Deployment Steps"
+}
+
+
+
+,
+{
+"title": "Querying the Knowledge Graph",
+"tags": "querygraqlinsightsknowledge graph",
+"keywords": "query, graql, insights, knowledge graph",
+"url": "/docs/examples/querying-kg",
+"summary": "How to query a knowledge graph for insights"
+}
+
+
+
+,
+{
+"title": "Querying Schema",
+"tags": "graql",
+"keywords": "graql, query, define",
+"url": "/docs/building-schema/querying-schema",
+"summary": "Querying Grakn Schema using Graql"
+}
+
+
+
+,
+{
+"title": "Quickstart Tutorial",
+"tags": "getting-startedgraql",
+"keywords": "setup, getting started",
+"url": "/docs/get-started/quickstart-tutorial",
+"summary": "This document will work through a simple example using the Graql shell to show how to get started with GRAKN.AI."
+}
+
+
+
+,
+{
+"title": "Define a Rule-Driven Schema",
+"tags": "javajava-api",
+"keywords": "schema",
+"url": "/docs/building-schema/rule-driven-schema",
+"summary": "Demonstrates how to create a rule-driven schema for Grakn."
+}
 
 
 
 
 
+,
+{
+"title": "Grakn Setup Guide",
+"tags": "getting-startedgraql",
+"keywords": "setup, getting started",
+"url": "/docs/get-started/setup-guide",
+"summary": "This document will teach you how to set up a Grakn environment, start it up and load a simple example."
+}
+
+
+
+,
+{
+"title": "Java Development Setup",
+"tags": "java",
+"keywords": "java",
+"url": "/docs/java-library/setup",
+"summary": "This section will discuss how to develop an application with Grakn, using the Java API."
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+,
+{
+"title": "Terms of service",
+"tags": "getting-starteddeploymentcloud",
+"keywords": "cloud, deployment, google, eula",
+"url": "/docs/cloud-deployment/terms-of-service",
+"summary": "Terms of service"
+}
+
+
+
+
+
+,
+{
+"title": "Visualising a Grakn knowledge graph",
+"tags": "getting-startedgraql",
+"keywords": "setup, getting started",
+"url": "/docs/visualisation-dashboard/visualiser",
+"summary": "How to use the Grakn Visualiser."
+}
+
+
+
+,
+{
+"title": "Visualising a Grakn knowledge graph",
+"tags": "getting-startedgraql",
+"keywords": "setup, getting started, visualiser, workbase, visualizer",
+"url": "/docs/workbase/visualiser",
+"summary": "How to use the Grakn Workbase Visualiser."
+}
+
+
+
+,
+{
+"title": "Using GRAKN.AI on Windows",
+"tags": "getting-started",
+"keywords": "setup, getting started, download",
+"url": "/docs/resources/windows-os",
+"summary": "A guide to setting up GRAKN.AI on Windows."
+}
 
 
 ]

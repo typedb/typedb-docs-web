@@ -1,0 +1,2428 @@
+<!DOCTYPE html>
+
+<head>
+    
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="How to migrate csv, json and xml data to a Grakn knolwedge graph">
+<meta name="keywords" content="migrationcsvjsonxmlknowledge graph,  migration, csv, json, xml, knowledge graph, GRAKN.AI, Grakn Labs, grakn, graql, grakn.ai, knowledge graph, knowledge engineering, knowledge base, distributed knowledge graph, development platform, developer tool, data platform, programming langauge, query langauge, database, semantic database, distributed semantic database, distributed database, graph database, semantic search, data exploration, recommendation system, knowledge management, real-time analytics, advanced analytics, reasoning engine, inference engine, expert systems, semantic applications, research engines, data management, business intelligence, big data, semantic web, semantic data, knowledge representation, automated reasoning, semantic network, knowledge ontology, semantic graph, ontology engineering, graph based knowledge representation, artificial intelligence,">
+<title>Migrating CSV, JSON and XML Data | GRAKN.AI</title>
+<meta property="og:description" content="How to migrate csv, json and xml data to a Grakn knolwedge graph">
+<meta property="og:title" content="Migrating CSV, JSON and XML Data | GRAKN.AI" >
+<meta property="og:image" content="/images/og-image.png" >
+<link rel="stylesheet" href="/css/syntax.css">
+
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">-->
+<link rel="stylesheet" href="/css/modern-business.css">
+<link rel="stylesheet" href="/css/lavish-bootstrap.css">
+<link rel="stylesheet" href="/css/hamburger.min.css">
+<link rel="stylesheet" href="/css/customstyles.css">
+<link rel="stylesheet" href="/css/theme-white.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="/js/jquery.navgoco.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/2.0.0/anchor.min.js"></script>
+<script src="/js/toc.js"></script>
+<script src="/js/prism.js"></script>
+<script src="/js/prism-graql.js"></script>
+<script src="/js/customscripts.js"></script>
+
+<link rel="shortcut icon" href="/favicon.ico">
+
+<!-- Facebook Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2009892122581066'); // Insert your pixel ID here.
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2009892122581066&ev=PageView&noscript=1" alt="facebook pixel"
+/></noscript>
+<!-- DO NOT MODIFY -->
+<!-- End Facebook Pixel Code -->
+
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/4332244.js"></script>
+<!-- End of HubSpot Embed Code -->
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="" href="http://localhost:4005feed.xml">
+
+    <script>
+        $(document).ready(function() {
+            // Initialize navgoco with default options
+            $("#mysidebar").navgoco({
+                caretHtml: '',
+                accordion: true,
+                openClass: 'active', // open
+                save: false, // leave false or nav highlighting doesn't work right
+                cookie: {
+                    name: 'navgoco',
+                    expires: false,
+                    path: '/'
+                },
+                slide: {
+                    duration: 400,
+                    easing: 'swing'
+                }
+            });
+
+            $("#collapseAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', false);
+            });
+
+            $("#expandAll").click(function(e) {
+                e.preventDefault();
+                $("#mysidebar").navgoco('toggle', true);
+            });
+
+        });
+
+    </script>
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    
+
+</head>
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="display: none;">
+    <symbol id="logo" viewBox="0 0 40 40" aria-labelledby="GRAKN.AI">
+       <value>GRAKN.AI</value>
+       <desc>A Distributed Knowledge Graph</desc>
+       <polygon vector-effect="non-scaling-stroke" fill="transparent" stroke-linejoin="round" points="20,2 38,20 20,38 2,20"/>
+       <polyline vector-effect="non-scaling-stroke" fill="transparent" stroke-linejoin="round" points="7.27,32.73 7.27,7.27 20,20 32.73,7.27 32.73,32.73"/>
+    </symbol>
+    <symbol id="github" viewBox="0 0 16 16" aria-labelledby="GitHub">
+        <value>GitHub</value>
+        <desc>GitHub</desc>
+        <path vector-effect="non-scaling-stroke" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+    </symbol>
+    <symbol id="gitter" viewBox="0 0 28 40" aria-labelledby="Gitter">
+        <value>Gitter</value>
+        <desc>Gitter</desc>
+        <rect vector-effect="non-scaling-stroke" x="15.6" y="6.4" width="3.2" height="33.6"/>
+        <rect vector-effect="non-scaling-stroke" x="22" y="6.4" width="3.2" height="17.6"/>
+        <rect vector-effect="non-scaling-stroke" x="9.2" y="6.4" width="3.2" height="33.6"/>
+        <rect vector-effect="non-scaling-stroke" x="2.8" width="3.2" height="24"/>
+    </symbol>
+    <symbol id="slack" viewBox="0 0 256 256" aria-labelledby="Slack">
+        <path d="M165.963541,15.8384262 C162.07318,3.86308197 149.212328,-2.69009836 137.239082,1.20236066 C125.263738,5.09272131 118.710557,17.9535738 122.603016,29.9268197 L181.550164,211.292328 C185.597902,222.478689 197.682361,228.765377 209.282098,225.426885 C221.381246,221.943607 228.756984,209.093246 224.896,197.21023 C224.749115,196.756984 165.963541,15.8384262 165.963541,15.8384262"></path>
+        <path d="M74.6260984,45.515541 C70.7336393,33.5422951 57.8727869,26.9891148 45.899541,30.8794754 C33.9241967,34.7698361 27.3710164,47.6306885 31.2634754,59.6060328 L90.210623,240.971541 C94.2583607,252.157902 106.34282,258.44459 117.942557,255.104 C130.041705,251.62282 137.417443,238.772459 133.556459,226.887344 C133.409574,226.436197 74.6260984,45.515541 74.6260984,45.515541"></path>
+        <path d="M240.161574,166.045377 C252.136918,162.155016 258.688,149.294164 254.797639,137.31882 C250.907279,125.345574 238.046426,118.792393 226.07318,122.682754 L44.7076721,181.632 C33.5213115,185.677639 27.234623,197.762098 30.5731148,209.361836 C34.0563934,221.460984 46.9067541,228.836721 58.7897705,224.975738 C59.2430164,224.828852 240.161574,166.045377 240.161574,166.045377"></path>
+        <path d="M82.507541,217.270557 C94.312918,213.434754 109.528131,208.491016 125.855475,203.186361 C122.019672,191.380984 117.075934,176.163672 111.76918,159.83423 L68.4191475,173.924721 L82.507541,217.270557"></path>
+        <path d="M173.847082,187.591344 C190.235279,182.267803 205.467279,177.31777 217.195016,173.507148 C213.359213,161.70177 208.413377,146.480262 203.106623,130.146623 L159.75659,144.237115 L173.847082,187.591344"></path>
+        <path d="M210.484459,74.7058361 C222.457705,70.8154754 229.010885,57.954623 225.120525,45.9792787 C221.230164,34.0060328 208.369311,27.4528525 196.393967,31.3432131 L15.028459,90.292459 C3.84209836,94.3380984 -2.44459016,106.422557 0.896,118.022295 C4.37718033,130.121443 17.227541,137.49718 29.1126557,133.636197 C29.5638033,133.489311 210.484459,74.7058361 210.484459,74.7058361"></path>
+        <path d="M52.8220328,125.933115 C64.6274098,122.097311 79.8468197,117.151475 96.1762623,111.84682 C90.8527213,95.4565246 85.9026885,80.2245246 82.0920656,68.4946885 L38.731541,82.5872787 L52.8220328,125.933115"></path>
+        <path d="M144.159475,96.256 C160.551869,90.9303607 175.785967,85.9803279 187.515803,82.1676066 C182.190164,65.7752131 177.240131,50.5390164 173.42741,38.807082 L130.068984,52.8996721 L144.159475,96.256"></path>
+    </symbol>
+</svg>
+
+<div class="navigation-bar">
+    <div class="container">
+      <a class="navigation-bar__logo" href="https://grakn.ai/"><img src="https://grakn.ai/assets/svg/logo.svg" alt="Grakn AI"></a>
+        <div class="navigation-bar__links navigation-bar__links--desktop">
+            <a class="navigation-bar__link navigation-bar__link__inline navigation-bar__link__button" href="https://grakn.ai/download" id="download_nav_bar_mobile">Download</a>
+            <div class="navigation-bar__link navigation-bar__link__dropdown">
+                <!-- react-text: 233 -->Products
+                <!-- /react-text -->
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
+                <div class="navigation-bar__link__dropdown__content">
+                    <a class="navigation-bar__link navigation-bar__link__dropdown__content__item animated__link" href="https://grakn.ai/grakn-core">Grakn Core</a>
+                    <a class="navigation-bar__link navigation-bar__link__dropdown__content__item animated__link" href="https://grakn.ai/grakn-kbms">Grakn KBMS & Workbase</a>
+                </div>
+            </div>
+            <div class="navigation-bar__link navigation-bar__link__dropdown">
+                <!-- react-text: 239 -->Solutions
+                <!-- /react-text -->
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
+                <div class="navigation-bar__link__dropdown__content">
+                    <a class="navigation-bar__link navigation-bar__link__dropdown__content__item animated__link" href="https://grakn.ai/deployment">Deployment</a>
+                    <a class="navigation-bar__link navigation-bar__link__dropdown__content__item animated__link" href="https://grakn.ai/services">Services</a>
+                    <a class="navigation-bar__link navigation-bar__link__dropdown__content__item animated__link" href="https://grakn.ai/support">Support
+                    </a>
+                </div>
+            </div>
+            <div class="navigation-bar__link navigation-bar__link__dropdown">
+                <!-- react-text: 255 -->Developer
+                <!-- /react-text -->
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
+                <div class="navigation-bar__link__dropdown__content">
+                    <a href="https://dev.grakn.ai/academy/" class="navigation-bar__link navigation-bar__link__dropdown__content__item animated__link" target="_self">Academy</a>
+                    <a href="https://dev.grakn.ai" class="navigation-bar__link navigation-bar__link__dropdown__content__item animated__link" target="_self">Documentation</a>
+                    <a href="https://discuss.grakn.ai/" class="navigation-bar__link navigation-bar__link__dropdown__content__item animated__link" target="_self">Discussion</a>
+                </div>
+            </div>
+            <a class="navigation-bar__link navigation-bar__link__inline animated__link" href="https://grakn.ai/community">Community</a>
+            <a href="https://blog.grakn.ai/" class="navigation-bar__link navigation-bar__link__inline animated__link" target="_blank">Blog</a>
+            <a href="https://github.com/graknlabs/grakn" class="navigation-bar__link navigation-bar__link__inline" target="_blank"><i class="fa fa-2x fa-github navigation-bar__link__icon" aria-hidden="true"></i></a>
+        </div>
+        <div class="navigation-bar__links navigation-bar__links--mobile">
+            <button id="hamburger-btn" class="navigation-bar__hamburger__button hamburger hamburger--collapse" aria-hidden="true">
+                <span class="hamburger-box"><span class="hamburger-inner"></span></span>
+            </button>
+            <div id="hamburger-menu" class="navigation-bar__hamburger">
+                <a class="navigation-bar__link navigation-bar__link__inline navigation-bar__link__button" href="https://grakn.ai/download" id="download_nav_bar">Download</a>
+                <div class="navigation-bar__link navigation-bar__link__dropdown">
+                    <!-- react-text: 233 -->Products
+                    <!-- /react-text -->
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    <div class="navigation-bar__link__dropdown__mobile">
+                        <a class="navigation-bar__link navigation-bar__link__dropdown__content__item animated__link" href="https://grakn.ai/grakn-core">Grakn Core</a>
+                        <a class="navigation-bar__link navigation-bar__link__dropdown__content__item animated__link" href="https://grakn.ai/grakn-kbms">Grakn KBMS & Workbase</a>
+                    </div>
+                </div>
+                <div class="navigation-bar__link navigation-bar__link__dropdown">
+                    <!-- react-text: 239 -->Solutions
+                    <!-- /react-text -->
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    <div class="navigation-bar__link__dropdown__mobile">
+                        <a class="navigation-bar__link navigation-bar__link__dropdown__content__item animated__link" href="https://grakn.ai/deployment">Deployment</a>
+                        <a class="navigation-bar__link navigation-bar__link__dropdown__content__item animated__link" href="https://grakn.ai/services">Services</a>
+                        <a class="navigation-bar__link navigation-bar__link__dropdown__content__item animated__link" href="https://grakn.ai/support">Support
+                        </a>
+                    </div>
+                </div>
+                <div class="navigation-bar__link navigation-bar__link__dropdown">
+                    <!-- react-text: 255 -->Developer
+                    <!-- /react-text -->
+                    <i class="fa fa-caret-right" aria-hidden="true"></i>
+                    <div class="navigation-bar__link__dropdown__mobile">
+                        <a href="https://dev.grakn.ai/academy/" class="navigation-bar__link navigation-bar__link__dropdown__content__item animated__link" target="_self">Academy</a>
+                        <a href="https://dev.grakn.ai" class="navigation-bar__link navigation-bar__link__dropdown__content__item animated__link" target="_self">Documentation</a>
+                        <a href="https://discuss.grakn.ai/" class="navigation-bar__link navigation-bar__link__dropdown__content__item animated__link" target="_self">Discussion</a>
+                    </div>
+                </div>
+                <a class="navigation-bar__link navigation-bar__link__inline animated__link" href="https://grakn.ai/community">Community</a>
+                <a href="https://blog.grakn.ai/" class="navigation-bar__link navigation-bar__link__inline animated__link" target="_blank">Blog</a>
+                <a href="https://github.com/graknlabs/grakn" class="navigation-bar__link navigation-bar__link__inline" target="_blank"><i class="fa fa-2x fa-github navigation-bar__link__icon" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Content -->
+<div class="container">
+    <!-- Content Row -->
+    <div class="row">
+        <!-- Sidebar Column -->
+        <div class="col-md-3 col-sidebar">
+          
+
+
+
+
+
+
+
+
+
+<ul id="mysidebar" class="nav">
+    <!--start search-->
+    <div id="search-demo-container">
+            <input type="text" id="search-input" placeholder="Search">
+            <ul id="results-container"></ul>
+        </div>
+        <script src="/js/jekyll-search.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            SimpleJekyllSearch.init({
+                searchInput: document.getElementById('search-input'),
+                resultsContainer: document.getElementById('results-container'),
+                
+                dataSource: '/search.json',
+                
+                searchResultTemplate: '<li><a href="{url}" title="Migrating CSV, JSON and XML Data">{title}</a></li>',
+                noResultsText: '<li><a class="empty">No results found</a></li>',
+                limit: 10,
+                fuzzy: true
+            });
+        </script>
+        <!--end search-->
+    <li class="sidebarTitle">Documentation </li>
+    
+    
+    
+    <li>
+        <a href="#">Get Started</a>
+        <ul>
+            
+            
+            
+            <li><a href="/docs/index">Home</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/get-started/setup-guide">Setup Guide</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/get-started/quickstart-tutorial">Quickstart Tutorial</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/get-started/grakn-server">Grakn Server</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/get-started/graql-console">Graql Console</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/get-started/grakn-console">Grakn Console</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Cloud Deployment</a>
+        <ul>
+            
+            
+            
+            <li><a href="/docs/cloud-deployment/overview">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/cloud-deployment/gc-deployment">Google Cloud Deployment</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/cloud-deployment/aws-deployment">AWS Deployment</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/cloud-deployment/best-practices">Best Practices</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/cloud-deployment/post-deployment">Post Deployment Steps</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/cloud-deployment/terms-of-service">Terms of Service</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Knowledge Model</a>
+        <ul>
+            
+            
+            
+            <li><a href="/docs/knowledge-model/model">The Model</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/knowledge-model/data">The Data</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/knowledge-model/inference">The Inference</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Building Schema</a>
+        <ul>
+            
+            
+            
+            <li><a href="/docs/building-schema/defining-schema">Defining Schema</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/building-schema/defining-rules">Defining Rules</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/building-schema/querying-schema">Querying Schema</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/building-schema/basic-schema">Example: Basic Schema</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/building-schema/hierarchical-schema">Example: Hierarchical Schema</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/building-schema/rule-driven-schema">Example: Rule-Driven Schema</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Querying Data</a>
+        <ul>
+            
+            
+            
+            <li><a href="/docs/querying-data/overview">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/querying-data/match-clause">Match Clause</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/querying-data/get-queries">Get Queries</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/querying-data/insert-queries">Insert Queries</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/querying-data/delete-queries">Delete Queries</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/querying-data/aggregate-queries">Aggregate Queries</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Distributed Analytics</a>
+        <ul>
+            
+            
+            
+            <li><a href="/docs/distributed-analytics/overview">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/distributed-analytics/compute-queries">Compute Queries</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/distributed-analytics/compute-statistics">Statistics</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/distributed-analytics/compute-shortest-path">Shortest Path</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/distributed-analytics/compute-centrality">Centrality</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/distributed-analytics/compute-cluster">Cluster</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Visualisation Dashboard</a>
+        <ul>
+            
+            
+            
+            <li><a href="/docs/visualisation-dashboard/visualiser">Grakn Visualiser</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Workbase</a>
+        <ul>
+            
+            
+            
+            <li><a href="/docs/workbase/visualiser">Visualiser</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Java Library</a>
+        <ul>
+            
+            
+            
+            <li><a href="/docs/java-library/setup">Setup</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/java-library/core-api">Core API</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/java-library/graql-api">Graql API</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/java-library/migration-api">Migration API</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/java-library/loader-api">Loader API</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/java-library/advanced">Advanced</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Language Drivers</a>
+        <ul>
+            
+            
+            
+            <li><a href="/docs/language-drivers/client-java">Java</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/language-drivers/client-nodejs">Node.js</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/language-drivers/client-python">Python</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">API References</a>
+        <ul>
+            
+            
+            
+            <li><a href="/docs/api-references/ddl">Data Definition Language</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/api-references/dml">Data Manipulation Language</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/api-references/rest-api">REST API</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/api-references/graql-cheatsheet">Graql Cheatsheet</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="//javadoc.io/doc/ai.grakn/grakn" target="_blank">Javadocs</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Resources</a>
+        <ul>
+            
+            
+            
+            <li><a href="/docs/resources/overview">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/resources/faq">Grakn FAQ</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/resources/downloads">Downloads</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+    
+    <li>
+        <a href="#">Examples</a>
+        <ul>
+            
+            
+            
+            <li><a href="/docs/examples/examples-overview">Overview</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/examples/defining-the-schema">Defining the schema</a></li>
+            
+            
+            
+            
+            
+            
+            <li class="active"><a href="/docs/examples/migrating-csv-json-xml">Migrating CSV, JSON and XML Data</a></li>
+            
+            
+            
+            
+            
+            
+            <li><a href="/docs/examples/querying-kg">Querying the Knowledge Graph</a></li>
+            
+            
+            
+            
+        </ul>
+        
+        
+
+        
+        <li>
+            
+            <li><a href="/contributors/index">Contribute to GRAKN.AI</a></li>
+            
+        </li>
+        
+        <li>
+            
+            <li><a href="/academy/index">Grakn Academy</a></li>
+            
+        </li>
+        
+        
+        <!-- if you aren't using the accordion, uncomment this block:
+           <p class="external">
+               <a href="#" id="collapseAll">Collapse All</a> | <a href="#" id="expandAll">Expand All</a>
+           </p>
+           -->
+    </li>
+</ul>
+
+<!-- this highlights the active parent class in the navgoco sidebar. this is critical so that the parent expands when you're viewing a page. This must appear below the sidebar code above. Otherwise, if placed inside customscripts.js, the script runs before the sidebar code runs and the class never gets inserted.-->
+<script>$("li.active").parents('li').toggleClass("active");</script>
+
+        </div>
+        <!-- Content Column -->
+        <div class="col-md-9 col-content">
+            
+
+<div class="post-header">
+   <h1 class="post-title-main">Migrating CSV, JSON and XML Data</h1>
+</div>
+
+
+
+
+
+<div class="post-content">
+
+   
+    <div class="summary">How to migrate csv, json and xml data to a Grakn knolwedge graph</div>
+   
+
+    
+
+    
+
+    
+
+    
+
+  <h2 id="goal">Goal</h2>
+
+<p>In this tutorial, our aim is to migrate some actual data to the <code class="highlighter-rouge">phone_calls</code> knowledge graph. We defined this schema previously, in the <strong><a href="/defining-the-schema">Defining the Schema</a></strong> section.</p>
+
+<h2 id="a-quick-look-at-the-schema">A Quick Look at the Schema</h2>
+
+<p>Before we get started with migration, let’s have a quick reminder of how the schema for the <code class="highlighter-rouge">phone_calls</code> knowledge graph looks like.</p>
+
+<p><img src="/images/examples-migrating-csv-json-xml-1.png" alt="The Visualised Schema" /></p>
+
+<h2 id="python-or-nodejs">Python or Node.js?</h2>
+
+<p>Pick a language of your choice to continue.</p>
+
+<ul id="profileTabs" class="nav nav-tabs nav-tabs--intro">
+    <li class="active"><a href="#overview-python" data-toggle="tab">Python</a></li>
+    <li><a href="#overview-nodejs" data-toggle="tab">Node.js</a></li>
+</ul>
+
+<div class="tab-content tab-content--intro">
+  <!-- with client python -->
+  <div role="tabpanel" class="tab-pane active" id="overview-python">
+    <!-- python: an overview -->
+    <h2>An Overview</h2>
+    <p>Let’s go through a summary of how the migration takes place.</p>
+    <ol>
+      <li><p>we need a way to talk to our Grakn keyspace. To do this, we will use the <a href="https://github.com/graknlabs/grakn/tree/master/client-python">Python Client</a>.</p></li>
+      <li><p>we will go through each data file, extracting each data item and parsing it to a Python dictionary.</p></li>
+      <li><p>we will pass each data item (in the form of a Python dictionary) to its corresponding template function, which in turn gives us the constructed Graql query for inserting that item into Grakn.</p></li>
+      <li><p>we will execute each of those queries to load the data into our target keyspace — phone_calls.</p></li>
+    </ol>
+    <p>Before moving on, make sure you have <strong>Python3</strong> and <strong>Pip3</strong> installed and the <a href="http://dev.grakn.ai/docs/get-started/grakn-server"><strong>Grakn server</strong></a> running on your machine.</p>
+    <!-- python: getting started -->
+    <h2 id="gettingstarted">Getting Started</h2>
+    <ol>
+      <li><p>Create a directory named <code>phone_calls</code> on your desktop.</p></li>
+      <li><p>cd to the phone_calls directory via terminal.</p></li>
+      <li><p>Run <code>pip3 install grakn</code> to install the <a href="https://github.com/graknlabs/grakn/tree/master/client-python">Grakn Python Client</a>.</p></li>
+      <li><p>Open the <code>phone_calls</code> directory in your favourite text editor.</p></li>
+      <li><p>Create a <code>migrate.py</code> file in the root directory. This is where we’re going to write all our code.</p></li>
+    </ol>
+    <!-- python: including the data files -->
+    <h2 id="includingthedatafiles">Including the Data Files</h2>
+    <p>Pick one of the data formats below and download the files. After you download them, place the four files under the <code>phone_calls/data directory</code>. We will be using these to load their data into our <code>phone_calls</code> knowledge graph.</p>
+    <p><strong>CSV:</strong> <a href="https://raw.githubusercontent.com/graknlabs/examples/master/nodejs/migration/csv/data/companies.csv">companies</a> | <a href="https://raw.githubusercontent.com/graknlabs/examples/master/nodejs/migration/csv/data/people.csv">people</a> | <a href="https://raw.githubusercontent.com/graknlabs/examples/master/nodejs/migration/csv/data/contracts.csv">contracts</a> | <a href="https://raw.githubusercontent.com/graknlabs/examples/master/nodejs/migration/csv/data/calls.csv">calls</a></p>
+    <p><strong>JSON:</strong> <a href="https://raw.githubusercontent.com/graknlabs/examples/master/nodejs/migration/json/data/companies.json">companies</a> | <a href="https://raw.githubusercontent.com/graknlabs/examples/master/nodejs/migration/json/data/people.json">people</a> | <a href="https://raw.githubusercontent.com/graknlabs/examples/master/nodejs/migration/json/data/contracts.json">contracts</a> | <a href="https://raw.githubusercontent.com/graknlabs/examples/master/nodejs/migration/json/data/calls.json">calls</a></p>
+    <p><strong>XML:</strong> <a href="https://raw.githubusercontent.com/graknlabs/examples/master/nodejs/migration/xml/data/companies.xml">companies</a> | <a href="https://raw.githubusercontent.com/graknlabs/examples/master/nodejs/migration/xml/data/people.xml">people</a> | <a href="https://raw.githubusercontent.com/graknlabs/examples/master/nodejs/migration/xml/data/contracts.xml">contracts</a> | <a href="https://raw.githubusercontent.com/graknlabs/examples/master/nodejs/migration/xml/data/calls.xml">calls</a></p>
+    <!-- python: setting up the migration mechanism -->
+    <h2 id="settingupthemigrationmechanism">Setting up the migration mechanism</h2>
+    <p>All code that follows is to be written in <code>phone_calls/migrate.py</code>.</p>
+    <div id="gist-59cee5dea1fc1e10cbaf2e70de56ef9c">
+<script src="https://gist.github.com/59cee5dea1fc1e10cbaf2e70de56ef9c.js?file="></script>
+<noscript>
+<pre>import grakn
+
+inputs = [
+  {
+    &quot;data_path&quot;: &quot;./data/companies&quot;,
+    &quot;template&quot;: company_template
+  },
+  {
+    &quot;data_path&quot;: &quot;./data/people&quot;,
+    &quot;template&quot;: person_template
+  },
+  {
+    &quot;data_path&quot;: &quot;./data/contracts&quot;,
+    &quot;template&quot;: contract_template
+  },
+  {
+    &quot;data_path&quot;: &quot;./data/calls&quot;,
+    &quot;template&quot;: call_template
+  }
+]
+
+build_phone_call_graph(inputs)</pre>
+</noscript>
+</div>
+    <p>First thing first, we import the grakn module. We will use it for connecting to our <code>phone_calls</code> keyspace.</p>
+    <p>Next, we declare the <code>inputs</code>. More on this later. For now, what we need to understand about inputs — it’s a list of dictionaries, each one containing:</p>
+    <ul>
+      <li><p>The path to the data file</p></li>
+      <li><p>The template function that receives a dictionary and produces the Graql insert query. We will define these template functions in a bit.</p></li>
+    </ul>
+    <p>Let’s move on.</p>
+    <!-- python: build_phone_call_graph(inputs) -->
+    <h2 id="build_phone_call_graphinputs">build_phone_call_graph(inputs)</h2>
+    <div id="gist-59cee5dea1fc1e10cbaf2e70de56ef9c">
+<script src="https://gist.github.com/59cee5dea1fc1e10cbaf2e70de56ef9c.js?file="></script>
+<noscript>
+<pre>import grakn
+
+inputs = [
+  {
+    &quot;data_path&quot;: &quot;./data/companies&quot;,
+    &quot;template&quot;: company_template
+  },
+  {
+    &quot;data_path&quot;: &quot;./data/people&quot;,
+    &quot;template&quot;: person_template
+  },
+  {
+    &quot;data_path&quot;: &quot;./data/contracts&quot;,
+    &quot;template&quot;: contract_template
+  },
+  {
+    &quot;data_path&quot;: &quot;./data/calls&quot;,
+    &quot;template&quot;: call_template
+  }
+]
+
+build_phone_call_graph(inputs)</pre>
+</noscript>
+</div>
+    <p>This is the main and only function we need to call to start loading data into Grakn.</p>
+    <p>What happens in this function, is as follows:</p>
+    <ol>
+      <li><p>A Grakn <code>client</code> is created, connected to the server we have running locally.</p></li>
+      <li><p>A <code>session</code> is created, connected to the keyspace <code>phone_calls</code>. Note that by using <code>with</code>, we indicate that the session will close after it’s been used.</p></li>
+      <li><p>For each <code>input</code> dictionary in <code>inputs</code>, we call the <code>load_data_into_grakn(input, session)</code>. This will take care of loading the data as specified in the input dictionary into our keyspace.</p></li>
+    </ol>
+    <!-- python: load_data_into_grakn(inputs) -->
+    <h2 id="load_data_into_grakninputsession">load_data_into_grakn(input, session)</h2>
+    <div id="gist-2b4e6f3d5d88fddc72f6536959a75f1e">
+<script src="https://gist.github.com/2b4e6f3d5d88fddc72f6536959a75f1e.js?file="></script>
+<noscript>
+<pre>import grakn
+
+def build_phone_call_graph(inputs):
+  client = grakn.Grakn(uri = &quot;localhost:48555&quot;)
+  with client.session(keyspace = &quot;phone_calls&quot;) as session:
+    for input in inputs:
+      print(&quot;Loading from [&quot; + input[&quot;data_path&quot;] + &quot;] into Grakn ...&quot;)
+      load_data_into_grakn(input, session)
+  
+ # ...</pre>
+</noscript>
+</div>
+    <p>In order to load data from each file into Grakn, we need to:</p>
+    <ol>
+      <li><p>retrieve a list containing dictionaries, each of which represents a data item. We do this by calling <code>parse_data_to_dictionaries(input)</code></p></li>
+      <li><p>for each dictionary in <code>items</code>: a) create a transaction <code>tx</code>, which closes once used, b) construct the <code>graql_insert_query</code> using the corresponding template function, c) execute the query and d)commit the transaction.</p></li>
+    </ol>
+    
+<div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> to avoid running out of memory, it’s recommended that every single query gets created and committed in a single transaction. However, for faster migration of large datasets, this can happen once for every <code>n</code> queries, where <code>n</code> is the maximum number of queries guaranteed to run on a single transaction.</div>
+    <p>Before we move on to parsing the data into dictionaries, let’s start with the template functions.</p>
+    <!-- python: the template functions -->
+    <h2 id="thetemplatefunctions">The Template Functions</h2>
+    <p>Templates are simple functions that accept a dictionary, representing a single data item. The values within this dictionary fill in the blanks of the query template. The result will be a Graql insert query.</p>
+    <p>We need 4 of them. Let’s go through them one by one.</p>
+    <!-- python: companyTemplate -->
+    <h3 id="companytemplate">companyTemplate</h3>
+    <div id="gist-f3f84ec40f1eb59c556aca1f9f1cb871">
+<script src="https://gist.github.com/f3f84ec40f1eb59c556aca1f9f1cb871.js?file="></script>
+<noscript>
+<pre>def company_template(company):
+  return &#39;insert $company isa company has name &quot;&#39; + company[&quot;name&quot;] + &#39;&quot;;&#39;</pre>
+</noscript>
+</div>
+    <p>Example:</p>
+    <ul>
+      <li><p>Goes in: <code>{ name: "Telecom" }</code></p></li>
+      <li><p><code>Comes out: insert $company isa company has name "Telecom";</code></p></li>
+    </ul>
+    <!-- python: personTemplate -->
+    <h3 id="persontemplate">personTemplate</h3>
+    <div id="gist-ce89b46e35727c71d598aff1103d765f">
+<script src="https://gist.github.com/ce89b46e35727c71d598aff1103d765f.js?file="></script>
+<noscript>
+<pre>def person_template(person):
+  # insert person
+  graql_insert_query = &#39;insert $person isa person has phone-number &quot;&#39; + person[&quot;phone_number&quot;] + &#39;&quot;&#39;
+  if &quot;first_name&quot; in person:
+    # person is a customer
+    graql_insert_query += &quot; has is-customer true&quot;;
+    graql_insert_query += &#39; has first-name &quot;&#39; + person[&quot;first_name&quot;] + &#39;&quot;&#39;
+    graql_insert_query += &#39; has last-name &quot;&#39; + person[&quot;last_name&quot;] + &#39;&quot;&#39;
+    graql_insert_query += &#39; has city &quot;&#39; + person[&quot;city&quot;] + &#39;&quot;&#39;
+    graql_insert_query += &quot; has age &quot; + str(person[&quot;age&quot;])
+  else:
+    # person is not a customer
+    graql_insert_query += &quot; has is-customer false&quot;
+  graql_insert_query += &quot;;&quot;;
+  return graql_insert_query;</pre>
+</noscript>
+</div>
+    <p>Example:</p>
+    <ul>
+      <li><p>Goes in: <code>{ phone_number: "+44 091 xxx" }</code></p></li>
+      <li><p>Comes out: <code>insert $person has phone-number "+44 091 xxx";</code></p></li>
+    </ul>
+    <p>or:</p>
+    <ul>
+      <li><p>Goes in: <code>{ firs-name: "Jackie", last-name: "Joe", city: "Jimo", age: 77, phone_number: "+00 091 xxx"}</code></p></li>
+      <li><p>Comes out: <code>insert $person has phone-number "+44 091 xxx" has first-name "Jackie" has last-name "Joe" has city "Jimo" has age 77;</code></p></li>
+    </ul>
+    <!-- python: contractTemplate -->
+    <h3 id="contracttemplate">contractTemplate</h3>
+    <div id="gist-07a93efd27a977342c668fb659c18d2f">
+<script src="https://gist.github.com/07a93efd27a977342c668fb659c18d2f.js?file="></script>
+<noscript>
+<pre>def contract_template(contract):
+  # match company
+  graql_insert_query = &#39;match $company isa company has name &quot;&#39; + contract[&quot;company_name&quot;] + &#39;&quot;;&#39;
+  # match person
+  graql_insert_query += &#39; $customer isa person has phone-number &quot;&#39; + contract[&quot;person_id&quot;] + &#39;&quot;;&#39;
+  # insert contract
+  graql_insert_query += &quot; insert (provider: $company, customer: $customer) isa contract;&quot;
+  return graql_insert_query</pre>
+</noscript>
+</div>
+    <p>Example:</p>
+    <ul>
+      <li><p>Goes in: <code>{ company_name: "Telecom", person_id: "+00 091 xxx" }</code></p></li>
+      <li><p>Comes out: <code>match $company isa company has name "Telecom"; $customer isa person has phone-number "+00 091 xxx"; insert (provider: $company, customer: $customer) isa contract;</code></p>
+      </li>
+    </ul>
+    <!-- python: callTemplate -->
+    <h3 id="calltemplate">callTemplate</h3>
+    <div id="gist-315d7c04c922a4c1fea4e925531b89cd">
+<script src="https://gist.github.com/315d7c04c922a4c1fea4e925531b89cd.js?file="></script>
+<noscript>
+<pre>def call_template(call):
+  # match caller
+  graql_insert_query = &#39;match $caller isa person has phone-number &quot;&#39; + call[&quot;caller_id&quot;] + &#39;&quot;;&#39;
+  # match callee
+  graql_insert_query += &#39; $callee isa person has phone-number &quot;&#39; + call[&quot;callee_id&quot;] + &#39;&quot;;&#39;
+  # insert call
+  graql_insert_query += &quot; insert $call(caller: $caller, callee: $callee) isa call; $call has started-at &quot; + call[&quot;started_at&quot;] + &quot;; $call has duration &quot; + str(call[&quot;duration&quot;]) + &quot;;&quot;
+  return graql_insert_query;</pre>
+</noscript>
+</div>
+    <p>Example:</p>
+    <ul>
+      <li><p>Goes in: <code>{ caller_id: "+44 091 xxx", callee_id: "+00 091 xxx", started_at: 2018–08–10T07:57:51, duration: 148 }</code></p></li>
+      <li><p>Comes out: match <code>$caller isa person has phone-number "+44 091 xxx"; $callee isa person has phone-number "+00 091 xxx"; insert $call(caller: $caller, callee: $callee) isa call; $call has started-at 2018–08–10T07:57:51; $call has duration 148;</code></p></li>
+    </ul>
+    <p>We’ve now created a template for each and all four concepts that were <a href="./defining-the-schema">previously</a> defined in the schema.</p>
+    <p>It’s time for the implementation of <code>parse_data_to_dictionaries(input)</code>.</p>
+    <!-- python: dataformat-specific implementation -->
+    <h2 id="dataformatspecificimplementation">DataFormat-specific implementation</h2>
+    <p>The implementation for <code>parse_data_to_dictionaries(input)</code> differs based on what format our data files have.</p>
+    <p><code>.csv</code>, <code>.json</code> or <code>.xml</code>.</p>
+    <!-- tabs for csv, json and xml parsing implementation -->
+    <ul id="profileTabs" class="nav nav-tabs nav-tabs--intro">
+      <li class="active" style="width: 33% !important"><a href="#python-format-csv" data-toggle="tab">CSV</a></li>
+      <li style="width: 33% !important"><a href="#python-format-json" data-toggle="tab">JSON</a></li>
+      <li style="width: 34% !important"><a href="#python-format-xml" data-toggle="tab">XML</a></li>
+    </ul>
+    <div class="tab-content tab-content--intro">
+      <!-- csv implementation -->
+      <div role="tabpanel" class="tab-pane active" id="python-format-csv">
+        <p>We will use  Python’s built-in <a href="https://docs.python.org/3/library/csv.html#dialects-and-formatting-parameters"><code>csv</code> library</a>. Let’s import the module for it.</p>
+        <div id="gist-dd4c57c1fde706a96b87b6f2487c828c">
+<script src="https://gist.github.com/dd4c57c1fde706a96b87b6f2487c828c.js?file="></script>
+<noscript>
+<pre>import grakn
+import csv
+
+#...</pre>
+</noscript>
+</div>
+        <p>Moving on, we will write the implementation of <code>parse_data_to_dictionaries(input)</code> for parsing <code>.csv</code> files. Note that we use <a href="https://docs.python.org/3/library/csv.html#csv.DictReader">DictReader</a> to map the information in each row to a dictionary.</p>
+        <div id="gist-59d4bc7dac18bf95139ad75b5ade8a71">
+<script src="https://gist.github.com/59d4bc7dac18bf95139ad75b5ade8a71.js?file="></script>
+<noscript>
+<pre>def parse_data_to_dictionaries(input):
+  items = []
+  with open(input[&quot;data_path&quot;] + &quot;.csv&quot;) as data:
+    for row in csv.DictReader(data, skipinitialspace = True)
+      item = { key: value for key, value in row.items() } 
+      items.append(item)
+  return items</pre>
+</noscript>
+</div>
+        <p>Besides this function, we need to make one more change.</p>
+        <p>Given the nature of CSV files, the dictionary produced will have all the columns of the <code>.csv</code> file as its keys, even when the value is not there, it’ll be taken as a blank string.</p>
+        <p>For this reason, we need to change one line in our <code>person_template</code> function.</p>
+        <p><code>if "first_name" in person</code> becomes <code>if person["first_name"] == ""</code>.</p>
+      </div>
+      <!-- json implementation -->
+      <div role="tabpanel" class="tab-pane" id="python-format-json">
+        <p>We will use <a href="https://pypi.org/project/ijson/">ijson</a>, an iterative JSON parser with a standard Python iterator interface.</p>
+        <p>Via the terminal, while in the <code>phone_calls</code> directory, run <code>pip3 install ijson</code> and import the module for it.</p>
+        <div id="gist-3590355e4bbe8dde03778dacb6e07d33">
+<script src="https://gist.github.com/3590355e4bbe8dde03778dacb6e07d33.js?file="></script>
+<noscript>
+<pre>import grakn
+import ijson
+
+# ...</pre>
+</noscript>
+</div>
+        <p>Moving on, we will write the implementation of <code>parse_data_to_dictionaries(input)</code> for processing <code>.json</code> files.</p>
+        <div id="gist-3d2b4e6889cbd6e2aa8e149ca7a8fe49">
+<script src="https://gist.github.com/3d2b4e6889cbd6e2aa8e149ca7a8fe49.js?file="></script>
+<noscript>
+<pre>def parse_data_to_dictionaries(input):
+  items = []
+  with open(input[&quot;data_path&quot;] + &quot;.json&quot;) as data:
+    for item in ijson.items(data, &quot;item&quot;):
+      items.append(item)
+  return items</pre>
+</noscript>
+</div>
+      </div>
+      <!-- xml implementation -->
+      <div role="tabpanel" class="tab-pane" id="python-format-xml">
+        <p>We will use Python’s built-in <a href="https://docs.python.org/2/library/xml.etree.elementtree.html"><code>xml.etree.cElementTree</code> library</a>. Let’s import the module for it.</p>
+        <div id="gist-330947fda05bb1cebb326fd8bcd911f6">
+<script src="https://gist.github.com/330947fda05bb1cebb326fd8bcd911f6.js?file="></script>
+<noscript>
+<pre>import grakn
+import xml.etree.cElementTree as et
+
+# ...</pre>
+</noscript>
+</div>
+        <p>For parsing XML data, we need to know the target tag name. This needs to be specified for each data file in our <code>inputs</code> deceleration.</p>
+        <div id="gist-74ac2de6575f5b4e008cbc0ee845031f">
+<script src="https://gist.github.com/74ac2de6575f5b4e008cbc0ee845031f.js?file="></script>
+<noscript>
+<pre># ...
+
+inputs = [
+  {
+    &quot;data_path&quot;: &quot;./data/companies&quot;,
+    &quot;template&quot;: company_template,
+    &quot;selector&quot;: &quot;company&quot;
+  },
+  {
+    &quot;data_path&quot;: &quot;./data/people&quot;,
+    &quot;template&quot;: person_template,
+    &quot;selector&quot;: &quot;person&quot;
+  },
+  {
+    &quot;data_path&quot;: &quot;./data/contracts&quot;,
+    &quot;template&quot;: contract_template,
+    &quot;selector&quot;: &quot;contract&quot;
+  },
+  {
+    &quot;data_path&quot;: &quot;./data/calls&quot;,
+    &quot;template&quot;: call_template,
+    &quot;selector&quot;: &quot;call&quot;
+  }
+]
+
+# ...</pre>
+</noscript>
+</div>
+        <p>And now for the implementation of <code>parse_data_to_dictionaries(input)</code> for parsing <code>.xml</code> files.</p>
+        <p>The implementation below, although, not the most generic, performs well with very large <code>.xml</code> files. Note that many libraries that do xml to dictionary parsing, pull in the entire <code>.xml</code> file into memory first. There is nothing wrong with that approach when you’re dealing with small files, but when it comes to large files, that’s just a no go.</p>
+        <div id="gist-e67e5003de2a8753dd2f91e249dc69b7">
+<script src="https://gist.github.com/e67e5003de2a8753dd2f91e249dc69b7.js?file="></script>
+<noscript>
+<pre>def parse_data_to_dictionaries(input):
+  items = []
+  with open(input[&quot;data_path&quot;] + &quot;.xml&quot;, &quot;rb&quot;) as inputfile:
+    ## we are in the file
+    keep_adding_lines = False
+    for line in inputfile:
+      if &quot;&lt;&quot; + input[&quot;selector&quot;] + &quot;&gt;&quot; in str(line):
+        ## now: at the start of a new target tag
+        buffer = line
+        keep_adding_lines = True
+      elif &quot;&lt;/&quot; + input[&quot;selector&quot;]  + &quot;&gt;&quot; in str(line):
+        ## now: the tag is complete
+        buffer += line
+        keep_adding_lines = False
+        ## convert the buffer (string) to a strurctured tag
+        tnode = et.fromstring(buffer)
+        ## parse the tag to a dictionary
+        item = {}
+        for element in tnode.getchildren():
+          item[element.tag] = element.text
+        ## append the item to the list
+        items.append(item)
+        ## delete the buffer to free the memory
+        del buffer
+      elif keep_adding_lines:
+        ## now: inside the target tag
+        buffer += line
+  return items</pre>
+</noscript>
+</div>
+      </div>
+    </div>
+    <!-- putting it all together -->
+    <h2>Putting it all together</h2>
+    Here is how our <code>migrate.js</code> looks like for each data format.
+    <!-- tabs for csv, json and xml migrate.py -->
+    <ul id="profileTabs" class="nav nav-tabs nav-tabs--intro">
+      <li class="active" style="width: 33% !important"><a href="#python-complete-csv" data-toggle="tab">CSV</a></li>
+      <li style="width: 33% !important"><a href="#python-complete-json" data-toggle="tab">JSON</a></li>
+      <li style="width: 34% !important"><a href="#python-complete-xml" data-toggle="tab">XML</a></li>
+    </ul>
+    <div class="tab-content tab-content--intro">
+      <!-- csv complete implementation -->
+      <div role="tabpanel" class="tab-pane active" id="python-complete-csv">
+        <div id="gist-7508b1a093b60caad0fc83624cf7da42">
+<script src="https://gist.github.com/7508b1a093b60caad0fc83624cf7da42.js?file="></script>
+<noscript>
+<pre>import grakn
+import csv
+
+def build_phone_call_graph(inputs):
+  client = grakn.Grakn(uri = &quot;localhost:48555&quot;)
+  with client.session(keyspace = &quot;phone_calls&quot;) as session:
+    for input in inputs:
+      print(&quot;Loading from [&quot; + input[&quot;data_path&quot;] + &quot;] into Grakn ...&quot;)
+      load_data_into_grakn(input, session)
+
+def load_data_into_grakn(input, session):
+  items = parse_data_to_dictionaries(input)
+
+  for item in items:
+    with session.transaction(grakn.TxType.WRITE) as tx:
+      graql_insert_query = input[&quot;template&quot;](item)
+      print(&quot;Executing Graql Query: &quot; + graql_insert_query)
+      tx.query(graql_insert_query)
+      tx.commit()
+
+  print(&quot;\nInserted &quot; + str(len(items)) + &quot; items from [ &quot; + input[&quot;data_path&quot;] + &quot;] into Grakn.\n&quot;)
+
+def company_template(company):
+  return &#39;insert $company isa company has name &quot;&#39; + company[&quot;name&quot;] + &#39;&quot;;&#39;
+
+def person_template(person):
+  # insert person
+  graql_insert_query = &#39;insert $person isa person has phone-number &quot;&#39; + person[&quot;phone_number&quot;] + &#39;&quot;&#39;
+  if person[&quot;first_name&quot;] == &quot;&quot;:
+    # person is not a customer
+    graql_insert_query += &quot; has is-customer false&quot;
+  else:
+    # person is a customer
+    graql_insert_query += &quot; has is-customer true&quot;
+    graql_insert_query += &#39; has first-name &quot;&#39; + person[&quot;first_name&quot;] + &#39;&quot;&#39;
+    graql_insert_query += &#39; has last-name &quot;&#39; + person[&quot;last_name&quot;] + &#39;&quot;&#39;
+    graql_insert_query += &#39; has city &quot;&#39; + person[&quot;city&quot;] + &#39;&quot;&#39;
+    graql_insert_query += &quot; has age &quot; + str(person[&quot;age&quot;])
+  graql_insert_query += &quot;;&quot;
+  return graql_insert_query
+
+def contract_template(contract):
+  # match company
+  graql_insert_query = &#39;match $company isa company has name &quot;&#39; + contract[&quot;company_name&quot;] + &#39;&quot;;&#39;
+  # match person
+  graql_insert_query += &#39; $customer isa person has phone-number &quot;&#39; + contract[&quot;person_id&quot;] + &#39;&quot;;&#39;
+  # insert contract
+  graql_insert_query += &quot; insert (provider: $company, customer: $customer) isa contract;&quot;
+  return graql_insert_query
+
+def call_template(call):
+  # match caller
+  graql_insert_query = &#39;match $caller isa person has phone-number &quot;&#39; + call[&quot;caller_id&quot;] + &#39;&quot;;&#39;
+  # match callee
+  graql_insert_query += &#39; $callee isa person has phone-number &quot;&#39; + call[&quot;callee_id&quot;] + &#39;&quot;;&#39;
+  # insert call
+  graql_insert_query += (&quot; insert $call(caller: $caller, callee: $callee) isa call; &quot; +
+                         $call has started-at &quot; + call[&quot;started_at&quot;] + &quot;; &quot; +
+                         $call has duration &quot; + str(call[&quot;duration&quot;]) + &quot;;&quot;)
+  return graql_insert_query
+
+def parse_data_to_dictionaries(input):
+  items = []
+  with open(input[&quot;data_path&quot;] + &quot;.csv&quot;) as data: # 1
+    for row in csv.DictReader(data, skipinitialspace = True):
+      item = { key: value for key, value in row.items() }
+      items.append(item) # 2
+  return items
+
+inputs = [
+  {
+    &quot;data_path&quot;: &quot;./data/companies&quot;,
+    &quot;template&quot;: company_template
+  },
+  {
+    &quot;data_path&quot;: &quot;./data/people&quot;,
+    &quot;template&quot;: person_template
+  },
+  {
+    &quot;data_path&quot;: &quot;./data/contracts&quot;,
+    &quot;template&quot;: contract_template
+  },
+  {
+    &quot;data_path&quot;: &quot;./data/calls&quot;,
+    &quot;template&quot;: call_template
+  }
+]
+
+build_phone_call_graph(inputs)</pre>
+</noscript>
+</div>
+      </div>
+      <!-- json complete implementation -->
+      <div role="tabpanel" class="tab-pane" id="python-complete-json">
+        <div id="gist-edd1e19bd958d86e1dc3b0c779247880">
+<script src="https://gist.github.com/edd1e19bd958d86e1dc3b0c779247880.js?file="></script>
+<noscript>
+<pre>import grakn
+import ijson
+
+def build_phone_call_graph(inputs):
+  client = grakn.Grakn(uri = &quot;localhost:48555&quot;)
+  with client.session(keyspace = &quot;phone_calls&quot;) as session:
+    for input in inputs:
+      print(&quot;Loading from [&quot; + input[&quot;data_path&quot;] + &quot;] into Grakn ...&quot;)
+      load_data_into_grakn(input, session)
+
+def load_data_into_grakn(input, session):
+  items = parse_data_to_dictionaries(input)
+
+  for item in items:
+    with session.transaction(grakn.TxType.WRITE) as tx:
+      graql_insert_query = input[&quot;template&quot;](item)
+      print(&quot;Executing Graql Query: &quot; + graql_insert_query)
+      tx.query(graql_insert_query)
+      tx.commit()
+
+  print(&quot;\nInserted &quot; + str(len(items)) + &quot; items from [ &quot; + input[&quot;data_path&quot;] + &quot;] into Grakn.\n&quot;)
+
+def company_template(company):
+  return &#39;insert $company isa company has name &quot;&#39; + company[&quot;name&quot;] + &#39;&quot;;&#39;
+
+def person_template(person):
+  # insert person
+  graql_insert_query = &#39;insert $person isa person has phone-number &quot;&#39; + person[&quot;phone_number&quot;] + &#39;&quot;&#39;
+  if &quot;first_name&quot; in person:
+    # person is a customer
+    graql_insert_query += &quot; has is-customer true&quot;
+    graql_insert_query += &#39; has first-name &quot;&#39; + person[&quot;first_name&quot;] + &#39;&quot;&#39;
+    graql_insert_query += &#39; has last-name &quot;&#39; + person[&quot;last_name&quot;] + &#39;&quot;&#39;
+    graql_insert_query += &#39; has city &quot;&#39; + person[&quot;city&quot;] + &#39;&quot;&#39;
+    graql_insert_query += &quot; has age &quot; + str(person[&quot;age&quot;])
+  else:
+    # person is not a customer
+    graql_insert_query += &quot; has is-customer false&quot;
+  graql_insert_query += &quot;;&quot;
+  return graql_insert_query
+
+def contract_template(contract):
+  # match company
+  graql_insert_query = &#39;match $company isa company has name &quot;&#39; + contract[&quot;company_name&quot;] + &#39;&quot;;&#39;
+  # match person
+  graql_insert_query += &#39; $customer isa person has phone-number &quot;&#39; + contract[&quot;person_id&quot;] + &#39;&quot;;&#39;
+  # insert contract
+  graql_insert_query += &quot; insert (provider: $company, customer: $customer) isa contract;&quot;
+  return graql_insert_query
+
+def call_template(call):
+  # match caller
+  graql_insert_query = &#39;match $caller isa person has phone-number &quot;&#39; + call[&quot;caller_id&quot;] + &#39;&quot;;&#39;
+  # match callee
+  graql_insert_query += &#39; $callee isa person has phone-number &quot;&#39; + call[&quot;callee_id&quot;] + &#39;&quot;;&#39;
+  # insert call
+  graql_insert_query += (&quot; insert $call(caller: $caller, callee: $callee) isa call; &quot; + 
+                         $call has started-at &quot; + call[&quot;started_at&quot;] + &quot;; &quot; +
+                         $call has duration &quot; + str(call[&quot;duration&quot;]) + &quot;;&quot;)
+  return graql_insert_query
+
+def parse_data_to_dictionaries(input):
+  items = []
+  with open(input[&quot;data_path&quot;] + &quot;.json&quot;) as data:
+    for item in ijson.items(data, &quot;item&quot;):
+      items.append(item)
+  return items
+
+inputs = [
+  {
+    &quot;data_path&quot;: &quot;./data/companies&quot;,
+    &quot;template&quot;: company_template
+  },
+  {
+    &quot;data_path&quot;: &quot;./data/people&quot;,
+    &quot;template&quot;: person_template
+  },
+  {
+    &quot;data_path&quot;: &quot;./data/contracts&quot;,
+    &quot;template&quot;: contract_template
+  },
+  {
+    &quot;data_path&quot;: &quot;./data/calls&quot;,
+    &quot;template&quot;: call_template
+  }
+]
+
+build_phone_call_graph(inputs)</pre>
+</noscript>
+</div>
+      </div>
+      <!-- xml complete implementation -->
+      <div role="tabpanel" class="tab-pane" id="python-complete-xml">
+        <div id="gist-097ff583ab9d074b62a30945251087d4">
+<script src="https://gist.github.com/097ff583ab9d074b62a30945251087d4.js?file="></script>
+<noscript>
+<pre>import grakn
+import xml.etree.cElementTree as et
+
+def build_phone_call_graph(inputs):
+  client = grakn.Grakn(uri = &quot;localhost:48555&quot;)
+  with client.session(keyspace = &quot;phone_calls&quot;) as session:
+    for input in inputs:
+      print(&quot;Loading from [&quot; + input[&quot;data_path&quot;] + &quot;] into Grakn ...&quot;)
+      load_data_into_grakn(input, session)
+
+def load_data_into_grakn(input, session):
+  items = parse_data_to_dictionaries(input)
+
+  for item in items:
+    with session.transaction(grakn.TxType.WRITE) as tx:
+      graql_insert_query = input[&quot;template&quot;](item)
+      print(&quot;Executing Graql Query: &quot; + graql_insert_query)
+      tx.query(graql_insert_query)
+      tx.commit()
+
+  print(&quot;\nInserted &quot; + str(len(items)) + &quot; items from [ &quot; + input[&quot;data_path&quot;] + &quot;] into Grakn.\n&quot;)
+
+def company_template(company):
+  return &#39;insert $company isa company has name &quot;&#39; + company[&quot;name&quot;] + &#39;&quot;;&#39;
+
+def person_template(person):
+  # insert person
+  graql_insert_query = &#39;insert $person isa person has phone-number &quot;&#39; + person[&quot;phone_number&quot;] + &#39;&quot;&#39;
+  if &quot;first_name&quot; in person:
+    # person is a customer
+    graql_insert_query += &quot; has is-customer true&quot;
+    graql_insert_query += &#39; has first-name &quot;&#39; + person[&quot;first_name&quot;] + &#39;&quot;&#39;
+    graql_insert_query += &#39; has last-name &quot;&#39; + person[&quot;last_name&quot;] + &#39;&quot;&#39;
+    graql_insert_query += &#39; has city &quot;&#39; + person[&quot;city&quot;] + &#39;&quot;&#39;
+    graql_insert_query += &quot; has age &quot; + str(person[&quot;age&quot;])
+  else:
+    # person is not a customer
+    graql_insert_query += &quot; has is-customer false&quot;
+  graql_insert_query += &quot;;&quot;
+  return graql_insert_query
+
+def contract_template(contract):
+  # match company
+  graql_insert_query = &#39;match $company isa company has name &quot;&#39; + contract[&quot;company_name&quot;] + &#39;&quot;;&#39;
+  # match person
+  graql_insert_query += &#39; $customer isa person has phone-number &quot;&#39; + contract[&quot;person_id&quot;] + &#39;&quot;;&#39;
+  # insert contract
+  graql_insert_query += &quot; insert (provider: $company, customer: $customer) isa contract;&quot;
+  return graql_insert_query
+
+def call_template(call):
+  # match caller
+  graql_insert_query = &#39;match $caller isa person has phone-number &quot;&#39; + call[&quot;caller_id&quot;] + &#39;&quot;;&#39;
+  # match callee
+  graql_insert_query += &#39; $callee isa person has phone-number &quot;&#39; + call[&quot;callee_id&quot;] + &#39;&quot;;&#39;
+  # insert call
+  graql_insert_query += (&quot; insert $call(caller: $caller, callee: $callee) isa call; &quot; +
+                         $call has started-at &quot; + call[&quot;started_at&quot;] + &quot;; &quot; +
+                         $call has duration &quot; + str(call[&quot;duration&quot;]) + &quot;;&quot;)
+  return graql_insert_query
+
+def parse_data_to_dictionaries(input):
+  items = []
+  with open(input[&quot;data_path&quot;] + &quot;.xml&quot;, &quot;rb&quot;) as inputfile:
+    append = False
+    for line in inputfile:
+      if &quot;&lt;&quot; + input[&quot;selector&quot;] + &quot;&gt;&quot; in str(line):
+        ## start of a new xml tag
+        buffer = line
+        append = True
+      elif &quot;&lt;/&quot; + input[&quot;selector&quot;]  + &quot;&gt;&quot; in str(line):
+        ## we got a complete xml tag
+        buffer += line
+        append = False
+        tnode = et.fromstring(buffer)
+        ## parse the tag to a dictionary and append to tiems
+        item = {}
+        for element in tnode.getchildren():
+          item[element.tag] = element.text
+        items.append(item)
+        ## delete the buffer to free the memory
+        del buffer
+      elif append:
+        ## inside the current xml tag
+        buffer += line
+  return items
+
+inputs = [
+  {
+    &quot;data_path&quot;: &quot;./data/companies&quot;,
+    &quot;template&quot;: company_template,
+    &quot;selector&quot;: &quot;company&quot;
+  },
+  {
+    &quot;data_path&quot;: &quot;./data/people&quot;,
+    &quot;template&quot;: person_template,
+    &quot;selector&quot;: &quot;person&quot;
+  },
+  {
+    &quot;data_path&quot;: &quot;./data/contracts&quot;,
+    &quot;template&quot;: contract_template,
+    &quot;selector&quot;: &quot;contract&quot;
+  },
+  {
+    &quot;data_path&quot;: &quot;./data/calls&quot;,
+    &quot;template&quot;: call_template,
+    &quot;selector&quot;: &quot;call&quot;
+  }
+]
+
+build_phone_call_graph(inputs)</pre>
+</noscript>
+</div>
+      </div>
+    </div>
+    <!-- time to lead -->
+    <h2 id="timetoload">Time to Load</h2>
+    <p>Run <code>python3 migrate.py</code></p>
+    <p>Sit back, relax and watch the logs while the data starts pouring into Grakn.</p>
+    <!-- ... so far with the migration -->
+    <h3 id="sofarwiththemigration">... so far with the migration</h3>
+    <p>We started off by setting up our project and positioning the data files.</p>
+    <p>Next we went on to set up the migration mechanism, one that was independent of the data format.</p>
+    <p>Then, we went ahead and wrote the template functions whose only job was to construct a Graql insert query based on the data passed to them.</p>
+    <p>After that, we learned how files with different data formats can be parsed into Python dictionaries.</p>
+    <p>Lastly, we ran <code>python3 migrate.py</code> which fired the <code>build_phone_call_graph</code> function with the given <code>inputs</code>. This loaded the data into our Grakn knowledge graph.</p>
+  </div>
+
+  <div role="tabpanel" class="tab-pane" id="overview-nodejs">
+    <!-- nodejs: an overview -->
+    <h2 id="anoverview">An Overview</h2>
+    <p>Let’s go through a summary of how the migration takes place.</p>
+    <ol>
+      <li><p>we need a way to talk to our Grakn keyspace. To do this, we will use the <a href="https://github.com/graknlabs/grakn/tree/master/client-nodejs">Node.js Client</a>.</p></li>
+      <li><p>we will go through each data file, extracting each data item and parsing it to a Javascript object.</p></li>
+      <li><p>we will pass each data item (in the form of a Javascript object) to its corresponding template function, which in turn gives us the constructed Graql query for inserting that item into Grakn.</p></li>
+      <li><p>we will execute each of those queries to load the data into our target keyspace — phone_calls.</p></li>
+    </ol>
+    <p>Before moving on, make sure you have <strong>npm</strong> installed and the <a href="http://dev.grakn.ai/docs/get-started/grakn-server"><strong>Grakn server</strong></a> running on your machine.</p>
+    <!-- nodejs: getting started -->
+    <h2 id="gettingstarted">Getting Started</h2>
+    <ol>
+      <li><p>Create a directory named <code>phone_calls</code> on your desktop.</p></li>
+      <li><p>cd to the <code>phone_calls</code> directory via terminal.</p></li>
+      <li><p>Run <code>npm install grakn</code> to install the <a href="https://github.com/graknlabs/grakn/tree/master/client-nodejs">Grakn Node.js Client</a>.</p></li>
+      <li><p>Open the <code>phone_calls</code> directory in your favourite text editor.</p></li>
+      <li><p>Create a <code>migrate.js</code> file in the root directory. This is where we’re going to write all our code.</p></li>
+    </ol>
+    <!-- nodejs: including the data files -->
+    <h2 id="includingthedatafiles">Including the Data Files</h2>
+    <p>Pick one of the data formats below and download the files. After you download them, place the four files under the <code>phone_calls/data</code> directory. We will be using these to load their data into our <code>phone_calls</code> knowledge graph.</p>
+    <p><strong>CSV:</strong> <a href="https://raw.githubusercontent.com/graknlabs/examples/master/nodejs/migration/csv/data/companies.csv">companies</a> | <a href="https://raw.githubusercontent.com/graknlabs/examples/master/nodejs/migration/csv/data/people.csv">people</a> | <a href="https://raw.githubusercontent.com/graknlabs/examples/master/nodejs/migration/csv/data/contracts.csv">contracts</a> | <a href="https://raw.githubusercontent.com/graknlabs/examples/master/nodejs/migration/csv/data/calls.csv">calls</a></p>
+    <p><strong>JSON:</strong> <a href="https://raw.githubusercontent.com/graknlabs/examples/master/nodejs/migration/json/data/companies.json">companies</a> | <a href="https://raw.githubusercontent.com/graknlabs/examples/master/nodejs/migration/json/data/people.json">people</a> | <a href="https://raw.githubusercontent.com/graknlabs/examples/master/nodejs/migration/json/data/contracts.json">contracts</a> | <a href="https://raw.githubusercontent.com/graknlabs/examples/master/nodejs/migration/json/data/calls.json">calls</a></p>
+    <p><strong>XML:</strong> <a href="https://raw.githubusercontent.com/graknlabs/examples/master/nodejs/migration/xml/data/companies.xml">companies</a> | <a href="https://raw.githubusercontent.com/graknlabs/examples/master/nodejs/migration/xml/data/people.xml">people</a> | <a href="https://raw.githubusercontent.com/graknlabs/examples/master/nodejs/migration/xml/data/contracts.xml">contracts</a> | <a href="https://raw.githubusercontent.com/graknlabs/examples/master/nodejs/migration/xml/data/calls.xml">calls</a></p>
+    <!-- nodejs: setting up the migration mechanism -->
+    <h2 id="settingupthemigrationmechanism">Setting up the migration mechanism</h2>
+    <p>All code that follows is to be written in <code>phone_calls/migrate.js</code>.</p>
+    <div id="gist-50e72ea0110190eb3fdb16db516b0f01">
+<script src="https://gist.github.com/50e72ea0110190eb3fdb16db516b0f01.js?file="></script>
+<noscript>
+<pre>const Grakn = require(&quot;grakn&quot;);
+
+const inputs = [
+  {
+    dataPath: &quot;./data/companies&quot;, 
+    template: companyTemplate 
+  },
+  { 
+    dataPath: &quot;./data/people&quot;, 
+    template: personTemplate 
+  },
+  { 
+    dataPath: &quot;./data/contracts&quot;, 
+    template: contractTemplate 
+  },
+  { 
+    dataPath: &quot;./data/calls&quot;, 
+    template: callTemplate 
+  }
+];
+
+buildPhoneCallGraph(inputs);</pre>
+</noscript>
+</div>
+    <p>First thing first, we require the grakn module. We will use it for connecting to our <code>phone_calls</code> keyspace.</p>
+    <p>Next, we declare the <code>inputs</code>. More on this later. For now, what we need to understand about inputs — it’s an array of objects, each one containing:</p>
+    <ul>
+      <li><p>The path to the data file</p></li>
+      <li><p>The template function that receives an object and produces the Graql insert query. We will define these template functions in a bit.</p></li>
+    </ul>
+    <p>Let’s move on.</p>
+    <!-- nodejs: buildPhoneCallGraph(inputs) -->
+    <h2 id="buildPhoneCallGraphinputs">buildPhoneCallGraph(inputs)</h2>
+    <div id="gist-c0c7463f3077eead80bc169bfa837aff">
+<script src="https://gist.github.com/c0c7463f3077eead80bc169bfa837aff.js?file="></script>
+<noscript>
+<pre>async function buildPhoneCallGraph(inputs) {
+  const grakn = new Grakn(&quot;localhost:48555&quot;);
+  const session = grakn.session(&quot;phone_calls&quot;);
+  
+  for (input of inputs) {
+    await loadDataIntoGrakn(parsingInput, session);
+  }
+  session.close();
+}</pre>
+</noscript>
+</div>
+    <p>This is the main and only function we need to call to start loading data into Grakn.</p>
+    <p>What happens in this function, is as follows:</p>
+    <ol>
+      <li><p>A <code>grakn</code> instance is created, connected to the server we have running locally.</p></li>
+      <li><p>A <code>session</code> is created, connected to the keyspace <code>phone_calls</code>.</p></li>
+      <li><p>For each <code>input</code> object in <code>inputs</code>, we call the <code>loadDataIntoGrakn(input, session)</code>. This will take care of loading the data as specified in the input object into our keyspace.</p></li>
+      <li><p>The <code>session</code> is closed.</p></li>
+    </ol>
+    <!-- nodejs: loadDataIntoGrakn(input, session) -->
+    <h2 id="loaddataintograkninputsession">loadDataIntoGrakn(input, session)</h2>
+    <div id="gist-b57395a4cae644439ac5d0e573d0e49b">
+<script src="https://gist.github.com/b57395a4cae644439ac5d0e573d0e49b.js?file="></script>
+<noscript>
+<pre>async function loadDataIntoGrakn(input, session) {
+  const items = await parseDataToObjects(input);
+  
+  for (item of items) {
+    const tx = await session.transaction(Grakn.txType.WRITE);
+    const graqlInsertQuery = input.template(item);
+    await tx.query(graqlInsertQuery);
+    await tx.commit();
+  }
+}</pre>
+</noscript>
+</div>
+    <p>In order to load data from each file into Grakn, we need to:</p>
+    <ol>
+      <li><p>retrieve a list containing objects, each of which represents a data item. We do this by calling <code>parseDataToObjects(input)</code></p></li>
+      <li><p>for each object in <code>items</code>: a) create a transaction <code>tx</code>, b) construct the <code>graqlInsertQuery</code> using the corresponding template function, c) run the query and d)commit the transaction.</p></li>
+    </ol>
+    
+<div class="alert alert-success" role="alert"><i class="fa fa-check-square-o"></i> <b>Tip:</b> to avoid running out of memory, it’s recommended that every single query gets created and committed in a single transaction. However, for faster migration of large datasets, this can happen once for every <code>n</code> queries, where <code>n</code> is the maximum number of queries guaranteed to run on a single transaction.</div>
+    <p>Before we move on to parsing the data into objects, let’s start with the template functions.</p>
+    <!-- nodejs: the template functions -->
+    <h2 id="thetemplatefunctions">The Template Functions</h2>
+    <p>Templates are simple functions that accept an object, representing a single data item. The values within this object fill in the blanks of the query template. The result will be a Graql insert query.</p>
+    <p>We need 4 of them. Let’s go through them one by one.</p>
+    <!-- nodejs: companyTemplate -->
+    <h3 id="companytemplate">companyTemplate</h3>
+    <div id="gist-213c3a5100ad0e361abb545d7a252cf1">
+<script src="https://gist.github.com/213c3a5100ad0e361abb545d7a252cf1.js?file="></script>
+<noscript>
+<pre>function companyTemplate(company) {
+  return `insert $company isa company has name &quot;${company.name}&quot;;`;
+}</pre>
+</noscript>
+</div>
+    <p>Example:</p>
+    <ul>
+      <li><p>Goes in: <code>{ name: "Telecom" }</code></p></li>
+      <li><p><code>Comes out: insert $company isa company has name "Telecom";</code></p></li>
+    </ul>
+    <!-- nodejs: personTemplate -->
+    <h3 id="persontemplate">personTemplate</h3>
+    <div id="gist-c496df88af2b4024206ab7c27b5d2bd4">
+<script src="https://gist.github.com/c496df88af2b4024206ab7c27b5d2bd4.js?file="></script>
+<noscript>
+<pre>function personTemplate(person) {
+  const { first_name, last_name, phone_number, city, age } = person;
+  
+  // insert person
+  let graqlInsertQuery = `insert $person isa person has phone-number &quot;${phone_number}&quot;`;
+  const isNotCustomer = typeof first_name === &quot;undefined&quot;;
+  
+  if (isNotCustomer) {
+    // person is not a customer
+    graqlInsertQuery += &quot; has is-customer false&quot;;
+  } else {
+    // person is a customer
+    graqlInsertQuery += ` has is-customer true`;
+    graqlInsertQuery += ` has first-name &quot;${first_name}&quot;`;
+    graqlInsertQuery += ` has last-name &quot;${last_name}&quot;`;
+    graqlInsertQuery += ` has city &quot;${city}&quot;`;
+    graqlInsertQuery += ` has age ${age}`;
+  }
+
+  graqlInsertQuery += &quot;;&quot;;
+  return graqlInsertQuery;
+}</pre>
+</noscript>
+</div>
+    <p>Example:</p>
+    <ul>
+      <li><p>Goes in: <code>{ phone_number: "+44 091 xxx" }</code></p></li>
+      <li><p>Comes out: <code>insert $person has phone-number "+44 091 xxx";</code></p></li>
+    </ul>
+    <p>or:</p>
+    <ul>
+      <li><p>Goes in: <code>{ firs-name: "Jackie", last-name: "Joe", city: "Jimo", age: 77, phone_number: "+00 091 xxx"}</code></p></li>
+      <li><p>Comes out: <code>insert $person has phone-number "+44 091 xxx" has first-name "Jackie" has last-name "Joe" has city "Jimo" has age 77;</code></p></li>
+    </ul>
+    <!-- nodejs: contractTemplate -->
+    <h3 id="contracttemplate">contractTemplate</h3>
+    <div id="gist-0b4461cc6dd05e75e3ba3dc68b85cb10">
+<script src="https://gist.github.com/0b4461cc6dd05e75e3ba3dc68b85cb10.js?file="></script>
+<noscript>
+<pre>function contractTemplate(contract) {
+  const { company_name, person_id } = contract;
+  // match company
+  let graqlInsertQuery = `match $company isa company has name &quot;${company_name}&quot;; `;
+  // match person
+  graqlInsertQuery += `$customer isa person has phone-number &quot;${person_id}&quot;; `;
+  // insert contract
+  graqlInsertQuery +=
+    &quot;insert (provider: $company, customer: $customer) isa contract;&quot;;
+  return graqlInsertQuery;
+}</pre>
+</noscript>
+</div>
+    <p>Example:</p>
+    <ul>
+      <li><p>Goes in: <code>{ company_name: "Telecom", person_id: "+00 091 xxx" }</code></p></li>
+      <li><p>Comes out: <code>match $company isa company has name "Telecom"; $customer isa person has phone-number "+00 091 xxx"; insert (provider: $company, customer: $customer) isa contract;</code></p>
+      </li>
+    </ul>
+    <!-- nodejs: callTemplate -->
+    <h3 id="calltemplate">callTemplate</h3>
+    <div id="gist-80273905e71b6e5d5f1815c32cee322a">
+<script src="https://gist.github.com/80273905e71b6e5d5f1815c32cee322a.js?file="></script>
+<noscript>
+<pre>function callTemplate(call) {
+  const { caller_id, callee_id, started_at, duration } = call;
+  
+  // match caller
+  let graqlInsertQuery = `match $caller isa person has phone-number &quot;${caller_id}&quot;; `;
+  
+  // match callee
+  graqlInsertQuery += `$callee isa person has phone-number &quot;${callee_id}&quot;; `;
+  
+  // insert call
+  graqlInsertQuery += `insert $call(caller: $caller, callee: $callee) isa call; $call has started-at ${started_at}; $call has duration ${duration};`;
+  return graqlInsertQuery;
+}</pre>
+</noscript>
+</div>
+    <p>Example:</p>
+    <ul>
+      <li><p>Goes in: <code>{ caller_id: "+44 091 xxx", callee_id: "+00 091 xxx", started_at: 2018–08–10T07:57:51, duration: 148 }</code></p></li>
+      <li><p>Comes out: match <code>$caller isa person has phone-number "+44 091 xxx"; $callee isa person has phone-number "+00 091 xxx"; insert $call(caller: $caller, callee: $callee) isa call; $call has started-at 2018–08–10T07:57:51; $call has duration 148;</code></p></li>
+    </ul>
+    <p>We’ve now created a template for each and all four concepts that were <a href="./defining-the-schema">previously</a> defined in the schema.</p>
+    <p>It’s time for the implementation of <code>parseDataToObjects(input)</code>.</p>
+    <!-- nodejs: data-specific implementation -->
+    <h2 id="dataformatspecificimplementation">DataFormat-specific implementation</h2>
+    <p>The implementation for parseDataToObjects(input) differs based on what format our data files have.</p>
+    <p><code>.csv</code>, <code>.json</code> or <code>.xml</code>.</p>
+    <!-- tabs for csv, json and xml parsing implementation -->
+    <ul id="profileTabs" class="nav nav-tabs nav-tabs--intro">
+      <li class="active" style="width: 33% !important"><a href="#nodejs-format-csv" data-toggle="tab">CSV</a></li>
+      <li style="width: 33% !important"><a href="#nodejs-format-json" data-toggle="tab">JSON</a></li>
+      <li style="width: 34% !important"><a href="#nodejs-format-xml" data-toggle="tab">XML</a></li>
+    </ul>
+    <div class="tab-content tab-content--intro">
+      <!-- csv implementation -->
+      <div role="tabpanel" class="tab-pane active" id="nodejs-format-csv">
+      <p>We will use <a href="https://www.papaparse.com/">Papaparse</a>, a CSV (or delimited text) parser.</p>
+      <p>Via the terminal, while in the <code>phone_calls</code> directory, run <code>npm install papaparse</code> and require the module for it.</p>
+      <div id="gist-6324e74376e3306718a9c0ad72eb08ac">
+<script src="https://gist.github.com/6324e74376e3306718a9c0ad72eb08ac.js?file="></script>
+<noscript>
+<pre>const Grakn = require(&quot;grakn&quot;);
+const fs = require(&quot;fs&quot;);
+const papa = require(&quot;papaparse&quot;);
+...</pre>
+</noscript>
+</div>
+      <p>Moving on, we will write the implementation of <code>parseDataToObjects(input)</code> for parsing <code>.csv</code> files.</p>
+      <div id="gist-aa3952915f08421549cd88b7ced772e1">
+<script src="https://gist.github.com/aa3952915f08421549cd88b7ced772e1.js?file="></script>
+<noscript>
+<pre>function parseDataToObjects(input) {
+  const items = [];
+  
+  return new Promise(function(resolve, reject) {
+    papa.parse(
+      fs.createReadStream(input.dataPath + &quot;.csv&quot;),
+      {
+        header: true, // a Papaparse config option
+        step: function(result, parser) {
+          items.push(result.data[0]);
+        },
+        
+        complete: function() {
+          resolve(items);
+        }
+      }
+    );
+  });
+}</pre>
+</noscript>
+</div>
+      <p>Besides this function, we need to make one more change.</p>
+      <p>Given the nature of CSV files, the object produced will have all the columns of the <code>.csv</code> file as its keys, even when the value is not there, it’ll be taken as a blank string.</p>
+      <p>For this reason, we need to change one line in our person_template function.</p>
+      <p><code>const isNotCustomer = typeof first_name === "undefined";</code></p>
+      <p>becomes</p>
+      <p><code>const isNotCustomer = first_name === “”;</code></p>
+      </div>
+      <!-- json implementation -->
+      <div role="tabpanel" class="tab-pane" id="nodejs-format-json">
+        <p>We will use <a href="https://github.com/uhop/stream-json">stream-json</a> for custom JSON processing pipelines with a minimal memory footprint.</p>
+        <p>Via the terminal, while in the <code>phone_calls</code> directory, run <code>npm install stream-json</code> and require the modules for it.</p>
+        <div id="gist-b1d24637d1ee3b95d0a0a8fb1ce1e086">
+<script src="https://gist.github.com/b1d24637d1ee3b95d0a0a8fb1ce1e086.js?file="></script>
+<noscript>
+<pre>const Grakn = require(&quot;grakn&quot;);
+const fs = require(&quot;fs&quot;);
+const { parser } = require(&quot;stream-json&quot;);
+const { streamArray } = require(&quot;stream-json/streamers/StreamArray&quot;);
+const { chain } = require(&quot;stream-chain&quot;);
+...</pre>
+</noscript>
+</div>
+        <p>Moving on, we will write the implementation of <code>parseDataToObjects(input)</code> for processing <code>.json</code> files.</p>
+        <div id="gist-9c00cf619d6fabff3964a99bbdd659da">
+<script src="https://gist.github.com/9c00cf619d6fabff3964a99bbdd659da.js?file="></script>
+<noscript>
+<pre>function parseDataToObjects(input) {
+  const items = [];
+  return new Promise(function(resolve, reject) {
+    const pipeline = chain([
+      fs.createReadStream(input.dataPath + &quot;.json&quot;),
+      parser(),
+      streamArray()
+    ]);
+
+    pipeline.on(&quot;data&quot;, function(result) {
+      items.push(result.value);
+    });
+
+    pipeline.on(&quot;end&quot;, function() {
+      resolve(items);
+    });
+  });
+}</pre>
+</noscript>
+</div>
+      </div>
+      <!-- xml implementation -->
+      <div role="tabpanel" class="tab-pane" id="nodejs-format-xml">
+        <p>We will use xml-stream, an xml stream parser.</p>
+        <p>Via the terminal, while in the <code>phone_calls</code> directory, run <code>npm install xml-stream</code> and require the module for it.</p>
+        <div id="gist-d9928eec3c8b04278e35da94bd7b6519">
+<script src="https://gist.github.com/d9928eec3c8b04278e35da94bd7b6519.js?file="></script>
+<noscript>
+<pre>const Grakn = require(&quot;grakn&quot;);
+const fs = require(&quot;fs&quot;);
+const xmlStream = require(&quot;xml-stream&quot;);
+...</pre>
+</noscript>
+</div>
+        <p>For parsing XML data, we need to know the target tag name. This needs to be specified for each data file in our <code>inputs</code> deceleration.</p>
+        <div id="gist-e635a264c53de6692cecc5fadf99b1f5">
+<script src="https://gist.github.com/e635a264c53de6692cecc5fadf99b1f5.js?file="></script>
+<noscript>
+<pre>...
+const inputs = [
+  {
+    dataPath: &quot;./data/companies&quot;, 
+    template: companyTemplate,
+    selector: &quot;company&quot;
+  },
+  { 
+    dataPath: &quot;./data/people&quot;, 
+    template: personTemplate,
+    selector: &quot;person&quot;
+  },
+  { 
+    dataPath: &quot;./data/contracts&quot;, 
+    template: contractTemplate,
+    selector: &quot;contract&quot;
+  },
+  { 
+    dataPath: &quot;./data/calls&quot;, 
+    template: callTemplate,
+    selector: &quot;call&quot;
+  }
+];
+...</pre>
+</noscript>
+</div>
+        <p>And now for the implementation of <code>parseDataToObjects(input)</code> for parsing <code>.xml</code> files.</p>
+        <div id="gist-ceb90f5ba2a5c40eff6d376ba0f26de3">
+<script src="https://gist.github.com/ceb90f5ba2a5c40eff6d376ba0f26de3.js?file="></script>
+<noscript>
+<pre>function parseDataToObjects(input) {
+  const items = [];
+  return new Promise((resolve, reject) =&gt; {
+    const pipeline = new xmlStream(
+      fs.createReadStream(input.dataPath + &quot;.xml&quot;)
+    );
+    
+    pipeline.on(`endElement: ${input.selector}`, function(result) {
+      items.push(result);
+    });
+
+    pipeline.on(&quot;end&quot;, () =&gt; {
+      resolve(items);
+    });
+  });
+}</pre>
+</noscript>
+</div>
+      </div>
+    </div>
+    <!-- putting it all together -->
+    <h2>Putting it all together</h2>
+    Here is how our <code>migrate.js</code> looks like for each data format.
+    <!-- tabs for csv, json and xml migrate.js -->
+    <ul id="profileTabs" class="nav nav-tabs nav-tabs--intro">
+      <li class="active" style="width: 33% !important"><a href="#nodejs-complete-csv" data-toggle="tab">CSV</a></li>
+      <li style="width: 33% !important"><a href="#nodejs-complete-json" data-toggle="tab">JSON</a></li>
+      <li style="width: 34% !important"><a href="#nodejs-complete-xml" data-toggle="tab">XML</a></li>
+    </ul>
+    <div class="tab-content tab-content--intro">
+      <!-- csv complete implementation -->
+      <div role="tabpanel" class="tab-pane active" id="nodejs-complete-csv">
+        <div id="gist-709a6afadd4f4f3b319266206ba1fbea">
+<script src="https://gist.github.com/709a6afadd4f4f3b319266206ba1fbea.js?file="></script>
+<noscript>
+<pre>const Grakn = require(&quot;grakn&quot;);
+const fs = require(&quot;fs&quot;);
+const papa = require(&quot;papaparse&quot;);
+
+const inputs = [
+  { dataPath: &quot;./data/companies&quot;, template: companyTemplate },
+  { dataPath: &quot;./data/people&quot;, template: personTemplate },
+  { dataPath: &quot;./data/contracts&quot;, template: contractTemplate },
+  { dataPath: &quot;./data/calls&quot;, template: callTemplate }
+];
+
+// Go
+buildPhoneCallGraph(inputs);
+
+async function buildPhoneCallGraph() {
+  const grakn = new Grakn(&quot;localhost:48555&quot;);
+  const session = grakn.session(&quot;phone_calls&quot;);
+
+  for (input of inputs) {
+    console.log(&quot;Loading from [&quot; + input.dataPath + &quot;] into Grakn ...&quot;);
+    await loadDataIntoGrakn(input, session);
+  }
+
+  session.close();
+}
+
+async function loadDataIntoGrakn(input, session) {
+  const items = await parseDataToObjects(input);
+
+  for (item of items) {
+    let tx;
+    tx = await session.transaction(Grakn.txType.WRITE);
+
+    const graqlInsertQuery = input.template(item);
+    console.log(&quot;Executing Graql Query: &quot; + graqlInsertQuery);
+    await tx.query(graqlInsertQuery);
+    await tx.commit();
+  }
+
+  console.log(
+    `\nInserted ${items.length} items from [${input.dataPath}] into Grakn.\n`
+  );
+}
+
+async function loadDataIntoGrakn(input, session) {
+  const items = await parseDataToObjects(input);
+
+  for (item of items) {
+    const tx = await session.transaction(Grakn.txType.WRITE);
+
+    const graqlInsertQuery = input.template(item);
+    console.log(&quot;Executing Graql Query: &quot; + graqlInsertQuery);
+    tx.query(graqlInsertQuery);
+    tx.commit();
+  }
+
+  console.log(
+    `\nInserted ${items.length} items from [${input.dataPath}] into Grakn.\n`
+  );
+}
+
+function companyTemplate(company) {
+  return `insert $company isa company has name &quot;${company.name}&quot;;`;
+}
+
+function personTemplate(person) {
+  const { first_name, last_name, phone_number, city, age } = person;
+  // insert person
+  let graqlInsertQuery = `insert $person isa person has phone-number &quot;${phone_number}&quot;`;
+  const isNotCustomer = first_name === &quot;&quot;;
+  if (isNotCustomer) {
+    // person is not a customer
+    graqlInsertQuery += &quot; has is-customer false&quot;;
+  } else {
+    // person is a customer
+    graqlInsertQuery += ` has is-customer true`;
+    graqlInsertQuery += ` has first-name &quot;${first_name}&quot;`;
+    graqlInsertQuery += ` has last-name &quot;${last_name}&quot;`;
+    graqlInsertQuery += ` has city &quot;${city}&quot;`;
+    graqlInsertQuery += ` has age ${age}`;
+  }
+
+  graqlInsertQuery += &quot;;&quot;;
+  return graqlInsertQuery;
+}
+
+function contractTemplate(contract) {
+  const { company_name, person_id } = contract;
+  // match company
+  let graqlInsertQuery = `match $company isa company has name &quot;${company_name}&quot;; `;
+  // match person
+  graqlInsertQuery += `$customer isa person has phone-number &quot;${person_id}&quot;; `;
+  // insert contract
+  graqlInsertQuery +=
+    &quot;insert (provider: $company, customer: $customer) isa contract;&quot;;
+  return graqlInsertQuery;
+}
+
+function callTemplate(call) {
+  const { caller_id, callee_id, started_at, duration } = call;
+  // match caller
+  let graqlInsertQuery = `match $caller isa person has phone-number &quot;${caller_id}&quot;; `;
+  // match callee
+  graqlInsertQuery += `$callee isa person has phone-number &quot;${callee_id}&quot;; `;
+  // insert call
+  graqlInsertQuery += &quot;insert $call(caller: $caller, callee: $callee) isa call; &quot; +
+    `$call has started-at ${started_at}; $call has duration ${duration};`;
+  return graqlInsertQuery;
+}
+
+function parseDataToObjects(input) {
+  const items = [];
+  return new Promise(function(resolve, reject) {
+    papa.parse(
+      fs.createReadStream(input.dataPath + &quot;.csv&quot;),
+      {
+        header: true, // a Papaparse config option
+        step: function(results, parser) {
+          items.push(results.data[0]);
+        },
+        complete: function() {
+          resolve(items);
+        }
+      }
+    );
+  });
+}</pre>
+</noscript>
+</div>
+      </div>
+      <!-- json complete implementation -->
+      <div role="tabpanel" class="tab-pane" id="nodejs-complete-json">
+        <div id="gist-0a02bb8cb4b4f00cbbc89b9388da3c86">
+<script src="https://gist.github.com/0a02bb8cb4b4f00cbbc89b9388da3c86.js?file="></script>
+<noscript>
+<pre>const Grakn = require(&quot;grakn&quot;);
+const fs = require(&quot;fs&quot;);
+const { parser } = require(&quot;stream-json&quot;);
+const { streamArray } = require(&quot;stream-json/streamers/StreamArray&quot;);
+const { chain } = require(&quot;stream-chain&quot;);
+
+const inputs = [
+  { dataPath: &quot;./data/companies&quot;, template: companyTemplate },
+  { dataPath: &quot;./data/people&quot;, template: personTemplate },
+  { dataPath: &quot;./data/contracts&quot;, template: contractTemplate },
+  { dataPath: &quot;./data/calls&quot;, template: callTemplate }
+];
+
+// Go
+buildPhoneCallGraph(inputs);
+
+async function buildPhoneCallGraph() {
+  const grakn = new Grakn(&quot;localhost:48555&quot;); // 1
+  const session = grakn.session(&quot;phone_calls&quot;); // 2
+
+  for (input of inputs) {
+    console.log(&quot;Loading from [&quot; + input.dataPath + &quot;] into Grakn ...&quot;);
+    await loadDataIntoGrakn(input, session); // 3
+  }
+
+  session.close(); // 4
+}
+
+async function loadDataIntoGrakn(input, session) {
+  const items = await parseDataToObjects(input);
+
+  for (item of items) {
+    const tx = await session.transaction(Grakn.txType.WRITE);
+
+    const graqlInsertQuery = input.template(item);
+    console.log(&quot;Executing Graql Query: &quot; + graqlInsertQuery);
+    tx.query(graqlInsertQuery);
+    tx.commit();
+  }
+
+  console.log(
+    `\nInserted ${items.length} items from [${input.dataPath}] into Grakn.\n`
+  );
+}
+
+function companyTemplate(company) {
+  return `insert $company isa company has name &quot;${company.name}&quot;;`;
+}
+
+function personTemplate(person) {
+  const { first_name, last_name, phone_number, city, age } = person;
+  // insert person
+  let graqlInsertQuery = `insert $person isa person has phone-number &quot;${phone_number}&quot;`;
+  const isNotCustomer = typeof first_name === &quot;undefined&quot;;
+  if (isNotCustomer) {
+    // person is not a customer
+    graqlInsertQuery += &quot; has is-customer false&quot;;
+  } else {
+    // person is a customer
+    graqlInsertQuery += ` has is-customer true`;
+    graqlInsertQuery += ` has first-name &quot;${first_name}&quot;`;
+    graqlInsertQuery += ` has last-name &quot;${last_name}&quot;`;
+    graqlInsertQuery += ` has city &quot;${city}&quot;`;
+    graqlInsertQuery += ` has age ${age}`;
+  }
+
+  graqlInsertQuery += &quot;;&quot;;
+  return graqlInsertQuery;
+}
+
+function contractTemplate(contract) {
+  const { company_name, person_id } = contract;
+  // match company
+  let graqlInsertQuery = `match $company isa company has name &quot;${company_name}&quot;; `;
+  // match person
+  graqlInsertQuery += `$customer isa person has phone-number &quot;${person_id}&quot;; `;
+  // insert contract
+  graqlInsertQuery +=
+    &quot;insert (provider: $company, customer: $customer) isa contract;&quot;;
+  return graqlInsertQuery;
+}
+
+function callTemplate(call) {
+  const { caller_id, callee_id, started_at, duration } = call;
+  // match caller
+  let graqlInsertQuery = `match $caller isa person has phone-number &quot;${caller_id}&quot;; `;
+  // match callee
+  graqlInsertQuery += `$callee isa person has phone-number &quot;${callee_id}&quot;; `;
+  // insert call
+  graqlInsertQuery += &quot;insert $call(caller: $caller, callee: $callee) isa call; &quot; +
+    `$call has started-at ${started_at}; $call has duration ${duration};`;
+  return graqlInsertQuery;
+}
+
+function parseDataToObjects(input) {
+  const items = [];
+  return new Promise(function(resolve, reject) {
+    const pipeline = chain([
+      fs.createReadStream(input.dataPath + &quot;.json&quot;),
+      parser(),
+      streamArray()
+    ]);
+
+    pipeline.on(&quot;data&quot;, function(result) {
+      items.push(result.value);
+    });
+
+    pipeline.on(&quot;end&quot;, function() {
+      resolve(items);
+    });
+  });
+}</pre>
+</noscript>
+</div>
+      </div>
+      <!-- xml complete implementation -->
+      <div role="tabpanel" class="tab-pane" id="nodejs-complete-xml">
+        <div id="gist-11e7372deefc6b4c05629ec1d2d49ca8">
+<script src="https://gist.github.com/11e7372deefc6b4c05629ec1d2d49ca8.js?file="></script>
+<noscript>
+<pre>const Grakn = require(&quot;grakn&quot;);
+const fs = require(&quot;fs&quot;);
+const xmlStream = require(&quot;xml-stream&quot;);
+
+const inputs = [
+  {
+    dataPath: &quot;./data/companies&quot;,
+    template: companyTemplate,
+    selector: &quot;company&quot;
+  },
+  {
+    dataPath: &quot;./data/people&quot;,
+    template: personTemplate,
+    selector: &quot;person&quot;
+  },
+  {
+    dataPath: &quot;./data/contracts&quot;,
+    template: contractTemplate,
+    selector: &quot;contract&quot;
+  },
+  {
+    dataPath: &quot;./data/calls&quot;,
+    template: callTemplate,
+    selector: &quot;call&quot;
+  }
+];
+
+// Go
+buildPhoneCallGraph(inputs);
+
+async function buildPhoneCallGraph() {
+  const grakn = new Grakn(&quot;localhost:48555&quot;);
+  const session = grakn.session(&quot;phone_calls&quot;);
+
+  for (input of inputs) {
+    console.log(&quot;Loading from [&quot; + input.dataPath + &quot;] into Grakn ...&quot;);
+    await loadDataIntoGrakn(input, session);
+  }
+
+  session.close();
+}
+
+async function loadDataIntoGrakn(input, session) {
+  const items = await parseDataToObjects(input);
+
+  for (item of items) {
+    let tx;
+    tx = await session.transaction(Grakn.txType.WRITE);
+
+    const graqlInsertQuery = input.template(item);
+    console.log(&quot;Executing Graql Query: &quot; + graqlInsertQuery);
+    tx.query(graqlInsertQuery);
+    tx.commit();
+  }
+
+  console.log(
+    `\nInserted ${items.length} items from [${input.dataPath}] into Grakn.\n`
+  );
+}
+
+function companyTemplate(company) {
+  return `insert $company isa company has name &quot;${company.name}&quot;;`;
+}
+
+function personTemplate(person) {
+  const { first_name, last_name, phone_number, city, age } = person;
+  // insert person
+  let graqlInsertQuery = `insert $person isa person has phone-number &quot;${phone_number}&quot;`;
+  const isNotCustomer = typeof first_name === &quot;undefined&quot;;
+  if (isNotCustomer) {
+    // person is not a customer
+    graqlInsertQuery += &quot; has is-customer false&quot;;
+  } else {
+    // person is a customer
+    graqlInsertQuery += ` has is-customer true`;
+    graqlInsertQuery += ` has first-name &quot;${first_name}&quot;`;
+    graqlInsertQuery += ` has last-name &quot;${last_name}&quot;`;
+    graqlInsertQuery += ` has city &quot;${city}&quot;`;
+    graqlInsertQuery += ` has age ${age}`;
+  }
+
+  graqlInsertQuery += &quot;;&quot;;
+  return graqlInsertQuery;
+}
+
+function contractTemplate(contract) {
+  const { company_name, person_id } = contract;
+  // match company
+  let graqlInsertQuery = `match $company isa company has name &quot;${company_name}&quot;; `;
+  // match person
+  graqlInsertQuery += `$customer isa person has phone-number &quot;${person_id}&quot;; `;
+  // insert contract
+  graqlInsertQuery +=
+    &quot;insert (provider: $company, customer: $customer) isa contract;&quot;;
+  return graqlInsertQuery;
+}
+
+function callTemplate(call) {
+  const { caller_id, callee_id, started_at, duration } = call;
+  // match caller
+  let graqlInsertQuery = `match $caller isa person has phone-number &quot;${caller_id}&quot;; `;
+  // match callee
+  graqlInsertQuery += `$callee isa person has phone-number &quot;${callee_id}&quot;; `;
+  // insert call
+  graqlInsertQuery += &quot;insert $call(caller: $caller, callee: $callee) isa call; &quot; +
+    `$call has started-at ${started_at}; $call has duration ${duration};`;
+  return graqlInsertQuery;
+}
+
+function parseDataToObjects(input) {
+  const items = [];
+  return new Promise((resolve, reject) =&gt; {
+    const pipeline = new xmlStream(
+      fs.createReadStream(input.dataPath + &quot;.xml&quot;)
+    );
+
+    pipeline.on(`endElement: ${input.selector}`, function(result) {
+      items.push(result);
+    });
+
+    pipeline.on(&quot;end&quot;, () =&gt; {
+      resolve(items);
+    });
+  });
+}</pre>
+</noscript>
+</div>
+      </div>
+    </div>
+    <!-- nodejs: time to load -->
+    <h2 id="timetoload">Time to Load</h2>
+    <p>Run <code>npm run migrate.js</code></p>
+    <p>Sit back, relax and watch the logs while the data starts pouring into Grakn.</p>
+    <!-- node.js ... so far with the migration -->
+    <h3 id="sofarwiththemigration">… so far with the migration</h3>
+    <p>We started off by setting up our project and positioning the data files.</p>
+    <p>Next we went on to set up the migration mechanism, one that was independent of the data format.</p>
+    <p>Then, we went ahead and wrote a template function for each concept. A template’s sole purpose was to construct a Graql insert query for each data item.</p>
+    <p>After that, we learned how files with different data formats can be parsed into Javascript objects.</p>
+    <p>Lastly, we ran <code>npm run migrate.js</code> which fired the <code>buildPhoneCallGraph</code> function with the given <code>inputs</code>. This loaded the data into our Grakn knowledge graph.</p>
+  </div>
+
+</div>
+<p><br /></p>
+
+<h2 id="next">Next</h2>
+
+<p>Now that we have some actual data in our knowledge graph, we can go ahead and query for insights.</p>
+
+
+    <div class="tags">
+        
+        <b>Tags: </b>
+        
+        
+        
+        <a href="/tag_migration.html" class="btn btn-default navbar-btn cursorNorm" role="button">migration</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    </div>
+
+    
+
+</div>
+
+<!-- <hr class="shaded"/> -->
+
+            <div class="footer">
+    <div class="container footer__container footer__social">
+       <div class="footer__social__buttons"><a href="https://twitter.com/graknlabs" target="_blank"><i class="fa fa-twitter"></i></a><a href="https://www.facebook.com/groups/1913787625527508/" target="_blank"><i class="fa fa-facebook-f"></i></a><a href="http://linkedin.com/organization/graknlabs" target="_blank"><i class="fa fa-linkedin"></i></a><a href="https://github.com/graknlabs/grakn" target="_blank"><i class="fa fa-github"></i></a></div>
+       <div class="footer__social__signup"><input id="footer-subscribe-input" type="text" value="" placeholder="Subscribe to our newsletter"><button id="footer-subscribe-btn" class="button-footer--red">Subscribe</button></div>
+       <span id="footer__consent">By submitting your personal data, you consent to emails from Grakn. See our <a href="https://grakn.ai/privacy-policy" className="animated__link animated__link--purple">Privacy Policy</a></span>
+    </div>
+    <div class="container footer__container">
+       <div class="footer__block">
+          <div class="footer__block__header">GET IN TOUCH</div>
+          <div class="footer__block__links">
+             <a href="https://github.com/graknlabs/grakn" target="_blank" class="footer__block__links--github">
+                <img src="/images/github.svg" alt="github"><strong id="download_footer">Grakn</strong><!-- react-text: 237 --> on Github<!-- /react-text -->
+             </a>
+             <a class="footer__block__links--slack" href="https://grakn.ai/slack">
+                <img src="/images/slack-mark.svg" alt="slack"><strong>Grakn</strong><!-- react-text: 241 --> on Slack<!-- /react-text -->
+             </a>
+             <a href="mailto:enterprise@grakn.ai">
+                <i class="fa fa-phone" aria-hidden="true"></i><!-- react-text: 244 -->Get in touch<!-- /react-text -->
+             </a>
+             <div class="footer__block__links--address">
+                <span>
+                   <i class="fa fa-map-marker" aria-hidden="true"></i><!-- react-text: 248 -->Unit 22, 8 Hornsey St.<!-- /react-text -->
+                </span>
+                <span> London N7 8EG, UK </span><a href="mailto:info@grakn.ai">info@grakn.ai</a>
+             </div>
+          </div>
+       </div>
+       <div class="footer__block">
+          <div class="footer__block__header">PRODUCTS</div>
+          <div class="footer__block__links"><a href="https://grakn.ai/grakn-core">Grakn Core</a><a href="https://grakn.ai/grakn-kgms">Grakn KGMS</a><a href="https://dev.grakn.ai/documentation/get-started/quickstart-tutorial">Quickstart</a><a href="https://grakn.ai/download">Install</a></div>
+       </div>
+       <div class="footer__block">
+          <div class="footer__block__header">SOLUTIONS</div>
+          <div class="footer__block__links"><a href="https://grakn.ai/deployment">Deployment</a><a href="https://grakn.ai/services">Services</a><a href="https://grakn.ai/support">Support</a></div>
+       </div>
+       <div class="footer__block">
+          <div class="footer__block__header">USE CASES</div>
+          <div class="footer__block__links"><a href="https://grakn.ai/usecase-bots">Intelligent Bots</a><a href="https://grakn.ai/usecase-search">Semantic Search</a><a href="https://grakn.ai/usecase-finance">Financial Services</a><a href="https://grakn.ai/usecase-health">Life Sciences</a><a href="https://grakn.ai/usecase-security">Security</a></div>
+       </div>
+       <div class="footer__block">
+          <div class="footer__block__header">DEVELOPER</div>
+          <div class="footer__block__links"><a href="https://dev.grakn.ai/academy/">Academy</a><a href="https://dev.grakn.ai">Documentation</a><a href="https://grakn.ai/community">Community</a><a href="https://discuss.grakn.ai/">Discuss</a><a href="https://github.com/graknlabs/grakn" target="_blank">Github</a></div>
+       </div>
+       <div class="footer__block">
+          <div class="footer__block__header">COMPANY</div>
+          <div class="footer__block__links"><a href="https://blog.grakn.ai/" target="_blank">Blog</a><a href="https://grakn.ai/careers">Careers</a><a href="https://grakn.ai/about">About</a></div>
+       </div>
+    </div>
+ </div>
+        </div>
+    </div>
+</div>
+<!-- /.container -->
+</body>
+
+
+<!-- the google_analytics_id gets auto inserted from the config file -->
+
+
+
+<script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-72414051-1','auto');ga('require','displayfeatures');ga('send','pageview');</script>
+
+
+</html>

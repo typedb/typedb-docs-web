@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definit...">
-<meta name="keywords" content="special_layouts,  json, scrolling, scrollto, jquery plugin, GRAKN.AI, Grakn Labs, grakn, graql, grakn.ai, knowledge graph, knowledge engineering, knowledge base, distributed knowledge graph, development platform, developer tool, data platform, programming langauge, query langauge, database, semantic database, distributed semantic database, distributed database, graph database, semantic search, data exploration, recommendation system, knowledge management, real-time analytics, advanced analytics, reasoning engine, inference engine, expert systems, semantic applications, research engines, data management, business intelligence, big data, semantic web, semantic data, knowledge representation, automated reasoning, semantic network, knowledge ontology, semantic graph, ontology engineering, graph based knowledge representation, artificial intelligence,">
-<title>Scroll layout | GRAKN.AI</title>
-<meta property="og:description" content="This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definit...">
-<meta property="og:title" content="Scroll layout | GRAKN.AI" >
+<meta name="description" content="How to use the Grakn Workbase Visualiser.">
+<meta name="keywords" content="getting-startedgraql,  setup, getting started, visualiser, workbase, visualizer, GRAKN.AI, Grakn Labs, grakn, graql, grakn.ai, knowledge graph, knowledge engineering, knowledge base, distributed knowledge graph, development platform, developer tool, data platform, programming langauge, query langauge, database, semantic database, distributed semantic database, distributed database, graph database, semantic search, data exploration, recommendation system, knowledge management, real-time analytics, advanced analytics, reasoning engine, inference engine, expert systems, semantic applications, research engines, data management, business intelligence, big data, semantic web, semantic data, knowledge representation, automated reasoning, semantic network, knowledge ontology, semantic graph, ontology engineering, graph based knowledge representation, artificial intelligence,">
+<title>Visualising a Grakn knowledge graph | GRAKN.AI</title>
+<meta property="og:description" content="How to use the Grakn Workbase Visualiser.">
+<meta property="og:title" content="Visualising a Grakn knowledge graph | GRAKN.AI" >
 <meta property="og:image" content="/images/og-image.png" >
 <link rel="stylesheet" href="/css/syntax.css">
 
@@ -251,7 +251,7 @@ src="https://www.facebook.com/tr?id=2009892122581066&ev=PageView&noscript=1" alt
                 
                 dataSource: '/search.json',
                 
-                searchResultTemplate: '<li><a href="{url}" title="Scroll layout">{title}</a></li>',
+                searchResultTemplate: '<li><a href="{url}" title="Visualising a Grakn knowledge graph">{title}</a></li>',
                 noResultsText: '<li><a class="empty">No results found</a></li>',
                 limit: 10,
                 fuzzy: true
@@ -562,7 +562,7 @@ src="https://www.facebook.com/tr?id=2009892122581066&ev=PageView&noscript=1" alt
             
             
             
-            <li><a href="/docs/workbase/visualiser">Visualiser</a></li>
+            <li class="active"><a href="/docs/workbase/visualiser">Visualiser</a></li>
             
             
             
@@ -789,7 +789,7 @@ src="https://www.facebook.com/tr?id=2009892122581066&ev=PageView&noscript=1" alt
             
 
 <div class="post-header">
-   <h1 class="post-title-main">Scroll layout</h1>
+   <h1 class="post-title-main">Visualising a Grakn knowledge graph</h1>
 </div>
 
 
@@ -799,7 +799,7 @@ src="https://www.facebook.com/tr?id=2009892122581066&ev=PageView&noscript=1" alt
 <div class="post-content">
 
    
-    <div class="summary">This page demonstrates how you the integration of a script called ScrollTo, which is used here to link definitions of a JSON code sample to a list of definitions for that particular term. The scenario here is that the JSON blocks are really long, with extensive nesting and subnesting, which makes it difficult for tables below the JSON to adequately explain the term in a usable way.</div>
+    <div class="summary">How to use the Grakn Workbase Visualiser.</div>
    
 
     
@@ -835,235 +835,224 @@ $('#toc').on('click', 'a', function() {
     
 
   
+<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note:</b> These instructions refer to the <b><a href="https://github.com/graknlabs/grakn/releases/tag/v1.3.0">1.3.0</a></b> release of GRAKN.AI. Later versions of the product may include some changes to the user experience, and you may find that some instructions become out-dated. We will endeavour to update information on this page as soon after a release as is possible. The instructions here refer to use of the visualiser on macOS, and screen grabs were taken in Safari.</div>
 
+<p><img src="/images/workbase/visualiser.png" alt="Visualiser UI" /></p>
 
+<h2 id="introduction">Introduction</h2>
+<p>The Grakn visualiser provides a graphical tool to inspect and query your knowledge graph data. This article shows how to run it with a basic example and introduces the visualiser’s key features.</p>
 
-<script src="../js/jquery.scrollTo.min.js"></script>
-    <!-- local scroll must come after scrollTo, because localScroll is based on scrollTo, which is based on jQuery -->
-<script src="../js/jquery.localScroll.min.js"></script>
+<h2 id="loading-an-example-knowledge-graph">Loading an Example Knowledge Graph</h2>
+<p>If you have not yet set up the Grakn environment, please see the <a href="../get-started/setup-guide">Setup guide</a>.</p>
 
-<script>
+<p>You can find the <em>basic-genealogy.gql</em> example that we will work with in the <em>examples</em> directory of the Grakn distribution zip. You can also find this file on <a href="https://github.com/graknlabs/grakn/blob/master/grakn-dist/src/examples/basic-genealogy.gql">Github</a>.</p>
 
-$( document ).ready(function() {
-$('#small-box-links').localScroll({
-           target:'#definition-box-container',
-           showSpeed: 1000,
-           hash: true,
-           easing: 'swing',
-           onAfter:function(){
-          $("#definition-box-container div a").addClass("active");
-          $("#definition-box-container div a").removeClass("active");
-          $("#definition-box-container div").removeClass("active");
-           $(window.location.hash).addClass("active");
-  }
-});
+<p>The first step is to load the schema and data into Grakn. You need to use your terminal to do this, as the visualiser is a read-only interface to a knowledge graph. From the terminal, start Grakn, and load the file as follows:</p>
 
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./grakn server start
+./graql console <span class="nt">-f</span> ./examples/basic-genealogy.gql <span class="nt">-k</span> <span class="s2">"family"</span>
+</code></pre></div></div>
 
-});
-</script>
+<p>To illustrate the use of different keyspaces we will use a keyspace called <code class="highlighter-rouge">family</code> in this example. You can simply use the default (<code class="highlighter-rouge">grakn</code>) keyspace if you prefer, by omitting the -k argument.</p>
 
-<!-- documentation for localScroll function: http://flesler.blogspot.com/2007/10/jquerylocalscroll-10.html -->
-    <style type="text/css">
- 
-   #definition-box-container {
-        border: 0px solid #dedede;
-        border-radius: 4px;
-        max-height: 500px;
-        overflow: scroll;
-        padding-left:5px;
-        border-radius:5px;
-    }
+<p>You can test in the Graql shell that all has loaded correctly. For example:</p>
 
-    #json-box-container {
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./graql console <span class="nt">-k</span> family
+<span class="o">&gt;&gt;&gt;</span>match <span class="nv">$p</span> isa person, has identifier <span class="nv">$i</span><span class="p">;</span>
+</code></pre></div></div>
 
-      border: 1px solid #dedede;
-      border-radius: 4px;
-      max-height:500px;
-      overflow: scroll;
-    }
+<h2 id="keyspace-handler">Keyspace Handler</h2>
 
-    #small-box-links {
-      float: left;
-    }
+<p>At the top right corner. there is the keyspace handler which allows you to select a keyspace to visualise.</p>
 
-    #definition-box-container .active {
-     background-color: #FFFBCC;
-    }
-    
-    div#definition-box-container div {
-      padding: 10px;
-}
+<p><img src="/images/workbase/keyspace_handler.png" alt="Visualiser UI" /></p>
 
-    @media (min-height: 700px)  {
-       #json-box-container {
-           max-height:500px;
-         }
-           #definition-box-container  {
-          max-height: 500px;
-  }
-    }
+<h2 id="menu-bar">Menu Bar</h2>
 
-     @media (min-height: 800px)  {
-       #json-box-container {
-           max-height:600px;
-    }
-        #definition-box-container  {
-          max-height: 600px;
-  }
-  }
+<p>At the top center, there is the menu bar where you can access the main functionalities related to your Graql queries.</p>
 
-    @media (min-height: 900px)  {
-       #json-box-container {
-           max-height:700px;
-    }
-        #definition-box-container  {
-          max-height: 700px;
-  }
-  }
+<p><img src="/images/workbase/menu_bar.png" alt="Visualiser UI" /></p>
 
-     @media (min-height: 1000px)  {
-       #json-box-container {
-           max-height:800px;
-    }
-        #definition-box-container  {
-          max-height: 800px;
-  }
-  }
+<p>From left to right:</p>
 
-    @media (min-height: 1100px)  {
-       #json-box-container {
-           max-height:900px;
-    }
-        #definition-box-container  {
-          max-height: 900px;
-  }
-  }
+<ul>
+  <li>
+    <p><b><a href="#save-a-query">Starred Queries</a></b> button - List all the saved queries which you can use or delete</p>
+  </li>
+  <li>
+    <p><b><a href="#make-a-query">Types Panel</a></b> button - Provides a list of concepts that are available in your keyspace, divided into “Entities”, “Attributes”, “Relationships”.</p>
+  </li>
+  <li><b><a href="#make-a-query">Graql Editor</a></b> - Input box for your graql queries
+    <ul>
+      <li><code class="highlighter-rouge">enter</code> - run query</li>
+      <li><code class="highlighter-rouge">shift + enter</code> - will add a new line to the editor (useful for long queries)</li>
+      <li><code class="highlighter-rouge">shift + up/down</code> - navigate through previous graql queries</li>
+    </ul>
+  </li>
+  <li>
+    <p><b><a href="#save-a-query">Save Query</a></b> - Allows user to save the current query to starred queries</p>
+  </li>
+  <li>
+    <p><b><a href="#make-a-query">Execute Query</a></b> button - executes the graql query.</p>
+  </li>
+  <li>
+    <p><b>Clear Graql Editor</b> button - clears the graql editor</p>
+  </li>
+  <li><b><a href="#query-settings">Query Settings</a></b> button - provides the user with certain settings for queries</li>
+</ul>
 
+<h2 id="context-menu">Context Menu</h2>
 
-    </style>
+<ul>
+  <li>
+    <p><b><a href="#change-the-display">Node Settings</a></b> - Open the node settings panel to show different information about the node on the graph and change the colour or the nodes of the same type.</p>
+  </li>
+  <li>
+    <p><b>Delete Node</b> - Delete a node or multiple nodes from the graph.</p>
+  </li>
+  <li>
+    <p><b><a href="#explain-an-inferred-concept">Explain</a></b> - If the node is inferred, show the relationships and nodes which explain how it is inferred.</p>
+  </li>
+  <li>
+    <p><b><a href="#shortest-path">Shortest Path</a></b> - Show shortest path between two nodes.</p>
+  </li>
+  <li>
+    <p><b>Clear Graph</b> - Clear everything on the graph.</p>
+  </li>
+</ul>
 
+<h2 id="manage-keyspace">Manage Keyspace</h2>
 
-<div class="container">
-<div class="row">
- 
-<div id="small-box-links">
+<p>Shows the list of keyspaces and allows you to delete an exisiting one or create a new one.</p>
 
-<div class="col-md-6">
-<div id="json-box-container">
-<pre>
-{
-  <a href="#apples">"apples"</a>: "red fruit at the store",
-  <a href="#bananas">"bananas"</a>: "yellow bananas in a bunch",
-  <a href="#carrots">"carrots"</a>: "orange vegetables that grow in the ground",
-  <a href="#dingbats">"dingbats"</a>: "a type of character symbol on a computer",
-  <a href="#eggs">"eggs"</a>: "chickens lay them, and people eat them",
-  <a href="#falafel">"falafel"</a>: "a Mediterranean sandwich consisting of lots of different stuff i don't know much about",
-  <a href="#giraffe">"giraffe"</a>: "tall animal, has purple tongue",
-  <a href="#hippo">"hippo"</a>: "surprisingly dangerous amphibian",
-  <a href="#igloo">"igloo"</a>: "an ice shelter made by eskimos",
-  <a href="#jeep">"jeep</a>: "the only car that starts with a j",
-  <a href="#kilt">"kilt"</a>: "something worn by scottish people, not a dress",
-  <a href="#lamp">"lamp"</a>: "you use it to read by your bedside at night"
-  <a href="#manifold">"manifold"</a>: "an intake mechanism on a car, like a valve, i think",
-  <a href="#octopus">"octopus"</a>: "eight tentacles, shoots ink, lives in dark caves, very mysterious",
-  <a href="#paranoia">"paranoia"</a>: "the constant feeling that others are out to get you, conspiring against your success",
-  <a href="#qui">"qui"</a>: "a life force that runs through your body",
-  <a href="#radical">"radical"</a>: "someone who opposes the status quo in major ways",
-  <a href="#silly">"silly"</a>: "how I feel writing this dummy copy",
-  <a href="#taffy">"taffy"</a>: "the sweets children like the most and dentists hate the worst",
-  <a href="#umbrella">"umbrella"</a>: "an invention that has not had any advancements in 200 years",
-  <a href="#vampire">"vampire"</a>: "a paranormal figure that is surprisingly in vogue despite its basic nature",
-  <a href="#washington">"washington"</a>: "the place where tom was born",
-  <a href="#xylophone">"xylophone"</a>: "some kind of pinging instrument used to sound chime-like notes",
-  <a href="#yahoo">"yahoo"</a>: "an expression of exuberance, said under breath when something works right",
-  <a href="#zeta">"zeta"</a>: "the way british people pronounce z",
-  <a href="#alpha">"alpha"</a>: "the original letter of the alphabet, which has since come to mean the first. however, i think the original symbol of alpha is actually an ox. it is somewhat of a mystery to linquists as to the exact origin of the letter alpha, but it basically represents the dawn of the alphabet, which proved to be a huge step forward for human thought and expression.",
-  <a href="#beta">"beta"</a>: "the period of time when something is finished but undergoing testing by a group of people.",
-  <a href="#cappa">"cappa"</a>: "how italians refer to their baseball caps",
-  <a href="#dunno">"dunno"</a>: "informal expression for 'don't know'"
-  }
-      
-</pre>
+<p><img src="/images/workbase/manage_keyspaces.png" alt="Manage keyspaces" /></p>
 
-</div><!-- end json-box-container-->
-</div> <!-- end col-md-6-->
+<h2 id="interacting-with-the-graph">Interacting With The Graph</h2>
 
-<div class="col-md-3">
+<h3 id="make-a-query">Make a Query</h3>
 
-<div id="definition-box-container">
+<p>The graph will be empty at this point. You can submit queries by typing them into the form in the middle of the top menu bar. You will then need to click <code class="highlighter-rouge">&gt;</code> or hit <code class="highlighter-rouge">enter</code> to visualise the knowledge graph. For example:</p>
 
+<pre><code class="language-graql">match $x isa person, has firstname "John"; get;
+</code></pre>
 
-    <div id="apples"><h5>apples</h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer magna massa, euismod sed rutrum at, ullamcorper quis tellus. Vestibulum erat purus, aliquet sit amet pellentesque eget, tempus at ante. Nulla justo nisi, elementum nec nisi eget, consectetur varius tortor. </div>
+<p><img src="/images/workbase/john_query.png" alt="John query" /></p>
 
-    <div id="bananas"><h5>bananas</h5>Curabitur quis nibh sed eros viverra tempus et quis lorem. Nulla convallis sit amet risus vitae rutrum. Nulla at faucibus lectus. Pellentesque tortor nisl, interdum ac quam non, egestas congue massa. Vestibulum non porttitor lacus. Nam tincidunt arcu lectus. Donec eget ornare neque, hendrerit ornare lectus. In ac pretium odio.</div>
+<p>You can zoom the display in and out, and move the nodes around for better visibility.</p>
 
-    <div id="carrots"><h5>carrots</h5>Vivamus pulvinar vestibulum pharetra. Vivamus vitae diam iaculis, posuere mi sed, dignissim massa. Nunc vitae aliquet urna. Proin sed pulvinar ex. Maecenas nisl lorem, rutrum sit amet hendrerit sed, posuere at odio. Sed consectetur semper tristique. Vivamus finibus varius felis at convallis. Fusce in dictum nunc.</div>
+<p>Alternatively, for simple visualisation, you can click the Types dropdown in the top menu to list out what is in the schema. For our example, go to the Entities dropdown and choose <code class="highlighter-rouge">person</code>. The query specific to your selection will be displayed in the form with a default offset and result limit, which is applied by the visualiser <code class="highlighter-rouge">offset 0; limit 30</code>.</p>
 
-    <div id="dingbats"><h5>dingbats</h5>Curabitur feugiat lorem eget elit ullamcorper tincidunt. In euismod diam aliquet tortor fermentum tempor. Fusce quam felis, commodo viverra orci vitae, scelerisque aliquet risus. </div>
+<pre><code class="language-graql">match $x isa person; offset 0; limit 30; get;
+</code></pre>
 
-    <div id="eggs"><h5>eggs</h5>Duis est nunc, fringilla eu ligula et, varius dignissim dui. Vivamus in tellus vitae ipsum vehicula fermentum at congue tellus. Suspendisse fermentum, magna vitae aliquet sodales, tellus nisi rutrum arcu, vitae auctor dolor quam ac tellus. Cras posuere augue erat, in sagittis quam lacinia id.</div>
+<p>You can change the offset and limit on the number of results as <a href="#limit-query">described below</a>.</p>
 
-    <div id="falafel"><h5>falafel</h5>Praesent auctor a enim non lacinia. Integer sodales aliquet mi vel dapibus. Donec consequat justo eget nisi lacinia, eu sodales ligula molestie. Sed sapien nulla, rhoncus at elementum a, </div>
+<p><img src="/images/workbase/types_panel.png" alt="Visualiser UI" /></p>
 
-    <div id="giraffe"><h5>giraffe</h5>Nullam venenatis at lectus sed pharetra. Sed hendrerit ligula lectus, non pellentesque diam faucibus sit amet. Aliquam dictum hendrerit pellentesque. Cras eu nisl sagittis, faucibus velit sit amet, sagittis odio. Donec vulputate ex vitae purus</div>
+<h3 id="save-a-query">Save a Query</h3>
 
-    <div id="hippo"><h5>hippo</h5>Cras nec pretium nulla. Suspendisse tempus tortor vel venenatis pulvinar. Integer varius tempor enim fringilla tincidunt. Phasellus magna turpis, auctor vitae elit eget, fringilla pellentesque est. Phasellus ut porta risus. Curabitur iaculis sapien sed venenatis auctor. Integer eu orci at lectus eleifend auctor id rutrum urna.</div>
+<p>If you make a query that you think you’ll need to repeat regularly, and don’t want to type it, or copy and paste it each time, you can save your query. The small plus sign in a circle on the right hand side of the form will bring up a tool tip, allowing you to assign it a name and save it. Saved queries can then be retrieved using the star button on the left hand side of the menu bar.</p>
 
-    <div id="igloo"><h5>igloo</h5>Suspendisse tempus tortor vel venenatis pulvinar. Integer varius tempor enim fringilla tincidunt. Phasellus magna turpis, auctor vitae elit eget, fringilla pellentesque est. Phasellus ut porta risus.  </div>
+<p><img src="/images/workbase/save_query.png" alt="Visualiser UI" />  <img src="/images/workbase/starred_queries.png" alt="Visualiser UI" /></p>
 
-    <div id="jeep"><h5>jeep</h5>Nulla vitae metus rutrum, condimentum orci nec, maximus est. Aenean sit amet ante nec elit dignissim faucibus eget quis quam. </div>
+<h3 id="investigate-a-node">Investigate a Node</h3>
 
-    <div id="kilt"><h5>kilt</h5>Morbi maximus, erat vel rhoncus sagittis, dolor purus dignissim ante, sit amet pharetra ex justo vitae ipsum. Nulla consequat interdum neque</div>
+<p>A single click on any node in the knowledge graph brings up a tool tip of information about the node at the top right hand side of the screen. The information displayed includes the ID of the node, its type and any attributes associated with it, as shown in the figure below.</p>
 
-    <div id="lamp"><h5>lamp</h5>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquam dapibus blandit. Donec porta, enim hendrerit venenatis vulputate, orci diam lacinia nibh, faucibus rutrum dolor dui ut quam.</div>
+<p><img src="/images/workbase/node_panel.png" alt="Single click" /></p>
 
-    <div id="manifold"><h5>manifold</h5>Donec finibus massa vel nisi ullamcorper, vitae ornare enim euismod. Aliquam auctor quam erat. Duis interdum rutrum orci, ac interdum urna pharetra eget.</div>
+<p>A double click on a node will bring up the relationships associated with the node, as shown below. The first doule click will load a single batch of relationships as per the <a href="#limit-neighbours">neighbours limit</a>. Any consequent double click will load the next batch of relationships.</p>
 
-    <div id="octopus"><h5>octopus</h5>Nulla id egestas enim. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti. Curabitur eu lobortis ligula.</div>
+<p><img src="/images/workbase/double_click.png" alt="Double click" /></p>
 
-    <div id="paranoia"><h5>paranoia</h5>Aenean hendrerit mauris ipsum, non laoreet ipsum luctus vel. Curabitur tristique auctor elit ut pulvinar. Quisque arcu arcu, condimentum aliquam sodales nec, dignissim nec justo. Nunc tristique sem felis, pharetra euismod lorem volutpat sed. Ut porttitor metus sit amet elit rhoncus semper.</div>
+<p>Holding shift and double clicking on a node also brings up the attributes associated with it, displaying them in the knowledge graph, as shown below. The first shift + doule click will load a single batch of attributes as per the <a href="#limit-neighbours">neighbours limit</a>. Any consequent shift + double click will load the next batch of attributes.</p>
 
-    <div id="qui"><h5>qui</h5>Quisque rhoncus cursus felis vel elementum. Vestibulum dignissim molestie tortor nec facilisis. Praesent a nibh condimentum, porta nulla egestas, auctor eros</div>
+<p><img src="/images/workbase/shift_click.png" alt="shift double click" /></p>
 
-    <div id="radical"><h5>radical</h5>Etiam hendrerit interdum tellus, at aliquet sapien egestas in. Aenean eu urna nisl. Cras vitae risus pharetra, elementum mauris nec, auctor lectus. Fusce pellentesque venenatis dictum. Proin at augue at mauris finibus semper ultricies sed eros.</div>
+<p>You may also select multiple nodes by holding Cmd/Ctrl and clicking on nodes.</p>
 
-    <div id="silly"><h5>silly</h5>Praesent pulvinar consequat posuere. Morbi egestas rhoncus felis, id fermentum metus lobortis in. Vestibulum nibh orci, euismod eget vestibulum nec, vehicula vitae tortor. Aenean ullamcorper enim nunc, eu auctor ligula auctor eget.</div>
+<h3 id="change-the-display">Change the Display</h3>
 
-    <div id="taffy"><h5>taffy</h5>Etiam et arcu vel lacus aliquet lobortis in in massa. Nunc non mollis elit. Aenean accumsan orci quis risus aliquam, non gravida nulla molestie. Mauris pharetra libero et magna aliquam aliquam. Integer quis luctus dolor. </div>
+<p>Selecting <code class="highlighter-rouge">Node Settings</code> in the context menu opens the node settings panel on the lower left hand side of the screen. You can use this to show different information about a node on the graph and change the colour of the nodes.</p>
 
-    <div id="umbrella"><h5>umbrella</h5>Fusce molestie finibus malesuada. Nullam ac egestas quam, id venenatis ligula. Pellentesque pulvinar elit et vestibulum fringilla. Cras volutpat sed quam ornare scelerisque. Vivamus volutpat ante pretium scelerisque tempus. Etiam venenatis tempor nisl dignissim sollicitudin. Curabitur ac risus vitae dolor pretium posuere vel vitae diam. Donec in odio arcu.</div>
+<p><img src="/images/workbase/node_settings_panel.png" alt="Single click" /></p>
 
-    <div id="vampire"><h5>vampire</h5>Vestibulum pretium condimentum commodo. Integer placerat leo non ipsum ultrices, ac convallis elit varius. Vestibulum ultricies, justo eu rutrum molestie, quam arcu euismod sapien, vel gravida ipsum nulla eget erat. </div>
+<h3 id="query-settings">Query Settings</h3>
 
-    <div id="washington"><h5>washington</h5>Nunc ac quam eu risus dictum sodales. Nam ac risus iaculis, aliquet sem eu, mollis mauris. Curabitur pretium facilisis orci ut lacinia. Sed fermentum leo a odio blandit rutrum. Phasellus at nibh vel odio interdum vulputate ac eget urna. Nam eu arcu dapibus, sodales ligula nec, volutpat ipsum. Suspendisse auctor tellus vitae libero euismod venenatis. </div>
+<p>Query Settings can be accessed under the cog icon at the right hand of the horizontal icon set. The following settings are available:</p>
 
-    <div id="xylophone"><h5>xylophone</h5>Sed molestie lobortis ante sit amet hendrerit. Sed pharetra nisi sed interdum pulvinar. Nunc efficitur erat non aliquam mattis. Sed id nisl mattis lacus vehicula volutpat vitae vel massa. Curabitur interdum velit odio, vitae sollicitudin nunc rutrum non. </div>
+<p><img src="/images/workbase/query_settings.png" alt="Person query" /></p>
 
-    <div id="yahoo"><h5>yahoo</h5>Nunc commodo consectetur scelerisque. Proin fermentum ligula ac quam finibus tincidunt. Aenean venenatis nisi et semper semper. Nunc sodales velit ipsum, ac pellentesque augue placerat eu.</div>
+<h4 id="limit-query">Limit Query</h4>
 
-    <div id="zeta"><h5>zeta</h5>Nullam ac suscipit odio. Curabitur viverra arcu ut egestas sollicitudin. Fusce sodales varius lectus ut tristique. Etiam eget nunc ornare, aliquet tortor eget, consequat mauris. Integer sit amet fermentum augue. </div>
+<p>You can change the offset and limit on the number of results returned by editing the value directly in the submission form, or by adjusting the Query Limit setting. (This limit will only be enforced only when no <code class="highlighter-rouge">offset</code> is specified by the user in the query)</p>
 
-    <div id="alpha"><h5>alpha</h5>Praesent nec neque ac tellus sodales eleifend nec vel ipsum. Cras et semper risus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer mattis leo nisl, a tincidunt lectus tristique eget. Donec finibus lobortis viverra. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus egestas pulvinar odio non vehicula. Morbi malesuada leo eget nisl sagittis aliquet.</div>
+<h4 id="limit-neighbours">Limit Neighbours</h4>
 
+<p>Allows the user to limit the nodes loaded when double clicking or shift + double clicking on a node.</p>
 
-    <div id="beta"><h5>beta</h5>Mauris a libero vel enim pharetra interdum non a quam. Sed tincidunt ut elit sed dignissim. Suspendisse vitae tellus dapibus, fermentum lacus ac, fermentum lacus. Nam ante odio, fringilla ac elementum a, mollis sed tellus.</div>
+<h4 id="autoload-role-players">Autoload Role Players</h4>
 
-    <div id="cappa"><h5>cappa</h5>Nam molestie semper nulla et molestie. Ut facilisis, ipsum sed convallis posuere, mi mauris bibendum erat, nec egestas ipsum est nec dolor. </div>
+<p>You can enable or disable loading role players with relationships. This is useful when you only want to visualise the relationships without their role players. You can see the differences between the same query when autoload roleplayers is enabled and disabled below.</p>
 
-    <div id="dunno"><h5>dunno</h5>Etiam et metus congue, commodo libero et, accumsan sem. Aliquam erat volutpat. Quisque tincidunt, tortor non blandit ullamcorper, orci mauris dignissim augue, eget vehicula nulla justo sed dolor. Nunc ac urna quis nisi maximus pharetra in a mauris. Proin metus mi, venenatis vitae tristique sed, fermentum at purus. Aliquam erat volutpat. Maecenas efficitur sodales nibh, ac hendrerit felis facilisis et. Interdum et malesuada fames ac ante ipsum primis in faucibus.</div>
+<p>enabled:
+<img src="/images/workbase/autoload_roleplayers_enabled.png" alt="Person query" />
+disabled:
+<img src="/images/workbase/autoload_roleplayers_disabled.png" alt="Person query" /></p>
 
+<h3 id="explain-an-inferred-concept">Explain an Inferred Concept</h3>
 
-</div> <!-- end definition-box-container -->
-</div> <!-- end col-md-3-->
-</div> <!-- end small-box-links -->
-</div> <!-- end row -->
-</div> <!-- end container -->
+<p>If a nodes is inferred, you can select the <code class="highlighter-rouge">Explain</code> option from the context menu and get the explainaion of how it is inferred. e.g if the cousin relationship is inferred, selecting explain would give us the following:</p>
 
+<p><img src="/images/workbase/explain_cousin2.png" alt="explain" /></p>
 
-<div class="alert alert-info" role="alert"><i class="fa fa-info-circle"></i> <b>Note: </b> This was mostly an experiment to see if there was a better way to document a long JSON code example. I haven't actually used this approach in my own documentation.</div>
+<p><img src="/images/workbase/explain_cousin1.png" alt="explain" /></p>
 
+<h3 id="shortest-path">Shortest Path</h3>
 
+<p>Select two nodes and select the <code class="highlighter-rouge">Shortest Path</code> option in the context menu to display the shortest path between the two nodes if it exists.</p>
 
+<p><img src="/images/workbase/shortest_path1.png" alt="explain" /></p>
+
+<p><img src="/images/workbase/shortest_path.png" alt="explain" /></p>
+
+<h3 id="graph-data">Graph Data</h3>
+
+<p>The tool tip on the bottom right of the graph will display the number of nodes and edges in the graph.</p>
+
+<p><img src="/images/workbase/canvas_data.png" alt="canvas data" /></p>
+
+<h3 id="commands">Commands</h3>
+
+<p>Selecting the information icon on the bottom left of the graph opens a modal containing all the ways to interact with the graql editor and graph.</p>
+
+<p><img src="/images/workbase/commands_icon.png" alt="commands icon" /></p>
+
+<h2 id="manage-settings">Manage Settings</h2>
+
+<h3 id="engine-settings">Engine Settings</h3>
+
+<p>Allows user to configure the host and port of Grakn.</p>
+
+<p><img src="/images/workbase/engine_settings.png" alt="engine settings" /></p>
+
+<h3 id="preference-settings">Preference Settings</h3>
+
+<p>Allows user to clear all saved preferences:</p>
+<ul>
+  <li>Favourite queries</li>
+  <li>Query limit</li>
+  <li>Neighbours limit</li>
+  <li>Autoload roleplayers</li>
+  <li>Node labels</li>
+  <li>Node Colours</li>
+</ul>
+
+<p><img src="/images/workbase/preference_settings.png" alt="preference settings" /></p>
+
+<h2 id="where-next">Where Next?</h2>
+
+<p>Now you have started getting to grips with Grakn, please explore our additional <a href="../examples/examples-overview">example code</a> and documentation. We are always adding more and welcome ideas and improvement suggestions. Please <a href="https://grakn.ai/community">get in touch</a>!</p>
 
 
     <div class="tags">
@@ -1071,6 +1060,12 @@ $('#small-box-links').localScroll({
         <b>Tags: </b>
         
         
+        
+        <a href="/tag_getting-started.html" class="btn btn-default navbar-btn cursorNorm" role="button">getting-started</a>
+        
+        
+        
+        <a href="/tag_graql.html" class="btn btn-default navbar-btn cursorNorm" role="button">graql</a>
         
         
         
