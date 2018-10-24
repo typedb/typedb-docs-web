@@ -1,29 +1,4 @@
 # ---- Rake tasks
-desc 'Install dependencies to build project'
-task :dependencies do
-    # Install build dependencies
-    sh 'bundle install'
-end
-
-desc 'Clean up generated files'
-task :clean do
-    rm_rf './_site'
-end
-
-desc 'Ruby buildpack to build jekyll'
-task "assets:precompile" do
-    jekyll('build')
-end
-
-desc 'Generate HTML and build site'
-task :build => ['clean'] do
-    jekyll('build')
-end
-
-task :serve => ['build'] do
-    jekyll('serve')
-    :clean
-end
 
 task :test do
   require 'html-proofer'
@@ -51,12 +26,5 @@ task :test do
       }
   }
   HTMLProofer.check_directory("./_site", options).run
-end
-
-# ---- Rake functions
-
-# Run Jekyll
-def jekyll(opts='')
-   sh "bundle exec jekyll #{opts} --trace"
 end
 
