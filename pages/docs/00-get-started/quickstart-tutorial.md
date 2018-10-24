@@ -371,4 +371,4 @@ A good place to start is to explore our additional [example code](../examples/ex
 * [Graql](../querying-data/overview), including reasoning
 * [Migration](../migrating-data/overview)
 * [Analytics](../distributed-analytics/overview)
-* [Grakn's Java APIs](https://javadoc.io/doc/ai.grakn/grakn).
+* [Grakn's Java API](https://javadoc.io/doc/ai.grakn/grakn).
