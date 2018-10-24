@@ -32,12 +32,10 @@ port: 4005
 exclude:
   - .idea/
   - .gitignore
-  - _jekyll/
   - Gemfile
   - Gemfile.lock
-  - pdfconfigs
   - pdf-template.sh
-  - _config.yml.template
+  - _config-template.yml
 
 # these are the files and directories that jekyll will exclude from the build
 

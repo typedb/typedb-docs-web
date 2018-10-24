@@ -7,7 +7,6 @@ end
 
 desc 'Clean up generated files'
 task :clean do
-    $user_files.each{ |file| rm_rf './'+file }
     rm_rf './_site'
 end
 
