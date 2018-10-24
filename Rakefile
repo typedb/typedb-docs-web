@@ -16,7 +16,7 @@ task "assets:precompile" do
 end
 
 desc 'Generate HTML and build site'
-task :build => ['clean', 'symlink_assets'] do
+task :build => ['clean'] do
     generate_config()
     jekyll('build')
     FileUtils.ln_s './_site', '_site'
