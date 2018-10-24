@@ -38,7 +38,7 @@ exclude:
   - pdfconfigs
   - pdf-template.sh
   - _config.yml.template
-  - vendor
+  - vendor/
 
 # these are the files and directories that jekyll will exclude from the build
 
