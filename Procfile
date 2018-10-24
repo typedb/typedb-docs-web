@@ -1,1 +1,1 @@
-web: jekyll serve
+web: rake serve
