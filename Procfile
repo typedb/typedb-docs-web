@@ -1,2 +1,1 @@
-web: rake build
-web: bundle exec puma -t 8:32 -w 3 -p $PORT
+web: bundle exec jekyll serve -H 0.0.0.0 -P $PORT --trace

@@ -3,7 +3,7 @@
 entries:
   - title: Sidebar
     product: Documentation
-    url: /docs
+    url: 
     folders:
       - title: Get Started
         output: web
@@ -205,7 +205,7 @@ entries:
             url: /docs/api-references/graql-cheatsheet
           - title: Javadocs
             output: web
-            external_url: //javadoc.io/doc/ai.grakn/grakn
+            external_url: //javadoc.io/doc/ai.grakn/grakn.html
       - title: Resources
         output: web
         folderitems:
@@ -232,7 +232,7 @@ entries:
             url: /docs/examples/migrating-csv-json-xml
           - title: Querying the Knowledge Graph
             output: web
-            url: /docs/examples/querying-kg
+            url: /docs/examples/querying-kg.html
           # - title: Overview
           #   output: web
           #   url: /docs/examples/examples-overview

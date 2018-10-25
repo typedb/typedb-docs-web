@@ -38,25 +38,15 @@ $ jekyll clean
 
 This will remove the `_site` directory.
 
-## Running local server (for development)
+## Starting the server
 
-You can also build and server the generated HTML files in one command. A WEBrick web
-server will be started listening on 127.0.0.1:4005.
+You can build and serve the generated HTML files using the following command. This starts a WEBrick web server on 127.0.0.1:4005. Same command with options `-H 0.0.0.0 -P $PORT` starts the server in production.
 
 ```
-$ jekyll serve
+$ jekyll serve --trace
 ```
 
 You can now view the documentation by navigating your web browser to `http://127.0.0.1:4005`
-
-## Running host server (to test production deployment) (optional, for debugging host server issues)
-
-The [dev.grakn.ai](https://dev.grakn.ai) website is hosted on a Puma web server as a Heroku app using the following command. This can only be run locally which starts the Puma server listening on 0.0.0.0:9292.
-
-```
-$ jekyll build
-$ bundle exec puma -t 8:32 -w 3
-```
 
 ## Deployment
 
