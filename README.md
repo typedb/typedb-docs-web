@@ -80,4 +80,4 @@ Java code blocks are actually tested with Groovy (because it is an interpreted l
 between Java and Groovy syntax, so we recommend writing code that is valid in both languages.
 
 If a code block should not be executed (e.g. because it is deliberately invalid or does something dangerous), then mark
-it `graq-test-ignore` or `java-test-ignore` instead of `graql` or `java`. -->
+it `graq-test-ignore` or `java-test-ignore` instead of `graql` or `java`.  -->
