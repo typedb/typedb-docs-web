@@ -1,3 +1,6 @@
 [submodule "pages"]
 	path = pages
 	url = https://github.com/graknlabs/docs
+[submodule "docs"]
+	path = docs
+	url = http://github.com/graknlabs/docs
