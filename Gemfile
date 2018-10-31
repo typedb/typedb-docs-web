@@ -5,6 +5,7 @@ ruby "2.5.1"
 
 gem 'jekyll'
 gem 'rake'
+gem 'jekyll-rendering', '~> 0.0.9'
 
 gem 'github-pages'
 gem 'html-proofer'
