@@ -46,6 +46,7 @@ exclude:
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
+  - docs/old/
 
 # these are the files and directories that jekyll will exclude from the build
 
@@ -77,7 +78,33 @@ kramdown:
 collections:
   tooltips:
     output: false
-# collections are declared here. this renders the content in _tooltips and processes it, but doesn't output it as actual files in the output unless you change output to true
+  00-general:
+    output: true
+  01-overview:
+    output: true
+  02-running-grakn:
+    output: true
+  03-client-api:
+    output: true
+  04-cloud-deployment:
+    output: true
+  05-management:
+    output: true
+  06-workbase:
+    output: true
+  07-schema:
+    output: true
+  08-query:
+    output: true
+  09-reasoning:
+    output: true
+  10-analytics:
+    output: true
+  11-developer-guidelines-a:
+    output: true
+  12-developer-guidelines-b:
+    output: true
+collections_dir: docs
 
 defaults:
   -
@@ -94,8 +121,98 @@ defaults:
     values:
       layout: "page"
       comments: true
-      search: true
       tooltip: true
+  -
+    scope:
+      path: ""
+      type: "00-general"
+    values:
+      category: ""
+      section: ""
+  -
+    scope:
+      path: ""
+      type: "01-overview"
+    values:
+      category: "Database"
+      section: "Overview"
+  -
+    scope:
+      path: ""
+      type: "02-running-grakn"
+    values:
+      category: "Database"
+      section: "Running Grakn"
+  -
+    scope:
+      path: ""
+      type: "03-client-api"
+    values:
+      category: "Database"
+      section: "Client API"
+  -
+    scope:
+      path: ""
+      type: "04-cloud-deployment"
+    values:
+      category: "Database"
+      section: "Cloud Deployment"
+  -
+    scope:
+      path: ""
+      type: "05-management"
+    values:
+      category: "Database"
+      section: "Management"
+  -
+    scope:
+      path: ""
+      type: "06-workbase"
+    values:
+      category: "Database"
+      section: ""
+  -
+    scope:
+      path: ""
+      type: "07-schema"
+    values:
+      category: "Graql"
+      section: "Schema"
+  -
+    scope:
+      path: ""
+      type: "08-query"
+    values:
+      category: "Graql"
+      section: "Query"
+  -
+    scope:
+      path: ""
+      type: "09-reasoning"
+    values:
+      category: "Graql"
+      section: "Query"
+  -
+    scope:
+      path: ""
+      type: "10-analytics"
+    values:
+      category: "Graql"
+      section: "Query"
+  -
+    scope:
+      path: ""
+      type: "11-developer-guidelines-a"
+    values:
+      category: "Developer Guidelines"
+      section: "Developer Guidelines A"
+  -
+    scope:
+      path: ""
+      type: "12-developer-guidelines-b"
+    values:
+      category: "Developer Guidelines"
+      section: "Developer Guidelines B"
 
 # these are defaults used for the frontmatter for these file types
 
