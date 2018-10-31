@@ -110,13 +110,6 @@ defaults:
   -
     scope:
       path: ""
-      type: "pages"
-    values:
-      layout: "page"
-      comments: true
-  -
-    scope:
-      path: ""
       type: "tooltips"
     values:
       layout: "page"
@@ -127,6 +120,7 @@ defaults:
       path: ""
       type: "00-general"
     values:
+      layout: "page"
       category: ""
       section: ""
   -
@@ -134,6 +128,7 @@ defaults:
       path: ""
       type: "01-overview"
     values:
+      layout: "page"
       category: "Database"
       section: "Overview"
   -
@@ -141,6 +136,7 @@ defaults:
       path: ""
       type: "02-running-grakn"
     values:
+      layout: "page"
       category: "Database"
       section: "Running Grakn"
   -
@@ -148,6 +144,7 @@ defaults:
       path: ""
       type: "03-client-api"
     values:
+      layout: "page"
       category: "Database"
       section: "Client API"
   -
@@ -155,6 +152,7 @@ defaults:
       path: ""
       type: "04-cloud-deployment"
     values:
+      layout: "page"
       category: "Database"
       section: "Cloud Deployment"
   -
@@ -162,6 +160,7 @@ defaults:
       path: ""
       type: "05-management"
     values:
+      layout: "page"
       category: "Database"
       section: "Management"
   -
@@ -169,6 +168,7 @@ defaults:
       path: ""
       type: "06-workbase"
     values:
+      layout: "page"
       category: "Database"
       section: ""
   -
@@ -176,6 +176,7 @@ defaults:
       path: ""
       type: "07-schema"
     values:
+      layout: "page"
       category: "Graql"
       section: "Schema"
   -
@@ -183,6 +184,7 @@ defaults:
       path: ""
       type: "08-query"
     values:
+      layout: "page"
       category: "Graql"
       section: "Query"
   -
@@ -190,6 +192,7 @@ defaults:
       path: ""
       type: "09-reasoning"
     values:
+      layout: "page"
       category: "Graql"
       section: "Query"
   -
@@ -197,6 +200,7 @@ defaults:
       path: ""
       type: "10-analytics"
     values:
+      layout: "page"
       category: "Graql"
       section: "Query"
   -
@@ -204,6 +208,7 @@ defaults:
       path: ""
       type: "11-developer-guidelines-a"
     values:
+      layout: "page"
       category: "Developer Guidelines"
       section: "Developer Guidelines A"
   -
@@ -211,8 +216,15 @@ defaults:
       path: ""
       type: "12-developer-guidelines-b"
     values:
+      layout: "page"
       category: "Developer Guidelines"
       section: "Developer Guidelines B"
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      comments: true
 
 # these are defaults used for the frontmatter for these file types
 
