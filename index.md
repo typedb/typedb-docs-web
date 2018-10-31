@@ -6,5 +6,4 @@ tags: [getting-started, graql, java, core-api]
 sidebar: documentation_sidebar
 permalink: /index
 toc: false
-search: exclude
 ---

@@ -87,8 +87,6 @@ defaults:
     values:
       layout: "page"
       comments: true
-      search: true
-      sidebar: documentation_sidebar
   -
     scope:
       path: ""
