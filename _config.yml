@@ -118,6 +118,13 @@ defaults:
   -
     scope:
       path: ""
+      type: "pages"
+    values:
+      layout: "page"
+      comments: true
+  -
+    scope:
+      path: ""
       type: "00-general"
     values:
       layout: "page"
@@ -219,12 +226,6 @@ defaults:
       layout: "page"
       category: "Developer Guidelines"
       section: "Developer Guidelines B"
-  -
-    scope:
-      path: ""
-      type: "pages"
-    values:
-      comments: true
 
 # these are defaults used for the frontmatter for these file types
 
