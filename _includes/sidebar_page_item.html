@@ -1,7 +1,6 @@
-<li>
+<li {% if doc_page.permalink == page.url %} class="active" {% endif %}>
     <a
-        {% if page.external_url %} href="{{ page.external_url }}" {% else %} href="{{ site.urlprefix }}{{ page.permalink }}" {% endif %}
-        {% if site.url == page.url %} class="active" {% endif %}>
-        {{ page.title }}
+        {% if doc_page.external_url %} href="{{ doc_page.external_url }}" {% else %} href="{{ doc_page.permalink }}" {% endif %}>
+        {{ doc_page.title }}
     </a>
 </li>
