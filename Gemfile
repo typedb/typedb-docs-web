@@ -5,5 +5,6 @@ ruby "2.5.1"
 
 gem 'jekyll'
 gem 'rake'
+gem 'jekyll-coffeescript'
 
 gem 'html-proofer'
