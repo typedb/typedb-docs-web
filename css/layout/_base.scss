@@ -1,0 +1,31 @@
+$sidebar_width: 200px;
+$navbar_width: 70px;
+
+// positioning
+.container {
+    height: 100%;
+
+    #o-content {
+        height: 100% !important;
+        margin-left: $sidebar_width;
+        padding: 50px;
+        max-width: calc(100% - #{$sidebar_width});
+    }
+    #o-sidebar {
+        height: calc(100vh - #{$navbar_width});
+        overflow-y: scroll;
+        position: fixed;
+        width: $sidebar_width;
+
+        &::-webkit-scrollbar {
+            width: 0px;
+            background: transparent; /* make scrollbar transparent */
+        }
+    }
+}
+
+
+body {
+    background-color: $bg_color !important;
+    color: $body-text-color !important;
+}

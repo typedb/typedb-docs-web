@@ -25,12 +25,12 @@
 {% assign categories = categories | push: graql_pages %}
 {% assign categories = categories | push: developer_guidelines_pages %}
 
-<ul id="mysidebar" class="nav">
+<!-- <ul data-turbolinks-permanent> -->
     {% for category in categories %}
         {% assign specified_category_title = category[0][0].category %}
 
         {% if specified_category_title != "" %}
-            <li class="sidebarTitle">{{ specified_category_title }}</li>
+            <li class="a-section_categoryTitle">{{ specified_category_title }}</li>
         {% endif %}
 
         {% assign specified_section_title = category[0][0].section %}
@@ -38,22 +38,22 @@
         {% if specified_section_title == "" %}
             {% for section in category %}
                 {% for doc_page in section %}
-                    {% include sidebar_page_item.html doc_page = doc_page %}
+                    {% assign hyperlink_class = "animated__link animated__link--purple" %}
+                    {% include sidebar_page_item.html doc_page=doc_page hyperlink_class=hyperlink_class %}
                 {% endfor %}
             {% endfor %}
         {% else %}
             {% for section in category %}
-                <li>
-                    <a href = "#">{{ section[0].title }}</a>
-                    <ul>
+                <li class="o-section">
+                    <a class="a-section_title animated__link animated__link--purple" href = "#">{{ section[0].section }}</a>
+                    <ul class="m-section_list">
                         {% for doc_page in section %}
-                            {% include sidebar_page_item.html doc_page = doc_page %}
+                            {% assign hyperlink_class = "" %}
+                            {% include sidebar_page_item.html doc_page=doc_page hyperlink_class=hyperlink_class %}
                         {% endfor %}
                     </ul>
                 </li>
             {% endfor %}
         {% endif %}
     {% endfor %}
-</ul>
-
-<script>$("li.active").parents('li').toggleClass("active");</script>
+<!-- </ul> -->

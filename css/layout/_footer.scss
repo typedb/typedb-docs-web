@@ -1,0 +1,173 @@
+.footer {
+    background-color: $bg_color;
+    margin: 50px -50px -50px -50px;
+
+    &__social {
+        &__buttons {
+            float: left;
+            a {
+                display: inline-block;
+                background-color: white;
+                border: 1px solid #c9c9cb;
+                border-radius: 5px;
+                font-size: 1.2rem;
+                height: 44px;
+                position: relative;
+                margin-right: 0.5rem;
+                width: 44px;
+
+                &:after {
+                    content: '' !important;
+                }
+
+                i {
+                    font-size: 18px;
+                    line-height: 44px;
+                    text-align: center;
+                    width: 100%;
+                }
+
+                .fa {
+                    &-twitter { color: #00B6F1; }
+                    &-facebook-f { color: #3B5998; }
+                    &-linkedin { color: #007BB6; }
+                }
+            }
+        }
+        &__signup {
+            float: right;
+            border: 1px solid #c9c9cb;
+            border-radius: 6px;
+
+            * {
+                -webkit-appearance: none;
+                appearance: none;
+                border: none;
+                outline: none;
+            }
+
+            input, button {
+                height: 47px;
+                font-size: 12px;
+                border-radius: 0 6px 6px 0;
+            }
+
+            input {
+                width: 200px;
+                color: #8c8f92;
+                padding: 0 14px;
+                border-radius: 6px;
+                padding-bottom: 2px;
+            }
+
+            button {
+                background-color: #f75e61;
+                color: white;
+                cursor: pointer;
+                float: right;
+                height: 50px;
+                width: 102px;
+
+                &:hover { background-color: #d30d0c; }
+            }
+        }
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    &__links {
+        .footer__block {
+            display: inline-block;
+            width: 15%;
+            vertical-align: top;
+            text-align: left;
+
+            &:nth-child(1) { width: 28%; }
+            &:nth-child(4) { width: 17%; }
+            &:nth-child(6) { width: 7%; }
+
+            &__header {
+                font-size: 14px;
+                color: #4a4c52;
+                padding-bottom: 1rem;
+                font-weight: 600;
+            }
+
+            &__links {
+
+                a {
+                    font-size: 14px;
+                    color: #8c8f92;
+                    display: block;
+                    line-height: 2.6;
+                    text-decoration: none;
+
+                    &:after { content: '' !important; }
+                }
+
+
+                img, i {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+
+                img {
+                    width: 28px;
+                    margin-right: 0.5rem;
+                }
+
+                i {
+                    font-size: 25px;
+                    margin-right: 1rem;
+                }
+
+                &--github, &--slack {
+                    font-weight: 300;
+
+                    strong {
+                        font-weight: 600;
+                        text-decoration: underline;
+                    }
+                }
+                &--github {
+                    margin-left: -10px;
+                    img { width: 38px !important; }
+                    strong { color: black; }
+                }
+
+                &--slack {
+                    margin-left: -4px;
+                    img { margin-right: 0.8rem !important; }
+                    strong { color: #d30d0c; }
+                }
+
+                &--address {
+                    line-height: 2.0;
+                    font-size: 14px;
+                    color: #8c8f92;
+
+                    span {
+                        display: block;
+                        &:nth-child(2) { margin-left: 28px; }
+                    }
+
+                    i {
+                        font-size: 25px;
+                        margin-right: 1rem;
+                        vertical-align: middle;
+                        padding-left: 5px;
+                    }
+
+                    a {
+                        color: #7a68e8;
+                        text-decoration: none;
+                        margin-left: 28px;
+                    }
+                }
+            }
+        }
+    }
+
+    &__container {
+        padding: 50px 0 30px 0 !important;
+    }
+}

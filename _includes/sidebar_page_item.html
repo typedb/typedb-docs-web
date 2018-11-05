@@ -1,5 +1,5 @@
-<li {% if doc_page.permalink == page.url %} class="active" {% endif %}>
-    <a
+<li class="a-section_item">
+    <a  class="{{ hyperlink_class }}"
         {% if doc_page.external_url %} href="{{ doc_page.external_url }}" {% else %} href="{{ doc_page.permalink }}" {% endif %}>
         {{ doc_page.title }}
     </a>

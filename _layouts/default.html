@@ -3,38 +3,6 @@
 <head>
     {% include head.html %}
     <script>
-        $(document).ready(function() {
-            // Initialize navgoco with default options
-            $("#mysidebar").navgoco({
-                caretHtml: '',
-                accordion: true,
-                openClass: 'active', // open
-                save: false, // leave false or nav highlighting doesn't work right
-                cookie: {
-                    name: 'navgoco',
-                    expires: false,
-                    path: '/'
-                },
-                slide: {
-                    duration: 400,
-                    easing: 'swing'
-                }
-            });
-
-            $("#collapseAll").click(function(e) {
-                e.preventDefault();
-                $("#mysidebar").navgoco('toggle', false);
-            });
-
-            $("#expandAll").click(function(e) {
-                e.preventDefault();
-                $("#mysidebar").navgoco('toggle', true);
-            });
-
-        });
-
-    </script>
-    <script>
         $(function () {
             $('[data-toggle="tooltip"]').tooltip()
         })
@@ -62,11 +30,11 @@
     <!-- Content Row -->
     <div class="row">
         <!-- Sidebar Column -->
-        <div class="col-md-3 col-sidebar">
+        <ul id="o-sidebar" class="col-md-5" data-turbolinks-permanent>
           {% include sidebar.html %}
-        </div>
+        </ul>
         <!-- Content Column -->
-        <div class="col-md-9 col-content">
+        <div id="o-content" class="col-md-19 o-content">
             {{content}}
             {% include footer.html %}
         </div>
@@ -77,4 +45,7 @@
 {% if site.google_analytics %}
 {% include google_analytics.html %}
 {% endif %}
+<script>
+        $('.open ul').hide();
+</script>
 </html>

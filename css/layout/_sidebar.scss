@@ -1,0 +1,96 @@
+$sidebar_item_distance_to_content: 20px;
+
+ul#o-sidebar {
+    background: $bg_color;
+    padding: 30px 0;
+    list-style: none;
+
+    li.a-section_item {
+        height: 30px;
+
+        &.active {
+            a { border-bottom: 1px solid $grakn_purple_color; }
+            &:hover {
+                .animated__link:before { visibility: hidden; }
+            }
+        }
+
+        a {
+            background-color: $bg_color;
+            color: $grakn_purple_color;
+            display: inline-block;
+            font-size: 17px;
+            text-decoration: none;
+            width: calc(100% - #{$sidebar_item_distance_to_content});
+        }
+    }
+
+    li.a-section_categoryTitle {
+        color: $sidebar_categoryTitle_color;
+        font-size: 21px;
+        margin: 0;
+        padding: 15px 0 7px 0;
+    }
+
+    li.o-section {
+        a.a-section_title {
+            background-color: $bg_color;
+            color: $grakn_purple_color;
+            display: inline-block;
+            font-size: 17px;
+            padding-top: 5px;
+            text-decoration: none;
+            width: calc(100% - #{$sidebar_item_distance_to_content});
+        }
+
+        ul.m-section_list {
+            display: none;
+        }
+
+        &.active {
+            a.a-section_title { border-bottom: 1px solid $grakn_purple_color; }
+        }
+
+        &.expanded {
+            &:hover {
+                a.a-section_title { border-bottom: 1px solid $grakn_purple_color; }
+                a.animated__link:before { visibility: hidden; }
+            }
+
+            ul.m-section_list {
+                display: block;
+
+                padding: 13px;
+                list-style: none;
+
+                a {
+                    color: #333;
+                    font-size: 16px;
+                    padding: 0 13px;
+                    line-height: 25px;
+                }
+
+                li.a-section_item {
+                    border-left: 1px solid #dcdeea;
+                    position: relative;
+
+                    &.active a {
+                        display: inline-block;
+                        border: none;
+
+                        &:before {
+                            color: $grakn_purple_color;
+                            content: "\f111";
+                            font-family: FontAwesome;
+                            font-weight: normal;
+                            font-style: normal;
+                            left: -7px;
+                            position: absolute;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
