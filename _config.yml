@@ -221,7 +221,7 @@ defaults:
       type: "11-developer-guidelines-a"
     values:
       layout: "page"
-      category: "Developer Guidelines"
+      category: "Dev Guidelines"
       section: "Developer Guidelines A"
   -
     scope:
@@ -229,7 +229,7 @@ defaults:
       type: "12-developer-guidelines-b"
     values:
       layout: "page"
-      category: "Developer Guidelines"
+      category: "Dev Guidelines"
       section: "Developer Guidelines B"
 
 # these are defaults used for the frontmatter for these file types
