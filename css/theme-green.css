@@ -84,11 +84,11 @@ body.print h4 {color: #679DCE !important; font-size:14px; font-style: italic;}
     color: #4f7233;
 }
 
-div.sidebarTitle {
+div.a-section_categoryTitle {
     color: #E50E51;
 }
 
-li.sidebarTitle {
+li.a-section_categoryTitle {
     margin-top:40px;
     font-weight:normal;
     font-size:130%;
