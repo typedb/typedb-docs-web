@@ -61,51 +61,6 @@ $(function() {
 });
 
 $( document ).ready(function() {
-    // Navbar Logic
-    var hamburgerBtn = $('#hamburger-btn');
-    var hamburgerMenu = $('#hamburger-menu');
-    var hamburgerSecondaryMenu = $('#hamburger-menu-secondary');
-    var hamburgerSecondaryMenuBack = $('#hamburger-menu-secondary-back');
-    var hamburgerExpanded = false;
-    var secondaryExpanded = null;
-
-    hamburgerBtn.click(function() {
-        hamburgerExpanded = !hamburgerExpanded;
-        if(hamburgerExpanded) {
-            hamburgerBtn.addClass("is-active");
-            hamburgerMenu.addClass("navigation-bar__hamburger--open")
-        }
-        else {
-            hamburgerBtn.removeClass("is-active");
-            hamburgerMenu.removeClass("navigation-bar__hamburger--open");
-        }
-    })
-
-    var hamburgerParentButtons = $('.navigation-bar__link__dropdown');
-    hamburgerParentButtons.each(function(i) {
-        $(this).click(function() {
-            var submenu = $(this).find('.navigation-bar__link__dropdown__mobile');
-            if( secondaryExpanded === i) {
-                secondaryExpanded = null;
-                submenu.removeClass('navigation-bar__link__dropdown__mobile--active');
-                hamburgerParentButtons.eq(i).find('.fa-caret-down').addClass('fa-caret-right');
-                hamburgerParentButtons.eq(i).find('.fa-caret-right').removeClass('fa-caret-down');
-            }
-            else {
-                if (secondaryExpanded) {
-                    hamburgerParentButtons.eq(secondaryExpanded).find('.navigation-bar__link__dropdown__mobile').removeClass('navigation-bar__link__dropdown__mobile--active');
-                    hamburgerParentButtons.eq(secondaryExpanded).find('.fa-caret-down').addClass('fa-caret-right');
-                    hamburgerParentButtons.eq(secondaryExpanded).find('.fa-caret-right').removeClass('fa-caret-down');
-                }
-                secondaryExpanded = i;
-                submenu.addClass('navigation-bar__link__dropdown__mobile--active');
-                hamburgerParentButtons.eq(secondaryExpanded).find('.fa-caret-right').addClass('fa-caret-down');
-                hamburgerParentButtons.eq(secondaryExpanded).find('.fa-caret-down').removeClass('fa-caret-right');
-            }
-        });
-    })
-
-
     //Footer Subscribe logic
     var footerSubscribeButton = $("#footer-subscribe-btn");
     var footerSubscribeInput = $("#footer-subscribe-input");
