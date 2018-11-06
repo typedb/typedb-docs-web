@@ -97,17 +97,19 @@ collections:
     output: true
   06-workbase:
     output: true
-  07-schema:
+  07-examples:
     output: true
-  08-query:
+  08-schema:
     output: true
-  09-reasoning:
+  09-query:
     output: true
-  10-analytics:
+  10-reasoning:
     output: true
-  11-developer-guidelines-a:
+  11-analytics:
     output: true
-  12-developer-guidelines-b:
+  12-developer-guidelines-a:
+    output: true
+  13-developer-guidelines-b:
     output: true
 collections_dir: docs
 
@@ -186,7 +188,15 @@ defaults:
   -
     scope:
       path: ""
-      type: "07-schema"
+      type: "07-examples"
+    values:
+      layout: "page"
+      category: "Database"
+      section: "Examples"
+  -
+    scope:
+      path: ""
+      type: "08-schema"
     values:
       layout: "page"
       category: "Graql"
@@ -194,7 +204,7 @@ defaults:
   -
     scope:
       path: ""
-      type: "08-query"
+      type: "09-query"
     values:
       layout: "page"
       category: "Graql"
@@ -202,7 +212,7 @@ defaults:
   -
     scope:
       path: ""
-      type: "09-reasoning"
+      type: "10-reasoning"
     values:
       layout: "page"
       category: "Graql"
@@ -210,7 +220,7 @@ defaults:
   -
     scope:
       path: ""
-      type: "10-analytics"
+      type: "11-analytics"
     values:
       layout: "page"
       category: "Graql"
@@ -218,7 +228,7 @@ defaults:
   -
     scope:
       path: ""
-      type: "11-developer-guidelines-a"
+      type: "12-developer-guidelines-a"
     values:
       layout: "page"
       category: "Dev Guidelines"
@@ -226,7 +236,7 @@ defaults:
   -
     scope:
       path: ""
-      type: "12-developer-guidelines-b"
+      type: "13-developer-guidelines-b"
     values:
       layout: "page"
       category: "Dev Guidelines"

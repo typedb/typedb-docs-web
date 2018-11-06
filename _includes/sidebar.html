@@ -8,16 +8,17 @@
 {% assign database_pages = database_pages | push: site.04-cloud-deployment %}
 {% assign database_pages = database_pages | push: site.05-management %}
 {% assign database_pages = database_pages | push: site.06-workbase %}
+{% assign database_pages = database_pages | push: site.07-examples %}
 
 {% assign graql_pages = "" | split: "," %}
-{% assign graql_pages = graql_pages | push: site.07-schema %}
-{% assign graql_pages = graql_pages | push: site.08-query %}
-{% assign graql_pages = graql_pages | push: site.09-reasoning %}
-{% assign graql_pages = graql_pages | push: site.10-analytics %}
+{% assign graql_pages = graql_pages | push: site.08-schema %}
+{% assign graql_pages = graql_pages | push: site.09-query %}
+{% assign graql_pages = graql_pages | push: site.10-reasoning %}
+{% assign graql_pages = graql_pages | push: site.11-analytics %}
 
 {% assign developer_guidelines_pages = "" | split: "," %}
-{% assign developer_guidelines_pages = developer_guidelines_pages | push: site.11-developer-guidelines-a %}
-{% assign developer_guidelines_pages = developer_guidelines_pages | push: site.12-developer-guidelines-b %}
+{% assign developer_guidelines_pages = developer_guidelines_pages | push: site.12-developer-guidelines-a %}
+{% assign developer_guidelines_pages = developer_guidelines_pages | push: site.13-developer-guidelines-b %}
 
 {% assign categories = "" | split: "," %}
 {% assign categories = categories | push: general_pages %}
