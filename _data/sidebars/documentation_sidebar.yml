@@ -232,7 +232,7 @@ entries:
             url: /docs/examples/migrating-csv-json-xml
           - title: Querying the Knowledge Graph
             output: web
-            url: /docs/examples/querying-kg.html
+            url: /docs/examples/querying-kg
           # - title: Overview
           #   output: web
           #   url: /docs/examples/examples-overview
