@@ -26,13 +26,13 @@
 
 @media screen and (max-width: 990px) {
     .navigation-bar__links--desktop {
-        display: none;
+        display: none !important;
     }
 }
 
 @media screen and (min-width: 990px) {
     .navigation-bar__links--mobile {
-        display: none;
+        display: none !important;
     }
 }
 
