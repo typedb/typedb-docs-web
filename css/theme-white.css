@@ -145,7 +145,7 @@
     font-weight: 200;
 }
 
-// UltraLight Italic
+ /* UltraLight Italic */
 @font-face {
     font-family: 'Geogrotesque';
     src: url('/fonts/geogrotesque/32DC85_C_0.eot');
@@ -406,13 +406,13 @@ div[class^="highlighter-"] code{
 .nav-tabs > li > a {
     border: none;
     background-color: #FAFAFA;
-    color: #3838383;
+    color: #383838;
 }
 
 .nav-tabs > li > a:hover,
 .nav-tabs > li > a:focus {
     background-color: #E1E1E1;
-    color: #3838383;
+    color: #383838;
 }
 
 .nav-tabs > li.active > a,
