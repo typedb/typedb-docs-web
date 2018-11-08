@@ -276,11 +276,11 @@
 }
 /*  */
 
-div#toc > ul > li {
-    list-style-image: url('/images/list-oval.svg');
+ul.toc > li {
+    list-style-image: url('/images/list-oval.svg') !important;
 }
 
-div#toc li > ul {
+div.toc li > ul {
     padding-top: 0;
     padding-bottom: 0;
 }
