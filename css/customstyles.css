@@ -259,41 +259,41 @@ ul#results-container a: hover {
     margin: 3px;
 }
 
-div#toc ul li {
-    margin: 8px 0px 8px 22px;
-    font-size: 90%;
-    list-style: disc;
-    line-height: 2.1;
-    font-size: 16px;
-    font-weight: 600;
+.toc li {
+    margin: 8px 0px 8px 22px !important;
+    font-size: 90% !important;
+    list-style: disc !important;
+    line-height: 2.1 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
 }
 
 
-div#toc ul {
-    padding: 5px;
-    border-radius: 5px;
-    color: gray;
+.toc {
+    padding: 5px !important;
+    border-radius: 5px !important;
+    color: gray !important;
 }
 
-div#toc ul li ul {
-    padding-left:8px;
+.toc li ul {
+    padding-left:8px !important;
 
 }
 
-div#toc ul li ul li::before {
-    content: "–  ";
+.toc li ul li::before {
+    content: "–  " !important;
 }
 
-div#toc >ul::before {
-    font-weight: 500;
-    color: #555;
-    text-align:center;
-    margin-left:auto;
-    margin-right:auto;
-    width:70px;
-    padding-top:20px;
-    padding-bottom:20px;
-    padding-left:10px;
+.toc>::before {
+    font-weight: 500 !important;
+    color: #555 !important;
+    text-align:center !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+    width:70px !important;
+    padding-top:20px !important;
+    padding-bottom:20px !important;
+    padding-left:10px !important;
 }
 
 li.dropdownActive a {
@@ -630,7 +630,7 @@ ol li ul li {list-style-type: disc;}
 
 li img {clear:both; }
 
-div#toc ul li ul li {
+div.toc ul li ul li {
     list-style-type: none;
     margin: 5px 0px 0px 0px;
 }
@@ -816,7 +816,7 @@ dd {margin-left:20px;}
     font-weight: bold;
 }
 
-.note code, .alert code, .warning code, div#toc code, h2 code, h3 code, h4 code {
+.note code, .alert code, .warning code, div.toc code, h2 code, h3 code, h4 code {
     color: inherit;
     padding: 0px;
 }

@@ -195,6 +195,8 @@ GEM
       jekyll-seo-tag (~> 2.0)
     jekyll-titles-from-headings (0.5.1)
       jekyll (~> 3.3)
+    jekyll-toc (0.9.0)
+      nokogiri (~> 1.8)
     jekyll-watch (2.1.2)
       listen (~> 3.0)
     jemoji (0.10.1)
@@ -258,6 +260,7 @@ DEPENDENCIES
   github-pages
   html-proofer
   jekyll
+  jekyll-toc
   rake
 
 RUBY VERSION
