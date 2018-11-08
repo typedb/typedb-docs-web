@@ -276,17 +276,6 @@
 }
 /*  */
 
-div#toc > ul > li {
-    list-style-image: url('/images/list-oval.svg');
-}
-
-div#toc li > ul {
-    padding-top: 0;
-    padding-bottom: 0;
-}
-
-/*  */
-
 body {
     font-family: 'Titillium';
     letter-spacing: 0.2px;
