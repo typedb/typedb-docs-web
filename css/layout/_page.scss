@@ -9,8 +9,8 @@ ul.toc {
     color: gray;
 
     li {
-      list-style-image: url('/images/list-oval.svg');
-      margin: 8px 0px 8px 22px;
+      list-style-image: url('/images/list-oval.svg') !important;
+      margin: 8px 0px 8px 22px !important;
       font-size: 90%;
       list-style: disc;
       line-height: 2.1;
