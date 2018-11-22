@@ -1,0 +1,80 @@
+/* Dracula Theme v1.2.5
+ *
+ * https://github.com/dracula/highlightjs
+ *
+ * Copyright 2016-present, All rights reserved
+ *
+ * Code licensed under the MIT license
+ *
+ * @author Denis Ciccale <dciccale@gmail.com>
+ * @author Zeno Rocha <hi@zenorocha.com>
+ */
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  background: #292d34;
+}
+
+.language-built_in,
+.language-selector-tag,
+.language-section,
+.language-link {
+  color: #8be9fd;
+}
+
+.language-keyword {
+  color: #ff79c6;
+}
+
+.language,
+.language-subst {
+  color: #f8f8f2;
+}
+
+.language-title {
+  color: #50fa7b;
+}
+
+.language-string,
+.language-meta,
+.language-name,
+.language-type,
+.language-attr,
+.language-symbol,
+.language-bullet,
+.language-addition,
+.language-variable,
+.language-template-tag,
+.language-tag,
+.language-template-variable {
+  color: #f1fa8c;
+}
+
+.language-comment,
+.language-quote,
+.language-deletion {
+  color: #6272a4;
+}
+
+.language-keyword,
+.language-selector-tag,
+.language-literal,
+.language-title,
+.language-section,
+.language-doctag,
+.language-type,
+.language-name,
+.language-strong {
+  font-weight: bold;
+}
+
+.language-literal,
+.language-number {
+  color: #bd93f9;
+}
+
+.language-emphasis {
+  font-style: italic;
+}
