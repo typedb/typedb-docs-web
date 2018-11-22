@@ -2,39 +2,105 @@ div#toc li > ul {
     padding-top: 0;
     padding-bottom: 0;
 }
-// table of content
+// for table of content
 ul.toc {
-    padding: 5px;
-    border-radius: 5px;
-    color: gray;
+  padding: 5px;
+  border-radius: 5px;
+  color: gray;
 
-    li {
-      list-style-image: url('/images/list-oval.svg') !important;
-      margin: 8px 0px 8px 22px !important;
-      font-size: 90%;
-      list-style: disc;
-      line-height: 2.1;
-      font-size: 16px;
-      font-weight: 600;
+  li {
+    list-style-image: url('/images/list-oval.svg') !important;
+    margin: 8px 0px 8px 22px !important;
+    font-size: 90%;
+    list-style: disc;
+    line-height: 2.1;
+    font-size: 16px;
+    font-weight: 600;
 
-      ul {
-        padding: 0 0 0 8px;
+    ul {
+      padding: 0 0 0 8px;
 
-        li::before {
-          content: "–  ";
-        }
+      li::before {
+        content: "–  ";
       }
     }
+  }
 
-    ::before {
-      font-weight: 500;
-      color: #555;
+  ::before {
+    font-weight: 500;
+    color: #555;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+  }
+}
+
+// for tabbed-content
+
+.tabs {
+  border-bottom: none;
+  display: block;
+  list-style: none;
+  padding-left: 0;
+  margin: 25px 0 0 0;
+
+  .active > a {
+    background-color: #796de3;
+    border: none;
+    color: white;
+  }
+
+  li {
+    float: left;
+    height: 50px;
+    margin: 0 !important;
+    width: 50%;
+
+    a {
+      background-color: #292d34;
+      border-radius: 0;
+      color: #878e9d;
+      display: block;
+      font-size: 20px;
+      height: inherit;
+      line-height: 2;
+      padding: 4px 10px;
       text-align: center;
-      margin-left: auto;
-      margin-right: auto;
-      width: 70px;
-      padding-top: 20px;
-      padding-bottom: 20px;
-      padding-left: 10px;
+      text-decoration: none;
+      width: 100%;
+    }
+
+    &:nth-child(1) a {
+      border-radius: 5px 0 0 0 !important;
+    }
+    &:last-child a {
+      border-radius: 0 5px 0 0 !important;
     }
   }
+}
+
+.tab-content {
+  margin-bottom: 25px;
+
+  .tab-pane {
+    pre:last-child {
+      border-radius: 0 0 6px 6px;
+      width: 100%;
+    }
+  }
+}
+
+// for code blocks
+
+pre {
+  border-radius: 6px;
+  color: #abb2be;
+  padding: 0;
+  code {
+    padding: 20px 30px !important;
+  }
+}

@@ -299,7 +299,7 @@ a.accordion-toggle, a.accordion-collapsed {
 
 /* navgoco sidebar styles (customized) */
 
-.nav a:hover, .nav li.active > a {
+/* .nav a:hover, .nav li.active > a {
     background-color: #8D8D8D;
     color: #f5f5f5;
 }
@@ -348,7 +348,7 @@ background-color: #347DBE;
 .nav ul li a {
     border-top:1px solid whitesmoke;
     /* padding-left:10px; */
-}
+} */
 /* end sidebar */
 
 .navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
@@ -889,11 +889,11 @@ span.label.label-primary {
 .col-lg-12 .nav li a {background-color: white}
 
 
-.nav li.active > a.subfoldersTitle {
+/* .nav li.active > a.subfoldersTitle {
     background-color: whitesmoke;
     font-weight: bold;
     color: black;
-    }
+    } */
 
 a code {
     color: #248EC2;
@@ -1030,25 +1030,27 @@ h4.panel-title {
     margin-top: 0px;
 }
 
-.nav-tabs {
+/* .nav-tabs {
     border-bottom: none;
 }
+*/
 .tab-pane > pre {
     margin: 0 !important;
     border-radius: 0 0 6px 6px;
     border: none;
-}
+    padding: 0px 0px !important;
+} 
 pre {
-    color: #46cc90;
-    background: #2f3543;
-    padding: 20px 30px;
-    border-radius: 6px;
+    /* color: #46cc90; */
+    /* background: #2f3543; */
+    /* padding: 20px 30px; */
+    /* border-radius: 6px; */
 }
 
-.highlight {
+/*.highlight {
     background: #2f3543;
     border-radius: 5px;
-}
+} */
  /* Prism CSS */
 .token.comment,
 .token.prolog,
@@ -1204,39 +1206,6 @@ table > tbody > tr:nth-of-type(even) {
     color: #4a4c52;
     font-size: 18px;
     font-weight: 600;
-}
-
-#profileTabs {
-    display: block;
-}
-
-#profileTabs > li {
-    width: 50%;
-    height: 50px;
-}
-
-#profileTabs > .active > a {
-    color: white;
-    background-color: #796de3 !important;
-}
-
-#profileTabs > li > a {
-    height: inherit;
-    font-size: 20px;
-    line-height: 2;
-    text-align: center;
-	color: #878e9d;
-    background-color: #2f3543;
-    width: 100%;
-    border-radius: 0;
-}
-
-#profileTabs > li:nth-child(1) > a {
-    border-radius: 5px 0 0 0;
-}
-
-#profileTabs > li:last-child > a {
-    border-radius: 0 5px 0 0;
 }
 
 .nav-tabs--intro > li {
