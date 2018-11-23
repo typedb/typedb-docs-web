@@ -23,10 +23,16 @@ hljs.registerLanguage("graql", function (e) {
             hljs.COMMENT(
                 '\#(.*)',
                 '\n|\r\n|\r',
-                {
-                    className: 'graql-comment'
-                }
+                { className: 'graql-comment' }
             ),
+            {
+                className: 'graql-type',
+                variants: [
+                    { begin: /\bentity|attribute|relationship\b/ },
+                    { begin: /\brule\b/ },
+                    { begin: /\bboolean|double|long|string|date\b/ },
+                ]
+            },
             {
                 className: 'graql-keyword',
                 // must remain alphabetically sorted
@@ -77,46 +83,21 @@ hljs.registerLanguage("graql", function (e) {
                     { begin: /\bvia\b/ },
                     { begin: /\bwhen\b/ },
                     { begin: /\bwhere\b/ },
-
                 ]
             },
             {
-                className: 'graql-type',
-                variants: [
-                    { begin: /\entity|attribute|relationship\b/ },
-                    { begin: /\brule\b/ },
-                    { begin: /\bboolean|double|long|string|date\b/ },
-                    {
-                        beginKeywords: "sub",
-                        begin: /\bsub [^,]+/
-                    }
-                ]
+                className: 'graql-roleplayer',
+                begin: /[^\(,\s]+:/
             },
             {
                 className: 'graql-variable',
                 begin: /\$[^\s]+/
             },
-            // {
-            //     className: 'keyword',
-            //     // beginKeywords: 'struct protocol class extension enum',
-            //     keywords: GRAQL_KEYWORDS,
-            //     // end: '\\{',
-            //     // excludeEnd: true,
-            //     // contains: [
-            //     //   hljs.inherit(hljs.TITLE_MODE, {begin: /[A-Za-z$_][\u00C0-\u02B80-9A-Za-z$_]*/})
-            //     // ]
-            //   },
             {
                 className: 'string',
                 begin: '\"', end: '\"',
                 contains: [hljs.BACKSLASH_ESCAPE, { begin: '\"\"' }]
-            },
-            // {
-            //     className: 'keword',
-            //     begin:
-            // },
-            // hljs.COMMENT('#*'),
-            // hljs.C_NUMBER_MODE
+            }
         ]
     };
 });

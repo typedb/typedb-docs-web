@@ -3,6 +3,72 @@ Language: Python
 Category: common
 */
 hljs.registerLanguage("python", function (e) {
+  /**
+   * START of Graql specific syntax highlighting
+  */
+  GRAQL_KEYWORDS = {
+    className: 'graql-keyword',
+    // must remain alphabetically sorted
+    variants: [
+      { begin: /\baggregate\b/ },
+      { begin: /\basc\b/ },
+      { begin: /\bcentrality\b/ },
+      { begin: /\bcluster\b/ },
+      { begin: /\bcommit\b/ },
+      { begin: /\bcompute\b/ },
+      { begin: /\bcontains\b/ },
+      { begin: /\bcount\b/ },
+      { begin: /\bdatatype\b/ },
+      { begin: /\bdesc\b/ },
+      { begin: /\bdefine\b/ },
+      { begin: /\bdegree\b/ },
+      { begin: /\bdelete\b/ },
+      { begin: /\bfrom\b/ },
+      { begin: /\bget\b/ },
+      { begin: /\bgroup\b/ },
+      { begin: /\bhas\b/ },
+      { begin: /\bid\b/ },
+      { begin: /\bin\b/ },
+      { begin: /\binsert\b/ },
+      { begin: /\bis-abstract\b/ },
+      { begin: /\bisa\b/ },
+      { begin: /\bk-core\b/ },
+      { begin: /\bkey\b/ },
+      { begin: /\blabel\b/ },
+      { begin: /\blimit\b/ },
+      { begin: /\bmatch\b/ },
+      { begin: /\bmax\b/ },
+      { begin: /\bmean\b/ },
+      { begin: /\bmedia\b/ },
+      { begin: /\bmin\b/ },
+      { begin: /\boffset\b/ },
+      { begin: /\border by\b/ },
+      { begin: /\bplays\b/ },
+      { begin: /\brelates\b/ },
+      { begin: /\bregex\b/ },
+      { begin: /\bstd\b/ },
+      { begin: /\bsub\b/ },
+      { begin: /\bsum\b/ },
+      { begin: /\bthen\b/ },
+      { begin: /\bto\b/ },
+      { begin: /\bundefine\b/ },
+      { begin: /\bval\b/ },
+      { begin: /\bvia\b/ },
+      { begin: /\bwhen\b/ },
+      { begin: /\bwhere\b/ },
+    ]
+  };
+
+  GRAQL_METHODS = {
+    className: 'graql-method',
+    // must remain alphabetically sorted
+    variants: [
+      { begin: /\bquery\b/ },
+      { begin: /\bclose\b/ }
+    ]
+  };
+  /** END of Graql specific syntax highlighting */
+
   var KEYWORDS = {
     keyword:
       'and elif is global as in if from raise for except finally print import pass return ' +
@@ -12,7 +78,7 @@ hljs.registerLanguage("python", function (e) {
       'Ellipsis NotImplemented'
   };
   var PROMPT = {
-    className: 'meta',  begin: /^(>>>|\.\.\.) /
+    className: 'meta', begin: /^(>>>|\.\.\.) /
   };
   var SUBST = {
     className: 'subst',
@@ -71,9 +137,9 @@ hljs.registerLanguage("python", function (e) {
   var NUMBER = {
     className: 'number', relevance: 0,
     variants: [
-      {begin: hljs.BINARY_NUMBER_RE + '[lLjJ]?'},
-      {begin: '\\b(0o[0-7]+)[lLjJ]?'},
-      {begin: hljs.C_NUMBER_RE + '[lLjJ]?'}
+      { begin: hljs.BINARY_NUMBER_RE + '[lLjJ]?' },
+      { begin: '\\b(0o[0-7]+)[lLjJ]?' },
+      { begin: hljs.C_NUMBER_RE + '[lLjJ]?' }
     ]
   };
   var PARAMS = {
@@ -87,14 +153,16 @@ hljs.registerLanguage("python", function (e) {
     keywords: KEYWORDS,
     illegal: /(<\/|->|\?)|=>/,
     contains: [
+      GRAQL_KEYWORDS,
+      GRAQL_METHODS,
       PROMPT,
       NUMBER,
       STRING,
       hljs.HASH_COMMENT_MODE,
       {
         variants: [
-          {className: 'function', beginKeywords: 'def'},
-          {className: 'class', beginKeywords: 'class'}
+          { className: 'function', beginKeywords: 'def' },
+          { className: 'class', beginKeywords: 'class' }
         ],
         end: /:/,
         illegal: /[${=;\n,]/,
