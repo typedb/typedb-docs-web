@@ -56,18 +56,17 @@ ul.toc {
 
   li {
     float: left;
-    height: 50px;
+    height: 40px;
     margin: 0 !important;
-    width: 50%;
 
     a {
       background-color: #292d34;
       border-radius: 0;
       color: #878e9d;
       display: block;
-      font-size: 20px;
+      font-size: 17px;
       height: inherit;
-      line-height: 2;
+      line-height: 33px;
       padding: 4px 10px;
       text-align: center;
       text-decoration: none;
@@ -87,9 +86,13 @@ ul.toc {
   margin-bottom: 25px;
 
   .tab-pane {
-    pre:last-child {
-      border-radius: 0 0 6px 6px;
-      width: 100%;
+    pre {
+      font-size: 16px;
+
+      &:last-child {
+        border-radius: 0 0 6px 6px;
+        width: 100%;
+      }
     }
   }
 }
@@ -103,4 +106,10 @@ pre {
   code {
     padding: 20px 30px !important;
   }
+}
+
+// icons
+.fa {
+  &-yellow { color: #f1c40f }
+  &-blue { color: #2980b9}
 }
