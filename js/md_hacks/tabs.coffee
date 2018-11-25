@@ -1,10 +1,7 @@
 ---
 ---
 
-ready = ->
-    convertMarkdownToTabs()
-
-convertMarkdownToTabs = ->
+window.tabs_parseMarkdown = ->
     $('.tabs').each (index) ->
         titles = []
         contents = []
@@ -34,9 +31,3 @@ convertMarkdownToTabs = ->
         tab_content_html += "</div>"
 
         $(this).replaceWith tab_title_html + tab_content_html
-    hljs.configure({
-      classPrefix: 'language-'
-    })
-    hljs.initHighlighting();
-
-$(document).on 'turbolinks:load', ready

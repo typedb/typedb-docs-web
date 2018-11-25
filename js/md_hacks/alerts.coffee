@@ -1,10 +1,6 @@
 ---
 ---
-
-ready = ->
-    convertMarkdownToAlerts()
-
-convertMarkdownToAlerts = ->
+window.alerts_convertMarkdown = ->
     $('.alert').each (index) ->
         alert_components = {
             important: {
@@ -30,8 +26,7 @@ convertMarkdownToAlerts = ->
         content.shift() ## removing first (title) element
         content = content.join('\n') ## reconstructing the tab content
         content = marked(content) ## converting the markdown content to html
-        console.log(alert_components[title.toLowerCase()]["class_name"])
-        content_html = 
+        content_html =
             "<div class='alert alert-#{alert_components[title.toLowerCase()]["class_name"]}' role='alert'>" +
                 "<li class='fa fa-#{alert_components[title.toLowerCase()]["icon"]["name"]} fa-#{alert_components[title.toLowerCase()]["icon"]["color"]}' style='margin-right: 5px;'></li>" +
                 "<b>#{title}</b>" +
@@ -39,9 +34,3 @@ convertMarkdownToAlerts = ->
             "</div>"
 
         $(this).replaceWith content_html
-    hljs.configure({
-      classPrefix: 'language-'
-    })
-    hljs.initHighlighting();
-
-$(document).on 'turbolinks:load', ready
