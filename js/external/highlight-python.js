@@ -55,7 +55,7 @@ hljs.registerLanguage("python", function (e) {
       { begin: /\bval\b/ },
       { begin: /\bvia\b/ },
       { begin: /\bwhen\b/ },
-      { begin: /\bwhere\b/ },
+      { begin: /\bwhere\b/ }
     ]
   };
 
@@ -63,8 +63,22 @@ hljs.registerLanguage("python", function (e) {
     className: 'graql-method',
     // must remain alphabetically sorted
     variants: [
+      { begin: /\bexecute\b/ },
+      { begin: /\bgraql\b/ },
+      { begin: /\bmap\b/ },
       { begin: /\bquery\b/ },
       { begin: /\bclose\b/ }
+    ]
+  };
+
+  GRAQL_CLASSES = {
+    className: 'graql-class',
+    // must remain alphabetically sorted
+    variants: [
+      { begin: /\bGrakn\b/ },
+      { begin: /\bQueryBuilder\b/ },
+      { begin: /\bTxType.READ\b/ },
+      { begin: /\bTxType.WRITE\b/ }
     ]
   };
   /** END of Graql specific syntax highlighting */
@@ -155,6 +169,7 @@ hljs.registerLanguage("python", function (e) {
     contains: [
       GRAQL_KEYWORDS,
       GRAQL_METHODS,
+      GRAQL_CLASSES,
       PROMPT,
       NUMBER,
       STRING,

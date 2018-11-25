@@ -63,10 +63,24 @@ hljs.registerLanguage("javascript", function (e) {
     className: 'graql-method',
     // must remain alphabetically sorted
     variants: [
-      { begin: /\bclose\b/ },
-      { begin: /\bquery\b/ }
+      { begin: /\bexecute\b/ },
+      { begin: /\bgraql\b/ },
+      { begin: /\bmap\b/ },
+      { begin: /\bquery\b/ },
+      { begin: /\bclose\b/ }
     ]
   };
+
+  GRAQL_CLASSES = {
+    className: 'graql-class',
+    // must remain alphabetically sorted
+    variants: [
+      { begin: /\bGrakn\b/ },
+      { begin: /\bQueryBuilder\b/ },
+      { begin: /\bTxType.READ\b/ },
+      { begin: /\bTxType.WRITE\b/ }
+    ]
+  }
   /** END of Graql specific syntax highlighting */
 
   var IDENT_RE = '[A-Za-z$_][0-9A-Za-z$_]*';
@@ -131,6 +145,7 @@ hljs.registerLanguage("javascript", function (e) {
     contains: [
       GRAQL_KEYWORDS,
       GRAQL_METHODS,
+      GRAQL_CLASSES,
       {
         className: 'meta',
         relevance: 10,

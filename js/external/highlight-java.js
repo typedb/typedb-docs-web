@@ -56,7 +56,7 @@ hljs.registerLanguage("java", function (e) {
       { begin: /\bval\b/ },
       { begin: /\bvia\b/ },
       { begin: /\bwhen\b/ },
-      { begin: /\bwhere\b/ },
+      { begin: /\bwhere\b/ }
     ]
   };
 
@@ -65,15 +65,26 @@ hljs.registerLanguage("java", function (e) {
     // must remain alphabetically sorted
     variants: [
       { begin: /\bexecute\b/ },
-      { begin: /\bgraql\b/ }
+      { begin: /\bgraql\b/ },
+      { begin: /\bmap\b/ },
+      { begin: /\bsession\b/ },
+      { begin: /\btransaction\b/ },
+      { begin: /\bclose\b/ }
     ]
-  }
+  };
 
   GRAQL_CLASSES = {
     className: 'graql-class',
     // must remain alphabetically sorted
     variants: [
-      { begin: /\bQueryBuilder\b/ }
+      { begin: /\bGrakn\b/ },
+      { begin: /\bKeyspace\b/ },
+      { begin: /\bQueryBuilder\b/ },
+      { begin: /\bSession\b/ },
+      { begin: /\bSimpleURI\b/ },
+      { begin: /\bTransaction\b/ },
+      { begin: /\bTxType.READ\b/ },
+      { begin: /\bTxType.WRITE\b/ }
     ]
   }
   /** END of Graql specific syntax highlighting */
