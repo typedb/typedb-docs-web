@@ -16,6 +16,13 @@ window.alerts_convertMarkdown = ->
                     name: "info-circle",
                     color: "blue"
                 }
+            },
+            "advanced topic": {
+                class_name: "success",
+                icon: {
+                    name: "lightbulb-o",
+                    color: "green"
+                }
             }
         }
         alert_detail = $(this).html()
