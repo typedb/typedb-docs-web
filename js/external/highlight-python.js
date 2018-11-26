@@ -4,82 +4,18 @@ Category: common
 */
 hljs.registerLanguage("python", function (e) {
   /**
-   * START of Graql specific syntax highlighting
+   * START of custom (extended) syntax highlighting
   */
-  GRAQL_KEYWORDS = {
-    className: 'graql-keyword',
+  CLASS = {
+    className: 'class',
     // must remain alphabetically sorted
-    variants: [
-      { begin: /\baggregate\b/ },
-      { begin: /\basc\b/ },
-      { begin: /\bcentrality\b/ },
-      { begin: /\bcluster\b/ },
-      { begin: /\bcommit\b/ },
-      { begin: /\bcompute\b/ },
-      { begin: /\bcontains\b/ },
-      { begin: /\bcount\b/ },
-      { begin: /\bdatatype\b/ },
-      { begin: /\bdesc\b/ },
-      { begin: /\bdefine\b/ },
-      { begin: /\bdegree\b/ },
-      { begin: /\bdelete\b/ },
-      { begin: /\bfrom\b/ },
-      { begin: /\bget\b/ },
-      { begin: /\bgroup\b/ },
-      { begin: /\bhas\b/ },
-      { begin: /\bid\b/ },
-      { begin: /\bin\b/ },
-      { begin: /\binsert\b/ },
-      { begin: /\bis-abstract\b/ },
-      { begin: /\bisa\b/ },
-      { begin: /\bk-core\b/ },
-      { begin: /\bkey\b/ },
-      { begin: /\blabel\b/ },
-      { begin: /\blimit\b/ },
-      { begin: /\bmatch\b/ },
-      { begin: /\bmax\b/ },
-      { begin: /\bmean\b/ },
-      { begin: /\bmedia\b/ },
-      { begin: /\bmin\b/ },
-      { begin: /\boffset\b/ },
-      { begin: /\border by\b/ },
-      { begin: /\bplays\b/ },
-      { begin: /\brelates\b/ },
-      { begin: /\bregex\b/ },
-      { begin: /\bstd\b/ },
-      { begin: /\bsub\b/ },
-      { begin: /\bsum\b/ },
-      { begin: /\bthen\b/ },
-      { begin: /\bto\b/ },
-      { begin: /\bundefine\b/ },
-      { begin: /\bval\b/ },
-      { begin: /\bvia\b/ },
-      { begin: /\bwhen\b/ },
-      { begin: /\bwhere\b/ }
-    ]
+    begin: /\b[A-Z][a-zA-Z]*[^\s,);]+\b/
   };
 
-  GRAQL_METHODS = {
-    className: 'graql-method',
+  METHOD = {
+    className: 'method',
     // must remain alphabetically sorted
-    variants: [
-      { begin: /\bexecute\b/ },
-      { begin: /\bgraql\b/ },
-      { begin: /\bmap\b/ },
-      { begin: /\bquery\b/ },
-      { begin: /\bclose\b/ }
-    ]
-  };
-
-  GRAQL_CLASSES = {
-    className: 'graql-class',
-    // must remain alphabetically sorted
-    variants: [
-      { begin: /\bGrakn\b/ },
-      { begin: /\bQueryBuilder\b/ },
-      { begin: /\bTxType.READ\b/ },
-      { begin: /\bTxType.WRITE\b/ }
-    ]
+    begin: /\./, end: /\(/, excludeBegin: true, excludeEnd: true
   };
   /** END of Graql specific syntax highlighting */
 
@@ -167,9 +103,8 @@ hljs.registerLanguage("python", function (e) {
     keywords: KEYWORDS,
     illegal: /(<\/|->|\?)|=>/,
     contains: [
-      GRAQL_KEYWORDS,
-      GRAQL_METHODS,
-      GRAQL_CLASSES,
+      CLASS,
+      METHOD,
       PROMPT,
       NUMBER,
       STRING,

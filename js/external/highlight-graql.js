@@ -91,7 +91,7 @@ hljs.registerLanguage("graql", function (e) {
             },
             {
                 className: 'graql-variable',
-                begin: /\$[^\s]+/
+                begin: /\$[^\s,);]+/
             },
             {
                 className: 'string',

@@ -10,6 +10,17 @@
  * @author Zeno Rocha <hi@zenorocha.com>
  */
 
+// START: custom classes
+
+.hljs-class {
+  color:#F75E62;
+}
+
+.hljs-method {
+  color:#65b0ed;
+}
+// END: custom classes
+
 .hljs {
   display: block;
   overflow-x: auto;
