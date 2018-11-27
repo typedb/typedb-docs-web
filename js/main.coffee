@@ -7,6 +7,8 @@ ready = ->
     window.tabs_parseMarkdown()
     window.alerts_convertMarkdown()
     main_applySyntaxHighlighting()
+    window.code_autoLinkKeywords()
+
 
 sidebar_scroll_top_position = 0;
 sidebar_overflow = ""

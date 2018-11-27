@@ -26,6 +26,17 @@
   overflow-x: auto;
   padding: 0.5em;
   background: #292d34;
+  color: #F2BD59;
+
+  a {
+    color:inherit;
+    text-decoration: none !important;
+    border-bottom: 1px dashed;
+
+    &:hover {
+      font-weight: bold;
+    }
+  }
 }
 
 .hljs-built_in,
