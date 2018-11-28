@@ -28,7 +28,7 @@ hljs.registerLanguage("graql", function (e) {
             {
                 className: 'graql-type',
                 variants: [
-                    { begin: /\bentity|attribute|relationship\b/ },
+                    { begin: /\bentity|attribute|relationship|thing|role\b/ },
                     { begin: /\brule\b/ },
                     { begin: /\bboolean|double|long|string|date\b/ },
                 ]
@@ -39,6 +39,7 @@ hljs.registerLanguage("graql", function (e) {
                 variants: [
                     { begin: /(^|\s)aggregate\b/ },
                     { begin: /(^|\s)asc\b/ },
+                    { begin: /(^|\s)as\b/ },
                     { begin: /(^|\s)centrality\b/ },
                     { begin: /(^|\s)cluster\b/ },
                     { begin: /(^|\s)commit\b/ },

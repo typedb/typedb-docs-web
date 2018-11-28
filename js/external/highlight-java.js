@@ -10,7 +10,7 @@ hljs.registerLanguage("java", function (e) {
   CLASS = {
     className: 'class',
     // must remain alphabetically sorted
-    begin: /\b[A-Z][a-zA-Z]*[^\s,);]+\b/
+    begin: /\b[A-Z][a-zA-Z]*[^\s,).;]+\b/
   };
 
   METHOD = {
