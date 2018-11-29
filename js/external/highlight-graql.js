@@ -8,7 +8,7 @@ hljs.registerLanguage("graql", function (e) {
             'match isa contains regex val via id label' +
             'define undefine get insert delete aggregate compute' +
             'std median mean max min sum count group' +
-            'path centrality cluster degree k-core where from to in' +
+            'path centrality cluster degree k-core where from to in of' +
             'limit offset order by asc desc' +
             'rule when then' +
             'commit',
@@ -69,6 +69,7 @@ hljs.registerLanguage("graql", function (e) {
                     { begin: /(^|\s)mean\b/ },
                     { begin: /(^|\s)media\b/ },
                     { begin: /(^|\s)min\b/ },
+                    { begin: /(^|\s)of\b/ },
                     { begin: /(^|\s)offset\b/ },
                     { begin: /(^|\s)order by\b/ },
                     { begin: /(^|\s)plays\b/ },

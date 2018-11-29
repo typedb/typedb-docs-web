@@ -9,16 +9,28 @@ hljs.registerLanguage("java", function (e) {
   */
   CLASS = {
     className: 'class',
-    // must remain alphabetically sorted
-    begin: /\b[A-Z][a-zA-Z]*[^\s,).<>;]+\b/
+    variants: [
+      { begin: /\b([A-Z][a-z0-9]+)+/ },
+      { begin: /\.([A-Z][a-z0-9]+)+/ }
+    ]
+  };
+
+  CONSTANT = {
+    className: 'constant',
+    begin: /\b[A-Z]+/,
+    end: /\)|\.|\s/,
+    excludeEnd: true,
   };
 
   METHOD = {
     className: 'method',
-    // must remain alphabetically sorted
-    begin: /\.|\,\s/, end: /\(/, excludeBegin: true, excludeEnd: true
+    variants: [
+      { begin: /\)\./, end: /\(/, excludeBegin: true, excludeEnd: true },
+      { begin: /\b\./, end: /\(/, excludeBegin: true, excludeEnd: true },
+      { begin: /\,\s/, end: /\(/, excludeBegin: true, excludeEnd: true }
+    ]
   };
-  /** END of Graql specific syntax highlighting */
+  /** END */
 
   var JAVA_IDENT_RE = '[\u00C0-\u02B8a-zA-Z_$][\u00C0-\u02B8a-zA-Z_$0-9]*';
   var GENERIC_IDENT_RE = JAVA_IDENT_RE + '(<' + JAVA_IDENT_RE + '(\\s*,\\s*' + JAVA_IDENT_RE + ')*>)?';
@@ -56,6 +68,7 @@ hljs.registerLanguage("java", function (e) {
     illegal: /<\/|#/,
     contains: [
       CLASS,
+      CONSTANT,
       METHOD,
       hljs.COMMENT(
         '/\\*\\*',
