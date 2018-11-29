@@ -10,13 +10,13 @@ hljs.registerLanguage("java", function (e) {
   CLASS = {
     className: 'class',
     // must remain alphabetically sorted
-    begin: /\b[A-Z][a-zA-Z]*[^\s,).;]+\b/
+    begin: /\b[A-Z][a-zA-Z]*[^\s,).<>;]+\b/
   };
 
   METHOD = {
     className: 'method',
     // must remain alphabetically sorted
-    begin: /\./, end: /\(/, excludeBegin: true, excludeEnd: true
+    begin: /\.|\,\s/, end: /\(/, excludeBegin: true, excludeEnd: true
   };
   /** END of Graql specific syntax highlighting */
 
