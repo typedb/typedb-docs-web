@@ -15,7 +15,7 @@ window.tabs_parseMarkdown = ->
             content.shift() ## removing first (title) element
             content = content.join('\n') ## reconstructing the tab content
             titles.push title
-            content = marked(content) ## converting the markdown content to html
+            content = marked(content.replace(/&lt;/g, "<").replace(/&gt;/g, ">")) ## converting the markdown content to html, handling escaped chars manually!
             contents.push content
 
         tab_title_html = '<ul class="tabs">'
