@@ -98,13 +98,20 @@ ul.toc {
 }
 
 // for code blocks
-
 pre {
   border-radius: 6px;
   padding: 0;
   code {
     padding: 20px 30px !important;
     background: #2F3544 !important;
+  }
+
+  &.client-api-method {
+    width: fit-content;
+    margin: 15px 0;
+    code {
+      padding: 10px 15px !important;
+    }
   }
 }
 
@@ -113,4 +120,40 @@ pre {
   &-yellow { color: #f1c40f }
   &-blue { color: #2980b9}
   &-green { color: #27ae60 }
+}
+
+pre.client-api-method {
+  code {
+    width: auto;
+  }
+}
+
+// for client api references
+.o_client-api-ref-list {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 20px;
+  padding-bottom: 40px;
+
+  .m_client-api-ref-block {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 25px;
+  }
+
+  .m_client-api-ref-block:last-child {
+    border-bottom: none;
+    padding-bottom: 0px;
+  }
+}
+
+table.client-api-accepts {
+  border: none !important;
+  margin-top: 15px;
+
+  th {
+    border: none;
+    padding: 7px;
+  }
+  tr:nth-of-type(odd) { background-color: #ebe9f6; }
+
+  p { margin: 0; padding: 0 }
 }
