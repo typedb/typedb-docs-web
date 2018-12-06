@@ -15,7 +15,7 @@ hljs.registerLanguage("javascript", function (e) {
 METHOD = {
   className: 'method',
   // must remain alphabetically sorted
-  begin: /\./, end: /\(/, excludeBegin: true, excludeEnd: true
+  begin: /\.[^\s]/, end: /\(/, excludeBegin: true, excludeEnd: true
 };
 /** END of Graql specific syntax highlighting */
 

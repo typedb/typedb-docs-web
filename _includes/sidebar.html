@@ -26,35 +26,33 @@
 {% assign categories = categories | push: graql_pages %}
 {% assign categories = categories | push: developer_guidelines_pages %}
 
-<!-- <ul data-turbolinks-permanent> -->
-    {% for category in categories %}
-        {% assign specified_category_title = category[0][0].category %}
+{% for category in categories %}
+    {% assign specified_category_title = category[0][0].category %}
 
-        {% if specified_category_title != "" %}
-            <li class="a-section_categoryTitle">{{ specified_category_title }}</li>
-        {% endif %}
+    {% if specified_category_title != "" %}
+        <li class="a-section_categoryTitle">{{ specified_category_title }}</li>
+    {% endif %}
 
-        {% assign specified_section_title = category[0][0].section %}
+    {% assign specified_section_title = category[0][0].section %}
 
-        {% if specified_section_title == "" %}
-            {% for section in category %}
-                {% for doc_page in section %}
-                    {% assign hyperlink_class = "animated__link animated__link--purple" %}
-                    {% include sidebar_page_item.html doc_page=doc_page hyperlink_class=hyperlink_class %}
-                {% endfor %}
+    {% if specified_section_title == "" %}
+        {% for section in category %}
+            {% for doc_page in section %}
+                {% assign hyperlink_class = "animated__link animated__link--purple" %}
+                {% include sidebar_page_item.html doc_page=doc_page hyperlink_class=hyperlink_class %}
             {% endfor %}
-        {% else %}
-            {% for section in category %}
-                <li class="o-section">
-                    <a class="a-section_title animated__link animated__link--purple" href = "#">{{ section[0].section }}</a>
-                    <ul class="m-section_list">
-                        {% for doc_page in section %}
-                            {% assign hyperlink_class = "" %}
-                            {% include sidebar_page_item.html doc_page=doc_page hyperlink_class=hyperlink_class %}
-                        {% endfor %}
-                    </ul>
-                </li>
-            {% endfor %}
-        {% endif %}
-    {% endfor %}
-<!-- </ul> -->
+        {% endfor %}
+    {% else %}
+        {% for section in category %}
+            <li class="o-section">
+                <a class="a-section_title animated__link animated__link--purple" href = "#">{{ section[0].section }}</a>
+                <ul class="m-section_list">
+                    {% for doc_page in section %}
+                        {% assign hyperlink_class = "" %}
+                        {% include sidebar_page_item.html doc_page=doc_page hyperlink_class=hyperlink_class %}
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    {% endif %}
+{% endfor %}

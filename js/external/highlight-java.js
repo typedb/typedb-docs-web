@@ -10,24 +10,51 @@ hljs.registerLanguage("java", function (e) {
   CLASS = {
     className: 'class',
     variants: [
-      { begin: /\b([A-Z][a-z0-9]+)+/ },
-      { begin: /\.([A-Z][a-z0-9]+)+/ }
+      { begin: /([A-Z][a-zA-Z]*)*[\s|\.|\<|\>]/ },
+      { begin: /new\s/, end: /\(/, excludeBegin: true, excludeEnd: true }
     ]
   };
 
   CONSTANT = {
-    className: 'constant',
-    begin: /\b[A-Z]+/,
-    end: /\)|\.|\s/,
-    excludeEnd: true,
+    className: 'constant', begin: /\b[A-Z]+/, end: /\)|\.|\s/, excludeEnd: true
   };
 
   METHOD = {
     className: 'method',
     variants: [
-      { begin: /\)\./, end: /\(/, excludeBegin: true, excludeEnd: true },
-      { begin: /\b\./, end: /\(/, excludeBegin: true, excludeEnd: true },
-      { begin: /\,\s/, end: /\(/, excludeBegin: true, excludeEnd: true }
+      { begin: /aggregate/, end: /\(/, excludeEnd: true },
+      { begin: /and/, end: /\(/, excludeEnd: true },
+      { begin: /close/, end: /\(/, excludeEnd: true },
+      { begin: /commit/, end: /\(/, excludeEnd: true },
+      { begin: /compute/, end: /\(/, excludeEnd: true },
+      { begin: /count/, end: /\(/, excludeEnd: true },
+      { begin: /define/, end: /\(/, excludeEnd: true },
+      { begin: /delete/, end: /\(/, excludeEnd: true },
+      { begin: /explanation/, end: /\(/, excludeEnd: true },
+      { begin: /execute/, end: /\(/, excludeEnd: true },
+      { begin: /get/, end: /\(/, excludeEnd: true },
+      { begin: /group/, end: /\(/, excludeEnd: true },
+      { begin: /has/, end: /\(/, excludeEnd: true },
+      { begin: /insert/, end: /\(/, excludeEnd: true },
+      { begin: /isa/, end: /\(/, excludeEnd: true },
+      { begin: /keyspaces/, end: /\(/, excludeEnd: true },
+      { begin: /label/, end: /\(/, excludeEnd: true },
+      { begin: /map/, end: /\(/, excludeEnd: true },
+      { begin: /match/, end: /\(/, excludeEnd: true },
+      { begin: /of/, end: /\(/, excludeEnd: true },
+      { begin: /plays/, end: /\(/, excludeEnd: true },
+      { begin: /rel/, end: /\(/, excludeEnd: true },
+      { begin: /relates/, end: /\(/, excludeEnd: true },
+      { begin: /session/, end: /\(/, excludeEnd: true },
+      { begin: /stream/, end: /\(/, excludeEnd: true },
+      { begin: /sub/, end: /\(/, excludeEnd: true },
+      { begin: /then/, end: /\(/, excludeEnd: true },
+      { begin: /toString/, end: /\(/, excludeEnd: true },
+      { begin: /transaction/, end: /\(/, excludeEnd: true },
+      { begin: /undefine/, end: /\(/, excludeEnd: true },
+      { begin: /var\b/, end: /\(/, excludeEnd: true },
+      { begin: /when/, end: /\(/, excludeEnd: true },
+      { begin: /withTx/, end: /\(/, excludeEnd: true },
     ]
   };
   /** END */
@@ -67,8 +94,12 @@ hljs.registerLanguage("java", function (e) {
     keywords: KEYWORDS,
     illegal: /<\/|#/,
     contains: [
+      {
+        className: "hljs",
+        begin: /\.|\<|\>/
+      },
       CLASS,
-      CONSTANT,
+      // CONSTANT,
       METHOD,
       hljs.COMMENT(
         '/\\*\\*',
