@@ -12,11 +12,11 @@ hljs.registerLanguage("javascript", function (e) {
   begin: /\b[A-Z][a-zA-Z]*[^\s,);]+\b/
 };
 
-METHOD = {
-  className: 'method',
-  // must remain alphabetically sorted
-  begin: /\.[^\s]/, end: /\(/, excludeBegin: true, excludeEnd: true
-};
+// METHOD = {
+//   className: 'method',
+//   // must remain alphabetically sorted
+//   begin: /\.[^\s]/, end: /\(|\s/, excludeBegin: true, excludeEnd: true
+// };
 /** END of Graql specific syntax highlighting */
 
   var IDENT_RE = '[A-Za-z$_][0-9A-Za-z$_]*';
@@ -80,7 +80,7 @@ METHOD = {
     keywords: KEYWORDS,
     contains: [
       CLASS,
-      METHOD,
+      HIGHLIGHT_METHODS,
       {
         className: 'meta',
         relevance: 10,

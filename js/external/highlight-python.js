@@ -12,11 +12,11 @@ hljs.registerLanguage("python", function (e) {
     begin: /\b[A-Z][a-zA-Z]*[^\s,);]+\b/
   };
 
-  METHOD = {
-    className: 'method',
-    // must remain alphabetically sorted
-    begin: /\./, end: /\(/, excludeBegin: true, excludeEnd: true
-  };
+  // METHOD = {
+  //   className: 'method',
+  //   // must remain alphabetically sorted
+  //   begin: /\./, end: /\(/, excludeBegin: true, excludeEnd: true
+  // };
   /** END of Graql specific syntax highlighting */
 
   var KEYWORDS = {
@@ -104,7 +104,7 @@ hljs.registerLanguage("python", function (e) {
     illegal: /(<\/|->|\?)|=>/,
     contains: [
       CLASS,
-      METHOD,
+      HIGHLIGHT_METHODS,
       PROMPT,
       NUMBER,
       STRING,
