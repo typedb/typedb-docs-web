@@ -3452,7 +3452,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 .tab-content > .active,
 .pill-content > .active {
-  display: block;
+  display: inline-block;
 }
 .nav .caret {
   border-top-color: #74ab50;

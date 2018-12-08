@@ -48,21 +48,33 @@ ul.toc {
   padding-left: 0;
   margin: 25px 0 0 0;
 
+  &.light {
+    li a {
+      background-color: #D4D1E8;
+      color: #FFFFFF;
+    }
+  }
+
+  &.dark {
+    li a {
+      background-color: #292d34;
+      color: #878e9d;
+    }
+  }
+
   .active > a {
-    background-color: #796de3;
+    background-color: #796DE3 !important;
     border: none;
-    color: white;
+    color: white !important;
   }
 
   li {
-    float: left;
+    display: inline-block;
     height: 40px;
     margin: 0 !important;
 
     a {
-      background-color: #292d34;
       border-radius: 0;
-      color: #878e9d;
       display: block;
       font-size: 17px;
       height: inherit;
@@ -85,14 +97,32 @@ ul.toc {
 .tab-content {
   margin-bottom: 25px;
 
-  .tab-pane {
-    pre {
+  &.light {
+    background-color: #F6F5FB;
+    padding: 20px;
+  }
+
+  &.dark {
+    .tab-pane pre {
       font-size: 16px;
+
+      margin: 0 !important;
+      border-radius: 0 0 6px 6px;
+      border: none;
+      padding: 0px 0px !important;
 
       &:last-child {
         border-radius: 0 0 6px 6px;
         width: 100%;
       }
+    }
+  }
+
+  .tab-pane {
+    width: 100%;
+
+    code {
+      padding: 10px 15px !important;
     }
   }
 }
@@ -120,6 +150,7 @@ pre {
   &-yellow { color: #f1c40f }
   &-blue { color: #2980b9}
   &-green { color: #27ae60 }
+  &-red { color: #F75E62 }
 }
 
 pre.client-api-method {
