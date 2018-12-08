@@ -293,14 +293,14 @@ a[href^="https://"]:after {
     border-bottom: 1px dashed #383838;
 }
 
-h1, h2, h3, h4, h5, h6,
+/* h1, h2, h3, h4, h5, h6,
 span.projectTitle {
     font-family: 'Titillium';
     letter-spacing: 0.2px;
     font-weight: 200;
     color: #4a4c52;
     font-weight: 600;
-}
+} */
 
 .summary {
 	color: #8c8d92;
@@ -314,13 +314,13 @@ span.projectTitle {
     color: #f75e62;
 }
 
-h3 {
+/* h3 {
     color: #ED1951;
 }
 
 h4 {
     color: #808080;
-}
+} */
 
 code {
     white-space: pre-wrap;
