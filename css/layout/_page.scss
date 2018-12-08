@@ -1,3 +1,10 @@
+// to account for navbar's hight on anchor clicks
+:target {
+  padding-top: 90px !important;
+  margin-top: -70px !important;
+}
+
+// for headings
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Titillium';
   letter-spacing: 0.2px;
@@ -31,10 +38,7 @@ h4 {
   font-size: 18px;
 }
 
-div#toc li > ul {
-    padding-top: 0;
-    padding-bottom: 0;
-}
+
 // for table of content
 ul.toc {
   padding: 5px;
@@ -73,7 +77,6 @@ ul.toc {
 }
 
 // for tabbed-content
-
 .tabs {
   border-bottom: none;
   display: block;

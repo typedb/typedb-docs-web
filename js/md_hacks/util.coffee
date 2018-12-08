@@ -24,7 +24,15 @@ window.util_unwrapParagraphInCode = () ->
             content = $(this).find('p').html()
             $(this).html content
 
-window.util_handleExternalLinks = () ->
+window.util_handleLinks = () ->
+    ## adds anchor links for the given tags
+    anchors.add('h2,h3,h4,h5');
+
     $('a').each ->
+        ## external links to open in a new tab
         if $(this).attr("href").indexOf("http") > -1
             $(this).attr("target", "_blank")
+        ## anchored links to ignore turbolinks (turbolinks ignores css's :target fix)
+        if $(this).attr("href").indexOf("#") > -1
+            console.log $('.anchorjs-link').length
+            $(this).attr("data-turbolinks", "false")

@@ -8,8 +8,7 @@ ready = ->
     window.alerts_convertMarkdown()
     main_applySyntaxHighlighting()
     window.util_unwrapParagraphInCode()
-    window.util_handleExternalLinks()
-    anchors.add('h2,h3,h4,h5');
+    window.util_handleLinks()
 
 
     window.util_autoLinkKeywords("language-graql", {
