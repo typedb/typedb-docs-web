@@ -6,22 +6,29 @@ window.alerts_convertMarkdown = ->
             important: {
                 class_name: "warning",
                 icon: {
-                    name: "star",
+                    name: "fa fa-star",
                     color: "yellow"
                 }
             },
             note: {
                 class_name: "info",
                 icon: {
-                    name: "info-circle",
+                    name: "fa fa-info-circle",
                     color: "blue"
                 }
             },
             "advanced topic": {
                 class_name: "success",
                 icon: {
-                    name: "lightbulb-o",
+                    name: "fa fa-lightbulb-o",
                     color: "green"
+                }
+            },
+            warning: {
+                class_name: "danger",
+                icon: {
+                    name: "fa fa-exclamation-triangle",
+                    color: "red"
                 }
             }
         }
@@ -35,7 +42,7 @@ window.alerts_convertMarkdown = ->
         content = marked(content) ## converting the markdown content to html
         content_html =
             "<div class='alert alert-#{alert_components[title.toLowerCase()]["class_name"]}' role='alert'>" +
-                "<li class='fa fa-#{alert_components[title.toLowerCase()]["icon"]["name"]} fa-#{alert_components[title.toLowerCase()]["icon"]["color"]}' style='margin-right: 5px;'></li>" +
+                "<li class='#{alert_components[title.toLowerCase()]["icon"]["name"]} fa-#{alert_components[title.toLowerCase()]["icon"]["color"]}' style='margin-right: 5px;'></li>" +
                 "<b>#{title}</b>" +
                 content +
             "</div>"
