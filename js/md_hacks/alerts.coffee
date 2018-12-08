@@ -1,7 +1,7 @@
 ---
 ---
 window.alerts_convertMarkdown = ->
-    $('.alert').each (index) ->
+    $('.galert').each (index) ->
         alert_components = {
             important: {
                 class_name: "warning",

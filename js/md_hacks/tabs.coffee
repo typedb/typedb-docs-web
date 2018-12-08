@@ -2,7 +2,7 @@
 ---
 
 window.tabs_parseMarkdown = () ->
-    $('.tabs').each (index) ->
+    $('.gtabs').each (index) ->
         titles = []
         contents = []
         tab_details = $(this).html().split('[tab:end]')
@@ -22,7 +22,7 @@ window.tabs_parseMarkdown = () ->
         isLight = $(this).attr('class').indexOf("light") > -1
         isDark = $(this).attr('class').indexOf("dark") > -1
 
-        tab_title_html = "<ul class='#{$(this).attr('class')}'>"
+        tab_title_html = "<ul class='tabs #{if isLight then "light" else ""} #{if isDark then "dark" else ""}'>"
         tab_width_percent = 100 / titles.length
         for title, i in titles
             tab_title_html += "<li class='#{"active" if i == 0}' style='width:#{tab_width_percent}%'><a href='##{title.replace(/\s/g, "-").toLowerCase() + index}' data-toggle='tab'>#{title}</a></li>"
