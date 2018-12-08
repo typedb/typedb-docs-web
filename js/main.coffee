@@ -7,7 +7,8 @@ ready = ->
     window.tabs_parseMarkdown()
     window.alerts_convertMarkdown()
     main_applySyntaxHighlighting()
-    window.util_unwrapPinCode()
+    window.util_unwrapParagraphInCode()
+    window.util_handleExternalLinks()
 
     window.util_autoLinkKeywords("language-graql", {
         "undefine": "/docs/schema/concepts#undefine"
@@ -115,6 +116,7 @@ window.main_applySyntaxHighlighting = ->
     ## the line below is required to force initHighlighting
     ## to be recalled on each turobilink visit
     hljs.initHighlighting.called = false;
+    hljs.configure({languages: []})
     hljs.initHighlighting()
 
 $(document).on 'turbolinks:load', ready

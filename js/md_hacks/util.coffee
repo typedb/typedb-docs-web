@@ -18,8 +18,13 @@ window.util_autoLinkKeywords = (selector, keywordLinkMapping) ->
                     endIndex = beginIndex + replacement.length
         $(this).html content
 
-window.util_unwrapPinCode = () ->
+window.util_unwrapParagraphInCode = () ->
     $('code').each ->
         if $(this).children('p').length > 0
             content = $(this).find('p').html()
             $(this).html content
+
+window.util_handleExternalLinks = () ->
+    $('a').each ->
+        if $(this).attr("href").indexOf("http") > -1
+            $(this).attr("target", "_blank")
