@@ -16,6 +16,7 @@ window.tabs_parseMarkdown = () ->
             content = content.join('\n') ## reconstructing the tab content
             titles.push title
             content = content.replace(/\\\</g, "<").replace(/\\\>/g, ">")
+            content = content.replace("\\&lt;", "<").replace("\\&gt;", ">")
             content = marked content ## converting the markdown content to html, handling escaped chars manually!
             contents.push content
 

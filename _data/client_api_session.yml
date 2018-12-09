@@ -23,7 +23,7 @@ methods:
         param1:
           <<: *accepts-1-param-1
           type: 'GraknTxType.READ or GraknTxType.WRITE'
-    javascript:
+    nodejs:
       <<: *method-1
     python:
       <<: *method-1
@@ -37,7 +37,7 @@ methods:
     java:
       <<: *method-2
 
-    javascript:
+    nodejs:
       <<: *method-2
 
     python:

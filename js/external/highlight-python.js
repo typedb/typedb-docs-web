@@ -3,22 +3,6 @@ Language: Python
 Category: common
 */
 hljs.registerLanguage("python", function (e) {
-  /**
-   * START of custom (extended) syntax highlighting
-  */
-  CLASS = {
-    className: 'class',
-    // must remain alphabetically sorted
-    begin: /\b[A-Z][a-zA-Z]*[^\s,);]+\b/
-  };
-
-  // METHOD = {
-  //   className: 'method',
-  //   // must remain alphabetically sorted
-  //   begin: /\./, end: /\(/, excludeBegin: true, excludeEnd: true
-  // };
-  /** END of Graql specific syntax highlighting */
-
   var KEYWORDS = {
     keyword:
       'and elif is global as in if from raise for except finally print import pass return ' +
@@ -103,8 +87,9 @@ hljs.registerLanguage("python", function (e) {
     keywords: KEYWORDS,
     illegal: /(<\/|->|\?)|=>/,
     contains: [
-      CLASS,
-      HIGHLIGHT_METHODS,
+      CUSTOM_HIGHLIGHT_METHODS,
+      CUSTOM_HIGHLIGHT_CLASSES,
+      CUSTOM_HIGHLIGHT_CONSTANT,
       PROMPT,
       NUMBER,
       STRING,

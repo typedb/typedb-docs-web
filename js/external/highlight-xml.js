@@ -93,7 +93,7 @@ hljs.registerLanguage("xml", function (e) {
         contains: [TAG_INTERNALS],
         starts: {
           end: '\<\/script\>', returnEnd: true,
-          subLanguage: ['actionscript', 'javascript', 'handlebars', 'xml']
+          subLanguage: ['actionscript', 'nodejs', 'handlebars', 'xml']
         }
       },
       {

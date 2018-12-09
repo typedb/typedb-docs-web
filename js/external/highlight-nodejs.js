@@ -1,24 +1,8 @@
 /*
-Language: JavaScript
+Language: nodejs
 Category: common, scripting
 */
-hljs.registerLanguage("javascript", function (e) {
-  /**
-   * START of custom (extended) syntax highlighting
-  */
- CLASS = {
-  className: 'class',
-  // must remain alphabetically sorted
-  begin: /\b[A-Z][a-zA-Z]*[^\s,);]+\b/
-};
-
-// METHOD = {
-//   className: 'method',
-//   // must remain alphabetically sorted
-//   begin: /\.[^\s]/, end: /\(|\s/, excludeBegin: true, excludeEnd: true
-// };
-/** END of Graql specific syntax highlighting */
-
+hljs.registerLanguage("nodejs", function (e) {
   var IDENT_RE = '[A-Za-z$_][0-9A-Za-z$_]*';
   var KEYWORDS = {
     keyword:
@@ -79,8 +63,9 @@ hljs.registerLanguage("javascript", function (e) {
     aliases: ['js', 'jsx'],
     keywords: KEYWORDS,
     contains: [
-      CLASS,
-      HIGHLIGHT_METHODS,
+      CUSTOM_HIGHLIGHT_METHODS,
+      CUSTOM_HIGHLIGHT_CLASSES,
+      CUSTOM_HIGHLIGHT_CONSTANT,
       {
         className: 'meta',
         relevance: 10,

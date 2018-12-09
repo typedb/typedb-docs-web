@@ -76,7 +76,7 @@ methods:
     common: &method-5
       title: Retriving data instances
       method: |
-        .match(Pattern... patterns).insert(VarPattern... varPatterns).get(Var... vars);
+        .match(Pattern... patterns).get(Var... vars);
       description: |
         Retrieves instances of data that matched the preceding clause.
         See examples for <a href="/docs/schema/query/get-query">get queries</a>.

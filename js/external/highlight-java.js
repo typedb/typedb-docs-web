@@ -4,22 +4,6 @@ Author: Vsevolod Solovyov <vsevolod.solovyov@gmail.com>
 Category: common, enterprise
 */
 hljs.registerLanguage("java", function (e) {
-  /**
-   * START of custom (extended) syntax highlighting
-  */
-  // CLASS = {
-  //   className: 'class',
-  //   variants: [
-  //     { begin: /([A-Z][a-zA-Z]*)*[\s|\.|\<|\>]/ },
-  //     { begin: /new\s/, end: /\(/, excludeBegin: true, excludeEnd: true }
-  //   ]
-  // };
-
-  CONSTANT = {
-    className: 'constant', begin: /\b[A-Z]+/, end: /\)|\.|\s/, excludeEnd: true
-  };
-  /** END */
-
   var JAVA_IDENT_RE = '[\u00C0-\u02B8a-zA-Z_$][\u00C0-\u02B8a-zA-Z_$0-9]*';
   var GENERIC_IDENT_RE = JAVA_IDENT_RE + '(<' + JAVA_IDENT_RE + '(\\s*,\\s*' + JAVA_IDENT_RE + ')*>)?';
   var KEYWORDS =
@@ -55,8 +39,9 @@ hljs.registerLanguage("java", function (e) {
     keywords: KEYWORDS,
     illegal: /<\/|#/,
     contains: [
-      HIGHLIGHT_METHODS,
-      HIGHLIGHT_CLASSES,
+      CUSTOM_HIGHLIGHT_METHODS,
+      CUSTOM_HIGHLIGHT_CLASSES,
+      CUSTOM_HIGHLIGHT_CONSTANT,
       // CONSTANT,
       {
         className: "hljs",

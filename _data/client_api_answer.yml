@@ -7,7 +7,7 @@ description:
   java: >
     The type of answers returned by executation of a query depends on the type of query executed.
     The table below illustrates the answer types mapped to query types.
-  javascript: *common-description
+  nodejs: *common-description
   python: *common-description
 mappings:
   -
@@ -56,11 +56,11 @@ types:
           description: Produces a Map where keys are variable names and values are concepts
           returns:
             - 'Map ({variable_name: Concept})'
-        javascript:
+        nodejs:
           <<: *conceptmap-method-1
-          description: Produces a Javascript object where keys are variable names and values are concepts
+          description: Produces a nodejs object where keys are variable names and values are concepts
           returns:
-            - 'Javascript object ({variable_name: Concept})'
+            - 'nodejs object ({variable_name: Concept})'
         python:
           <<: *conceptmap-method-1
           description: Produces a dictionary where keys are variable names and values are concepts
@@ -76,7 +76,7 @@ types:
             - "null"
         java:
           <<: *explanation-method
-        javascript:
+        nodejs:
           <<: *explanation-method
         python:
           <<: *explanation-method
@@ -92,7 +92,7 @@ types:
           returns:
             - int
             - float
-        javascript:
+        nodejs:
           <<: *value-method-1
           returns:
             - number
@@ -102,7 +102,7 @@ types:
             - int
             - float
       - method2:
-        javascript:
+        nodejs:
           <<: *explanation-method
         python:
           <<: *explanation-method
@@ -117,7 +117,7 @@ types:
           <<: *conceptlist-method-1
           returns:
             - Array of String
-        javascript:
+        nodejs:
           <<: *conceptlist-method-1
           returns:
             - Array of String
@@ -128,7 +128,7 @@ types:
       - method2:
         java:
           <<: *explanation-method
-        javascript:
+        nodejs:
           <<: *explanation-method
         python:
           <<: *explanation-method
@@ -143,14 +143,14 @@ types:
             - Set of String
         java:
           <<: *conceptset-method-1
-        javascript:
+        nodejs:
           <<: *conceptset-method-1
         python:
           <<: *conceptset-method-1
       - method2:
         java:
           <<: *explanation-method
-        javascript:
+        nodejs:
           <<: *explanation-method
         python:
           <<: *explanation-method
@@ -161,12 +161,12 @@ types:
         common: &conceptsetmeasure-method-1
           title: Retrieving the numeric value of a centrality computation
           method: .measurement()
-        javascript:
+        java:
           <<: *conceptsetmeasure-method-1
           returns:
             - int
             - float
-        javascript:
+        nodejs:
           <<: *conceptsetmeasure-method-1
           returns:
             - number
@@ -183,14 +183,14 @@ types:
             - Set of String
         java:
           <<: *conceptsetmeasure-method-2
-        javascript:
+        nodejs:
           <<: *conceptsetmeasure-method-2
         python:
           <<: *conceptsetmeasure-method-2
       - method3:
         java:
           <<: *explanation-method
-        javascript:
+        nodejs:
           <<: *explanation-method
         python:
           <<: *explanation-method
@@ -203,7 +203,9 @@ types:
           method: .owner()
           returns:
             - Concept
-        javascript:
+        java:
+          <<: *answergroup-method-1
+        nodejs:
           <<: *answergroup-method-1
         python:
           <<: *answergroup-method-1
@@ -215,7 +217,7 @@ types:
           <<: *conceptsetmeasure-method-2
           returns:
             - Array of Answer
-        javascript:
+        nodejs:
           <<: *conceptsetmeasure-method-2
           returns:
             - Array of Answer
@@ -226,7 +228,7 @@ types:
       - method3:
         java:
           <<: *explanation-method
-        javascript:
+        nodejs:
           <<: *explanation-method
         python:
           <<: *explanation-method
@@ -241,7 +243,7 @@ types:
         java:
           <<: *explanation-method-1
           method: .query_pattern();
-        javascript:
+        nodejs:
           <<: *explanation-method-1
           method: .queryPattern();
         python:
@@ -256,7 +258,7 @@ types:
           <<: *explanation-method-2
           returns:
             - Array of Answer
-        javascript:
+        nodejs:
           <<: *explanation-method-2
           returns:
             - Array of Answer

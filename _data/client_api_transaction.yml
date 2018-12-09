@@ -25,7 +25,7 @@ methods:
     #     - &accepts-1-param-1
     #   returns:
     #     - Stream<?> (type of elements in the stream is dependent on the type of the executed query)
-    javascript:
+    nodejs:
       <<: *method-1
       method: 'async .query("Graql query", { infer: true })'
       accepts:
@@ -72,7 +72,7 @@ methods:
         The transaction closes after the commit has been made.
     java:
       <<: *method-3
-    javascript:
+    nodejs:
       <<: *method-3
       method: 'async .commit()'
     python:
@@ -84,7 +84,7 @@ methods:
       description: Closes the transaction which has been used to read from the keyspace running on the Grakn server.
     java:
       <<: *method-4
-    javascript:
+    nodejs:
       <<: *method-4
       method: 'async .close()'
     python:
@@ -100,7 +100,7 @@ methods:
           default: N/A
       returns:
         - Concept object
-    javascript:
+    nodejs:
       <<: *method-5
       method: 'async .getConcept(conceptId)'
       accepts:
@@ -126,7 +126,7 @@ methods:
           default: N/A
       returns:
         - ConceptType object
-    javascript:
+    nodejs:
       <<: *method-6
       method: 'async .getSchemaConcept(label)'
     python:
@@ -150,7 +150,7 @@ methods:
           default: N/A
       returns:
         - "[Iterator](#client-api-title-iterator)  of Attribute"
-    javascript:
+    nodejs:
       <<: *method-7
       method: 'async .getAttributesByValue(value, datatype)'
     python:
@@ -169,7 +169,7 @@ methods:
           default: N/A
       returns:
         - EntityType object
-    javascript:
+    nodejs:
       <<: *method-8
       method: 'async .putEntityType(label)'
     python:
@@ -188,7 +188,7 @@ methods:
           default: N/A
       returns:
         - RelationshipType object
-    javascript:
+    nodejs:
       <<: *method-9
       method: 'async .putRelationshipType(label)'
     python:
@@ -213,7 +213,7 @@ methods:
           default: N/A
       returns:
         - AttributeType object
-    javascript:
+    nodejs:
       <<: *method-10
       method: 'async .putAttributeType(label)'
     python:
@@ -232,7 +232,7 @@ methods:
           default: N/A
       returns:
         - Role object
-    javascript:
+    nodejs:
       <<: *method-11
       method: 'async .putRole(label)'
     python:
@@ -263,7 +263,7 @@ methods:
           default: N/A
       returns:
         - Rule object
-    javascript:
+    nodejs:
       <<: *method-12
       method: 'async .putRule(label, when, then)'
     python:
