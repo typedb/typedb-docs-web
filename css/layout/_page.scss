@@ -230,3 +230,10 @@ table.client-api-accepts {
 
   p { margin: 0; padding: 0 }
 }
+
+.client-api-returns {
+  p {
+    display: inline-block;
+    font-weight: bold;
+  }
+}

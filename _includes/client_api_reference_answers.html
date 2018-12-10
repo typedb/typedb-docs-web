@@ -15,14 +15,14 @@
 
 <table class="client-api-accepts">
   <thead>
-    <th>Query Type</th>
+    <th style="width: 300px;">Query Type</th>
     <th style="text-align: right;">Answer Type</th>
   </thead>
   <tbody>
     {% for mapping in mappings %}
       <tr>
         <td>{{ mapping.query }}</td>
-        <td style="text-align: right;">{{ mapping.answer }}</td>
+        <td style="text-align: right;">{{ mapping.answer | markdownify }}</td>
       </tr>
     {% endfor %}
   </tbody>
@@ -33,49 +33,7 @@
   <h2 id ="client-api-title-{{type.title | downcase | replace: ' ', '-'}}">{{ type.title }}</h2>
   <div class="o_client-api-ref-list">
     {% for method in type.methods %}
-      {% if method[lang] %}
-        <div class="m_client-api-ref-block">
-          <h3 id ="client-api-method-{{method[lang].title | downcase | replace: ' ', '-'}}">{{ method[lang].title }}</h3>
-          <pre class="client-api-method"><code class="language-{{lang}}">{{ method[lang].method }}</code></pre>
-          <p>{{ method[lang].description }}</p>
-
-          {% assign number_of_params = method[lang].accepts | size %}
-          {% if number_of_params > 0 %}
-            <h4> Accepts </h4>
-            <table class="client-api-accepts">
-              <thead>
-                <th>Param</th>
-                <th>Description</th>
-                <th>Type</th>
-                <th>Required</th>
-                <th>Default</th>
-              </thead>
-              <tbody>
-                {% for param in method[lang].accepts %}
-                  <tr>
-                    <td>{{ param[1].name }}</td>
-                    <td>{{ param[1].description }}</td>
-                    <td>{{ param[1].type }}</td>
-                    <td>{{ param[1].required }}</td>
-                    <td>{{ param[1].default }}</td>
-                  </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-          {% endif %}
-
-          {% assign number_of_returns = method[lang].returns | size %}
-          {% if number_of_returns > 0 %}
-            <h4>Returns</h4>
-            {% for return in method[lang].returns %}
-              <b>{{return}}</b>
-              {% if forloop.index < number_of_returns %}
-                , or
-              {% endif %}
-            {% endfor %}
-          {% endif %}
-        </div>
-      {% endif %}
+      {% include client_api_reference_method.html method = method %}
     {% endfor %}
   </div>
 {% endfor %}
