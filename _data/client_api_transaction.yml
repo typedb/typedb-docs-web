@@ -36,7 +36,7 @@ methods:
           type: '{ infer: true }'
           required: true
           default: '{ infer: true }'
-    python:
+    cpython:
       <<: *method-1
       method: '.query("Graql query", infer = True)'
       accepts:
@@ -75,7 +75,7 @@ methods:
     nodejs:
       <<: *method-3
       method: 'async .commit()'
-    python:
+    cpython:
       <<: *method-3
   - method4:
     common: &method-4
@@ -87,7 +87,7 @@ methods:
     nodejs:
       <<: *method-4
       method: 'async .close()'
-    python:
+    cpython:
       <<: *method-4
   - method5:
     common: &method-5
@@ -107,7 +107,7 @@ methods:
         param1:
           <<: *accepts-5-param-1
           name: conceptId
-    python:
+    cpython:
       <<: *method-5
       method: '.get_concept(concept_id)'
       accepts:
@@ -129,7 +129,7 @@ methods:
     nodejs:
       <<: *method-6
       method: 'async .getSchemaConcept(label)'
-    python:
+    cpython:
       <<: *method-6
       method: '.get_schema_concept(label)'
   - method7:
@@ -153,7 +153,7 @@ methods:
     nodejs:
       <<: *method-7
       method: 'async .getAttributesByValue(value, datatype)'
-    python:
+    cpython:
       <<: *method-7
       method: '.get_attributes_by_value(value, datatype)'
   - method8:
@@ -172,7 +172,7 @@ methods:
     nodejs:
       <<: *method-8
       method: 'async .putEntityType(label)'
-    python:
+    cpython:
       <<: *method-8
       method: '.put_entity_type(label)'
   - method9:
@@ -191,7 +191,7 @@ methods:
     nodejs:
       <<: *method-9
       method: 'async .putRelationshipType(label)'
-    python:
+    cpython:
       <<: *method-9
       method: '.put_relationship_type(label)'
   - method10:
@@ -216,7 +216,7 @@ methods:
     nodejs:
       <<: *method-10
       method: 'async .putAttributeType(label)'
-    python:
+    cpython:
       <<: *method-10
       method: '.put_attribute_type(label)'
   - method11:
@@ -235,7 +235,7 @@ methods:
     nodejs:
       <<: *method-11
       method: 'async .putRole(label)'
-    python:
+    cpython:
       <<: *method-11
       method: '.put_role(label)'
   - method12:
@@ -266,6 +266,6 @@ methods:
     nodejs:
       <<: *method-12
       method: 'async .putRule(label, when, then)'
-    python:
+    cpython:
       <<: *method-12
       method: '.put_rule(label, when, then)'

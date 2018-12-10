@@ -25,7 +25,7 @@ methods:
           type: 'GraknTxType.READ or GraknTxType.WRITE'
     nodejs:
       <<: *method-1
-    python:
+    cpython:
       <<: *method-1
 
   - method2:
@@ -40,5 +40,5 @@ methods:
     nodejs:
       <<: *method-2
 
-    python:
+    cpython:
       <<: *method-2

@@ -40,7 +40,7 @@ methods:
         param2:
           <<: *accepts-1-param-2
           type: '{ username: "", password: "" }'
-    python:
+    cpython:
       <<: *method-1
       method: 'grakn.Grakn(uri = "", credientials = {})'
       accepts:

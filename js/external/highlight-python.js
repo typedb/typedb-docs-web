@@ -2,7 +2,7 @@
 Language: Python
 Category: common
 */
-hljs.registerLanguage("python", function (e) {
+hljs.registerLanguage("cpython", function (e) {
   var KEYWORDS = {
     keyword:
       'and elif is global as in if from raise for except finally print import pass return ' +

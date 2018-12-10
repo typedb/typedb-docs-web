@@ -8,7 +8,7 @@ description:
     The type of answers returned by executation of a query depends on the type of query executed.
     The table below illustrates the answer types mapped to query types.
   nodejs: *common-description
-  python: *common-description
+  cpython: *common-description
 mappings:
   -
     query: define
@@ -61,7 +61,7 @@ types:
           description: Produces a nodejs object where keys are variable names and values are concepts
           returns:
             - 'nodejs object ({variable_name: Concept})'
-        python:
+        cpython:
           <<: *conceptmap-method-1
           description: Produces a dictionary where keys are variable names and values are concepts
           returns:
@@ -78,7 +78,7 @@ types:
           <<: *explanation-method
         nodejs:
           <<: *explanation-method
-        python:
+        cpython:
           <<: *explanation-method
   - type2:
     title: Value
@@ -96,7 +96,7 @@ types:
           <<: *value-method-1
           returns:
             - number
-        python:
+        cpython:
           <<: *value-method-1
           returns:
             - int
@@ -104,7 +104,7 @@ types:
       - method2:
         nodejs:
           <<: *explanation-method
-        python:
+        cpython:
           <<: *explanation-method
   - type3:
     title: ConceptList
@@ -121,7 +121,7 @@ types:
           <<: *conceptlist-method-1
           returns:
             - Array of String
-        python:
+        cpython:
           <<: *conceptlist-method-1
           returns:
             - List of String
@@ -130,7 +130,7 @@ types:
           <<: *explanation-method
         nodejs:
           <<: *explanation-method
-        python:
+        cpython:
           <<: *explanation-method
   - type4:
     title: ConceptSet
@@ -145,14 +145,14 @@ types:
           <<: *conceptset-method-1
         nodejs:
           <<: *conceptset-method-1
-        python:
+        cpython:
           <<: *conceptset-method-1
       - method2:
         java:
           <<: *explanation-method
         nodejs:
           <<: *explanation-method
-        python:
+        cpython:
           <<: *explanation-method
   - type5:
     title: ConceptSetMeasure
@@ -170,7 +170,7 @@ types:
           <<: *conceptsetmeasure-method-1
           returns:
             - number
-        python:
+        cpython:
           <<: *conceptsetmeasure-method-1
           returns:
             - int
@@ -185,14 +185,14 @@ types:
           <<: *conceptsetmeasure-method-2
         nodejs:
           <<: *conceptsetmeasure-method-2
-        python:
+        cpython:
           <<: *conceptsetmeasure-method-2
       - method3:
         java:
           <<: *explanation-method
         nodejs:
           <<: *explanation-method
-        python:
+        cpython:
           <<: *explanation-method
   - type6:
     title: AnswerGroup
@@ -207,7 +207,7 @@ types:
           <<: *answergroup-method-1
         nodejs:
           <<: *answergroup-method-1
-        python:
+        cpython:
           <<: *answergroup-method-1
       - method2:
         common: &answergroup-method-2
@@ -221,7 +221,7 @@ types:
           <<: *conceptsetmeasure-method-2
           returns:
             - Array of Answer
-        python:
+        cpython:
           <<: *conceptsetmeasure-method-2
           returns:
             - List of Answerz
@@ -230,7 +230,7 @@ types:
           <<: *explanation-method
         nodejs:
           <<: *explanation-method
-        python:
+        cpython:
           <<: *explanation-method
   - type7:
     title: Explanation
@@ -246,7 +246,7 @@ types:
         nodejs:
           <<: *explanation-method-1
           method: .queryPattern();
-        python:
+        cpython:
           <<: *explanation-method-1
           method: .query_pattern()
       - method2:
@@ -262,7 +262,7 @@ types:
           <<: *explanation-method-2
           returns:
             - Array of Answer
-        python:
+        cpython:
           <<: *explanation-method-2
           returns:
             - List of Answer
