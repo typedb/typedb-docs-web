@@ -32,6 +32,6 @@ methods:
       method: '.withTx(Transaction transaction).execute()'
       description: Executes a Graql query eagerly on the keyspace where the session is connected to.
       returns:
-        - "List/<?/> (type of elements in the list is dependent on the type of the executed query)"
+        - "List\<?\> (type of elements in the list is dependent on the type of the executed query)"
     java:
       <<: *method-3
