@@ -4,7 +4,7 @@
 	<div class="m_client-api-ref-block">
 		<h3 id ="client-api-method-{{method[lang].title | downcase | replace: ' ', '-'}}">{{ method[lang].title }}</h3>
 		<pre class="client-api-method"><code class="language-{{lang}} java-api">{{ method[lang].method | markdownify }}</code></pre>
-		<p>{{ method[lang].description }}</p>
+		<p>{{ method[lang].description | markdownify }}</p>
 
 		{% assign number_of_params = method[lang].accepts | size %}
 		{% if number_of_params > 0 %}

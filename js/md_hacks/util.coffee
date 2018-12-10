@@ -268,7 +268,7 @@ codeKeywordsToLink = {
         {
             titles: ["session"]
             allowed: ["method"]
-            anchor: "#client-api-method-creating-a-session"
+            anchor: "#client-api-method-creating-a-session/keyspace"
             languages: ["java", "nodejs", "cpython"]
         },
         {
