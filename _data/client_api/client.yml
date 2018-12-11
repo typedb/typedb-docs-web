@@ -4,9 +4,9 @@ methods:
     common: &method-1
       title: Creating a session/keyspace
       description: >
-        Creates a session of communication with the given keyspace running on the Grakn server.
+        Creates a communication channel to the given keyspace on the Grakn server.
         **If no keyspace with the given name exists, a new one will be created.**
-      method: '.session("keyspace name")'
+      method: 'client.session("keyspace name")'
       accepts: &accepts-1
         param1: &accepts-1-param-1
           name: keyspace
@@ -18,7 +18,7 @@ methods:
         - "[Session](#client-api-title-session) object"
     java:
       <<: *method-1
-      method: '.session(Keyspace.of(String keyspace))'
+      method: 'client.session(Keyspace.of(String keyspace))'
       accepts:
         <<: *accepts-1
         param1:
@@ -34,7 +34,7 @@ methods:
     common: &method-2
       title: Retrieving all keyspaces
       description: Retrieves the name of all keyspaces running on the Grakn server.
-      method: '.keyspaces().retrieve()'
+      method: 'client.keyspaces().retrieve()'
     # java:
     #   <<: *method-2
     nodejs:
@@ -58,7 +58,7 @@ methods:
           default: N/A
     java:
       <<: *method-3
-      method: '.keyspaces().delete(Keyspace.of(String keyspace))'
+      method: 'client.keyspaces().delete(Keyspace.of(String keyspace))'
       accepts: &method-3-accepts
         param1:
           <<: *accepts-3-param-1
@@ -66,7 +66,7 @@ methods:
           type: 'Keyspace'
     nodejs:
       <<: *method-3
-      method: '.keyspaces().delete("keyspace name"))'
+      method: 'client.keyspaces().delete("keyspace name"))'
     cpython:
       <<: *method-3
-      method: '.keyspaces().delete("keyspace name"))'
+      method: 'client.keyspaces().delete("keyspace name"))'

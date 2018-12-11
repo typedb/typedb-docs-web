@@ -5,7 +5,7 @@ methods:
     common: &method-1
       title: Creating a transaction
       description: Creates a transacton to execute read and write operations on the keyspace connected to the ssesion.
-      method: '.transaction(type)'
+      method: 'session.transaction(type)'
       accepts: &accepts-1
         param1: &accepts-1-param-1
           name: type
@@ -17,7 +17,7 @@ methods:
         - "[Transaction](#client-api-title-transaction) object"
     java:
       <<: *method-1
-      method: '.transaction(GraknTxType type)'
+      method: 'session.transaction(GraknTxType type)'
       accepts:
         <<: *accepts-1
         param1:
@@ -32,7 +32,7 @@ methods:
     common: &method-2
       title: Closing a session
       description: Closes the session once it is no longer being used.
-      method: '.close()'
+      method: 'session.close()'
 
     java:
       <<: *method-2
