@@ -3,8 +3,8 @@ title: "Transaction"
 methods:
   - method1:
     common: &method-1
-      title: Lazy executation of a Graql query
-      description: Executes a Graql query lazily on the keyspace where the session is connected to.
+      title: Lazily execute a Graql query
+      description: Prepare a Graql query to be executed on the keyspace where the session is connected to (answers are only computed when we ask for an answer, hence lazy).
       accepts: &accepts-1
         param1: &accepts-1-param-1
           name: query
@@ -27,7 +27,7 @@ methods:
     #     - Stream<?> (type of elements in the stream is dependent on the type of the executed query)
     nodejs:
       <<: *method-1
-      method: 'async .query("Graql query", { infer: true })'
+      method: 'async transaction.query("Graql query", { infer: true })'
       accepts:
         <<: *accepts-1
         param2:
@@ -38,7 +38,7 @@ methods:
           default: '{ infer: true }'
     cpython:
       <<: *method-1
-      method: '.query("Graql query", infer = True)'
+      method: 'transaction.query("Graql query", infer = True)'
       accepts:
         <<: *accepts-1
         param2:
@@ -65,33 +65,33 @@ methods:
   #     <<: *method-2
   - method3:
     common: &method-3
-      title: Committing a write transaction
-      method: '.commit()'
+      title: Commit a write transaction
+      method: 'transaction.commit()'
       description: >
-        Commits the inserted or deleted data instances or schema concepts to the original keyspace running on the Grakn server. 
-        The transaction closes after the commit has been made.
+        Commits the inserted or deleted data instances or schema concepts to the keyspace attached to the session from which this transaction originated. 
+        The transaction is also closed on commit.
     java:
       <<: *method-3
     nodejs:
       <<: *method-3
-      method: 'async .commit()'
+      method: 'async transaction.commit()'
     cpython:
       <<: *method-3
   - method4:
     common: &method-4
-      title: Closing a read transaction
-      method: '.close()'
-      description: Closes the transaction which has been used to read from the keyspace running on the Grakn server.
+      title: Close a read transaction
+      method: 'transaction.close()'
+      description: Closes the transaction which has been used to read from the keyspace.
     java:
       <<: *method-4
     nodejs:
       <<: *method-4
-      method: 'async .close()'
+      method: 'async transaction.close()'
     cpython:
       <<: *method-4
   - method5:
     common: &method-5
-      title: Retriving a concept by ID
+      title: Retrive a concept by ID
       accepts: &accepts-5
         param 1: &accepts-5-param-1
           description: The id of the concept to retrieve
@@ -102,21 +102,21 @@ methods:
         - Concept object
     nodejs:
       <<: *method-5
-      method: 'async .getConcept(conceptId)'
+      method: 'async transaction.getConcept(conceptId)'
       accepts:
         param1:
           <<: *accepts-5-param-1
           name: conceptId
     cpython:
       <<: *method-5
-      method: '.get_concept(concept_id)'
+      method: 'transaction.get_concept(concept_id)'
       accepts:
         param1:
           <<: *accepts-5-param-1
           name: concept_id
   - method6:
     common: &method-6
-      title: Retriving a schema concept by label
+      title: Retrive a schema concept by label
       accepts:
         param 1:
           name: label
@@ -128,18 +128,18 @@ methods:
         - ConceptType object
     nodejs:
       <<: *method-6
-      method: 'async .getSchemaConcept(label)'
+      method: 'async transaction.getSchemaConcept(label)'
     cpython:
       <<: *method-6
-      method: '.get_schema_concept(label)'
+      method: 'transaction.get_schema_concept(label)'
   - method7:
     common: &method-7
-      title: Retriving an attribute by value
+      title: Retrive an attribute by value
       accepts:
         param 1:
           name: value
           description: The value of the attribute to retrieve
-          type: String, long, double, boolean or data
+          type: String, long, double, boolean or date
           required: true
           default: N/A
         param 2:
@@ -152,13 +152,13 @@ methods:
         - "[Iterator](#client-api-title-iterator)  of Attribute"
     nodejs:
       <<: *method-7
-      method: 'async .getAttributesByValue(value, datatype)'
+      method: 'async transaction.getAttributesByValue(value, datatype)'
     cpython:
       <<: *method-7
-      method: '.get_attributes_by_value(value, datatype)'
+      method: 'transaction.get_attributes_by_value(value, datatype)'
   - method8:
     common: &method-8
-      title: Creating or retrieving an EntityType
+      title: Create or retrievie an EntityType
       description: Creates a new EntityType if none exists with the given label, or retrieves the existing one.
       accepts:
         param 1:
@@ -171,13 +171,13 @@ methods:
         - EntityType object
     nodejs:
       <<: *method-8
-      method: 'async .putEntityType(label)'
+      method: 'async transaction.putEntityType(label)'
     cpython:
       <<: *method-8
-      method: '.put_entity_type(label)'
+      method: 'transaction.put_entity_type(label)'
   - method9:
     common: &method-9
-      title: Creating or retrieving a RelationshipType
+      title: Create or retrieve a RelationshipType
       description: Creates a new RelationshipType if none exists with the given label, or retrieves the existing one.
       accepts:
         param 1:
@@ -190,13 +190,13 @@ methods:
         - RelationshipType object
     nodejs:
       <<: *method-9
-      method: 'async .putRelationshipType(label)'
+      method: 'async transaction.putRelationshipType(label)'
     cpython:
       <<: *method-9
-      method: '.put_relationship_type(label)'
+      method: 'transaction.put_relationship_type(label)'
   - method10:
     common: &method-10
-      title: Creating or retrieving an AttributeType
+      title: Create or retrieve an AttributeType
       description: Creates a new AttributeType if none exists with the given label, or retrieves the existing one.
       accepts:
         param 1:
@@ -215,13 +215,13 @@ methods:
         - AttributeType object
     nodejs:
       <<: *method-10
-      method: 'async .putAttributeType(label)'
+      method: 'async transaction.putAttributeType(label)'
     cpython:
       <<: *method-10
-      method: '.put_attribute_type(label)'
+      method: 'transaction.put_attribute_type(label)'
   - method11:
     common: &method-11
-      title: Creating or retrieving a Role
+      title: Create or retrieve a Role
       description: Creates a new Role if none exists with the given label, or retrieves the existing one.
       accepts:
         param 1:
@@ -234,13 +234,13 @@ methods:
         - Role object
     nodejs:
       <<: *method-11
-      method: 'async .putRole(label)'
+      method: 'async transaction.putRole(label)'
     cpython:
       <<: *method-11
-      method: '.put_role(label)'
+      method: 'transaction.put_role(label)'
   - method12:
     common: &method-12
-      title: Creating or retrieving a Rule
+      title: Create or retrieve a Rule
       description: Creates a new Rule if none exists with the given label, or retrieves the existing one.
       accepts:
         param 1:
@@ -265,7 +265,7 @@ methods:
         - Rule object
     nodejs:
       <<: *method-12
-      method: 'async .putRule(label, when, then)'
+      method: 'async transaction.putRule(label, when, then)'
     cpython:
       <<: *method-12
-      method: '.put_rule(label, when, then)'
+      method: 'transaction.put_rule(label, when, then)'

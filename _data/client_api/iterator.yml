@@ -7,7 +7,7 @@ methods:
   - method1:
     common: &method-1
       title: Convert the iterator into array
-      method: async .collect();
+      method: async iterator.collect();
       description: Consumes the iterator and collects all the elements into an array.
       returns:
         - Array of IteratorEelement
@@ -15,16 +15,16 @@ methods:
       <<: *method-1
   - method2:
     common: &method-2
-      title: Consuming the iterator eagerly
+      title: Consume the iterator eagerly
     nodejs:
       <<: *method-2
       description: Consumes the iterator and collects all Concepts into an array.
-      method: async .collectConcepts();
+      method: async iterator.collectConcepts();
       returns:
         - Array of Concept
     cpython:
       <<: *method-2
       description: Consumes the iterator and collects all Concepts into a list.
-      method: .collect_concepts();
+      method: iterator.collect_concepts();
       returns:
         - List of Concept
