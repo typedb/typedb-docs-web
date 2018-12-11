@@ -5,6 +5,7 @@ ready = ->
     window.sidebar_retainScrollPosition()
     window.navbar_setup()
     window.tabs_parseMarkdown()
+    window.slideshow_parseMarkdown()
     window.alerts_convertMarkdown()
     main_applySyntaxHighlighting()
     window.util_unwrapParagraphInCode()
