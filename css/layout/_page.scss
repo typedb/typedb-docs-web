@@ -170,6 +170,7 @@ ul.toc {
 
 // for slideshows
 .o_slideshow {
+  margin: 20px 0 50px 0;
   position: relative;
 
   .a_slide-previous, .a_slide-next {
@@ -178,7 +179,7 @@ ul.toc {
     line-height: 30px;
     top: 12px;
     position: absolute;
-    width: 40px;
+    width: 20px;
     z-index: 2;
 
     &:hover {
@@ -188,16 +189,17 @@ ul.toc {
 
     &.disabled {
       display: none;
+      &:hover { cursor: auto !important; }
     }
   }
 
   .a_slide-previous {
-    right: 30px;
+    right: 40px;
     &:before { content: "\f053"; }
   }
 
   .a_slide-next {
-    right: 0px;
+    right: 10px;
     &:before { content: "\f054"; }
   }
 

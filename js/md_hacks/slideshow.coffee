@@ -19,10 +19,10 @@ window.slideshow_parseMarkdown = () ->
         content += "    <i class='a_slide-previous disabled fa fa-chevron-left'></i>"
         for i in [0...headers.length]
             content += "<div class='o_slide #{if i == 0 then "active" else ""}'>"
+            content += "    <div class='m_slide-header'>"
             if headers[i]
-                content += "    <div class='m_slide-header'>"
                 content += marked(headers[i])
-                content += "    </div>"
+            content += "    </div>"
             content += "    <div class='m_slide-body'>"
             content += marked(bodies[i])
             content += "    </div>"
