@@ -9,7 +9,7 @@ $navbar_width: 70px;
         height: 100% !important;
         margin-left: $sidebar_width;
         padding: 50px;
-        max-width: calc(100% - #{$sidebar_width});
+        width: calc(100% - #{$sidebar_width});
     }
     #o-sidebar {
         height: calc(100vh - #{$navbar_width});
