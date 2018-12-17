@@ -11,6 +11,7 @@ ready = ->
     window.util_unwrapParagraphInCode()
     window.util_autoLinkKeywords("code")
     window.util_handleLinks()
+    window.util_handleURLParams()
 
 sidebar_scroll_top_position = 0;
 sidebar_overflow = ""
