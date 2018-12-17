@@ -1,0 +1,24 @@
+{% assign title = include.data.title %}
+{% assign description = include.data.description %}
+{% assign methods = include.data.methods %}
+{% assign props = include.data.props %}
+{% assign lang = include.language %}
+{% assign class_prefix = include.class_prefix %}
+
+{% if title %}
+  <h2 id = "{{ class_prefix }}-title-{{title | downcase | replace: ' ', '-'}}">{{ title }}</h2>
+{% endif %}
+
+{% if description %}
+  <p>{{ description[lang] | markdownify }}</p>
+{% endif %}
+
+<div class="o_{{ class_prefix }}-ref-list">
+	{% for prop in props %}
+		{% include api/prop.html prop=prop class_prefix=class_prefix %}
+	{% endfor %}
+
+	{% for method in methods %}
+		{% include api/method.html method=method class_prefix=class_prefix %}
+	{% endfor %}
+</div>

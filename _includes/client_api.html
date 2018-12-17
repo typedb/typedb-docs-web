@@ -1,0 +1,22 @@
+<hr style="margin-top: 40px;" />
+
+<h1>API Reference</h1>
+
+{% include api/generic.html data=site.data.client_api.grakn language=include.language class_prefix="client-api" %}
+
+{% include api/generic.html data=site.data.client_api.client language=include.language class_prefix="client-api" %}
+
+{% include api/generic.html data=site.data.client_api.session language=include.language class_prefix="client-api" %}
+
+{% include api/generic.html data=site.data.client_api.transaction language=include.language class_prefix="client-api" %}
+
+{% if lang == "java" %}
+  {% include api/generic.html data=site.data.client_api.graql language=include.language class_prefix="client-api" %}
+  {% include api/generic.html data=site.data.client_api.query language=include.language class_prefix="client-api" %}
+{% endif %}
+
+{% if lang == "nodejs" or lang == "cpython" %}
+  {% include api/generic.html data=site.data.client_api.iterator language=include.language class_prefix="client-api" %}
+{% endif %}
+
+{% include api/answers.html data=site.data.client_api.answer language=include.language class_prefix="client-api" %}

@@ -1,15 +1,14 @@
 {% assign method = include.data.method %}
-
 {% if method[lang] %}
-	<div class="m_client-api-ref-block">
-		<h3 id ="client-api-method-{{method[lang].title | downcase | replace: ' ', '-'}}">{{ method[lang].title }}</h3>
-		<pre class="client-api-method"><code class="language-{{lang}} java-api">{{ method[lang].method | markdownify }}</code></pre>
+	<div class="m_api-ref-block">
+		<h3 id ="{{ class_prefix }}-method-{{method[lang].title | downcase | replace: ' ', '-'}}">{{ method[lang].title }}</h3>
+		<pre class="api-method"><code class="language-{{lang}} java-api">{{ method[lang].method | markdownify }}</code></pre>
 		<p>{{ method[lang].description | markdownify }}</p>
 
 		{% assign number_of_params = method[lang].accepts | size %}
 		{% if number_of_params > 0 %}
 			<h4> Accepts </h4>
-			<table class="client-api-accepts">
+			<table class="api-accepts">
 			<thead>
 				<th>Param</th>
 				<th>Description</th>
@@ -34,11 +33,11 @@
 		{% assign number_of_returns = method[lang].returns | size %}
 		{% if number_of_returns > 0 %}
 			<h4>Returns</h4>
-			<div class="client-api-returns">
+			<div class="api-returns">
 				{% for return in method[lang].returns %}
 					<b>{{ return | markdownify }}</b>
 					{% if forloop.index < number_of_returns %}
-					or
+					<span> | </span>
 					{% endif %}
 				{% endfor %}
 			</div>
