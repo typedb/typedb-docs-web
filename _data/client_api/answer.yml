@@ -51,21 +51,17 @@ types:
         common: &conceptmap-method-1
           title: Retrive a map of Variable => Concept from the ConceptMap answer
           method: answer.map()
+          returns:
+            - 'Map ({variable_name: Concept})'
         java:
           <<: *conceptmap-method-1
           description: Produces a Map where keys are variable names and values are concepts
-          returns:
-            - 'Map ({variable_name: Concept})'
         nodejs:
           <<: *conceptmap-method-1
-          description: Produces a nodejs object where keys are variable names and values are concepts
-          returns:
-            - 'nodejs object ({variable_name: Concept})'
+          description: Produces a Javascript object where keys are variable names and values are concepts
         cpython:
           <<: *conceptmap-method-1
           description: Produces a dictionary where keys are variable names and values are concepts
-          returns:
-            - 'Dictionary ({"variable_name": Concept})'
       - method2:
         common: &explanation-method
           title: Explaining an inferred answer
