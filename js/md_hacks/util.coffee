@@ -310,7 +310,6 @@ window.util_autoLinkKeywords = (selector) ->
                         keywordIsAlreadyLinked = content.slice(endIndex, endIndex + 4) == "</a>"
                         keywordIsHref = (content.substr(0, beginIndex).split('href').length > 1 && content.substr(0, beginIndex).split('href').slice(-1)[0].indexOf(" ") == -1)
                         isAllowed = if mapping.allowed then mapping.allowed.includes(className) else true
-                        console.log isAllowed, className, title
                         if !keywordIsAlreadyLinked && !keywordIsHref && isAllowed
                             replacement = "<a href='#{url}'>#{title}</a>"
                             content = content.substr(0, beginIndex) + "<a href='#{url}'>#{title}</a>" + content.substr(endIndex)
@@ -327,10 +326,20 @@ window.util_handleLinks = () ->
     ## adds anchor links for the given tags
     anchors.add('h2,h3,h4,h5');
 
-    $('a').each ->
+    $('a').not("[data-toggle='tab']").each ->
         ## external links to open in a new tab
         if $(this).attr("href").indexOf("http") > -1
             $(this).attr("target", "_blank")
         ## anchored links to ignore turbolinks (turbolinks ignores css's :target fix)
         if $(this).attr("href").indexOf("#") > -1
             $(this).attr("data-turbolinks", "false")
+
+window.util_handleURLParams = () ->
+    url_string =window.location.href
+    url = new URL(url_string);
+    lang = url.searchParams.get("lang");
+    if lang
+        $(".tabs li").removeClass "active"
+        $(".tabs li.tab-#{lang}").addClass "active"
+        $(".tab-pane").removeClass "active"
+        $(".tab-pane.#{lang}").addClass "active"

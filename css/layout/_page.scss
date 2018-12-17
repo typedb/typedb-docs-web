@@ -84,47 +84,38 @@ ul.toc {
   padding-left: 0;
   margin: 25px 0 0 0;
 
-  &.light {
-    li a {
-      background-color: #D4D1E8;
-      color: #FFFFFF;
-    }
+  &.light li {
+    background-color: #D4D1E8;
+    color: #FFFFFF;
   }
 
-  &.dark {
-    li a {
-      background-color: #292d34;
-      color: #878e9d;
-    }
+  &.dark li {
+    background-color: #292d34;
+    color: #878e9d;
   }
 
-  .active > a {
+  .active {
     background-color: #796DE3 !important;
     border: none;
     color: white !important;
   }
 
   li {
+    border-radius: 0;
+    cursor: pointer;
+    font-size: 17px;
     display: inline-block;
     height: 40px;
+    line-height: 33px;
     margin: 0 !important;
+    padding: 4px 10px;
+    text-align: center;
+    text-decoration: none;
 
-    a {
-      border-radius: 0;
-      display: block;
-      font-size: 17px;
-      height: inherit;
-      line-height: 33px;
-      padding: 4px 10px;
-      text-align: center;
-      text-decoration: none;
-      width: 100%;
-    }
-
-    &:nth-child(1) a {
+    &:nth-child(1) {
       border-radius: 5px 0 0 0 !important;
     }
-    &:last-child a {
+    &:last-child {
       border-radius: 0 5px 0 0 !important;
     }
   }
@@ -268,7 +259,7 @@ pre {
     background: #2F3544 !important;
   }
 
-  &.client-api-method {
+  &.api-method {
     width: fit-content;
     margin: 15px 0;
     code {
@@ -285,30 +276,30 @@ pre {
   &-red { color: #F75E62 }
 }
 
-pre.client-api-method {
+pre.api-method {
   code {
     width: auto;
   }
 }
 
 // for client api references
-.o_client-api-ref-list {
+.o_api-ref-list {
   border-bottom: 1px solid #ddd;
   margin-bottom: 20px;
   padding-bottom: 40px;
 
-  .m_client-api-ref-block {
+  .m_api-ref-block {
     border-bottom: 1px solid #eee;
     padding-bottom: 25px;
   }
 
-  .m_client-api-ref-block:last-child {
+  .m_api-ref-block:last-child {
     border-bottom: none;
     padding-bottom: 0px;
   }
 }
 
-table.client-api-accepts {
+table.api-accepts {
   border: none !important;
   margin-top: 15px;
 
@@ -321,7 +312,7 @@ table.client-api-accepts {
   p { margin: 0; padding: 0 }
 }
 
-.client-api-returns {
+.api-returns {
   p {
     display: inline-block;
     font-weight: bold;
