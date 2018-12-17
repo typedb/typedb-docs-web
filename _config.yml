@@ -62,6 +62,8 @@ exclude:
   - docs/old/
   - docs/temp/
   - images/source/
+  - docs/_03-client-api/references/
+  - docs/_10-concept-api/references/
 
 # these are the files and directories that jekyll will exclude from the build
 
@@ -113,13 +115,15 @@ collections:
     output: true
   09-query:
     output: true
-  10-reasoning:
+  10-concept-api:
     output: true
-  11-analytics:
+  11-reasoning:
     output: true
-  12-developer-guidelines-a:
+  12-analytics:
     output: true
-  13-developer-guidelines-b:
+  13-developer-guidelines-a:
+    output: true
+  14-developer-guidelines-b:
     output: true
 collections_dir: docs
 
@@ -232,7 +236,16 @@ defaults:
   -
     scope:
       path: ""
-      type: "10-reasoning"
+      type: "10-concept-api"
+    values:
+      layout: "page"
+      category: "Graql"
+      section: "Concept API"
+      toc: true
+  -
+    scope:
+      path: ""
+      type: "11-reasoning"
     values:
       layout: "page"
       category: "Graql"
@@ -241,7 +254,7 @@ defaults:
   -
     scope:
       path: ""
-      type: "11-analytics"
+      type: "12-analytics"
     values:
       layout: "page"
       category: "Graql"
@@ -249,7 +262,7 @@ defaults:
   -
     scope:
       path: ""
-      type: "12-developer-guidelines-a"
+      type: "13-developer-guidelines-a"
     values:
       layout: "page"
       category: "Dev Guidelines"
@@ -258,7 +271,7 @@ defaults:
   -
     scope:
       path: ""
-      type: "13-developer-guidelines-b"
+      type: "14-developer-guidelines-b"
     values:
       layout: "page"
       category: "Dev Guidelines"
