@@ -13,7 +13,7 @@
   <p>{{ description[lang] | markdownify }}</p>
 {% endif %}
 
-<div class="o_{{ class_prefix }}-ref-list">
+<div class="o_api-ref-list">
 	{% for prop in props %}
 		{% include api/prop.html prop=prop class_prefix=class_prefix %}
 	{% endfor %}
