@@ -61,7 +61,8 @@ exclude:
   - vendor/ruby/
   - docs/old/
   - docs/temp/
-  - images/source/
+  - docs/images/source/
+  - images/
   # - docs/_03-client-api/references/
   # - docs/_10-concept-api/references/
 
