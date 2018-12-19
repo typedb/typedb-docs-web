@@ -1,0 +1,17 @@
+pre {
+    border-radius: 6px;
+    margin: 15px 0px;
+    padding: 0;
+    code {
+      padding: 10px 15px !important;
+      background: #2F3544 !important;
+    }
+  
+    &.api-method {
+      width: fit-content;
+      margin: 15px 0;
+      code {
+        padding: 10px 15px !important;
+      }
+    }
+  }

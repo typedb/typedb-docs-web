@@ -1,0 +1,51 @@
+.summary {
+  border-left: 3px solid #f75e62;
+  color: #8c8d92;
+  font-size: 16px;
+  margin: 20px 0px 20px 0px;
+  padding-left: 10px;
+
+  &:before {
+    color: #f75e62;
+    content: "Summary: ";
+    font-weight: 600;
+    font-size: 18px;
+  }
+}
+
+// for table of content
+ul.toc {
+  padding: 5px;
+  border-radius: 5px;
+  color: gray;
+
+  li {
+    list-style-image: url("/docs/images/layout/list-oval.svg") !important;
+    margin: 8px 0px 8px 22px !important;
+    font-size: 90%;
+    list-style: disc;
+    line-height: 2.1;
+    font-size: 16px;
+    font-weight: 600;
+
+    ul {
+      padding: 0 0 0 8px;
+
+      li::before {
+        content: "–  ";
+      }
+    }
+  }
+
+  ::before {
+    font-weight: 500;
+    color: #555;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+  }
+}

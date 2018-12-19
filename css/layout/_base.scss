@@ -24,8 +24,11 @@ $navbar_width: 70px;
     }
 }
 
-
 body {
     background-color: $bg_color !important;
     color: $body-text-color !important;
+    letter-spacing: 0.2px;
+    font-family: 'Titillium';
+    font-size: 15px;
+    font-weight: 400;
 }

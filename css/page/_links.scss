@@ -1,0 +1,14 @@
+*:hover > .anchorjs-link {
+  transition: color 0.25s linear;
+  text-decoration: none;
+}
+
+a[href^="http://"]:after, a[href^="https://"]:after {
+  content: "\f35d";
+  font-family: "Font Awesome 5 Free";
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: none;
+  padding-left: 3px;
+}

@@ -1,5 +1,15 @@
 $sidebar_item_distance_to_content: 20px;
 
+li.a-section_categoryTitle {
+    font-family: 'Titillium';
+    letter-spacing: 0.2px;;
+    font-weight: 400;
+    margin-top: 40px;
+    font-size: 1.6em;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+
 ul#o-sidebar {
     background: $bg_color;
     padding: 30px 0;
@@ -27,8 +37,14 @@ ul#o-sidebar {
 
     li.a-section_categoryTitle {
         color: $sidebar_categoryTitle_color;
+        font-family: 'Titillium';
         font-size: 21px;
+        font-weight: 400;
+        letter-spacing: 0.2px;;
         margin: 0;
+        margin-bottom: 10px;
+        margin-left: 5px;
+        margin-top: 40px;
         padding: 15px 0 7px 0;
     }
 
@@ -41,6 +57,8 @@ ul#o-sidebar {
             padding-top: 5px;
             text-decoration: none;
             width: calc(100% - #{$sidebar_item_distance_to_content});
+
+            &.active { border-bottom: 1px solid #796de3 !important; }
         }
 
         ul.m-section_list {
@@ -81,7 +99,7 @@ ul#o-sidebar {
                         &:before {
                             color: $grakn_purple_color;
                             content: "\f111";
-                            font-family: FontAwesome;
+                            font-family: "Font Awesome 5 Free";
                             font-weight: normal;
                             font-style: normal;
                             left: -7px;

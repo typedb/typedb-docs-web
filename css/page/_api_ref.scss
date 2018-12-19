@@ -1,0 +1,42 @@
+pre.api-method {
+    code {
+      width: auto;
+    }
+  }
+
+  // for client api references
+  .o_api-ref-list {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding-bottom: 40px;
+
+    .m_api-ref-block {
+      border-bottom: 1px solid #eee;
+      padding-bottom: 25px;
+    }
+
+    .m_api-ref-block:last-child {
+      border-bottom: none;
+      padding-bottom: 0px;
+    }
+  }
+
+  table.api-accepts {
+    border: none !important;
+    margin-top: 15px;
+
+    th {
+      border: none;
+      padding: 7px;
+    }
+    tr:nth-of-type(odd) { background-color: #ebe9f6; }
+
+    p { margin: 0; padding: 0 }
+  }
+
+  .api-returns {
+    p {
+      display: inline-block;
+      font-weight: bold;
+    }
+  }

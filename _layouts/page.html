@@ -2,15 +2,15 @@
 layout: default
 ---
 
-{% if page.symlink != true %}
+{% comment %} {% if page.symlink != true %}
 
 <div class="post-header">
     <h1 class="post-title-main">{{ page.title }}</h1>
 </div>
 
-{% endif %}
+{% endif %} {% endcomment %}
 
-{% if page.simple_map == true %}
+{% comment %} {% if page.simple_map == true %}
 
 <script>
     $(document).ready(function () {
@@ -30,28 +30,17 @@ layout: default
 
 {% include custom/{{page.map_name}}.html %}
 
-{% endif %}
+{% endif %} {% endcomment %}
 
 <div class="post-content">
 
     {% if page.summary %}
-    <div class="summary">{{page.summary}}</div>
+        <div class="summary">{{page.summary}}</div>
     {% endif %}
 
     {{ content | toc }}
 
-    {% unless jekyll.environment == "production" %}
-
-    {% if site.github_editme_path and page.url contains '/documentation/' %}
-
-    <a target="_blank" href="https://github.com/{{site.github_editme_path}}/{{page.path}}" class="btn btn-default githubEditButton"
-        role="button"><i class="fa fa-github fa-lg"></i> Edit me</a>
-
-    {% endif %}
-
-    {% endunless %}
-
-    <div class="tags">
+    {% comment %} <div class="tags">
         {% if page.tags != null %}
         <b>Tags: </b>
         {% assign projectTags = site.data.tags.allowed-tags %}
@@ -62,12 +51,10 @@ layout: default
         {% endif %}
         {% endfor %}
         {% endif %}
-    </div>
+    </div> {% endcomment %}
 
-    {% if site.disqus %}
+    {% comment %} {% if site.disqus %}
     {% include disqus.html %}
-    {% endif %}
+    {% endif %} {% endcomment %}
 
 </div>
-
-<!-- {{site.data.alerts.hr_shaded}} -->
