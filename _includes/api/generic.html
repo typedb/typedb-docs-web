@@ -6,7 +6,7 @@
 {% assign class_prefix = include.class_prefix %}
 
 {% if title %}
-  <h2 id = "{{ class_prefix }}-title-{{title | downcase | replace: ' ', '-'}}">{{ title }}</h2>
+  <h2 class="api-list-heading" id="{{ class_prefix }}-title-{{title | downcase | replace: ' ', '-'}}">{{ title }}</h2>
 {% endif %}
 
 {% if description %}

@@ -20,7 +20,7 @@ window.alerts_parseMarkdown = ->
             "advanced topic": {
                 class_name: "success",
                 icon: {
-                    name: "fa fa-lightbulb-o",
+                    name: "fas fa-lightbulb",
                     color: "green"
                 }
             },

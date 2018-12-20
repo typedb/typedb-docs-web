@@ -11,6 +11,14 @@ table > tfoot > tr > td {
 }
 
 table {
+  border: 1px solid #2f3544 !important;
+  border-collapse: separate;
+  border-radius: 6px;
+  border-spacing: 0;
+  margin-top: 10px;
+  overflow: hidden;
+  width: 100%;
+
   thead {
     th {
       background-color: #2f3544;
@@ -19,52 +27,37 @@ table {
       line-height: 1.59;
       padding: 14px;
       font-weight: 400;
-
-      &:first-child {
-        border-radius: 6px 0 0 0;
-      }
-      &:last-child {
-        border-radius: 0 6px 0 0;
-      }
-      :only-child {
-        border-radius: 6px 6px 0 0;
-      }
     }
   }
 
   tbody {
     tr {
       line-height: 1.59;
-      &:nth-of-type(odd) {
-        background-color: white;
-      }
-      &:nth-of-type(even) {
-        background-color: #f6f5fb;
-      }
-      &:last-child {
-        td {
-          &:first-child {
-            border-radius: 0 0 0 6px;
-          }
-          &:last-child {
-            border-radius: 0 0 6px 0;
-          }
+
+      td {
+        color: $table-text-color;
+
+        &.fit-content {
+          width: 1%;
+          white-space: nowrap;
         }
       }
+
+      &:nth-of-type(odd) {
+        background-color: rgba(235, 233, 246, 0.3);
+      }
+      &:nth-of-type(even) {
+        background-color: rgba(235, 233, 246, 0.6);
+      }
+
+      &:hover {
+        background-color: rgba(235, 233, 246, 0.9);
+      }
     }
   }
 }
 
-// the following code styles the tables that are written in markdown
-
-// tables in doc > client api > python
-// tables in doc > client api > nodejs
-#api-table-7,
-#api-table-8,
-#api-table-9,
-#api-table-10,
-#api-table-11,
-#api-table-12 {
+#console-options, #console-options + p {
   & + table {
     display: table;
     width: 100%;
@@ -74,234 +67,32 @@ table {
         width: 180px;
       }
       &:nth-of-type(2) {
-        width: 190px;
+        width: 54px;
       }
       &:nth-of-type(3) {
-        width: calc(100% - 370px);
+        width: 125px;
+      }
+      &:nth-of-type(4) {
+        width: 100px;
+      }
+      &:nth-of-type(5) {
+        width: calc(100% - 459px);
       }
     }
   }
 }
 
-// tables in doc > client api > python
-#api-table-1 {
+#console-commands, #console-commands + p  {
   & + table {
     display: table;
     width: 100%;
 
     th {
       &:nth-of-type(1) {
-        width: 335px;
+        width: 100px;
       }
-      &:nth-of-type(2) {
-        width: 140px;
-      }
-      &:nth-of-type(3) {
-        width: calc(100% - 475px);
-      }
-    }
-  }
-}
-
-#api-table-2 {
-  & + table {
-    display: table;
-    width: 100%;
-
-    th {
-      &:nth-of-type(1) {
-        width: 240px;
-      }
-      &:nth-of-type(2) {
-        width: 120px;
-      }
-      &:nth-of-type(3) {
-        width: calc(100% - 360px);
-      }
-    }
-  }
-}
-
-#api-table-3 {
-  & + table {
-    display: table;
-    width: 100%;
-
-    th {
-      &:nth-of-type(1) {
-        width: 340px;
-      }
-      &:nth-of-type(2) {
-        width: 140px;
-      }
-      &:nth-of-type(3) {
-        width: calc(100% - 480px);
-      }
-    }
-  }
-}
-
-#api-table-4 {
-  & + table {
-    display: table;
-    width: 100%;
-
-    th {
-      &:nth-of-type(1) {
-        width: 180px;
-      }
-      &:nth-of-type(2) {
-        width: 140px;
-      }
-      &:nth-of-type(3) {
-        width: calc(100% - 320px);
-      }
-    }
-  }
-}
-
-#api-table-5 {
-  & + table {
-    display: table;
-    width: 100%;
-
-    th {
-      &:nth-of-type(1) {
-        width: 440px;
-      }
-      &:nth-of-type(2) {
-        width: 140px;
-      }
-      &:nth-of-type(3) {
-        width: calc(100% - 580px);
-      }
-    }
-  }
-}
-
-#api-table-6 {
-  & + p + table {
-    display: table;
-    width: 100%;
-
-    th {
-      &:nth-of-type(1) {
-        width: 350px;
-      }
-      &:nth-of-type(2) {
-        width: calc(100% - 350px);
-      }
-    }
-  }
-}
-
-// tables in doc > client api > nodejs
-#api-table-13 {
-  & + table {
-    display: table;
-    width: 100%;
-
-    th {
-      &:nth-of-type(1) {
-        width: 380px;
-      }
-      &:nth-of-type(2) {
-        width: 140px;
-      }
-      &:nth-of-type(3) {
-        width: calc(100% - 520px);
-      }
-    }
-  }
-}
-
-#api-table-14 {
-  & + table {
-    display: table;
-    width: 100%;
-
-    th {
-      &:nth-of-type(1) {
-        width: 300px;
-      }
-      &:nth-of-type(2) {
-        width: 140px;
-      }
-      &:nth-of-type(3) {
-        width: calc(100% - 440px);
-      }
-    }
-  }
-}
-
-#api-table-15 {
-  & + table {
-    display: table;
-    width: 100%;
-
-    th {
-      &:nth-of-type(1) {
-        width: 290px;
-      }
-      &:nth-of-type(2) {
-        width: 160px;
-      }
-      &:nth-of-type(3) {
-        width: calc(100% - 450px);
-      }
-    }
-  }
-}
-
-#api-table-16 {
-  & + table {
-    display: table;
-    width: 100%;
-
-    th {
-      &:nth-of-type(1) {
-        width: 220px;
-      }
-      &:nth-of-type(2) {
-        width: 220px;
-      }
-      &:nth-of-type(3) {
-        width: calc(100% - 440px);
-      }
-    }
-  }
-}
-
-#api-table-17 {
-  & + table {
-    display: table;
-    width: 100%;
-
-    th {
-      &:nth-of-type(1) {
-        width: 390px;
-      }
-      &:nth-of-type(2) {
-        width: 140px;
-      }
-      &:nth-of-type(3) {
-        width: calc(100% - 530px);
-      }
-    }
-  }
-}
-
-#api-table-18 {
-  & + p + table {
-    display: table;
-    width: 100%;
-
-    th {
-      &:nth-of-type(1) {
-        width: 350px;
-      }
-      &:nth-of-type(2) {
-        width: calc(100% - 350px);
+      &:nth-of-type(5) {
+        width: calc(100% - 100px);
       }
     }
   }

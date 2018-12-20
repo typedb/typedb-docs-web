@@ -1,18 +1,20 @@
 ---
 ---
 
-@import "variables";
-@import "base";
 
 @import "vendors/bootstrap/bootstrap";
 @import "vendors/lavish-bootstrap";
 @import "vendors/font-awesome/fontawesome";
 @import "vendors/font-awesome/solid";
 @import "vendors/font-awesome/brands";
+@import "vendors/font-awesome/regular";
 
 @import "lang/highlight-dracula";
 @import "lang/highlight-graql";
 @import "lang/highlight_syntax";
+
+@import "variables";
+@import "base";
 
 @import "layout/base";
 @import "layout/ie_support";

@@ -1,10 +1,10 @@
 .o_slideshow {
-    margin: 20px 0 50px 0;
     position: relative;
 
     .a_slide-previous, .a_slide-next {
-      color: #ddd;
-      font-size: 30px;
+      color: rgba(108, 95, 224, 0.8);
+      font-family: "FontAwesome solid";
+      font-size: 25px;
       line-height: 30px;
       top: 12px;
       position: absolute;
@@ -12,7 +12,7 @@
       z-index: 2;
 
       &:hover {
-        color: #fff;
+        color: rgb(108, 95, 224);
         cursor: pointer;
       }
 
@@ -23,12 +23,12 @@
     }
 
     .a_slide-previous {
-      right: 40px;
+      right: 30px;
       &:before { content: "\f053"; }
     }
 
     .a_slide-next {
-      right: 10px;
+      right: 0;
       &:before { content: "\f054"; }
     }
 
@@ -40,15 +40,15 @@
       &.active { display: block; }
 
       .m_slide-header {
-        background: rgb(108, 95, 224);
         border-radius: 6px 6px 0 0;
         color: white;
         margin-bottom: 1px;
-        padding: 10px 15px;
+        padding: 10px 3px;
         height: 50px;
         width: 100%;
 
         p {
+          color: rgb(108, 95, 224);
           font-size: 18px;
           font-weight: bold;
           line-height: 30px;
@@ -60,28 +60,19 @@
       .m_slide-body {
         height: 100%;
         p, img { margin: 0; }
-        img { border-radius: 0px; }
       }
 
       .m_slide-footer {
-        background: #333;
-        border-radius: 0 0 6px 6px;
-        color: #fff;
+        color: #8c8d92;;
         font-size: 14px;
         margin-top: 1px;
-        padding: 10px 15px;
+        padding: 10px 0;
         width: 100%;
 
         p {
           margin: 0;
           padding: 0;
-        }
-
-        a {
-          color: #ddd;
-          text-decoration: underline;
-
-          &:hover { color: #fff;}
+          text-align: center;
         }
       }
     }

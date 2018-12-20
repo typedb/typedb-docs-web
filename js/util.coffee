@@ -318,6 +318,7 @@ window.util_unwrapParagraphInCode = () ->
 
 window.util_handleLinks = () ->
     ## adds anchor links for the given tags
+    # anchors.options = { icon: "/f0c1/" }
     anchors.add('h2,h3,h4,h5')
 
     $('a').each ->
@@ -330,6 +331,7 @@ window.util_handleLinks = () ->
             $(this).attr("data-turbolinks", "false")
             ## local anchored links to scroll to target rather than jump
             $(this).click (e) ->
+                console.log $(this).html()
                 target = $("#" + href.split('#')[1])
                 if target.length
                     e.preventDefault()

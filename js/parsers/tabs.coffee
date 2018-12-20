@@ -17,7 +17,6 @@ window.tabs_parseMarkdown = () ->
             titles.push title
             content = content.replace(/\\\</g, "<").replace(/\\\>/g, ">")
             content = content.replace("\\&lt;", "<").replace("\\&gt;", ">")
-            console.log $(this).data("data-no-parse")
             if $(this).data("no-parse") == undefined
                 ## converting the markdown content to html, handling escaped chars manually!
                 content = marked content
