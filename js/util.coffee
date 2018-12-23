@@ -332,12 +332,14 @@ window.util_handleLinks = () ->
             ## local anchored links to scroll to target rather than jump
             $(this).click (e) ->
                 console.log $(this).html()
-                target = $("#" + href.split('#')[1])
+                targetId = href.split('#')[1]
+                target = $("#" + targetId)
                 if target.length
                     e.preventDefault()
                     $('html, body').stop().animate({
                         scrollTop: target.offset().top - 70
                     }, 500)
+                    location.hash = targetId
 
 window.util_handleURLParams = () ->
     url_string = window.location.href
