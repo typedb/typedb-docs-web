@@ -35,8 +35,10 @@ hljs.registerLanguage("graql", function (e) {
             },
             {
                 className: 'graql-keyword',
-                // must remain alphabetically sorted
                 variants: [
+                    // superset to other keywords. example min-k is superior to min
+                    { begin: /(^|\s)min-k\b/ },
+                    // must remain alphabetically sorted
                     { begin: /(^|\s)aggregate\b/ },
                     { begin: /(^|\s)asc\b/ },
                     { begin: /(^|\s)as\b/ },
@@ -81,6 +83,7 @@ hljs.registerLanguage("graql", function (e) {
                     { begin: /(^|\s)then\b/ },
                     { begin: /(^|\s)to\b/ },
                     { begin: /(^|\s)undefine\b/ },
+                    { begin: /(^|\s)using\b/ },
                     { begin: /(^|\s)val\b/ },
                     { begin: /(^|\s)via\b/ },
                     { begin: /(^|\s)when\b/ },
