@@ -15,8 +15,6 @@ window.tabs_parseMarkdown = () ->
             content.shift() ## removing first (title) element
             content = content.join('\n') ## reconstructing the tab content
             titles.push title
-            content = content.replace(/\\\</g, "<").replace(/\\\>/g, ">")
-            content = content.replace("\\&lt;", "<").replace("\\&gt;", ">")
             if $(this).data("no-parse") == undefined
                 ## converting the markdown content to html, handling escaped chars manually!
                 content = marked content
@@ -39,7 +37,7 @@ window.tabs_parseMarkdown = () ->
 
         $(this).replaceWith tab_title_html + tab_content_html
 
-    $(".tabs li").click ->
+    $(document).on "click", ".tabs li", ->
         $(this).siblings().removeClass "active"
         $(this).addClass "active"
         targetId = $(this).data("target")
