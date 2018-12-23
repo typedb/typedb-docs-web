@@ -12,9 +12,9 @@ ready = ->
     window.util_autoLinkKeywords("code")
     window.util_handleLinks()
     window.util_handleURLParams()
+    window.util_escapeSpecialChars()
     window.footer_handleSubscribe()
     window.footer_fetchLatestVersion()
-
 sidebar_scroll_top_position = 0
 sidebar_overflow = ""
 handleBeforeTurbolinkVisit = ->

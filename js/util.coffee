@@ -350,3 +350,8 @@ window.util_handleURLParams = () ->
         $(".tabs li.tab-#{lang}").addClass "active"
         $(".tab-pane").removeClass "active"
         $(".tab-pane.#{lang}").addClass "active"
+
+window.util_escapeSpecialChars = () ->
+    content = $("body").html()
+    content = content.replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+    $("body").html(content)
