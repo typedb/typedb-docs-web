@@ -353,5 +353,5 @@ window.util_handleURLParams = () ->
 
 window.util_escapeSpecialChars = () ->
     content = $("body").html()
-    content = content.replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+    content = content.replace(/&amp;lt;/g, "&lt;").replace(/&amp;gt;/g, "&gt;")
     $("body").html(content)
