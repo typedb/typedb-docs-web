@@ -1,6 +1,5 @@
 
-
-hljs.registerLanguage("graql", function (e) {
+hljs.registerLanguage("lang-graql", function (e) {
     GRAQL_KEYWORDS = {
         keyword:
             'relationship entity attribute sub has key is-abstract relates plays' +

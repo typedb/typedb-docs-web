@@ -1,9 +1,10 @@
-/*
-Language: Java
-Author: Vsevolod Solovyov <vsevolod.solovyov@gmail.com>
-Category: common, enterprise
-*/
-hljs.registerLanguage("java", function (e) {
+
+/**
+ * Source: https://github.com/highlightjs/highlight.js/blob/master/src/languages/java.js
+ * Extended by Grakn Labs (look for the CUSTOM comments)
+ */
+
+hljs.registerLanguage("lang-java", function (e) {
   var JAVA_IDENT_RE = '[\u00C0-\u02B8a-zA-Z_$][\u00C0-\u02B8a-zA-Z_$0-9]*';
   var GENERIC_IDENT_RE = JAVA_IDENT_RE + '(<' + JAVA_IDENT_RE + '(\\s*,\\s*' + JAVA_IDENT_RE + ')*>)?';
   var KEYWORDS =
@@ -39,14 +40,14 @@ hljs.registerLanguage("java", function (e) {
     keywords: KEYWORDS,
     illegal: /<\/|#/,
     contains: [
-      CUSTOM_HIGHLIGHT_METHODS,
-      CUSTOM_HIGHLIGHT_CLASSES,
-      CUSTOM_HIGHLIGHT_CONSTANT,
-      // CONSTANT,
-      {
-        className: "hljs",
-        begin: /\.|\<|\>/
-      },
+      hljs.C_LINE_COMMENT_MODE,
+      hljs.C_BLOCK_COMMENT_MODE,
+      hljs.APOS_STRING_MODE,
+      hljs.QUOTE_STRING_MODE,
+      // {
+      //   className: "hljs",
+      //   begin: /\.|\<|\>/
+      // },
       hljs.COMMENT(
         '/\\*\\*',
         '\\*/',
@@ -64,10 +65,6 @@ hljs.registerLanguage("java", function (e) {
           ]
         }
       ),
-      hljs.C_LINE_COMMENT_MODE,
-      hljs.C_BLOCK_COMMENT_MODE,
-      hljs.APOS_STRING_MODE,
-      hljs.QUOTE_STRING_MODE,
       {
         className: 'class',
         beginKeywords: 'class interface', end: /[{;=]/, excludeEnd: true,
@@ -93,8 +90,10 @@ hljs.registerLanguage("java", function (e) {
           {
             begin: hljs.UNDERSCORE_IDENT_RE + '\\s*\\(', returnBegin: true,
             relevance: 0,
-            contains: [hljs.UNDERSCORE_TITLE_MODE]
+            contains: [hljs.UNDERSCORE_TITLE_MODE],
           },
+          CUSTOM_HIGHLIGHT_CLASSES, // CUSTOM
+          CUSTOM_HIGHLIGHT_CONSTANT, // CUSTOM
           {
             className: 'params',
             begin: /\(/, end: /\)/,
@@ -104,7 +103,10 @@ hljs.registerLanguage("java", function (e) {
               hljs.APOS_STRING_MODE,
               hljs.QUOTE_STRING_MODE,
               hljs.C_NUMBER_MODE,
-              hljs.C_BLOCK_COMMENT_MODE
+              hljs.C_BLOCK_COMMENT_MODE,
+              CUSTOM_HIGHLIGHT_CLASSES, // CUSTOM
+              CUSTOM_HIGHLIGHT_CONSTANT, // CUSTOM
+
             ]
           },
           hljs.C_LINE_COMMENT_MODE,
@@ -114,7 +116,10 @@ hljs.registerLanguage("java", function (e) {
       JAVA_NUMBER_MODE,
       {
         className: 'meta', begin: '@[A-Za-z]+'
-      }
+      },
+      CUSTOM_HIGHLIGHT_CLASSES, // CUSTOM
+      CUSTOM_HIGHLIGHT_CONSTANT, // CUSTOM
+      CUSTOM_HIGHLIGHT_METHODS, // CUSTOM
     ]
   };
 });

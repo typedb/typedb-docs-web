@@ -1,8 +1,9 @@
-/*
-Language: nodejs
-Category: common, scripting
-*/
-hljs.registerLanguage("nodejs", function (e) {
+/**
+ * Source: https://github.com/highlightjs/highlight.js/blob/master/src/languages/javascript.js
+ * Extended by Grakn Labs (look for the CUSTOM comments)
+ */
+
+hljs.registerLanguage("lang-javascript", function (e) {
   var IDENT_RE = '[A-Za-z$_][0-9A-Za-z$_]*';
   var KEYWORDS = {
     keyword:
@@ -63,9 +64,6 @@ hljs.registerLanguage("nodejs", function (e) {
     aliases: ['js', 'jsx'],
     keywords: KEYWORDS,
     contains: [
-      CUSTOM_HIGHLIGHT_METHODS,
-      CUSTOM_HIGHLIGHT_CLASSES,
-      CUSTOM_HIGHLIGHT_CONSTANT,
       {
         className: 'meta',
         relevance: 10,
@@ -170,7 +168,10 @@ hljs.registerLanguage("nodejs", function (e) {
       },
       {
         beginKeywords: 'constructor', end: /\{/, excludeEnd: true
-      }
+      },
+      CUSTOM_HIGHLIGHT_CLASSES, // CUSTOM
+      CUSTOM_HIGHLIGHT_CONSTANT, // CUSTOM
+      CUSTOM_HIGHLIGHT_METHODS, // CUSTOM
     ],
     illegal: /#(?!!)/
   };

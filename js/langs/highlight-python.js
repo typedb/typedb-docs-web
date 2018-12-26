@@ -1,8 +1,9 @@
-/*
-Language: Python
-Category: common
-*/
-hljs.registerLanguage("cpython", function (e) {
+/**
+ * Source: https://github.com/highlightjs/highlight.js/blob/master/src/languages/python.js
+ * Extended by Grakn Labs (look for the CUSTOM comments)
+ */
+
+hljs.registerLanguage("lang-python", function (e) {
   var KEYWORDS = {
     keyword:
       'and elif is global as in if from raise for except finally print import pass return ' +
@@ -87,9 +88,6 @@ hljs.registerLanguage("cpython", function (e) {
     keywords: KEYWORDS,
     illegal: /(<\/|->|\?)|=>/,
     contains: [
-      CUSTOM_HIGHLIGHT_METHODS,
-      CUSTOM_HIGHLIGHT_CLASSES,
-      CUSTOM_HIGHLIGHT_CONSTANT,
       PROMPT,
       NUMBER,
       STRING,
@@ -116,7 +114,10 @@ hljs.registerLanguage("cpython", function (e) {
       },
       {
         begin: /\b(print|exec)\(/ // don’t highlight keywords-turned-functions in Python 3
-      }
+      },
+      CUSTOM_HIGHLIGHT_METHODS, // CUSTOM
+      CUSTOM_HIGHLIGHT_CLASSES, // CUSTOM
+      CUSTOM_HIGHLIGHT_CONSTANT, // CUSTOM
     ]
   };
 });
