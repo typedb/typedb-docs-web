@@ -6,6 +6,7 @@ ready = ->
     window.topbar_setup()
     window.tabs_parseMarkdown()
     window.slideshow_parseMarkdown()
+    window.images_parseCaption()
     window.alerts_parseMarkdown()
     window.util_unwrapParagraphInCode()
     window.util_autoLinkKeywords("code")
