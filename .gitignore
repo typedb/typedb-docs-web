@@ -3,6 +3,13 @@ _site/
 .sass-cache/
 .jekyll-metadata
 
+## node
+node_modules/
+package-lock.json
+
+## IDE
+.vscode/
+
 # misc
 .DS_Store
 
