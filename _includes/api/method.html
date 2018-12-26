@@ -2,7 +2,7 @@
 {% if method[lang] %}
 	<div class="m_api-ref-block">
 		<h3 id ="{{ class_prefix }}-method-{{method[lang].title | downcase | replace: ' ', '-' | replace: '/', '-'}}">{{ method[lang].title }}</h3>
-		<pre class="api-method"><code class="language-{{lang}} java-api">{{ method[lang].method | markdownify }}</code></pre>
+		<pre class="api-method"><code class="language-lang-{{lang}} java-api">{{ method[lang].method | markdownify }}</code></pre>
 		<p>{{ method[lang].description | markdownify }}</p>
 
 		{% assign number_of_params = method[lang].accepts | size %}
