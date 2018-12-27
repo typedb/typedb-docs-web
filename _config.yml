@@ -96,10 +96,10 @@ kramdown:
 collections:
   tooltips:
     output: false
-  # 00-general:
-  #   output: true
-  01-overview:
+  00-general:
     output: true
+  # 01-overview:
+  #   output: true
   02-running-grakn:
     output: true
   03-client-api:
@@ -118,14 +118,14 @@ collections:
     output: true
   10-concept-api:
     output: true
-  11-reasoning:
-    output: true
-  12-analytics:
-    output: true
-  13-developer-guidelines-a:
-    output: true
-  14-developer-guidelines-b:
-    output: true
+  # 11-reasoning:
+  #   output: true
+  # 12-analytics:
+  #   output: true
+  # 13-developer-guidelines-a:
+  #   output: true
+  # 14-developer-guidelines-b:
+  #   output: true
 collections_dir: docs
 
 defaults:
@@ -144,24 +144,24 @@ defaults:
     values:
       layout: "page"
       comments: true
-  # -
-  #   scope:
-  #     path: ""
-  #     type: "00-general"
-  #   values:
-  #     layout: "page"
-  #     category: ""
-  #     section: ""
-  #     toc: true
   -
     scope:
       path: ""
-      type: "01-overview"
+      type: "00-general"
     values:
       layout: "page"
-      category: "Grakn"
-      section: "Overview"
+      category: ""
+      section: ""
       toc: true
+  # -
+  #   scope:
+  #     path: ""
+  #     type: "01-overview"
+  #   values:
+  #     layout: "page"
+  #     category: "Grakn"
+  #     section: "Overview"
+  #     toc: true
   -
     scope:
       path: ""
@@ -243,49 +243,43 @@ defaults:
       category: "Graql"
       section: "Concept API"
       toc: true
-  -
-    scope:
-      path: ""
-      type: "11-reasoning"
-    values:
-      layout: "page"
-      category: "Graql"
-      section: "Reasoning"
-      toc: true
-  -
-    scope:
-      path: ""
-      type: "12-analytics"
-    values:
-      layout: "page"
-      category: "Graql"
-      section: "Analytics"
-  -
-    scope:
-      path: ""
-      type: "13-developer-guidelines-a"
-    values:
-      layout: "page"
-      category: "Dev Guidelines"
-      section: "Developer Guidelines A"
-      toc: true
-  -
-    scope:
-      path: ""
-      type: "14-developer-guidelines-b"
-    values:
-      layout: "page"
-      category: "Dev Guidelines"
-      section: "Developer Guidelines B"
-      toc: true
+  # -
+  #   scope:
+  #     path: ""
+  #     type: "11-reasoning"
+  #   values:
+  #     layout: "page"
+  #     category: "Graql"
+  #     section: "Reasoning"
+  #     toc: true
+  # -
+  #   scope:
+  #     path: ""
+  #     type: "12-analytics"
+  #   values:
+  #     layout: "page"
+  #     category: "Graql"
+  #     section: "Analytics"
+  # -
+  #   scope:
+  #     path: ""
+  #     type: "13-developer-guidelines-a"
+  #   values:
+  #     layout: "page"
+  #     category: "Dev Guidelines"
+  #     section: "Developer Guidelines A"
+  #     toc: true
+  # -
+  #   scope:
+  #     path: ""
+  #     type: "14-developer-guidelines-b"
+  #   values:
+  #     layout: "page"
+  #     category: "Dev Guidelines"
+  #     section: "Developer Guidelines B"
+  #     toc: true
 
 # these are defaults used for the frontmatter for these file types
-
-sidebars:
-- documentation_sidebar
-- overview_sidebar
-- contributors_sidebar
-- academy_sidebar
 
 description: "A Distributed Knowledge Graph"
 # the description is used in the feed.xml file

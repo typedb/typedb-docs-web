@@ -2,7 +2,7 @@
 {% assign general_pages = general_pages | push: site.00-general %}
 
 {% assign database_pages = "" | split: "," %}
-{% assign database_pages = database_pages | push: site.01-overview %}
+{% comment %} {% assign database_pages = database_pages | push: site.01-overview %} {% endcomment %}
 {% assign database_pages = database_pages | push: site.02-running-grakn %}
 {% assign database_pages = database_pages | push: site.03-client-api %}
 {% assign database_pages = database_pages | push: site.04-cloud-deployment %}
@@ -14,18 +14,18 @@
 {% assign graql_pages = graql_pages | push: site.08-schema %}
 {% assign graql_pages = graql_pages | push: site.09-query %}
 {% assign graql_pages = graql_pages | push: site.10-concept-api %}
-{% assign graql_pages = graql_pages | push: site.11-reasoning %}
-{% assign graql_pages = graql_pages | push: site.12-analytics %}
+{% comment %} {% assign graql_pages = graql_pages | push: site.11-reasoning %}
+{% assign graql_pages = graql_pages | push: site.12-analytics %} {% endcomment %}
 
-{% assign developer_guidelines_pages = "" | split: "," %}
+{% comment %} {% assign developer_guidelines_pages = "" | split: "," %}
 {% assign developer_guidelines_pages = developer_guidelines_pages | push: site.13-developer-guidelines-a %}
-{% assign developer_guidelines_pages = developer_guidelines_pages | push: site.14-developer-guidelines-b %}
+{% assign developer_guidelines_pages = developer_guidelines_pages | push: site.14-developer-guidelines-b %} {% endcomment %}
 
 {% assign categories = "" | split: "," %}
 {% assign categories = categories | push: general_pages %}
 {% assign categories = categories | push: database_pages %}
 {% assign categories = categories | push: graql_pages %}
-{% assign categories = categories | push: developer_guidelines_pages %}
+{% comment %} {% assign categories = categories | push: developer_guidelines_pages %} {% endcomment %}
 
 {% for category in categories %}
     {% assign specified_category_title = category[0][0].category %}
