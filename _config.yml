@@ -96,8 +96,8 @@ kramdown:
 collections:
   tooltips:
     output: false
-  00-general:
-    output: true
+  # 00-general:
+  #   output: true
   01-overview:
     output: true
   02-running-grakn:
@@ -144,22 +144,22 @@ defaults:
     values:
       layout: "page"
       comments: true
-  -
-    scope:
-      path: ""
-      type: "00-general"
-    values:
-      layout: "page"
-      category: ""
-      section: ""
-      toc: true
+  # -
+  #   scope:
+  #     path: ""
+  #     type: "00-general"
+  #   values:
+  #     layout: "page"
+  #     category: ""
+  #     section: ""
+  #     toc: true
   -
     scope:
       path: ""
       type: "01-overview"
     values:
       layout: "page"
-      category: "Database"
+      category: "Grakn"
       section: "Overview"
       toc: true
   -
@@ -168,7 +168,7 @@ defaults:
       type: "02-running-grakn"
     values:
       layout: "page"
-      category: "Database"
+      category: "Grakn"
       section: "Running Grakn"
       toc: true
   -
@@ -177,7 +177,7 @@ defaults:
       type: "03-client-api"
     values:
       layout: "page"
-      category: "Database"
+      category: "Grakn"
       section: "Client API"
       toc: true
   -
@@ -186,7 +186,7 @@ defaults:
       type: "04-cloud-deployment"
     values:
       layout: "page"
-      category: "Database"
+      category: "Grakn"
       section: "Cloud Deployment"
       toc: true
   -
@@ -195,7 +195,7 @@ defaults:
       type: "05-management"
     values:
       layout: "page"
-      category: "Database"
+      category: "Grakn"
       section: "Management"
       toc: true
   -
@@ -213,7 +213,7 @@ defaults:
       type: "07-examples"
     values:
       layout: "page"
-      category: "Database"
+      category: "Grakn"
       section: "Examples"
       toc: true
   -
