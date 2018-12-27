@@ -352,6 +352,6 @@ window.util_handleURLParams = () ->
         $(".tab-pane.#{lang}").addClass "active"
 
 window.util_escapeSpecialChars = () ->
-    content = $("body").html()
+    content = $("#o-content").html()
     content = content.replace(/&amp;lt;/g, "&lt;").replace(/&amp;gt;/g, "&gt;")
-    $("body").html(content)
+    $("#o-content").html(content)

@@ -3,6 +3,7 @@
 
 ready = ->
     window.sidebar_retainScrollPosition()
+    window.sidebar_retainActiveState()
     window.topbar_setup()
     window.tabs_parseMarkdown()
     window.slideshow_parseMarkdown()
@@ -17,10 +18,10 @@ ready = ->
     window.footer_fetchLatestVersion()
     window.syntax_applyHighlighting()
     window.syntax_fix()
-sidebar_scroll_top_position = 0
-sidebar_overflow = ""
+
 handleBeforeTurbolinkVisit = ->
     window.sidebar_storeScrollPosition()
 
 $(document).on 'turbolinks:load', ready
 $(document).on "turbolinks:before-visit", () -> handleBeforeTurbolinkVisit()
+# $(document).on 'turbolinks:visit', () -> handleSidebarActiveState()

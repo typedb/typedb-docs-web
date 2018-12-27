@@ -5,19 +5,24 @@ $(document).on "click", ".a-section_title", (e) -> expandSection(e)
 $(document).on "click", ".a-section_item a", (e) -> openPage(e)
 
 window.sidebar_retainScrollPosition = ->
-    if sidebar_overflow == "scroll"
-        $("#o-sidebar").scrollTop(sidebar_scroll_top_position)
+    if window.sidebar_overflow == "scroll"
+        $("#o-sidebar").scrollTop(window.sidebar_scroll_top_position)
     else
-        $(window).scrollTop(sidebar_scroll_top_position)
+        $(window).scrollTop(window.sidebar_scroll_top_position)
 
-sidebar_scroll_top_position = 0;
-sidebar_overflow = ""
 window.sidebar_storeScrollPosition = ->
-    sidebar_overflow = $("#o-sidebar").css("overflow-y")
+    window.sidebar_overflow = $("#o-sidebar").css("overflow-y")
     if sidebar_overflow == "scroll"
-        sidebar_scroll_top_position = $("#o-sidebar").scrollTop();
+        window.sidebar_scroll_top_position = $("#o-sidebar").scrollTop()
     else
-        sidebar_scroll_top_position = $("#o-sidebar").outerHeight();
+        window.sidebar_scroll_top_position = $("#o-sidebar").outerHeight()
+
+window.sidebar_retainActiveState = ->
+    $(".a-section_item.active").parents(".o-section").removeClass("active").removeClass("expanded")
+    $(".a-section_item.active").removeClass("active")
+    currentItem = $(".a-section_item a[href='#{window.location.pathname}']")
+    currentItem.parent(".a-section_item").addClass("active")
+    currentItem.parents(".o-section").addClass("active").addClass("expanded")
 
 expandSection = (e) ->
     e.preventDefault()
