@@ -1,5 +1,5 @@
 $sidebar_width: 200px;
-$navbar_width: 70px;
+$topbar_width: 70px;
 
 // positioning
 .container {
@@ -12,7 +12,7 @@ $navbar_width: 70px;
         width: calc(100% - #{$sidebar_width});
     }
     #o-sidebar {
-        height: calc(100vh - #{$navbar_width});
+        height: 100%;
         overflow-y: scroll;
         position: fixed;
         width: $sidebar_width;
