@@ -2,7 +2,7 @@
 ---
 
 window.tabs_parseMarkdown = () ->
-    $('.gtabs').each (index) ->
+    $('.tabs').each (index) ->
         titles = []
         contents = []
         tab_details = $(this).html().split('[tab:end]')
@@ -22,7 +22,7 @@ window.tabs_parseMarkdown = () ->
         isLight = $(this).hasClass("light")
         isDark = $(this).hasClass("dark")
 
-        tab_title_html = "<ul class='tabs #{if isLight then "light" else ""} #{if isDark then "dark" else ""}'>"
+        tab_title_html = "<ul class='tabs-list #{if isLight then "light" else ""} #{if isDark then "dark" else ""}'>"
         tab_width_percent = 100 / titles.length
         for title, i in titles
             tab_title_html += "<li class='tab-#{title.toLowerCase()} #{"active" if i == 0}' style='width:#{tab_width_percent}%' data-target='##{generateTargetId(titles[i], index)}'>#{title}</li>"
@@ -36,7 +36,7 @@ window.tabs_parseMarkdown = () ->
 
         $(this).replaceWith tab_title_html + tab_content_html
 
-    $(document).on "click", ".tabs li", ->
+    $(document).on "click", ".tabs-list li", ->
         $(this).siblings().removeClass "active"
         $(this).addClass "active"
         targetId = $(this).data("target")

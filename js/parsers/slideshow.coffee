@@ -35,7 +35,7 @@ window.slideshow_parseMarkdown = () ->
         content += "</div>"
         $(this).replaceWith content
 
-    $(".a_slide-next").click ->
+    $(document).on "click", ".a_slide-next", ->
         unless $(this).hasClass "disabled"
             activeSlide = $(this).siblings(".o_slide.active")
             activeSlide.removeClass "active"
@@ -45,7 +45,7 @@ window.slideshow_parseMarkdown = () ->
                 $(this).addClass "disabled"
             $(this).siblings(".a_slide-previous").removeClass "disabled"
 
-    $(".a_slide-previous").click ->
+    $(document).on "click", ".a_slide-previous", ->
         unless $(this).hasClass "disabled"
             activeSlide = $(this).siblings(".o_slide.active")
             activeSlide.removeClass "active"
