@@ -40,18 +40,6 @@
     .container {
         max-width: 700px !important;
     }
-}
-
-@media screen and (max-width: 768px) {
-    .topbar {
-        padding: 0 1rem;
-    }
-}
-
-@media (max-width: 750px) {
-    .container {
-        max-width: 600px !important;
-    }
 
     .footer__social__signup {
         width: 100% !important;
@@ -63,7 +51,19 @@
     .footer__social__buttons {
         float: none !important;
         margin: 0 auto !important;
-        width: 196px !important;
+        width: 207px !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .topbar {
+        padding: 0 1rem;
+    }
+}
+
+@media (max-width: 750px) {
+    .container {
+        max-width: 600px !important;
     }
 }
 
@@ -78,11 +78,20 @@
         padding: 20px !important;
         position: relative !important;
         width: 100% !important;
+        text-align: center;
+
+        .a-section_item {
+            border-left: none !important;
+            &.active a {
+                color: #796de3 !important;
+                &:before { content: "" !important; }
+            }
+        }
     }
 
     #o-content {
         margin-left: 0 !important;
-        max-width: 100% !important;
+        width: 100% !important;
     }
 
     .footer__links {
