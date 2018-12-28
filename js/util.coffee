@@ -15,43 +15,43 @@ codeKeywordsToLink = {
             titles: ["undefine"]
             allowed: ["graql-keyword", "string"]
             anchor: "#undefine"
-            languages: ["graql", "nodejs", "cpython"]
+            languages: ["graql", "javascript", "python"]
         },
         # {
         #     titles: ["keyspaces().delete"]
         #     # allowed: ["method"]
         #     anchor: "#client-api-method-deleting-a-keyspace"
-        #     languages: ["java", "nodejs", "cpython"]
+        #     languages: ["java", "javascript", "python"]
         # },
         {
             titles: ["getAttributesByValue", "get_attributes_by_value"]
             allowed: ["method"]
             anchor: "#client-api-method-retrive-an-attribute-by-value"
-            languages: ["nodejs", "cpython"]
+            languages: ["javascript", "python"]
         },
         {
             titles: ["getConcept", "get_concept"]
             allowed: ["method"]
             anchor: "#client-api-method-retrive-a-concept-by-id"
-            languages: ["nodejs", "cpython"]
+            languages: ["javascript", "python"]
         },
         {
             titles: ["getSchemaConcept", "get_schema_concept"]
             allowed: ["method"]
             anchor: "#client-api-method-retrive-a-schema-concept-by-label"
-            languages: ["nodejs", "cpython"]
+            languages: ["javascript", "python"]
         },
         {
             titles: ["getSchemaConcept", "get_schema_concept"]
             allowed: ["method"]
             anchor: "#client-api-method-retrive-a-schema-concept-by-label"
-            languages: ["nodejs", "cpython"]
+            languages: ["javascript", "python"]
         },
         {
             titles: ["queryPattern", "query_pattern"]
             allowed: ["method"]
             anchor: "#client-api-method-retrieve-a-graql-explanation-of-the-answer"
-            languages: ["nodejs", "cpython"]
+            languages: ["javascript", "python"]
         },
         ## retain alphabetic order based on title
         {
@@ -65,30 +65,30 @@ codeKeywordsToLink = {
             titles: ["aggregate"]
             allowed: ["graql-keyword", "string"]
             anchor: ""
-            languages: ["graql", "nodejs", "cpython"]
+            languages: ["graql", "javascript", "python"]
         },
         {
             titles: ["answerIterator", "answer_iterator", "Iterator", "iterator"]
             anchor: "#client-api-title-iterator"
-            languages: ["nodejs", "cpython"]
+            languages: ["javascript", "python"]
         },
         {
             titles: ["answers"]
             allowed: ["method"]
             anchor: "#client-api-method-retrieve-source-facts-of-inference"
-            languages: ["nodejs", "cpython"]
+            languages: ["javascript", "python"]
         },
         {
             titles: ["collectConcepts", "collect_concepts"]
             allowed: ["method"]
             anchor: "#client-api-method-consume-the-iterator-eagerly"
-            languages: ["nodejs", "cpython"]
+            languages: ["javascript", "python"]
         },
         {
             titles: ["commit"]
             allowed: ["method"]
             anchor: "#client-api-method-commite-a-write-transaction"
-            languages: ["java", "nodejs", "cpython"]
+            languages: ["java", "javascript", "python"]
         },
         {
             titles: ["compute"]
@@ -101,12 +101,12 @@ codeKeywordsToLink = {
             titles: ["compute"]
             allowed: ["graql-keyword", "string"]
             anchor: ""
-            languages: ["graql", "nodejs", "cpython"]
+            languages: ["graql", "javascript", "python"]
         },
         {
             titles: ["ConceptMap", "concept_map", "conceptMap"]
             anchor: "#client-api-title-conceptmap"
-            languages: ["java", "nodejs", "cpython"]
+            languages: ["java", "javascript", "python"]
         },
         {
             titles: ["define"]
@@ -119,7 +119,7 @@ codeKeywordsToLink = {
             titles: ["define"]
             allowed: ["graql-keyword", "string"]
             anchor: "#define"
-            languages: ["graql", "nodejs", "cpython"]
+            languages: ["graql", "javascript", "python"]
         },
         # {
         #     titles: ["delete"]
@@ -132,13 +132,13 @@ codeKeywordsToLink = {
             titles: ["delete"]
             allowed: ["graql-keyword", "string"]
             anchor: ""
-            languages: ["graql", "nodejs", "cpython"]
+            languages: ["graql", "javascript", "python"]
         },
         {
             titles: ["explanation"]
             allowed: ["method"]
             anchor: "#client-api-title-explanation"
-            languages: ["java", "nodejs", "cpython"]
+            languages: ["java", "javascript", "python"]
         },
         {
             titles: ["execute"]
@@ -157,7 +157,7 @@ codeKeywordsToLink = {
             titles: ["get"]
             allowed: ["graql-keyword", "string"]
             anchor: ""
-            languages: ["graql", "nodejs", "cpython"]
+            languages: ["graql", "javascript", "python"]
         },
         {
             titles: ["Graql"]
@@ -170,14 +170,14 @@ codeKeywordsToLink = {
             titles: ["delete"]
             allowed: ["graql-keyword", "string"]
             anchor: ""
-            languages: ["graql", "nodejs", "cpython"]
+            languages: ["graql", "javascript", "python"]
         },
         {
             baseUrl: "/docs/query/insert-query"
             titles: ["insert"]
             allowed: ["graql-keyword", "string"]
             anchor: ""
-            languages: ["graql", "nodejs", "cpython"]
+            languages: ["graql", "javascript", "python"]
         },
         {
             titles: ["insert"]
@@ -189,7 +189,7 @@ codeKeywordsToLink = {
             titles: ["keyspaces().retrieve"]
             allowed: ["method"]
             anchor: "#client-api-method-retrieve-all-keyspaces"
-            languages: ["nodejs", "cpython"]
+            languages: ["javascript", "python"]
         },
         {
             titles: ["match"]
@@ -202,68 +202,68 @@ codeKeywordsToLink = {
             titles: ["match"]
             allowed: ["graql-keyword", "string"]
             anchor: ""
-            languages: ["graql", "nodejs", "cpython"]
+            languages: ["graql", "javascript", "python"]
         },
         {
             titles: ["measurement"]
             allowed: ["method"]
             anchor: "#client-api-method-retrieve-the-numeric-value-of-a-centrality-computation"
-            languages: ["java", "nodejs", "cpython"]
+            languages: ["java", "javascript", "python"]
         },
         {
             titles: ["owner"]
             allowed: ["method"]
             anchor: "#client-api-method-retrieve-the-concept-that-is-the-group-owner"
-            languages: ["java", "nodejs", "cpython"]
+            languages: ["java", "javascript", "python"]
         },
         {
             titles: ["putAttributeType", "put_attribute_type"]
             allowed: ["method"]
             anchor: "#client-api-method-create-or-retrieve-an-attributetype"
-            languages: ["java", "nodejs", "cpython"]
+            languages: ["java", "javascript", "python"]
         },
         {
             titles: ["putEntityType", "put_entity_type"]
             allowed: ["method"]
             anchor: "#client-api-method-create-or-retrieve-an-entitytype"
-            languages: ["nodejs", "cpython"]
+            languages: ["javascript", "python"]
         },
         {
             titles: ["putRelationshipType", "put_relationship_type"]
             allowed: ["method"]
             anchor: "#client-api-method-create-or-retrieve-a-relationshiptype"
-            languages: ["nodejs", "cpython"]
+            languages: ["javascript", "python"]
         },
         {
             titles: ["putRole", "put_role"]
             allowed: ["method"]
             anchor: "#client-api-method-create-or-retrieve-a-role"
-            languages: ["nodejs", "cpython"]
+            languages: ["javascript", "python"]
         },
         {
             titles: ["putRule", "put_rule"]
             allowed: ["method"]
             anchor: "#client-api-method-create-or-retrieve-a-rule"
-            languages: ["nodejs", "cpython"]
+            languages: ["javascript", "python"]
         },
         {
             titles: ["query"]
             allowed: ["method"]
             anchor: "#client-api-method-lazily-execute-a-graql-query"
-            languages: ["nodejs", "cpython"]
+            languages: ["javascript", "python"]
         },
         {
             baseUrl: "/docs/schema/rules"
             allowed: ["graql-keyword"]
             titles: ["rule"]
             anchor: ""
-            languages: ["graql", "nodejs", "cpython"]
+            languages: ["graql", "javascript", "python"]
         },
         {
             titles: ["session"]
             allowed: ["method"]
             anchor: "#client-api-method-create-a-session-keyspace"
-            languages: ["java", "nodejs", "cpython"]
+            languages: ["java", "javascript", "python"]
         },
         {
             titles: ["stream"]
@@ -275,7 +275,7 @@ codeKeywordsToLink = {
             titles: ["transaction"]
             allowed: ["method"]
             anchor: "#client-api-method-create-a-transaction"
-            languages: ["java", "nodejs", "cpython"]
+            languages: ["java", "javascript", "python"]
         }
         {
             titles: ["withTx"]
@@ -291,7 +291,7 @@ window.util_autoLinkKeywords = (selector) ->
     for mapping, a in codeKeywordsToLink.keywords
         for title, b in mapping.titles
             for lang, c in mapping.languages
-                $(selector + ".language-" + lang).each ->
+                $(selector + ".language-lang-" + lang).each ->
                     baseUrl = mapping.baseUrl || commonBaseUrl
                     url = baseUrl.replace("{language}", lang) + mapping.anchor
                     content = $(this).html()
@@ -321,7 +321,7 @@ window.util_handleLinks = ->
     # anchors.options = { icon: "/f0c1/" }
     anchors.add('h2,h3,h4,h5')
 
-    $("#o-content").on "click", $(this), (e) ->
+    $("#o-content").on "click", "a", (e) ->
         link = e.target
         href = $(link).attr("href")
         ## external links to open in a new tab
