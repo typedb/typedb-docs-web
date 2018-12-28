@@ -29,7 +29,7 @@ hljs.registerLanguage("lang-graql", function (e) {
                 variants: [
                     { begin: /\b(entity|attribute|relationship|thing|role)[^-]/ },
                     { begin: /\brule\b[^-]/, exclude: /,/ },
-                    { begin: /\b(boolean|double|long|string|date)\b[^-]/ },
+                    { begin: /\s(boolean|double|long|string|date)/, end: /;/, excludeEnd: true },
                 ]
             },
             {
