@@ -1,7 +1,7 @@
 ---
 ---
 
-window.tabs_parseMarkdown = () ->
+window.parser_tabs = () ->
     $('.tabs').each (index) ->
         titles = []
         contents = []

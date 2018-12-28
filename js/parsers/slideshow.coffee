@@ -1,7 +1,7 @@
 ---
 ---
 
-window.slideshow_parseMarkdown = () ->
+window.parser_slideshow = () ->
     $('.slideshow').each (index) ->
         fullContent = $(this).html()
         slides = fullContent.split "[slide:end]"

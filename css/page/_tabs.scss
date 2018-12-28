@@ -1,5 +1,9 @@
 $tabs-border-radius: 5px;
 
+// markdown tabs
+.tabs { display: none }
+
+// generated tabs
 .tabs-list {
   border-radius: $tabs-border-radius $tabs-border-radius 0 0;
   display: block;

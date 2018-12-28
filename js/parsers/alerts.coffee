@@ -1,6 +1,6 @@
 ---
 ---
-window.alerts_parseMarkdown = ->
+window.parser_notes = ->
     $('.note').each (index) ->
         alert_components = {
             important: {

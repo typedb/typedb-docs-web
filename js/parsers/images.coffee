@@ -1,7 +1,7 @@
 ---
 ---
 
-window.images_parseCaption = ->
+window.parser_caption = ->
     $('img').each ->
         if $(this).parent("p").length
             content = $(this).parent("p").html()
