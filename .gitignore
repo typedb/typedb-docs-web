@@ -10,9 +10,6 @@ package-lock.json
 ## IDE
 .vscode/
 
-## bundle
-Gemfile.lock
-
 ## misc
 .DS_Store
 
