@@ -31,7 +31,6 @@ sass:
 plugins:
   - jekyll-coffeescript
   - jekyll-toc
-  - jekyll-redirect-from
 
 toc:
   list_class: toc
