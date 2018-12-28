@@ -2,11 +2,6 @@
 ---
 
 ready = ->
-    ## HACK! we need to find another workaround for having the default index.html
-    ## synced in / and docs/
-    if ["/", "/docs/"].includes window.location.pathname
-        $(".summary").hide()
-        window.location = "/docs/general/quickstart"
     window.sidebar_retainScrollPosition()
     window.sidebar_retainActiveState()
     window.topbar_setup()

@@ -31,6 +31,7 @@ sass:
 plugins:
   - jekyll-coffeescript
   - jekyll-toc
+  - jekyll-redirect-from
 
 toc:
   list_class: toc
@@ -64,6 +65,10 @@ exclude:
   - images/
   - docs/03-client-api/references/
   - docs/10-concept-api/references/
+  - node_modules
+  - package-lock.json
+  - tests/
+  - symlink_creator.sh
 
 # these are the files and directories that jekyll will exclude from the build
 
