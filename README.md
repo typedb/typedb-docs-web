@@ -17,46 +17,40 @@ $ gem install bundler
 $ bundle install
 ```
 
-## Building
-
-You can generate the documentation HTML by running the following in the repository top level.
+## Build
 
 ```
 $ jekyll build
 ```
 
-This will build the documentation site by taking everything (excluding certain files and directories) in the top level directorty and generating the static html files in the `_site` directory.
+Running this command parses all markdown files in `/docs` to HTML and places them under `_site/docs` directory. Any other files or folders are also moved into `_site/` unless explicitly excluded in `_config.yml`.
 
-
-## Cleaning
-
-Clean by running the following command in the repository top level:
+## Clean
 
 ```
 $ jekyll clean
 ```
 
-This will remove the `_site` directory.
+Running this command removes `_site`, `.jekyll-metadata` and `.sass-cache`.
 
-## Starting the server
-
-You can build and serve the generated HTML files using the following command. This starts a WEBrick web server on 127.0.0.1:4005. Same command with options `-H 0.0.0.0 -P $PORT` starts the server in production.
+## Build and start the server
 
 ```
 $ jekyll serve --trace
 ```
 
+This starts a WEBrick web server on 127.0.0.1:4005. Same command with options `-H 0.0.0.0 -P $PORT` starts the server in production.
+
 You can now view the documentation by navigating your web browser to `http://127.0.0.1:4005`
 
-## Deployment
+## Deploy
 
-1. Make sure you have access rights to write to Grakn Heroku account.
-2. Create a new PR to Grakn Docs [master branch](https://github.com/graknlabs/docs/tree/master).
-3. Once the PR has been merged, an automatic deploy to [dev.grakn.ai](https://dev.grakn.ai) takes place.
+Commit changes made in the `docs` submodule and push to the remote repository.
+Heroku watches for any push on this repository and deploys automatically.
 
-## Tests
+<!-- ## Tests
 
-Work in progres ...
+Work in progres ... -->
 <!-- There are a few tests we run against docs:
 
 - `html-proofer`
