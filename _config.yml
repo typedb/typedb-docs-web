@@ -62,8 +62,8 @@ exclude:
   - docs/temp/
   - docs/images/source/
   - images/
-  # - docs/_03-client-api/references/
-  # - docs/_10-concept-api/references/
+  - docs/03-client-api/references/
+  - docs/10-concept-api/references/
 
 # these are the files and directories that jekyll will exclude from the build
 
