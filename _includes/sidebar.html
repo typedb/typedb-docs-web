@@ -1,56 +1,24 @@
-{% assign general_pages = "" | split: "," %}
-{% assign general_pages = general_pages | push: site.00-general %}
+{% assign chapters = site.data.sidebar.chapters  %}
 
-{% assign database_pages = "" | split: "," %}
-{% comment %} {% assign database_pages = database_pages | push: site.01-overview %} {% endcomment %}
-{% assign database_pages = database_pages | push: site.02-running-grakn %}
-{% assign database_pages = database_pages | push: site.03-client-api %}
-{% assign database_pages = database_pages | push: site.04-cloud-deployment %}
-{% assign database_pages = database_pages | push: site.05-management %}
-{% assign database_pages = database_pages | push: site.06-workbase %}
-{% assign database_pages = database_pages | push: site.07-examples %}
+{% for chapter in chapters %}
+    {% unless chapter.hideTitle %}
+        <li class="a-section_categoryTitle">{{ chapter.title }}</li>
+    {% endunless %}
 
-{% assign graql_pages = "" | split: "," %}
-{% assign graql_pages = graql_pages | push: site.08-schema %}
-{% assign graql_pages = graql_pages | push: site.09-query %}
-{% assign graql_pages = graql_pages | push: site.10-concept-api %}
-{% comment %} {% assign graql_pages = graql_pages | push: site.11-reasoning %}
-{% assign graql_pages = graql_pages | push: site.12-analytics %} {% endcomment %}
-
-{% comment %} {% assign developer_guidelines_pages = "" | split: "," %}
-{% assign developer_guidelines_pages = developer_guidelines_pages | push: site.13-developer-guidelines-a %}
-{% assign developer_guidelines_pages = developer_guidelines_pages | push: site.14-developer-guidelines-b %} {% endcomment %}
-
-{% assign categories = "" | split: "," %}
-{% assign categories = categories | push: general_pages %}
-{% assign categories = categories | push: database_pages %}
-{% assign categories = categories | push: graql_pages %}
-{% comment %} {% assign categories = categories | push: developer_guidelines_pages %} {% endcomment %}
-
-{% for category in categories %}
-    {% assign specified_category_title = category[0][0].category %}
-
-    {% if specified_category_title != "" %}
-        <li class="a-section_categoryTitle">{{ specified_category_title }}</li>
-    {% endif %}
-
-    {% assign specified_section_title = category[0][0].section %}
-
-    {% if specified_section_title == "" %}
-        {% for section in category %}
-            {% for doc_page in section %}
-                {% assign hyperlink_class = "animated__link animated__link--purple" %}
-                {% include sidebar_page_item.html doc_page=doc_page hyperlink_class=hyperlink_class %}
-            {% endfor %}
+    {% if chapter.pages %}
+        {% for page in chapter.pages %}
+            {% assign hyperlinkClass = "animated__link animated__link--purple" %}
+            {% include sidebar_page_item.html page = page hyperlinkClass = hyperlinkClass url = page.url %}
         {% endfor %}
-    {% else %}
-        {% for section in category %}
+    {% elsif chapter.sections %}
+        {% for section in chapter.sections %}
             <li class="o-section">
-                <a class="a-section_title animated__link animated__link--purple" href = "">{{ section[0].section }}</a>
+                <a class="a-section_title animated__link animated__link--purple" href = "">{{ section.title }}</a>
                 <ul class="m-section_list">
-                    {% for doc_page in section %}
-                        {% assign hyperlink_class = "" %}
-                        {% include sidebar_page_item.html doc_page=doc_page hyperlink_class=hyperlink_class %}
+                    {% for page in section.pages %}
+                        {% assign hyperlinkClass = "" %}
+                        {% assign url = section.baseUrl | append: page.url %}
+                        {% include sidebar_page_item.html page = page hyperlinkClass = hyperlinkClass url = url %}
                     {% endfor %}
                 </ul>
             </li>

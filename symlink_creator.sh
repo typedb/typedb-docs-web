@@ -6,7 +6,7 @@ absolute_path_prefix=$(pwd)
 
 for original in $(find docs -name '*.yml'); do
     symlink=${original#"docs/"} # remove prefix
-    symlink=${symlink:4} # remove page number
+    symlink=${symlink:3} # remove page number
     symlink="${symlink//-/_}" # repalce - with _
     symlink="${symlink/references\//}" # remove /references
 
