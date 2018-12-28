@@ -8,7 +8,8 @@
     {% if chapter.pages %}
         {% for page in chapter.pages %}
             {% assign hyperlinkClass = "animated__link animated__link--purple" %}
-            {% include sidebar_page_item.html page = page hyperlinkClass = hyperlinkClass url = page.url %}
+            {% assign url = page.url %}
+            {% include sidebar_page_item.html page = page hyperlinkClass = hyperlinkClass url = url %}
         {% endfor %}
     {% elsif chapter.sections %}
         {% for section in chapter.sections %}
