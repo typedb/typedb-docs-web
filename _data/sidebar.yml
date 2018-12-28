@@ -1,6 +1,6 @@
 chapters:
   -
-    title: "General"
+    title: General
     hideTitle: true
     pages:
       -
@@ -72,10 +72,10 @@ chapters:
             title: Connection
             url: connection
           -
-            title: Visuakisation
+            title: Visualisation
             url: visualisation
           -
-            title: Investigration
+            title: Investigation
             url: investigration
       -
         title: Examples
