@@ -1,0 +1,40 @@
+code {
+  font-family: monospace, serif;
+  font-size: 1em;
+}
+
+pre {
+  border-radius: 6px;
+  margin: 15px 0px;
+  padding: 0;
+
+  code {
+    padding: 10px 15px !important;
+    background: #2f3544 !important;
+  }
+}
+
+p, table tr, li {
+  code {
+    color: #8c8d92;
+    font-size: 14px;
+    display: inline-block;
+    line-height: 10px;
+    padding: 0 3px;
+    font-weight: 600;
+  }
+
+  pre code { line-height: 25px; }
+}
+
+a {
+  code {
+    color: inherit;
+  }
+
+  &:hover {
+    code {
+      text-decoration: underline;
+    }
+  }
+}

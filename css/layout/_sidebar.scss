@@ -1,0 +1,117 @@
+$sidebar_item_distance_to_content: 20px;
+
+li.a-section_categoryTitle {
+    font-family: 'Titillium';
+    letter-spacing: 0.2px;;
+    font-weight: 400;
+    margin-top: 40px;
+    font-size: 1.6em;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+
+ul#o-sidebar {
+    background: $bg_color;
+    margin: 0;
+    padding: 70px 0 20px 0;
+    list-style: none;
+
+    > li:first-child {
+        margin-top: 20px;
+    }
+
+    li.a-section_item {
+        height: 30px;
+
+        &.active {
+            a { border-bottom: 1px solid $grakn_purple_color; }
+            &:hover {
+                .animated__link:before { visibility: hidden; }
+            }
+        }
+
+        a {
+            background-color: $bg_color;
+            color: $grakn_purple_color;
+            display: inline-block;
+            font-size: 17px;
+            text-decoration: none;
+            width: calc(100% - #{$sidebar_item_distance_to_content});
+        }
+    }
+
+    li.a-section_categoryTitle {
+        color: $sidebar_categoryTitle_color;
+        font-family: 'Titillium';
+        font-size: 21px;
+        font-weight: 400;
+        letter-spacing: 0.2px;;
+        margin: 0;
+        margin-top: 10px;
+        padding: 15px 0 7px 0;
+    }
+
+    li.o-section {
+        a.a-section_title {
+            background-color: $bg_color;
+            color: $grakn_purple_color;
+            display: inline-block;
+            font-size: 17px;
+            padding-top: 5px;
+            text-decoration: none;
+            width: calc(100% - #{$sidebar_item_distance_to_content});
+
+            &.active { border-bottom: 1px solid #796de3 !important; }
+        }
+
+        ul.m-section_list {
+            display: none;
+        }
+
+        &.active {
+            a.a-section_title { border-bottom: 1px solid $grakn_purple_color; }
+        }
+
+        &.expanded {
+            &:hover {
+                a.a-section_title { border-bottom: 1px solid $grakn_purple_color; }
+                a.animated__link:before { visibility: hidden; }
+            }
+
+            ul.m-section_list {
+                display: block;
+
+                padding: 13px;
+                list-style: none;
+
+                a {
+                    color: #333;
+                    font-size: 16px;
+                    padding: 0 13px;
+                    line-height: 25px;
+                }
+
+                li.a-section_item {
+                    border-left: 1px solid #dcdeea;
+                    position: relative;
+
+                    &.active a {
+                        display: inline-block;
+                        border: none;
+
+                        &:before {
+                            color: $grakn_purple_color;
+                            content: "\f111";
+                            font-family: "FontAwesome solid";
+                            font-weight: normal;
+                            font-style: normal;
+                            left: -8.5px;
+                            position: absolute;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+

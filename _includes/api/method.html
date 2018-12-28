@@ -1,0 +1,46 @@
+{% assign method = include.data.method %}
+{% if method[lang] %}
+	<div class="m_api-ref-block">
+		<h3 id ="{{ class_prefix }}-method-{{method[lang].title | downcase | replace: ' ', '-' | replace: '/', '-'}}">{{ method[lang].title }}</h3>
+		<pre class="api-method"><code class="language-lang-{{lang}} java-api">{{ method[lang].method | markdownify }}</code></pre>
+		<p>{{ method[lang].description | markdownify }}</p>
+
+		{% assign number_of_params = method[lang].accepts | size %}
+		{% if number_of_params > 0 %}
+			<h4 class="accepts-heading"> Accepts </h4>
+			<table class="api-accepts">
+			<thead>
+				<th>Param</th>
+				<th>Description</th>
+				<th>Type</th>
+				<th>Required</th>
+				<th>Default</th>
+			</thead>
+			<tbody>
+				{% for param in method[lang].accepts %}
+				<tr>
+					<td class="fit-content"><strong>{{ param[1].name | markdownify }}</strong></td>
+					<td>{{ param[1].description | markdownify }}</td>
+					<td class="fit-content">{{ param[1].type | markdownify }}</td>
+					<td>{{ param[1].required | markdownify }}</td>
+					<td>{{ param[1].default | markdownify }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+			</table>
+		{% endif %}
+
+		{% assign number_of_returns = method[lang].returns | size %}
+		{% if number_of_returns > 0 %}
+			<h4 class="returns-heading">Returns</h4>
+			<div class="api-returns">
+				{% for return in method[lang].returns %}
+					<b>{{ return | markdownify }}</b>
+					{% if forloop.index < number_of_returns %}
+					<span> | </span>
+					{% endif %}
+				{% endfor %}
+			</div>
+		{% endif %}
+	</div>
+{% endif %}

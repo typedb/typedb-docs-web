@@ -5,7 +5,7 @@ output: web
 topnav_title: GRAKN.AI
 # this appears on the top navigation bar next to the home button
 
-site_title: GRAKN.AI
+title: GRAKN.AI
 # this appears in the html browser tab for the site title (seen mostly by search engines, not users)
 
 company_name: GRAKN.AI
@@ -25,7 +25,11 @@ host: 127.0.0.1
 port: 4005
 # the port where the preview is rendered. You can leave this as is unless you have other Jekyll builds using this same port that might cause conflicts. in that case, use another port such as 4006.
 
+sass:
+  sass_dir: css
+
 plugins:
+  - jekyll-coffeescript
   - jekyll-toc
 
 toc:
@@ -37,42 +41,23 @@ exclude:
   - .gitignore
   - Gemfile
   - Gemfile.lock
-  - api.yml
   - config.ru
-  - feed.xml
   - Procfile
-  - PULL_REQUEST_TEMPLATE.md
-  - Rakefile
   - README.md
   - static.json
-  - to-do-list.md
-  - tooltips.json
   - pdfconfigs
   - pdf-template.sh
-  - _config-template.yml
   - vendor/bundle/
   - vendor/cache/
   - vendor/gems/
   - vendor/ruby/
-
-# these are the files and directories that jekyll will exclude from the build
-
-feedback_subject_line: GRAKN.AI Feedback
-
-feedback_email: info@grakn.ai
-# used as a contact email for the Feedback link in the top navigation bar
-
-feedback_disable: true
-# if you uncomment the previous line, the Feedback link gets removed
-
-# feedback_text: "Need help?"
-# if you uncomment the previous line, it changes the Feedback text
-
-# feedback_link: "http://helpy.io/"
-# if you uncomment the previous line, it changes where the feedback link points to
-
-highlighter: rouge
-# library used for syntax highlighting
+  - docs/images/source/
+  - docs/03-client-api/references/
+  - docs/10-concept-api/references/
+  - node_modules
+  - package-lock.json
+  - tests/
+  - symlink_creator.sh
 
 markdown: kramdown
 kramdown:
@@ -85,36 +70,24 @@ kramdown:
 collections:
   tooltips:
     output: false
-# collections are declared here. this renders the content in _tooltips and processes it, but doesn't output it as actual files in the output unless you change output to true
 
 defaults:
-  -
-    scope:
-      path: ""
-      type: "pages"
-    values:
-      layout: "page"
-      comments: true
-      search: true
-      sidebar: documentation_sidebar
-      toc: true
-  -
-    scope:
+  - scope:
       path: ""
       type: "tooltips"
     values:
       layout: "page"
       comments: true
-      search: true
       tooltip: true
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+      comments: true
+      toc: true
 
 # these are defaults used for the frontmatter for these file types
-
-sidebars:
-- documentation_sidebar
-- overview_sidebar
-- contributors_sidebar
-- academy_sidebar
 
 description: "A Distributed Knowledge Graph"
 # the description is used in the feed.xml file
