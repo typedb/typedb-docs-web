@@ -62,7 +62,7 @@ chapters:
             title: Users
             url: users
       -
-        title: Workbasse
+        title: Workbase
         baseUrl: /docs/workbase/
         pages:
           -
