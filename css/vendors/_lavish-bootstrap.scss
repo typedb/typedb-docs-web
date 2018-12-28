@@ -4163,33 +4163,33 @@ textarea.input-group-sm > .input-group-btn > .btn {
 .label-danger[href]:focus {
   background-color: #c9302c;
 }
-.badge {
-  display: inline-block;
-  min-width: 10px;
-  padding: 3px 7px;
-  font-size: 12px;
-  font-weight: bold;
-  color: #ffffff;
-  line-height: 1;
-  vertical-align: baseline;
-  white-space: nowrap;
-  text-align: center;
-  background-color: #f9faf9;
-  border-radius: 10px;
-}
-.badge:empty {
-  display: none;
-}
-a.badge:hover,
-a.badge:focus {
-  color: #ffffff;
-  text-decoration: none;
-  cursor: pointer;
-}
-.btn .badge {
-  position: relative;
-  top: -1px;
-}
+// .badge {
+//   display: inline-block;
+//   min-width: 10px;
+//   padding: 3px 7px;
+//   font-size: 12px;
+//   font-weight: bold;
+//   color: #ffffff;
+//   line-height: 1;
+//   vertical-align: baseline;
+//   white-space: nowrap;
+//   text-align: center;
+//   background-color: #f9faf9;
+//   border-radius: 10px;
+// }
+// .badge:empty {
+//   display: none;
+// }
+// a.badge:hover,
+// a.badge:focus {
+//   color: #ffffff;
+//   text-decoration: none;
+//   cursor: pointer;
+// }
+// .btn .badge {
+//   position: relative;
+//   top: -1px;
+// }
 a.list-group-item.active > .badge,
 .nav-pills > .active > a > .badge {
   color: #74ab50;
