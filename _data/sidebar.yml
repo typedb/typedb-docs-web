@@ -76,7 +76,7 @@ chapters:
             url: visualisation
           -
             title: Investigation
-            url: investigration
+            url: investigation
       -
         title: Examples
         baseUrl: /docs/examples/
