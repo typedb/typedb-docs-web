@@ -15,7 +15,7 @@ chapters:
         pages:
           -
             title: Install & Run
-            url: install-n-run
+            url: install-and-run
           -
             title: Console
             url: console
