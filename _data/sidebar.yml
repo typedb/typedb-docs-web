@@ -136,7 +136,7 @@ chapters:
             url: delete-query
           -
             title: Update
-            url: update-query
+            url: updating-data
           -
             title: Aggregate
             url: aggregate-query
