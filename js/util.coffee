@@ -364,8 +364,8 @@ window.util_handleURLParams = () ->
     lang = url.searchParams.get("lang")
 
     if lang
-        $(".tabs li").removeClass "active"
-        $(".tabs li.tab-#{lang}").addClass "active"
+        $(".tabs-list li").removeClass "active"
+        $(".tabs-list li.tab-#{lang}").addClass "active"
         $(".tab-pane").removeClass "active"
         $(".tab-pane.#{lang}").addClass "active"
 
