@@ -13,6 +13,8 @@ for original in $(find docs -name '*.yml'); do
     absolute_symlink="$absolute_path_prefix/_data/$symlink" # .yml symlink path
     absolute_original="$absolute_path_prefix/$original" # original .yml file path
 
+    mkdir -p "$(dirname $absolute_symlink)" # create the symlink's path if non-existent (-p)
+
     ln -s $absolute_original $absolute_symlink
     if ! grep -q "./_data/$symlink" .gitignore; then
         echo "\n./_data/$symlink" >> .gitignore
