@@ -23,12 +23,8 @@ window.syntax_fix = ->
         if content == content.toUpperCase()
             $(this).removeClass("hljs-method").addClass("hljs-constant")
 
-    $(".hljs-graql-type").each ->
+    $(".hljs-graql-type, .hljs-graql-keyword").each ->
+        $(this).html()
         content = $(this).html()
-        ## comma must not be highlighted as graql-type
-        indexOfComma = content.indexOf(",")
-
-        if indexOfComma > 0
-            noCommaContent = content.slice(0, indexOfComma)
-            noCommaContent += "<span style='color: #F2BD59; display: inline-block;'>,</span>"
-            $(this).html(noCommaContent)
+        content = content.replace(/\,/g, "<span style='color: #F2BD59; display: inline-block;'>,</span>")
+        $(this).html(content)
