@@ -7,7 +7,7 @@ window.syntax_applyHighlighting = ->
     hljs.initHighlighting.called = false
     hljs.configure({ languages: [] })
     hljs.initHighlighting()
-    $('pre code.hljs').show()
+    $('pre code').show()
 
 window.syntax_generateGenericSpan = ->
     $('pre code.hljs').each ->

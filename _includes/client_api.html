@@ -15,7 +15,7 @@
   {% include api/generic.html data=site.data.client_api.query language=include.language class_prefix="client-api" %}
 {% endif %}
 
-{% if lang == "javascript" or lang == "python" %}
+{% if lang == "nodejs" or lang == "python" %}
   {% include api/generic.html data=site.data.client_api.iterator language=include.language class_prefix="client-api" %}
 {% endif %}
 
