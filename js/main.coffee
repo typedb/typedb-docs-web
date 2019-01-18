@@ -17,7 +17,7 @@ ready = ->
     window.footer_handleSubscribe()
     window.footer_fetchLatestVersion()
     window.syntax_applyHighlighting()
-    window.syntax_fix()
+    window.syntax_generateGenericSpan()
     window.util_autoLinkKeywords("code")
 
 handleBeforeTurbolinkVisit = ->
