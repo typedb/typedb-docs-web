@@ -2,7 +2,7 @@
  * Source: https://github.com/highlightjs/highlight.js/blob/master/src/languages/javascript.js
  */
 
-hljs.registerLanguage("lang-javascript", function (e) {
+hljs.registerLanguage("lang-nodejs", function (e) {
   var IDENT_RE = '[A-Za-z$_][0-9A-Za-z$_]*';
   var KEYWORDS = {
     keyword:

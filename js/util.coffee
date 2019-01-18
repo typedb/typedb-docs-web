@@ -14,38 +14,38 @@ codeKeywordsToLink = {
             titles: ["undefine"]
             allowedClasses: ["graql-keyword", "string"]
             anchor: "#undefine"
-            languages: ["graql", "javascript", "python"]
+            languages: ["graql", "nodejs", "python"]
         },
         # {
         #     titles: ["keyspaces().delete"]
         #     #
         #     anchor: "#client-api-method-deleting-a-keyspace"
-        #     languages: ["java", "javascript", "python"]
+        #     languages: ["java", "nodejs", "python"]
         # },
         {
             titles: ["getAttributesByValue", "get_attributes_by_value"]
             anchor: "#client-api-method-retrive-an-attribute-by-value"
-            languages: ["javascript", "python"]
+            languages: ["nodejs", "python"]
         },
         {
             titles: ["getConcept", "get_concept"]
             anchor: "#client-api-method-retrive-a-concept-by-id"
-            languages: ["javascript", "python"]
+            languages: ["nodejs", "python"]
         },
         {
             titles: ["getSchemaConcept", "get_schema_concept"]
             anchor: "#client-api-method-retrive-a-schema-concept-by-label"
-            languages: ["javascript", "python"]
+            languages: ["nodejs", "python"]
         },
         {
             titles: ["getSchemaConcept", "get_schema_concept"]
             anchor: "#client-api-method-retrive-a-schema-concept-by-label"
-            languages: ["javascript", "python"]
+            languages: ["nodejs", "python"]
         },
         {
             titles: ["queryPattern", "query_pattern"]
             anchor: "#client-api-method-retrieve-a-graql-explanation-of-the-answer"
-            languages: ["javascript", "python"]
+            languages: ["nodejs", "python"]
         },
         ## retain alphabetic order based on title
         {
@@ -58,27 +58,27 @@ codeKeywordsToLink = {
             titles: ["aggregate"]
             allowedClasses: ["graql-keyword", "string"]
             anchor: ""
-            languages: ["graql", "javascript", "python"]
+            languages: ["graql", "nodejs", "python"]
         },
         {
             titles: ["answerIterator", "answer_iterator", "Iterator", "iterator"]
             anchor: "#client-api-title-iterator"
-            languages: ["javascript", "python"]
+            languages: ["nodejs", "python"]
         },
         {
             titles: ["answers"]
             anchor: "#client-api-method-retrieve-source-facts-of-inference"
-            languages: ["javascript", "python"]
+            languages: ["nodejs", "python"]
         },
         {
             titles: ["collectConcepts", "collect_concepts"]
             anchor: "#client-api-method-consume-the-iterator-eagerly"
-            languages: ["javascript", "python"]
+            languages: ["nodejs", "python"]
         },
         {
             titles: ["commit"]
             anchor: "#client-api-method-commit-a-write-transaction"
-            languages: ["java", "javascript", "python"]
+            languages: ["java", "nodejs", "python"]
         },
         {
             titles: ["compute"]
@@ -90,12 +90,12 @@ codeKeywordsToLink = {
             titles: ["compute"]
             allowedClasses: ["graql-keyword", "string"]
             anchor: ""
-            languages: ["graql", "javascript", "python"]
+            languages: ["graql", "nodejs", "python"]
         },
         {
             titles: ["ConceptMap", "concept_map", "conceptMap"]
             anchor: "#client-api-title-conceptmap"
-            languages: ["java", "javascript", "python"]
+            languages: ["java", "nodejs", "python"]
         },
         {
             titles: ["define"]
@@ -107,7 +107,7 @@ codeKeywordsToLink = {
             titles: ["define"]
             allowedClasses: ["graql-keyword", "string"]
             anchor: "#define"
-            languages: ["graql", "javascript", "python"]
+            languages: ["graql", "nodejs", "python"]
         },
         # {
         #     titles: ["delete"]
@@ -120,12 +120,12 @@ codeKeywordsToLink = {
             titles: ["delete"]
             allowedClasses: ["graql-keyword", "string"]
             anchor: ""
-            languages: ["graql", "javascript", "python"]
+            languages: ["graql", "nodejs", "python"]
         },
         {
             titles: ["explanation"]
             anchor: "#client-api-title-explanation"
-            languages: ["java", "javascript", "python"]
+            languages: ["java", "nodejs", "python"]
         },
         {
             titles: ["execute"]
@@ -142,7 +142,7 @@ codeKeywordsToLink = {
             titles: ["get"]
             allowedClasses: ["graql-keyword", "string"]
             anchor: ""
-            languages: ["graql", "javascript", "python"]
+            languages: ["graql", "nodejs", "python"]
         },
         {
             titles: ["Graql"]
@@ -155,14 +155,14 @@ codeKeywordsToLink = {
             titles: ["delete"]
             allowedClasses: ["graql-keyword", "string"]
             anchor: ""
-            languages: ["graql", "javascript", "python"]
+            languages: ["graql", "nodejs", "python"]
         },
         {
             baseUrl: "/docs/query/insert-query"
             titles: ["insert"]
             allowedClasses: ["graql-keyword", "string"]
             anchor: ""
-            languages: ["graql", "javascript", "python"]
+            languages: ["graql", "nodejs", "python"]
         },
         {
             titles: ['insert']
@@ -172,7 +172,7 @@ codeKeywordsToLink = {
         {
             titles: ["keyspaces().retrieve"]
             anchor: "#client-api-method-retrieve-all-keyspaces"
-            languages: ["javascript", "python"]
+            languages: ["nodejs", "python"]
         },
         {
             titles: ["match"]
@@ -184,60 +184,60 @@ codeKeywordsToLink = {
             titles: ["match"]
             allowedClasses: ["graql-keyword", "string"]
             anchor: ""
-            languages: ["graql", "javascript", "python"]
+            languages: ["graql", "nodejs", "python"]
         },
         {
             titles: ["measurement"]
             anchor: "#client-api-method-retrieve-the-numeric-value-of-a-centrality-computation"
-            languages: ["java", "javascript", "python"]
+            languages: ["java", "nodejs", "python"]
         },
         {
             titles: ["owner"]
 
             anchor: "#client-api-method-retrieve-the-concept-that-is-the-group-owner"
-            languages: ["java", "javascript", "python"]
+            languages: ["java", "nodejs", "python"]
         },
         {
             titles: ["putAttributeType", "put_attribute_type"]
             anchor: "#client-api-method-create-or-retrieve-an-attributetype"
-            languages: ["java", "javascript", "python"]
+            languages: ["java", "nodejs", "python"]
         },
         {
             titles: ["putEntityType", "put_entity_type"]
             anchor: "#client-api-method-create-or-retrieve-an-entitytype"
-            languages: ["javascript", "python"]
+            languages: ["nodejs", "python"]
         },
         {
             titles: ["putRelationshipType", "put_relationship_type"]
             anchor: "#client-api-method-create-or-retrieve-a-relationshiptype"
-            languages: ["javascript", "python"]
+            languages: ["nodejs", "python"]
         },
         {
             titles: ["putRole", "put_role"]
             anchor: "#client-api-method-create-or-retrieve-a-role"
-            languages: ["javascript", "python"]
+            languages: ["nodejs", "python"]
         },
         {
             titles: ["putRule", "put_rule"]
             anchor: "#client-api-method-create-or-retrieve-a-rule"
-            languages: ["javascript", "python"]
+            languages: ["nodejs", "python"]
         },
         {
             titles: ["query"]
             anchor: "#client-api-method-lazily-execute-a-graql-query"
-            languages: ["javascript", "python"]
+            languages: ["nodejs", "python"]
         },
         {
             baseUrl: "/docs/schema/rules"
             allowedClasses: ["graql-keyword"]
             titles: ["rule"]
             anchor: ""
-            languages: ["graql", "javascript", "python"]
+            languages: ["graql", "nodejs", "python"]
         },
         {
             titles: ["session"]
             anchor: "#client-api-method-create-a-session-keyspace"
-            languages: ["java", "javascript", "python"]
+            languages: ["java", "nodejs", "python"]
         },
         {
             titles: ["stream"]
@@ -247,7 +247,7 @@ codeKeywordsToLink = {
         {
             titles: ["transaction"]
             anchor: "#client-api-method-create-a-transaction"
-            languages: ["java", "javascript", "python"]
+            languages: ["java", "nodejs", "python"]
         }
         {
             titles: ["withTx"]
