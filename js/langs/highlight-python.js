@@ -1,6 +1,5 @@
 /**
  * Source: https://github.com/highlightjs/highlight.js/blob/master/src/languages/python.js
- * Extended by Grakn Labs (look for the CUSTOM comments)
  */
 
 hljs.registerLanguage("lang-python", function (e) {
@@ -115,9 +114,6 @@ hljs.registerLanguage("lang-python", function (e) {
       {
         begin: /\b(print|exec)\(/ // don’t highlight keywords-turned-functions in Python 3
       },
-      CUSTOM_HIGHLIGHT_METHODS, // CUSTOM
-      CUSTOM_HIGHLIGHT_CLASSES, // CUSTOM
-      CUSTOM_HIGHLIGHT_CONSTANT, // CUSTOM
     ]
   };
 });

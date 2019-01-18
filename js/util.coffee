@@ -6,64 +6,57 @@ codeKeywordsToLink = {
         ## superset keywords that need to be linked first. example: undefine before define
         {
             titles: ["undefine"]
-            allowed: ["method"]
             anchor: "#client-api-method-manipulate-the-schema-programatically"
             languages: ["java"]
         },
         {
             baseUrl: "/docs/schema/concepts"
             titles: ["undefine"]
-            allowed: ["graql-keyword", "string"]
+            allowedClasses: ["graql-keyword", "string"]
             anchor: "#undefine"
             languages: ["graql", "javascript", "python"]
         },
         # {
         #     titles: ["keyspaces().delete"]
-        #     # allowed: ["method"]
+        #     #
         #     anchor: "#client-api-method-deleting-a-keyspace"
         #     languages: ["java", "javascript", "python"]
         # },
         {
             titles: ["getAttributesByValue", "get_attributes_by_value"]
-            allowed: ["method"]
             anchor: "#client-api-method-retrive-an-attribute-by-value"
             languages: ["javascript", "python"]
         },
         {
             titles: ["getConcept", "get_concept"]
-            allowed: ["method"]
             anchor: "#client-api-method-retrive-a-concept-by-id"
             languages: ["javascript", "python"]
         },
         {
             titles: ["getSchemaConcept", "get_schema_concept"]
-            allowed: ["method"]
             anchor: "#client-api-method-retrive-a-schema-concept-by-label"
             languages: ["javascript", "python"]
         },
         {
             titles: ["getSchemaConcept", "get_schema_concept"]
-            allowed: ["method"]
             anchor: "#client-api-method-retrive-a-schema-concept-by-label"
             languages: ["javascript", "python"]
         },
         {
             titles: ["queryPattern", "query_pattern"]
-            allowed: ["method"]
             anchor: "#client-api-method-retrieve-a-graql-explanation-of-the-answer"
             languages: ["javascript", "python"]
         },
         ## retain alphabetic order based on title
         {
             titles: ["aggregate"]
-            allowed: ["method"]
             anchor: "#client-api-method-aggregatd-values"
             languages: ["java"]
         },
         {
             baseUrl: "/docs/query/aggregate-query"
             titles: ["aggregate"]
-            allowed: ["graql-keyword", "string"]
+            allowedClasses: ["graql-keyword", "string"]
             anchor: ""
             languages: ["graql", "javascript", "python"]
         },
@@ -74,32 +67,28 @@ codeKeywordsToLink = {
         },
         {
             titles: ["answers"]
-            allowed: ["method"]
             anchor: "#client-api-method-retrieve-source-facts-of-inference"
             languages: ["javascript", "python"]
         },
         {
             titles: ["collectConcepts", "collect_concepts"]
-            allowed: ["method"]
             anchor: "#client-api-method-consume-the-iterator-eagerly"
             languages: ["javascript", "python"]
         },
         {
             titles: ["commit"]
-            allowed: ["method"]
-            anchor: "#client-api-method-commite-a-write-transaction"
+            anchor: "#client-api-method-commit-a-write-transaction"
             languages: ["java", "javascript", "python"]
         },
         {
             titles: ["compute"]
-            allowed: ["method"]
             anchor: "#client-api-method-compute-values"
             languages: ["java"]
         },
         {
             baseUrl: "/docs/query/compute-query"
             titles: ["compute"]
-            allowed: ["graql-keyword", "string"]
+            allowedClasses: ["graql-keyword", "string"]
             anchor: ""
             languages: ["graql", "javascript", "python"]
         },
@@ -110,176 +99,158 @@ codeKeywordsToLink = {
         },
         {
             titles: ["define"]
-            allowed: ["method"]
             anchor: "#client-api-method-manipulate-the-schema-programatically"
             languages: ["java"]
         },
         {
             baseUrl: "/docs/schema/concepts"
             titles: ["define"]
-            allowed: ["graql-keyword", "string"]
+            allowedClasses: ["graql-keyword", "string"]
             anchor: "#define"
             languages: ["graql", "javascript", "python"]
         },
         # {
         #     titles: ["delete"]
-        #     allowed: ["method"]
+        #
         #     anchor: "#client-api-method-deleting-data-instances"
         #     languages: ["java"]
         # },
         {
             baseUrl: "/docs/query/delete-query"
             titles: ["delete"]
-            allowed: ["graql-keyword", "string"]
+            allowedClasses: ["graql-keyword", "string"]
             anchor: ""
             languages: ["graql", "javascript", "python"]
         },
         {
             titles: ["explanation"]
-            allowed: ["method"]
             anchor: "#client-api-title-explanation"
             languages: ["java", "javascript", "python"]
         },
         {
             titles: ["execute"]
-            allowed: ["method"]
             anchor: "#client-api-method-eager-executation-of-a-graql-query"
             languages: ["java"]
         },
         {
             titles: ["get"]
-            allowed: ["method"]
             anchor: "#client-api-method-retrive-data-instances"
             languages: ["java"]
         },
         {
             baseUrl: "/docs/query/get-query"
             titles: ["get"]
-            allowed: ["graql-keyword", "string"]
+            allowedClasses: ["graql-keyword", "string"]
             anchor: ""
             languages: ["graql", "javascript", "python"]
         },
         {
             titles: ["Graql"]
-            allowed: ["class"]
+            # allowedClasses: ["class"]
             anchor: "#client-api-title-graql"
             languages: ["java"]
         },
         {
             baseUrl: "/docs/query/delete-query"
             titles: ["delete"]
-            allowed: ["graql-keyword", "string"]
+            allowedClasses: ["graql-keyword", "string"]
             anchor: ""
             languages: ["graql", "javascript", "python"]
         },
         {
             baseUrl: "/docs/query/insert-query"
             titles: ["insert"]
-            allowed: ["graql-keyword", "string"]
+            allowedClasses: ["graql-keyword", "string"]
             anchor: ""
             languages: ["graql", "javascript", "python"]
         },
         {
-            titles: ["insert"]
-            allowed: ["method"]
-            anchor: "#client-api-method-inserte-data-instances"
+            titles: ['insert']
+            anchor: "#client-api-method-insert-data-instances"
             languages: ["java"]
         },
         {
             titles: ["keyspaces().retrieve"]
-            allowed: ["method"]
             anchor: "#client-api-method-retrieve-all-keyspaces"
             languages: ["javascript", "python"]
         },
         {
             titles: ["match"]
-            allowed: ["method"]
             anchor: "#client-api-method-match-patterns-in-data"
             languages: ["java"]
         },
         {
             baseUrl: "/docs/query/match-clause"
             titles: ["match"]
-            allowed: ["graql-keyword", "string"]
+            allowedClasses: ["graql-keyword", "string"]
             anchor: ""
             languages: ["graql", "javascript", "python"]
         },
         {
             titles: ["measurement"]
-            allowed: ["method"]
             anchor: "#client-api-method-retrieve-the-numeric-value-of-a-centrality-computation"
             languages: ["java", "javascript", "python"]
         },
         {
             titles: ["owner"]
-            allowed: ["method"]
+
             anchor: "#client-api-method-retrieve-the-concept-that-is-the-group-owner"
             languages: ["java", "javascript", "python"]
         },
         {
             titles: ["putAttributeType", "put_attribute_type"]
-            allowed: ["method"]
             anchor: "#client-api-method-create-or-retrieve-an-attributetype"
             languages: ["java", "javascript", "python"]
         },
         {
             titles: ["putEntityType", "put_entity_type"]
-            allowed: ["method"]
             anchor: "#client-api-method-create-or-retrieve-an-entitytype"
             languages: ["javascript", "python"]
         },
         {
             titles: ["putRelationshipType", "put_relationship_type"]
-            allowed: ["method"]
             anchor: "#client-api-method-create-or-retrieve-a-relationshiptype"
             languages: ["javascript", "python"]
         },
         {
             titles: ["putRole", "put_role"]
-            allowed: ["method"]
             anchor: "#client-api-method-create-or-retrieve-a-role"
             languages: ["javascript", "python"]
         },
         {
             titles: ["putRule", "put_rule"]
-            allowed: ["method"]
             anchor: "#client-api-method-create-or-retrieve-a-rule"
             languages: ["javascript", "python"]
         },
         {
             titles: ["query"]
-            allowed: ["method"]
             anchor: "#client-api-method-lazily-execute-a-graql-query"
             languages: ["javascript", "python"]
         },
         {
             baseUrl: "/docs/schema/rules"
-            allowed: ["graql-keyword"]
+            allowedClasses: ["graql-keyword"]
             titles: ["rule"]
             anchor: ""
             languages: ["graql", "javascript", "python"]
         },
         {
             titles: ["session"]
-            allowed: ["method"]
             anchor: "#client-api-method-create-a-session-keyspace"
             languages: ["java", "javascript", "python"]
         },
         {
             titles: ["stream"]
-            allowed: ["method"]
             anchor: "#client-api-method-lazy-executation-of-a-graql-query"
             languages: ["java"]
         },
         {
             titles: ["transaction"]
-            allowed: ["method"]
             anchor: "#client-api-method-create-a-transaction"
             languages: ["java", "javascript", "python"]
         }
         {
             titles: ["withTx"]
-            allowed: ["method"]
             anchor: "#client-api-method-attach-transaction-to-query"
             languages: ["java"]
         },
@@ -288,27 +259,24 @@ codeKeywordsToLink = {
 
 window.util_autoLinkKeywords = (selector) ->
     commonBaseUrl = codeKeywordsToLink.commonBaseUrl
-    for mapping, a in codeKeywordsToLink.keywords
-        for title, b in mapping.titles
-            for lang, c in mapping.languages
-                $(selector + ".language-lang-" + lang).each ->
-                    baseUrl = mapping.baseUrl || commonBaseUrl
-                    url = baseUrl.replace("{language}", lang) + mapping.anchor
-                    content = $(this).html()
-                    endIndex = 0
-                    searchKeyword = (mapping.begin || "") + title + (mapping.end || "")
-                    while((beginIndex = content.indexOf(searchKeyword, endIndex)) > -1)
-                        className = content.substr(0, beginIndex).split('<span class="hljs-').pop().split('"')[0]
 
-                        endIndex = beginIndex + title.length
-                        keywordIsAlreadyLinked = content.slice(endIndex, endIndex + 4) == "</a>"
-                        keywordIsHref = (content.substr(0, beginIndex).split('href').length > 1 && content.substr(0, beginIndex).split('href').slice(-1)[0].indexOf(" ") == -1)
-                        isAllowed = if mapping.allowed then mapping.allowed.includes(className) else true
-                        if !keywordIsAlreadyLinked && !keywordIsHref && isAllowed
-                            replacement = "<a href='#{url}'>#{title}</a>"
-                            content = content.substr(0, beginIndex) + "<a href='#{url}'>#{title}</a>" + content.substr(endIndex)
-                            endIndex = beginIndex + replacement.length
-                    $(this).html content
+    for mapping, a in codeKeywordsToLink.keywords
+        baseUrl = mapping.baseUrl || commonBaseUrl
+
+        for lang, b in mapping.languages
+            url = baseUrl.replace("{language}", lang) + mapping.anchor
+            allowedClasses = mapping.allowedClasses || ["generic"]
+
+            for allowedClass, c in allowedClasses
+                allowedClass = "hljs-" + allowedClass
+                $(".language-lang-" + lang + " ." + allowedClass).each ->
+                    content = $(this).html()
+
+                    for title, d in mapping.titles
+                        regexedTitle = "(^|[\.\<\(])(" + title + ")([\.\>\(\s])"
+                        regexedTitle = new RegExp(regexedTitle, "g")
+                        content = content.replace(regexedTitle, "$1<a href='#{url}'>#{title}</a>$3")
+                    $(this).html(content)
 
 window.util_unwrapParagraphInCode = ->
     $('code').each ->
@@ -340,7 +308,6 @@ window.util_handleLinks = ->
                 }, 500)
                 location.hash = targetId
             if href[0] == "/"
-                console.log href
                 ## internal links include source params
                 ## for the implementation of Back to <previous page> button
                 source = window.location.pathname
@@ -352,10 +319,18 @@ window.util_handleLinks = ->
                 sourceParams =  "?source=#{window.location.pathname}" +
                                 "&sourceAnchor=#{$(heading).attr("id")}" +
                                 "&sourceTitle=#{pageTitle}"
-                window.location = href.split("#")[0] +
-                                  (if href.split("#")[0].indexOf("?") == -1 then sourceParams else sourceParams.replace("?", "&"))
-                                  sourceParams + (if href.split("#")[1] then "#" +
-                                  href.split("#")[1] else "")
+
+                newLocation = href.split("#")[0]
+
+                if href.split("#")[0].indexOf("?") == -1
+                    newLocation += sourceParams
+                else
+                    newLocation += sourceParams.replace("?", "&") + sourceParams
+
+                if href.split("#")[1]
+                    newLocation += "#" + href.split("#")[1]
+
+                window.location = newLocation
 
 window.util_handleURLParams = () ->
     url_string = window.location.href

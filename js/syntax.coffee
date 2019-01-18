@@ -8,23 +8,19 @@ window.syntax_applyHighlighting = ->
     hljs.configure({ languages: [] })
     hljs.initHighlighting()
 
-window.syntax_fix = ->
-    $(".hljs-method").each ->
+window.syntax_generateGenericSpan = ->
+    $('pre code.hljs').each ->
         content = $(this).html()
-        ## Paranthese must not be highlighted as method
-        indexOfParenthese = content.indexOf("(")
-
-        if indexOfParenthese > 0
-            noParantheseContent = content.slice(0, indexOfParenthese)
-            noParantheseContent += "<span style='color: #F2BD59; display: inline-block;'>(</span>"
-            $(this).html(noParantheseContent)
-
-        ## If all uppercase, it's a constant, not a method
-        if content == content.toUpperCase()
-            $(this).removeClass("hljs-method").addClass("hljs-constant")
-
-    $(".hljs-graql-type, .hljs-graql-keyword").each ->
-        $(this).html()
-        content = $(this).html()
-        content = content.replace(/\,/g, "<span style='color: #F2BD59; display: inline-block;'>,</span>")
-        $(this).html(content)
+        delimeter = "</span>"
+        if content.indexOf(delimeter) > -1
+            endIndex = 0
+            newContent = ""
+            while((beginIndex = content.indexOf(delimeter, endIndex)) > -1)
+                chunkToPersist = content.slice(endIndex, beginIndex + delimeter.length)
+                chunkToWrap = content.slice(beginIndex + delimeter.length).split("<span")[0]
+                wrappedChunk = '<span class="hljs-generic">' + chunkToWrap + "</span>"
+                newContent += chunkToPersist + wrappedChunk
+                endIndex += chunkToPersist.length + chunkToWrap.length
+            $(this).html newContent
+        else
+            $(this).html '<span class="hljs-generic">' + content + "</span>"

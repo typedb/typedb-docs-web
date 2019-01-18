@@ -1,6 +1,5 @@
 /**
  * Source: https://github.com/highlightjs/highlight.js/blob/master/src/languages/javascript.js
- * Extended by Grakn Labs (look for the CUSTOM comments)
  */
 
 hljs.registerLanguage("lang-javascript", function (e) {
@@ -15,15 +14,15 @@ hljs.registerLanguage("lang-javascript", function (e) {
     ,
     literal:
       'true false null undefined NaN Infinity',
-    built_in:
-      'eval isFinite isNaN parseFloat parseInt decodeURI decodeURIComponent ' +
-      'encodeURI encodeURIComponent escape unescape Object Function Boolean Error ' +
-      'EvalError InternalError RangeError ReferenceError StopIteration SyntaxError ' +
-      'TypeError URIError Number Math Date String RegExp Array Float32Array ' +
-      'Float64Array Int16Array Int32Array Int8Array Uint16Array Uint32Array ' +
-      'Uint8Array Uint8ClampedArray ArrayBuffer DataView JSON Intl arguments require ' +
-      'module console window document Symbol Set Map WeakSet WeakMap Proxy Reflect ' +
-      'Promise'
+    // built_in:
+    //   'eval isFinite isNaN parseFloat parseInt decodeURI decodeURIComponent ' +
+    //   'encodeURI encodeURIComponent escape unescape Object Function Boolean Error ' +
+    //   'EvalError InternalError RangeError ReferenceError StopIteration SyntaxError ' +
+    //   'TypeError URIError Number Math Date String RegExp Array Float32Array ' +
+    //   'Float64Array Int16Array Int32Array Int8Array Uint16Array Uint32Array ' +
+    //   'Uint8Array Uint8ClampedArray ArrayBuffer DataView JSON Intl arguments require ' +
+    //   'module console window document Symbol Set Map WeakSet WeakMap Proxy Reflect ' +
+    //   'Promise'
   };
   var NUMBER = {
     className: 'number',
@@ -169,9 +168,6 @@ hljs.registerLanguage("lang-javascript", function (e) {
       {
         beginKeywords: 'constructor', end: /\{/, excludeEnd: true
       },
-      CUSTOM_HIGHLIGHT_CLASSES, // CUSTOM
-      CUSTOM_HIGHLIGHT_CONSTANT, // CUSTOM
-      CUSTOM_HIGHLIGHT_METHODS, // CUSTOM
     ],
     illegal: /#(?!!)/
   };
