@@ -13,11 +13,11 @@ pre {
     display: none;
     font-size: 12px;
     overflow-x: auto;
-    padding: 10px 15px !important;
+    padding: 5px 15px !important;
     white-space: pre;
 
     span {
-      line-height: 30px;
+      line-height: 25px;
       letter-spacing: 1.2px;
     }
 
@@ -33,14 +33,18 @@ pre {
   }
 }
 
-p, table tr, li {
+p, tr, li {
   code {
-    background-color: #f1f1f1;
-    color: #8c8d92;
+    background-color: #f7f7f7;
+    border: 1px solid #e1e1e1;
+    border-radius: 4px;
+    color: #de255d;
     font-size: 12px;
     display: inline-block;
     line-height: 10px;
-    padding: 5px;
+    padding: 3px 4px 5px 4px;
+    position: relative;
+    top: -1px;
   }
 
   pre code { line-height: 25px; }

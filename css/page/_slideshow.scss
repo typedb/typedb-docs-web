@@ -30,6 +30,7 @@
         height: 100%;
         p, img {
           margin: 0;
+          border: 0.5px solid #9a9a9a;
           border-bottom: none;
           border-radius: 4px 4px 0 0;
         }
@@ -40,14 +41,14 @@
         width: 100%;
 
         .m_slide-nav-prev, .m_slide-nav-next {
-          background: #796de3;
-          border: 1px solid rgba(108, 95, 224, 0.5);
+          background: #292d34;
+          border: 1px solid #595959;
+          border-top: none;
           float: left;
           height: 50px;
           width: 50%;
 
-          &:hover {
-            background: #292d34;
+          &:not(.disabled):hover {
             cursor: pointer;
           }
 
@@ -60,11 +61,8 @@
           }
 
           &.disabled {
-            i { display: none; }
-            &:hover {
-              cursor: auto;
-              background: #796de3;
-            }
+            background-color: #5a5a5a;
+            i { color: #9a9a9a; }
           }
         }
 
@@ -75,7 +73,7 @@
 
         .m_slide-nav-next {
           border-radius: 0 0 4px 0;
-          border-left: 1px solid rgba(60, 54, 116, 0.5);
+          border-left: 1px solid #5a5a5a;
         }
       }
 

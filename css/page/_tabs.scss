@@ -35,7 +35,7 @@ $tabs-border-radius: 5px;
   li {
     border-radius: 0;
     cursor: pointer;
-    font-size: 17px;
+    font-size: 15px;
     display: inline-block;
     height: 40px;
     line-height: 33px;
@@ -74,7 +74,7 @@ $tabs-border-radius: 5px;
       margin: 0 !important;
       border-radius: 0 0 $tabs-border-radius $tabs-border-radius;
       border: none;
-      padding: 0px 0px !important;
+      padding: 0px !important;
 
       &:last-child {
         border-radius: 0 0 $tabs-border-radius $tabs-border-radius;
@@ -82,7 +82,7 @@ $tabs-border-radius: 5px;
       }
 
       code {
-        padding: 20px 30px !important;
+        padding: 15px 20px !important;
       }
     }
   }

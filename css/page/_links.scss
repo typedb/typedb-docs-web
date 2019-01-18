@@ -48,7 +48,7 @@ a[href^="http://"], a[href^="https://"] {
   &:after {
     content: "\f0c1";
     font-family: "FontAwesome Solid";
-    font-size: inherit;
+    font-size: 80%;
   }
 
   &:focus {

@@ -4,26 +4,24 @@ pre.api-method {
 
   code {
     width: auto;
-    padding: 10px 15px !important;
   }
 }
 
 // for client api references
 .api-list-heading {
-  padding-top: 20px !important;
+  padding-top: 50px !important;
 }
 
 .o_api-ref-list {
   border-bottom: 1px solid rgb(172, 172, 172);
-  margin-bottom: 20px;
   padding-bottom: 40px;
 
   .m_api-ref-block {
     border-bottom: 1px solid rgba(172, 172, 172, 0.7);;
-    padding: 0 15px 20px 15px;
+    padding: 30px 0 40px 0;
 
-    &:hover {
-      background-color: #f6f6f6;
+    &:first-child {
+      padding-top: 0px !important;
     }
   }
 
