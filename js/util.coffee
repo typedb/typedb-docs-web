@@ -18,7 +18,6 @@ codeKeywordsToLink = {
         },
         # {
         #     titles: ["keyspaces().delete"]
-        #     #
         #     anchor: "#client-api-method-deleting-a-keyspace"
         #     languages: ["java", "nodejs", "python"]
         # },
@@ -146,7 +145,6 @@ codeKeywordsToLink = {
         },
         {
             titles: ["Graql"]
-            # allowedClasses: ["class"]
             anchor: "#client-api-title-graql"
             languages: ["java"]
         },

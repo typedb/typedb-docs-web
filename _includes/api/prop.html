@@ -2,7 +2,7 @@
 {% if prop[lang] %}
 	<div class="m_api-ref-block">
 		<h3 id ="{{ class_prefix }}-prop-{{prop[lang].title | downcase | replace: ' ', '-'}}">{{ prop[lang].title }}</h3>
-		<pre class="api-prop"><code class="language-{{lang}} java-api">{{ prop[lang].prop | markdownify }}</code></pre>
+		<pre class="api-prop"><code class="language-{{lang}} hljs">{{ prop[lang].prop | markdownify }}</code></pre>
 		<p>{{ prop[lang].description | markdownify }}</p>
 
 		{% assign number_of_returns = prop[lang].returns | size %}
