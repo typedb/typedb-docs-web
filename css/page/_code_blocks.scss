@@ -1,5 +1,5 @@
 code {
-  font-family: monospace, serif;
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
   font-size: 1em;
 }
 
@@ -13,12 +13,11 @@ pre {
     display: none;
     font-size: 12px;
     overflow-x: auto;
-    padding: 5px 15px !important;
+    padding: 20px 22px !important;
     white-space: pre;
 
     span {
-      line-height: 25px;
-      letter-spacing: 1.2px;
+      line-height: 20px;
     }
 
     a {
@@ -42,7 +41,7 @@ p, tr, li {
     font-size: 12px;
     display: inline-block;
     line-height: 10px;
-    padding: 3px 4px 5px 4px;
+    padding: 4px 4px 5px 4px;
     position: relative;
     top: -1px;
   }
