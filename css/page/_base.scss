@@ -99,6 +99,17 @@
 
 .kgms-badge {
   background-color: #efb507 !important;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 80%;
+  padding: 3px 5px;
   position: relative;
+  text-decoration: none !important;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.6);
   top: -1px;
+
+  &:hover {
+    color: #fff;
+    background-color: #dca707 !important;
+  }
 }

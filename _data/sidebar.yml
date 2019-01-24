@@ -39,6 +39,25 @@ chapters:
             title: Python
             url: python
       -
+        title: Concept API
+        baseUrl: /docs/concept-api/
+        pages:
+          -
+            title: Overview
+            url: overview
+          -
+            title: Concept
+            url: concept
+          -
+            title: Type
+            url: type
+          -
+            title: Rule
+            url: rule
+          -
+            title: Thing
+            url: thing
+      -
         title: Cloud Deployment
         baseUrl: /docs/cloud-deployment/
         pages:
@@ -143,22 +162,3 @@ chapters:
           -
             title: Compute
             url: compute-query
-      -
-        title: Concept API
-        baseUrl: /docs/concept-api/
-        pages:
-          -
-            title: Overview
-            url: overview
-          -
-            title: Concept
-            url: concept
-          -
-            title: Type
-            url: type
-          -
-            title: Rule
-            url: rule
-          -
-            title: Thing
-            url: thing
