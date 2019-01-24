@@ -35,31 +35,15 @@
   }
 
   // for lists
-  ul:not(.toc):not(.tabs-list) {
-    list-style: none;
-    padding-left: 15px;
+  ul:not(.tabs-list) {
+    padding-left: 20px;
 
     li {
       line-height: 1.8;
-      padding-left: 20px;
-
-      &:before {
-        content: "\f192";
-        display: inline-block;
-        font-family: "FontAwesome Solid";
-        font-size: 12px;
-        margin-left: -20px;
-        width: 20px;
-      }
 
       ul {
         list-style: none;
         padding: 10px 0;
-
-        li:before {
-          font-family: "FontAwesome Regular";
-          content: "\f192";
-        }
       }
     }
   }

@@ -37,7 +37,7 @@ p, tr, li {
     background-color: #f7f7f7;
     border: 1px solid #e1e1e1;
     border-radius: 4px;
-    color: #de255d;
+    color: #d74c71;
     font-size: 12px;
     display: inline-block;
     line-height: 10px;
@@ -52,11 +52,8 @@ p, tr, li {
 a {
   code {
     color: inherit;
-  }
-
-  &:hover {
-    code {
-      text-decoration: underline;
-    }
+    padding: 4px;
+    text-decoration: underline;
+    top: 0;
   }
 }

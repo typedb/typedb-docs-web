@@ -92,10 +92,10 @@ hljs.registerLanguage("lang-graql", function (e) {
                     { begin: /(^|\s)where\s/ },
                 ]
             },
-            {
-                className: 'graql-roleplayer',
-                begin: /[^\(,\s]+:/
-            },
+            // {
+            //     className: 'graql-roleplayer',
+            //     begin: /[^\(,\s]+:/
+            // },
             {
                 className: 'graql-variable',
                 begin: /\$[^\s,);]+/

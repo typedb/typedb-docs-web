@@ -1,12 +1,11 @@
 a {
-  color: #9685ff;
+  color: $link-color;
   margin: 0;
-  text-decoration: none;
+  text-decoration: underline;
 
   &:hover,
   &:focus {
-    color: #9685ff;
-    text-decoration: underline;
+    color: $link-color;
   }
 
   &:focus {
@@ -85,7 +84,7 @@ a[href^="http://"], a[href^="https://"] {
 
   &--purple {
     &:before {
-      background-color: #9685ff !important;
+      background-color: $link-color !important;
     }
   }
 }
