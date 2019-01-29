@@ -1,6 +1,6 @@
 code {
   font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, Courier, monospace;
-  font-size: 1em;
+  font-size: 12px;
 }
 
 pre {
@@ -9,8 +9,9 @@ pre {
   padding: 0;
 
   code {
+    color: #e2e2e2;
     background: #2f3544 !important;
-    display: none;
+    display: block;
     font-size: 12px;
     overflow-x: auto;
     padding: 20px 22px !important;
@@ -21,12 +22,19 @@ pre {
     }
 
     a {
-      color: #d2d2d2;
+      // color: #d2d2d2;
+      color: inherit;
+      border-bottom: 1px;
+      border-bottom-color: inherit;
+      border-bottom-style: dashed;
+      // border-bottom: 1px dashed #d2d2d2;
+      opacity: 0.9;
       text-decoration: none !important;
-      border-bottom: 1px dashed #d2d2d2;
 
       &:hover {
-        color: #FFFFFF;
+        // color: #FFFFFF;
+        color: inherit;
+        opacity: 1;
       }
     }
   }

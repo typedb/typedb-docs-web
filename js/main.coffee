@@ -19,7 +19,7 @@ ready = ->
     window.footer_fetchLatestVersion()
     window.syntax_applyHighlighting()
     window.syntax_generateGenericSpan()
-    window.util_autoLinkKeywords("code")
+    window.autoLinkKeywords_generate()
 
 handleBeforeTurbolinkVisit = ->
     window.sidebar_storeScrollPosition()
