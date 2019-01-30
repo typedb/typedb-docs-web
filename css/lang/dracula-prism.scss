@@ -226,19 +226,20 @@ code[class*="language-"] {
   }
 }
 
-.language-graql .token {
-  color: #e2e2e2;
+.language-graql, {
+  .token {
+    color: #e2e2e2;
 
-  &.keyword {
-    color: #d39eff;
+    &.keyword {
+      color: #d39eff;
+    }
+
+    &.variable {
+      color: #f78e63;
+    }
+
+    &.type {
+      color: #4fdcc5;
+    }
   }
-
-  &.variable {
-    color: #f78e63;
-  }
-
-  &.type {
-    color: #4fdcc5;
-  }
-
 }

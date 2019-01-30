@@ -41,4 +41,5 @@
           alias: 'operator'
       }
     };
+    Prism.languages.graql_test = Prism.languages.graql;
   }());

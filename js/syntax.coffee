@@ -2,9 +2,16 @@
 ---
 
 window.syntax_applyHighlighting = ->
+    ## reduces the class name to exclude anything that follow language-<lang>
+    $('pre code[class*=language-]').each ->
+        className = $(this).attr("class")
+        newClassName = className.split("-")[0] + "-" + className.split("-")[1]
+        $(this).removeClass(className).addClass(newClassName)
+
     Prism.highlightAll(false) ## "false" to run synchronously
     ## so that syntax_generateGenericSpan() runs only after
     ## the syntax highlighting has been applied
+
     $('pre code').show()
 
 window.syntax_generateGenericSpan = ->
