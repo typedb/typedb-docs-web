@@ -5,7 +5,7 @@ window.parser_tabs = () ->
     $('.tabs').each (index) ->
         titles = []
         contents = []
-        tab_details = $(this).html().split('[tab:end]')
+        tab_details = $(this).html().replace(/<!--.*-->/g, "").split('[tab:end]')
         tab_details.pop() ## removing last (empty) element
         for tab_detail in tab_details
             content = tab_detail.split('\n')
