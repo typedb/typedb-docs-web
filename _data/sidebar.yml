@@ -96,6 +96,9 @@ chapters:
           -
             title: Investigation
             url: investigation
+          -
+            title: Schema Designer
+            url: schema-designer
       -
         title: Examples
         baseUrl: /docs/examples/
