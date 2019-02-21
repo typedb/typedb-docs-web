@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# set -xe
+set -xe
 
 absolute_path_prefix=$(pwd)
 
