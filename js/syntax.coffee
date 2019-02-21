@@ -25,12 +25,12 @@ window.syntax_generateGenericSpan = ->
             while((beginIndex = content.indexOf(delimeter, endIndex)) > -1)
                 chunkToPersist = content.slice(endIndex, beginIndex + delimeter.length)
                 chunkToWrap = content.slice(beginIndex + delimeter.length).split("<span")[0]
-                wrappedChunk = '<span class="token custom-generic">' + chunkToWrap + "</span>"
+                wrappedChunk = '<span class="token uncategorised">' + chunkToWrap + "</span>"
                 newContent += chunkToPersist + wrappedChunk
                 endIndex += chunkToPersist.length + chunkToWrap.length
             $(this).html newContent
         else
-            $(this).html '<span class="token custom-generic">' + content + "</span>"
+            $(this).html '<span class="token uncategorised">' + content + "</span>"
 
         ## the while loop above doesn't handle the first unwrapped line in content
         ## the code below handles only that
@@ -39,7 +39,7 @@ window.syntax_generateGenericSpan = ->
             chunkToWrap = splittedContent.shift()
             ## splittedContent no longer contains the chunkToWrap
             chunkToPersist = "<span" + splittedContent.join("<span")
-            wrappedChunk = '<span class="token custom-generic">' + chunkToWrap + "</span>"
+            wrappedChunk = '<span class="token uncategorised">' + chunkToWrap + "</span>"
             newContent = wrappedChunk + chunkToPersist
             $(this).html newContent
 

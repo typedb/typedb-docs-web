@@ -17,7 +17,7 @@
       },
       keyword: {
           pattern: /((?:(?![-a-zA-Z_0-9]|\$).)|^|\s)(sub|has|key|is-abstract|relates|plays|datatype|boolean|double|long|string|date|match|isa|contains|regex|val|via|id|label|define|undefine|get|insert|delete|aggregate|compute|std|median|mean|max|min|sum|count|group|path|centrality|cluster|degree|k-core|where|from|to|in|of|limit|offset|order by|asc|desc|when|then|commit)(?![-a-zA-Z_0-9])/,
-          alias: 'keyword',
+          alias: 'graql-keyword',
           lookbehind: true
       },
       super: {
