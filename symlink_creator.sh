@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
 
-set -xe
+# set -xe
 
 absolute_path_prefix=$(pwd)
 
 for original in $(find docs -name '*.yml'); do
     symlink=${original#"docs/"} # remove prefix
-    symlink=${symlink:3} # remove page number
+    digits=${symlink:0:2}
+    re='^[0-9]+$'
+    if [[ $digits =~ $re ]] ; then
+        symlink=${symlink:3} # remove page number
+    fi
     symlink="${symlink//-/_}" # repalce - with _
     symlink="${symlink/references\//}" # remove /references
 
@@ -14,6 +18,7 @@ for original in $(find docs -name '*.yml'); do
     absolute_original="$absolute_path_prefix/$original" # original .yml file path
 
     mkdir -p "$(dirname $absolute_symlink)" # create the symlink's path if non-existent (-p)
+    echo $absolute_original
 
     ln -s $absolute_original $absolute_symlink
     if ! grep -q "./_data/$symlink" .gitignore; then
