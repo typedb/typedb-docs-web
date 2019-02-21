@@ -58,6 +58,11 @@ exclude:
   - package-lock.json
   - tests/
   - symlink_creator.sh
+  - bazel-bin/
+  - bazel-docs/
+  - bazel-genfiles/
+  - bazel-out/
+  - bazel-testlogs/
 
 markdown: kramdown
 kramdown:
