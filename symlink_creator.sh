@@ -1,6 +1,17 @@
+# This bash script creates symlinks for .yml fles within docs.
+# The symlinks are placed under the `_data` directory
+
+# Example 1:
+# original yaml file located at `docs/03-client-api/references/answer.yml`
+# symlink gets created at `_data/client_api/answer.yml`
+
+# Example 2:
+# original yaml file located at `docs/views/sidebar.yml`
+# symlink gets created at `_data/views/answer.yml`
+
 #!/usr/bin/env bash
 
-# set -xe
+set -xe
 
 absolute_path_prefix=$(pwd)
 
