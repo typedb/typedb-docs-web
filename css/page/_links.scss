@@ -21,7 +21,7 @@ a {
 }
 
 a[href^="http://"], a[href^="https://"] {
-  &:not(.kgms-badge) {
+  &:not(.colored-badge) {
     padding-right: 20px;
     position: relative;
 
