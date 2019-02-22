@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # This bash script creates symlinks for .yml fles within docs.
 # The symlinks are placed under the `_data` directory
 
@@ -9,7 +11,6 @@
 # original yaml file located at `docs/views/sidebar.yml`
 # symlink gets created at `_data/views/answer.yml`
 
-#!/usr/bin/env bash
 
 set -xe
 
