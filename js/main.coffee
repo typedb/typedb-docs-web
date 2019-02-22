@@ -10,7 +10,7 @@ ready = ->
     window.parser_slideshow()
     window.parser_caption()
     window.parser_notes()
-    window.parser_kgms()
+    window.parser_labels()
     window.util_unwrapParagraphInCode()
     window.util_handleLinks()
     window.util_handleURLParams()
