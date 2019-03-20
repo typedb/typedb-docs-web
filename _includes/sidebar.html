@@ -9,7 +9,7 @@
         {% for page in chapter.pages %}
             {% assign hyperlinkClass = "animated__link animated__link--purple" %}
             {% assign url = page.url %}
-            {% include layout/sidebar_page_item.html page = page hyperlinkClass = hyperlinkClass url = url %}
+            {% include sidebar_page_item.html page = page hyperlinkClass = hyperlinkClass url = url %}
         {% endfor %}
     {% elsif chapter.sections %}
         {% for section in chapter.sections %}
@@ -19,7 +19,7 @@
                     {% for page in section.pages %}
                         {% assign hyperlinkClass = "" %}
                         {% assign url = section.baseUrl | append: page.url %}
-                        {% include layout/sidebar_page_item.html page = page hyperlinkClass = hyperlinkClass url = url %}
+                        {% include sidebar_page_item.html page = page hyperlinkClass = hyperlinkClass url = url %}
                     {% endfor %}
                 </ul>
             </li>
