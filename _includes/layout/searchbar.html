@@ -1,0 +1,40 @@
+<div class="o-searchbar">
+    <script>
+        (function () {
+            var cx = '014051488609579533831:s_fbokdcxwq';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+        })();
+
+        function modifyGCS() {
+            search_input = $('#gsc-i-id1');
+            search_input.attr('placeholder', 'Hit enter to search');
+            search_input.before('<li class=\'a-searchIcon fa fa-search\'></li>');
+            search_input.after('<li id=\'clearSearch\' class=\'a-clearSearchIcon fa fa-times\'></li>');
+            $('#clearSearch').click(function () {
+                search_input.val('');
+                $('.gsc-results-wrapper-overlay').removeClass('gsc-results-wrapper-visible');
+            });
+        }
+        window.onload = function () {
+            modifyGCS();
+
+            $(document).on('turbolinks:load', function () {
+                intervalId = setInterval(function() {
+                    if($("#gsc-i-id1").length > 0) {
+                        modifyGCS();
+                        clearInterval(intervalId);
+                    }
+                }, 10)
+            });
+        }
+
+    </script>
+    <div class="container">
+        <gcse:search></gcse:search>
+    </div>
+</div>

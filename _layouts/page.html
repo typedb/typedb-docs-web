@@ -2,66 +2,22 @@
 layout: default
 ---
 
-{% comment %} {% if page.symlink != true %}
-
-<div class="page-header">
-    <h1 class="page-title">{{ page.pageTitle }}</h1>
-</div>
-
-{% endif %} {% endcomment %}
-
-{% comment %} {% if page.simple_map == true %}
-
-<script>
-    $(document).ready(function () {
-        $('.box{{page.box_number}}').addClass('active');
-    });
-</script>
-
-{% include custom/{{page.map_name}}.html %}
-
-{% elsif page.complex_map == true %}
-
-<script>
-    $(document).ready(function () {
-        $('.modalButton{{page.box_number}}').addClass('active');
-    });
-</script>
-
-{% include custom/{{page.map_name}}.html %}
-
-{% endif %} {% endcomment %}
-
-<div class="page-header">
+<!-- <div class="page-header">
     <div class="o-backToSourceButton">
         <a id="backToSourceLink" href="">Back to</a>
     </div>
 
     <h1 class="page-title">{{ page.pageTitle }}</h1>
+<<<<<<< HEAD
 
     {% if page.summary %}
         <div class="summary">{{page.summary}}</div>
     {% endif %}
 </div>
+=======
+</div> -->
+>>>>>>> edb4b67... add google custom search + refactor
 
 <div class="page-content">
     {{ content | toc }}
-
-    {% comment %} <div class="tags">
-        {% if page.tags != null %}
-        <b>Tags: </b>
-        {% assign projectTags = site.data.tags.allowed-tags %}
-        {% for tag in page.tags %}
-        {% if projectTags contains tag %}
-        <a href="{% if site.urlprefix != null %}{{site.urlprefix}}{% endif %}/{{ "tag_" | append: tag | append: ".html" }}"
-            class="btn btn-default navbar-btn cursorNorm" role="button">{{page.tagName}}{{tag}}</a>
-        {% endif %}
-        {% endfor %}
-        {% endif %}
-    </div> {% endcomment %}
-
-    {% comment %} {% if site.disqus %}
-    {% include disqus.html %}
-    {% endif %} {% endcomment %}
-
 </div>
