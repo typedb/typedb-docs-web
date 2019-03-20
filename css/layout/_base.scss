@@ -8,7 +8,7 @@ $topbar_width: 70px;
     #o-content {
         height: 100% !important;
         margin-left: $sidebar_width;
-        padding: 50px;
+        padding: 104px 50px 50px 50px;
         width: calc(100% - #{$sidebar_width});
     }
     #o-sidebar {
