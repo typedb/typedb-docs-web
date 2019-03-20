@@ -21,6 +21,9 @@ $ bundle install
 ```
 
 **macOS**
+
+Install the required verion of Ruby (as specified in the `Gemfile`). Installing Ruby using [RVM](https://rvm.io/rvm/install) is encouraged.
+
 ```
 $ gem install bundler
 $ bundle install
