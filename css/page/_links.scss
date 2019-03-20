@@ -21,7 +21,7 @@ a {
 }
 
 a[href^="http://"], a[href^="https://"] {
-  &:not(.colored-badge) {
+  &:not(.colored-badge, .gs-title) {
     padding-right: 20px;
     position: relative;
 
