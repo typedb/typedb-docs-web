@@ -1,27 +1,25 @@
 <!DOCTYPE html>
-    <head>
-        {% include head.html %}
-    </head>
-    <body>
-        {% include layout/topbar.html %}
 
-        <div class="container">
-            <div class="row">
-                <ul id="o-sidebar" data-turbolinks-permanent>
-                    {% include sidebar.html %}
-                </ul>
-                <div id="o-content">
-                    {{content}}
-                    {% include footer.html %}
-                </div>
+<head>
+    {% include head.html %}
+</head>
+
+<body>
+    {% include layout/topbar.html %}
+
+    <div class="container">
+        <div class="row">
+            <ul id="o-sidebar" data-turbolinks-permanent>
+                {% include layout/sidebar.html %}
+            </ul>
+            <div id="o-content">
+                {{content}}
+                {% include layout/footer.html %}
             </div>
         </div>
+    </div>
 
-        <div class="react-cookie-banner cookie-banner">
-            <span class="cookie-message">
-                We use cookies to provide to improve the user experience on our website. If you want to know more about it, you can read more about our privacy policy.            
-            </span>
-            <button class="button-close">OK</button>
-        </div>
-    </body>
+    {% include layout/banner.html %}
+</body>
+
 </html>

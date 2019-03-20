@@ -1,8 +1,18 @@
 # GRAKN.AI Documentation
 
-## Dependencies
+## Clone
+In order to clone `web-dev` along with its submodule `docs`, run:
 
-You need to install the following dependencies to be able to build HTML pages in the documentation repository. **NOTE:** this is *not* necessary for updating the documentation itself.
+```
+$ git clone https://github.com/graknlabs/web-dev.git --recursive
+```
+
+## Requirements
+
+### Ruby
+Install the required version of Ruby as specified in the [`Gemfile`](Gemfile)
+
+### Gems
 
 **Arch Linux**
 ```
@@ -25,7 +35,7 @@ $ bundle install
 $ jekyll build
 ```
 
-Running this command parses all markdown files in `/docs` to HTML and places them under `_site/docs` directory. Any other files or folders are also moved into `_site/` unless explicitly excluded in `_config.yml`.
+Running this command parses all markdown files in `docs/` to HTML and places them under `_site/docs/` directory. Any other files or folders are also moved into `_site/` unless explicitly excluded in [`_config.yml`](_config.yml).
 
 ## Clean
 
@@ -38,13 +48,13 @@ Running this command removes `_site`, `.jekyll-metadata` and `.sass-cache`.
 ## Build and start the server
 
 ```
-$ jekyll serve --livereload --trace
+$ jekyll serve --trace --livereload
 ```
 
-This starts a WEBrick web server on 127.0.0.1:4005. Same command with options `-H 0.0.0.0 -P $PORT` starts the server in production.
+This starts a WEBrick web server on 127.0.0.1:4005. Same command with `-H 0.0.0.0` and `-P $PORT` starts the server in production.
 
 You can now view the documentation by navigating your web browser to `http://127.0.0.1:4005`
 
 ## Deploy
 
-A commit on the `master` branch deploys to production, and a commit on the `development` branch deploys to staging.
+Any commit pushed to this repository triggers an automatic deploy. Commits on `master` deploy to production at [dev.grakn.ai](https://dev.grakn.ai) and commits on `development` deploy to staging at [grakn-web-dev-wip.herokuapp.com](http://grakn-web-dev-wip.herokuapp.com).
