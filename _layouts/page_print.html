@@ -8,9 +8,5 @@ comments: true
 </div>
 
 <div class="page-content">
-
-    {% if page.summary %}
-    <div class="summary">{{page.summary}}</div>
-    {% endif %}
-    {{ content }}
+    {{ content | toc }}
 </div>
