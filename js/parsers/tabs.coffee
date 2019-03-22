@@ -31,7 +31,7 @@ window.parser_tabs = () ->
         tab_content_html = "<div class='tab-content #{if isLight then "light" else ""} #{if isDark then "dark" else ""}'>"
         i = 0
         for content, i in contents
-            tab_content_html += "<div role='tabpane' class='tab-pane #{titles[i].toLowerCase()} #{"active" if i == 0}' id='#{generateTargetId(titles[i], index)}'> #{content}</div>"
+            tab_content_html += "<div role='tabpane' class='tab-pane #{titles[i].toLowerCase().replace(/\s/g, "-")} #{"active" if i == 0}' id='#{generateTargetId(titles[i], index)}'> #{content}</div>"
         tab_content_html += "</div>"
 
         $(this).replaceWith tab_title_html + tab_content_html
