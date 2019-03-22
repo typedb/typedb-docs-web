@@ -14,7 +14,7 @@ window.search_init = ->
 
 search = (value) ->
     console.log(value)
-    $.get "http://localhost:3001/searchDocs?q=" + value, (response, status) ->
+    $.get "http://grakn.ai/searchDocs?q=" + value, (response, status) ->
         console.log(response, status)
         if status == "success"
             if response.items
