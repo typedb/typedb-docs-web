@@ -6,6 +6,8 @@ ready = ->
     window.sidebar_retainScrollPosition()
     window.sidebar_retainActiveState()
     window.topbar_setup()
+    window.search_init()
+
     window.parser_tabs()
     window.parser_slideshow()
     window.parser_caption()

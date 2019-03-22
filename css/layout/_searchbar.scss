@@ -1,0 +1,65 @@
+$topbar_height: 70px;
+$searchbar_height: 36px;
+
+.o-searchbar {
+    background-color: #fff;
+    border-bottom: 1px solid #eaeaea;
+    height: $searchbar_height;
+    margin-top: $topbar_height;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+
+    .container { padding: 0; }
+
+    input {
+        border: none;
+        color: #647380;
+        font-family: 'Titillium';
+        font-size: 14px;
+        font-style: italic;
+        height: 100%;
+        outline: none;
+        width: calc(100% - 49px);
+    }
+
+    .a-searchIcon, .a-clearSearch {
+        width: 16px;
+        color: #647380;
+    }
+
+    .a-searchIcon { margin-right: 10px; }
+    .a-clearSearch { cursor: pointer; }
+}
+
+.o-searchResults {
+    background-color: #fff;
+    display: none;
+    position: fixed;
+    height: calc(100% - #{$topbar_height + $searchbar_height});
+    overflow-y: scroll;
+    top: $topbar_height + $searchbar_height;
+    width: 100%;
+    z-index: 2;
+
+    .container { padding: 0; }
+
+    a { text-decoration: none; }
+
+    .m-searchItem {
+        padding: 15px 31px;
+        border-bottom: 1px solid #eaeaea;
+
+        &:first-child { padding-top: 30px; }
+        &:last-child { padding-bottom: 30px; }
+        &:hover { background-color: #F7F7F7; }
+        p.a-searchItem-title, p.a-searchItem-description  { margin: 0; }
+        p.a-searchItem-description { color: #647380; }
+    }
+
+    .a-noResultMessage {
+        padding: 20px 0;
+        text-align: center;
+        width: 100%;
+    }
+}
