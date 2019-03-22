@@ -6,10 +6,10 @@ layout: none
 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   {% for page in site.pages %}
-	{% if page.layout == "page" %}
-		<url>
-			<loc>{{site.url}}{{ page.url}}</loc>
-		</url>
-	{% endif %}
+		{% if page.layout == "page" %}
+			<url>
+				<loc>{{site.sitemap_url}}{{ page.url}}</loc>
+			</url>
+		{% endif %}
   {% endfor %}
 </urlset>
