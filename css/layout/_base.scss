@@ -1,5 +1,6 @@
 $sidebar_width: 200px;
-$topbar_width: 70px;
+$topbar_height: 70px;
+$searchbar_height: 36px;
 
 // positioning
 .container {
@@ -8,7 +9,7 @@ $topbar_width: 70px;
     #o-content {
         height: 100% !important;
         margin-left: $sidebar_width;
-        padding: 70px 50px 50px 50px;
+        padding: ($topbar_height + $searchbar_height) 50px 50px 50px;
         width: calc(100% - #{$sidebar_width});
     }
     #o-sidebar {
