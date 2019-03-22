@@ -58,13 +58,13 @@ window.util_handleURLParams = () ->
     url_string = window.location.href
     url = new URL(url_string)
 
-    lang = url.searchParams.get("lang")
+    tab = url.searchParams.get("tab")
 
-    if lang
+    if tab
         $(".tabs-list li").removeClass "active"
-        $(".tabs-list li.tab-#{lang}").addClass "active"
+        $(".tabs-list li.tab-#{tab}").addClass "active"
         $(".tab-pane").removeClass "active"
-        $(".tab-pane.#{lang}").addClass "active"
+        $(".tab-pane.#{tab}").addClass "active"
 
     source = url.searchParams.get("source")
     sourceTitle = url.searchParams.get("sourceTitle")
