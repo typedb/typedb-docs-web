@@ -1,6 +1,5 @@
 ---
 layout: none
-search: exclude
 ---
 
 {% include custom/sidebarconfigs.html %}
