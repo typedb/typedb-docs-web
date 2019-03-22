@@ -21,7 +21,7 @@ a {
 }
 
 a[href^="http://"], a[href^="https://"] {
-  &:not(.kgms-badge) {
+  &:not(.colored-badge, .a-searchItem-title) {
     padding-right: 20px;
     position: relative;
 
