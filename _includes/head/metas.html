@@ -1,0 +1,31 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="{% if page.summary %}
+									  {{ page.summary | strip_html | strip_newlines | truncate: 160 }}
+								  {% endif %}">
+<meta name="keywords" content="{{page.keywords}}
+							   {% if page.longTailKeywords %}
+							   		, {{page.longTailKeywords}}
+							   {% endif %}
+                               , GRAKN.AI, Grakn Labs, grakn, graql, grakn.ai, knowledge graph, knowledge engineering,knowledge base,
+                               distributed knowledge graph, development platform, developer tool, data platform, programming language,query language,
+                               database, semantic database, distributed semantic database, distributed database, graph database,semantic search,
+                               data exploration, recommendation system, knowledge management, real-time analytics, advanced analytics,reasoning engine,
+                               inference engine, expert systems, semantic applications, research engines, data management, business intelligence, big data,
+                               semantic web, semantic data, knowledge representation, automated reasoning, semantic network, knowledge ontology, semantic graph,
+                               ontology engineering, graph based knowledge representation, artificial intelligence,">
+
+<meta property="og:description" content="{% if page.summary %}
+											 {{ page.summary | strip_html | strip_newlines | truncate: 160 }}
+										 {% endif %}">
+
+<meta property="og:title" content="{{ page.title }} | {{ site.title }}">
+
+<meta property="og:image" content="{{ site.urlprefix }}/images/og-image.png">
+
+<title>{{ page.pageTitle }} | {{ site.title }}</title>
+
+<link rel="shortcut icon" href="/favicon.ico">
+
+<script src="/js/vendors/turbolinks.js" type="text/javascript" charset="utf-8"></script>
