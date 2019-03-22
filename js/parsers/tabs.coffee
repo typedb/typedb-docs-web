@@ -25,7 +25,7 @@ window.parser_tabs = () ->
         tab_title_html = "<ul class='tabs-list #{if isLight then "light" else ""} #{if isDark then "dark" else ""}'>"
         tab_width_percent = 100 / titles.length
         for title, i in titles
-            tab_title_html += "<li class='tab-#{title.toLowerCase()} #{"active" if i == 0}' style='width:#{tab_width_percent}%' data-target='##{generateTargetId(titles[i], index)}'>#{title}</li>"
+            tab_title_html += "<li class='tab-#{title.toLowerCase().replace(/\s/g, "-")} #{"active" if i == 0}' style='width:#{tab_width_percent}%' data-target='##{generateTargetId(titles[i], index)}'>#{title}</li>"
         tab_title_html += '</ul>'
 
         tab_content_html = "<div class='tab-content #{if isLight then "light" else ""} #{if isDark then "dark" else ""}'>"
