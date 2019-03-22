@@ -87,7 +87,7 @@ defaults:
       comments: true
       tooltip: true
   - scope:
-      path: ""
+      path: "docs"
       type: "pages"
     values:
       layout: "page"

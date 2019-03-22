@@ -15,4 +15,3 @@ defaults:
     values:
       layout: "page_print"
       comments: true
-      search: true
