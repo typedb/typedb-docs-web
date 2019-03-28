@@ -53,7 +53,8 @@ exclude:
   - vendor/ruby/
   - docs/images/source/
   - docs/03-client-api/references/
-  - docs/10-concept-api/references/
+  - docs/04-concept-api/references/
+  - docs/08-examples/migration-notes
   - node_modules
   - package-lock.json
   - tests/
@@ -91,6 +92,7 @@ defaults:
       type: "pages"
     values:
       layout: "page"
+      permalink: :path/:basename
       comments: true
       toc: true
 

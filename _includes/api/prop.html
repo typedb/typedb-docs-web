@@ -1,7 +1,7 @@
 {% assign prop = include.data.prop %}
 {% if prop[lang] %}
 	<div class="m_api-ref-block">
-		<h3 id ="{{ class_prefix }}-prop-{{prop[lang].title | downcase | replace: ' ', '-'}}">{{ prop[lang].title }}</h3>
+		<h3 id="{{prop[lang].title | downcase | replace: ' ', '-'}}">{{ prop[lang].title }}</h3>
 		<pre class="api-prop"><code class="language-{{lang}} hljs">{{ prop[lang].prop | markdownify }}</code></pre>
 		<p>{{ prop[lang].description | markdownify }}</p>
 
