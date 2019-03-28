@@ -5,7 +5,7 @@
 
 # Example 1:
 # original yaml file located at `docs/03-client-api/references/answer.yml`
-# symlink gets created at `_data/client_api/answer.yml`
+# symlink gets created at `_data/03_client_api/references/answer.yml`
 
 # Example 2:
 # original yaml file located at `docs/views/sidebar.yml`
@@ -16,17 +16,13 @@ set -xe
 
 absolute_path_prefix=$(pwd)
 
-whitelist_dirs=(client_api concept_api views) # only create symlinks if the file is contained within the given directory names
+whitelist_dirs=(03_client_api 04_concept_api views) # only create symlinks if the file is contained within the given directory names
 
 for original in $(find docs -name '*.yml'); do
     symlink=${original#"docs/"} # remove prefix
     digits=${symlink:0:2}
     re='^[0-9]+$'
-    if [[ $digits =~ $re ]] ; then
-        symlink=${symlink:3} # remove page number
-    fi
     symlink="${symlink//-/_}" # repalce - with _
-    symlink="${symlink/references\//}" # remove /references
 
     absolute_symlink="$absolute_path_prefix/_data/$symlink" # .yml symlink path
     absolute_original="$absolute_path_prefix/$original" # original .yml file path
