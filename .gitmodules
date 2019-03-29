@@ -1,3 +1,4 @@
 [submodule "docs"]
 	path = docs
 	url = http://github.com/graknlabs/docs.git
+	branch = development

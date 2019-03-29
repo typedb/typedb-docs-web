@@ -20,15 +20,18 @@ window.util_handleLinks = ->
         else if (href[0] == "#" or href[0] == "/") and $(link).attr("id") != "backToSourceLink"
             ## anchored links to ignore turbolinks (turbolinks ignores css's :target fix)
             $(link).attr("data-turbolinks", "false")
-            e.preventDefault()
-            if href[0] == "#"
-                ## local anchored links to scroll to target rather than jump
-                targetId = href.split('#')[1]
-                target = $("#" + targetId)
-                $('html, body').stop().animate({
-                    scrollTop: target.offset().top - 70
-                }, 500)
-                location.hash = targetId
+            unless href[0] == "#"
+                e.preventDefault()
+            # TODO: needs to be fixed
+            # if href[0] == "#"
+                # ## local anchored links to scroll to target rather than jump
+                # targetId = href.split('#')[1]
+                # target = $("#" + targetId)
+                # console.log(targetId, target.offset().top - 106)
+                # $('.o-mainBody').stop().animate({
+                #     scrollTop: target.offset().top - 106
+                # }, 500)
+                # location.hash = targetId
             if href[0] == "/"
                 ## internal links include source params
                 ## for the implementation of Back to <previous page> button
@@ -58,13 +61,13 @@ window.util_handleURLParams = () ->
     url_string = window.location.href
     url = new URL(url_string)
 
-    lang = url.searchParams.get("lang")
+    tab = url.searchParams.get("tab")
 
-    if lang
+    if tab
         $(".tabs-list li").removeClass "active"
-        $(".tabs-list li.tab-#{lang}").addClass "active"
+        $(".tabs-list li.tab-#{tab}").addClass "active"
         $(".tab-pane").removeClass "active"
-        $(".tab-pane.#{lang}").addClass "active"
+        $(".tab-pane.#{tab}").addClass "active"
 
     source = url.searchParams.get("source")
     sourceTitle = url.searchParams.get("sourceTitle")

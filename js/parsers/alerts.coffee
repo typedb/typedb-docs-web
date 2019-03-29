@@ -2,36 +2,6 @@
 ---
 window.parser_notes = ->
     $('.note').each (index) ->
-        alert_components = {
-            important: {
-                class_name: "warning",
-                icon: {
-                    name: "fa fa-star",
-                    color: "yellow"
-                }
-            },
-            note: {
-                class_name: "info",
-                icon: {
-                    name: "fa fa-info-circle",
-                    color: "blue"
-                }
-            },
-            "advanced topic": {
-                class_name: "success",
-                icon: {
-                    name: "fas fa-lightbulb",
-                    color: "green"
-                }
-            },
-            warning: {
-                class_name: "danger",
-                icon: {
-                    name: "fa fa-exclamation-triangle",
-                    color: "red"
-                }
-            }
-        }
         alert_detail = $(this).html()
         content = alert_detail.split('\n')
         while(content[0] == "")
@@ -40,9 +10,14 @@ window.parser_notes = ->
         content.shift() ## removing first (title) element
         content = content.join('\n') ## reconstructing the tab content
         content = marked(content) ## converting the markdown content to html
+
+        className = coloredPanels[title.toLowerCase()]["className"]
+        color = coloredPanels[title.toLowerCase()]["icon"]["color"]
+        icon = coloredPanels[title.toLowerCase()]["icon"]["name"]
+
         content_html =
-            "<div class='alert alert-#{alert_components[title.toLowerCase()]["class_name"]}' role='alert'>" +
-                "<li class='#{alert_components[title.toLowerCase()]["icon"]["name"]} fa-#{alert_components[title.toLowerCase()]["icon"]["color"]}' style='margin-right: 5px;'></li>" +
+            "<div class='alert alert-#{className}' role='alert'>" +
+                "<li class='#{icon}' style='margin-right: 5px; color: #{color}'></li>" +
                 "<b>#{title}</b>" +
                 content +
             "</div>"

@@ -5,10 +5,12 @@
 </head>
 
 <body>
-    {% include layout/topbar.html %}
-    {% include layout/searchbar.html %}
+    <div class="o-header">
+        {% include layout/topbar.html %}
+        {% include layout/searchbar.html %}
+    </div>
 
-    <div class="container">
+    <div class="o-mainBody container">
         <div class="row">
             <ul id="o-sidebar" data-turbolinks-permanent>
                 {% include layout/sidebar.html %}

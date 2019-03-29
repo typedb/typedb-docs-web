@@ -1,7 +1,7 @@
 {% assign method = include.data.method %}
 {% if method[lang] %}
 	<div class="m_api-ref-block">
-		<h3 id ="{{ class_prefix }}-method-{{method[lang].title | downcase | replace: ' ', '-' | replace: '/', '-'}}">{{ method[lang].title }}</h3>
+		<h3 id="{{method[lang].title | downcase | replace: ' ', '-' | replace: '/', ''}}">{{ method[lang].title }}</h3>
 		<pre class="api-method"><code class="language-{{lang}}">{{ method[lang].method | markdownify }}</code></pre>
 		<p>{{ method[lang].description | markdownify }}</p>
 
