@@ -20,15 +20,18 @@ window.util_handleLinks = ->
         else if (href[0] == "#" or href[0] == "/") and $(link).attr("id") != "backToSourceLink"
             ## anchored links to ignore turbolinks (turbolinks ignores css's :target fix)
             $(link).attr("data-turbolinks", "false")
-            e.preventDefault()
-            if href[0] == "#"
-                ## local anchored links to scroll to target rather than jump
-                targetId = href.split('#')[1]
-                target = $("#" + targetId)
-                $('html, body').stop().animate({
-                    scrollTop: target.offset().top - 70
-                }, 500)
-                location.hash = targetId
+            unless href[0] == "#"
+                e.preventDefault()
+            # TODO: needs to be fixed
+            # if href[0] == "#"
+                # ## local anchored links to scroll to target rather than jump
+                # targetId = href.split('#')[1]
+                # target = $("#" + targetId)
+                # console.log(targetId, target.offset().top - 106)
+                # $('.o-mainBody').stop().animate({
+                #     scrollTop: target.offset().top - 106
+                # }, 500)
+                # location.hash = targetId
             if href[0] == "/"
                 ## internal links include source params
                 ## for the implementation of Back to <previous page> button

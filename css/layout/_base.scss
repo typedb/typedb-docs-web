@@ -1,19 +1,29 @@
-$sidebar_width: 200px;
-$topbar_height: 70px;
-$searchbar_height: 36px;
+.o-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1001
+}
 
 // positioning
-.container {
+.o-mainBody {
+    margin-top: $topbar_height + $searchbar_height;
     height: 100%;
+    overflow: scroll;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 
     #o-content {
         height: 100% !important;
         margin-left: $sidebar_width;
-        padding: ($topbar_height + $searchbar_height) 50px 50px 50px;
+        padding: 50px;
         width: calc(100% - #{$sidebar_width});
     }
     #o-sidebar {
-        height: 100%;
+        height: calc(100% - #{$topbar_height} - #{$searchbar_height});
         overflow-y: scroll;
         position: fixed;
         width: $sidebar_width;
@@ -23,13 +33,4 @@ $searchbar_height: 36px;
             background: transparent; /* make scrollbar transparent */
         }
     }
-}
-
-body {
-    background-color: $bg_color !important;
-    color: $body-text-color !important;
-    letter-spacing: 0.2px;
-    font-family: 'Titillium';
-    font-size: 15px;
-    font-weight: 400;
 }

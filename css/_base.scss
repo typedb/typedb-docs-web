@@ -1,3 +1,18 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  background-color: $bg_color !important;
+  color: $body-text-color !important;
+  letter-spacing: 0.2px;
+  font-family: 'Titillium';
+  font-size: 15px;
+  font-weight: 400;
+}
+
 // fontfaces
 @font-face {
   font-family: "Titillium";

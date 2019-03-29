@@ -32,7 +32,7 @@
     padding: 0 10px;
     position: fixed;
     right: 150px;
-    top: $topbar_width;
+    top: $topbar_height;
     width: auto;
     z-index: 1000;
 
@@ -53,7 +53,7 @@
 
 // for table of content
 ul.toc {
-  padding: 20px 0 0 0;
+  padding: 0;
 
   li {
     line-height: 30px;
