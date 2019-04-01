@@ -19,7 +19,7 @@
     #o-content {
         height: 100% !important;
         margin-left: $sidebar_width;
-        padding: ($topbar_height + $searchbar_height) 50px 50px 50px;
+        padding: 50px;
         width: calc(100% - #{$sidebar_width});
     }
     #o-sidebar {
