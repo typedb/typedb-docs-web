@@ -12,7 +12,6 @@
 
 {% if lang == "java" %}
   {% include api/generic.html data=site.data.client_api.graql language=include.language class_prefix="client-api" %}
-  {% include api/generic.html data=site.data.client_api.query language=include.language class_prefix="client-api" %}
 {% endif %}
 
 {% if lang == "javascript" or lang == "python" %}

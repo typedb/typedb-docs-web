@@ -1,22 +1,43 @@
 #!/usr/bin/env bash
 
+# This bash script creates symlinks for .yml fles within docs.
+# The symlinks are placed under the `_data` directory
+
+# Example 1:
+# original yaml file located at `docs/03-client-api/references/answer.yml`
+# symlink gets created at `_data/03_client_api/references/answer.yml`
+
+# Example 2:
+# original yaml file located at `docs/views/sidebar.yml`
+# symlink gets created at `_data/views/answer.yml`
+
+
 set -xe
 
 absolute_path_prefix=$(pwd)
 
+whitelist_dirs=(03_client_api 04_concept_api views) # only create symlinks if the file is contained within the given directory names
+
 for original in $(find docs -name '*.yml'); do
     symlink=${original#"docs/"} # remove prefix
-    symlink=${symlink:3} # remove page number
+    digits=${symlink:0:2}
+    re='^[0-9]+$'
     symlink="${symlink//-/_}" # repalce - with _
-    symlink="${symlink/references\//}" # remove /references
 
     absolute_symlink="$absolute_path_prefix/_data/$symlink" # .yml symlink path
     absolute_original="$absolute_path_prefix/$original" # original .yml file path
 
-    mkdir -p "$(dirname $absolute_symlink)" # create the symlink's path if non-existent (-p)
+    IFS='/' read -r -a splited_symlink <<< "$symlink" # split symlink into array by "/" as delimeter
+    dir=${splited_symlink[0]} # get the directory to check against whitelist_dirs
 
-    ln -s $absolute_original $absolute_symlink
-    if ! grep -q "./_data/$symlink" .gitignore; then
-        echo "\n./_data/$symlink" >> .gitignore
+    if [[ " ${whitelist_dirs[@]} " =~ " ${dir} " ]]; then # allowed to create symlink
+        mkdir -p "$(dirname $absolute_symlink)" # create the symlink's path if non-existent (-p)
+        ln -s $absolute_original $absolute_symlink
+
+        # add created symlinks to .gitignore
+        # because the counterpart of this bash script creates symlinks for deployment to heroku
+        if ! grep -q "_data/$dir" .gitignore; then
+            echo "_data/$dir" >> .gitignore
+        fi
     fi
 done

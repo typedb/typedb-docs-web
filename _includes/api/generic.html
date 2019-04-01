@@ -3,10 +3,9 @@
 {% assign methods = include.data.methods %}
 {% assign props = include.data.props %}
 {% assign lang = include.language %}
-{% assign class_prefix = include.class_prefix %}
 
 {% if title %}
-  <h2 class="api-list-heading" id="{{ class_prefix }}-title-{{title | downcase | replace: ' ', '-'}}">{{ title }}</h2>
+  <h2 class="api-list-heading" id="{{title | downcase | replace: ' ', '-'}}">{{ title }}</h2>
 {% endif %}
 
 {% if description %}
@@ -15,10 +14,10 @@
 
 <div class="o_api-ref-list">
 	{% for prop in props %}
-		{% include api/prop.html prop=prop class_prefix=class_prefix %}
+		{% include api/prop.html prop=prop %}
 	{% endfor %}
 
 	{% for method in methods %}
-		{% include api/method.html method=method class_prefix=class_prefix %}
+		{% include api/method.html method=method %}
 	{% endfor %}
 </div>
