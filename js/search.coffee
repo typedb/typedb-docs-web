@@ -13,9 +13,7 @@ window.search_init = ->
     $('#clearSearchBtn').on "click", -> hideResults()
 
 search = (value) ->
-    console.log(value)
     $.get "https://grakn.ai/searchDocs?q=" + value, (response, status) ->
-        console.log(response, status)
         if status == "success"
             if response.items
                 showResults(response.items)
