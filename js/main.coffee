@@ -2,6 +2,7 @@
 ---
 
 ready = ->
+    window.track_visit()
     window.cookies_handleBanner()
     window.sidebar_retainScrollPosition()
     window.sidebar_retainActiveState()
