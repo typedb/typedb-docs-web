@@ -30,9 +30,9 @@ ul#o-sidebar {
 
         a {
             background-color: $bg_color;
-            color: $grakn_purple_color;
+            color: #887aff;
             display: inline-block;
-            font-size: 17px;
+            font-size: 16px;
             text-decoration: none;
             width: calc(100% - #{$sidebar_item_distance_to_content});
         }

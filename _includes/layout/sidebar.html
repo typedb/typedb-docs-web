@@ -1,9 +1,9 @@
 {% assign chapters = site.data.views.sidebar.chapters  %}
 
 {% for chapter in chapters %}
-    {% unless chapter.hideTitle %}
+    {% if chapter.title %}
         <li class="a-section_categoryTitle">{{ chapter.title }}</li>
-    {% endunless %}
+    {% endif %}
 
     {% if chapter.pages %}
         {% for page in chapter.pages %}
@@ -14,14 +14,16 @@
     {% elsif chapter.sections %}
         {% for section in chapter.sections %}
             <li class="o-section">
-                <a class="a-section_title animated__link animated__link--purple" href = "">{{ section.title }}</a>
-                <ul class="m-section_list">
+                {% if section.title %}
+                    <a class="a-section_title animated__link animated__link--purple" href = "">{{ section.title }}</a>
+                {% endif %}
+                {% if section.title %} <ul class="m-section_list"> {% endif %}
                     {% for page in section.pages %}
                         {% assign hyperlinkClass = "" %}
                         {% assign url = section.baseUrl | append: page.url %}
                         {% include layout/sidebar_page_item.html page = page hyperlinkClass = hyperlinkClass url = url %}
                     {% endfor %}
-                </ul>
+                {% if section.title %}  </ul> {% endif %}
             </li>
         {% endfor %}
     {% endif %}
