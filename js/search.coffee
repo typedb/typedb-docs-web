@@ -7,8 +7,11 @@ window.search_init = ->
 
         if e.keyCode == 27 or !this.value
             hideResults()
+            $('.a-clearSearch').hide()
         else if e.keyCode == 13
             search(value)
+        else if $('.a-clearSearch').is(":hidden")
+            $('.a-clearSearch').show()
 
     $('#clearSearchBtn').on "click", -> hideResults()
 
