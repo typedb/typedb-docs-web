@@ -5,16 +5,16 @@
     z-index: 1001
 }
 
+.o-scrollable-body {
+    height: 100%;
+    margin-top: $topbar_height + $searchbar_height;
+    overflow: scroll;
+    width: 100%;
+}
+
 // positioning
 .o-mainBody {
-    margin-top: $topbar_height + $searchbar_height;
     height: 100%;
-    overflow: scroll;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
 
     #o-content {
         height: 100% !important;
