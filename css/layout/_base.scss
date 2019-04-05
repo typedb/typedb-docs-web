@@ -9,6 +9,7 @@
     height: 100%;
     margin-top: $topbar_height + $searchbar_height;
     overflow: scroll;
+    position: fixed;
     width: 100%;
 }
 

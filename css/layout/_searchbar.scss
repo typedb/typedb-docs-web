@@ -26,7 +26,10 @@
     }
 
     .a-searchIcon { margin-right: 10px; }
-    .a-clearSearch { cursor: pointer; }
+    .a-clearSearch {
+        cursor: pointer;
+        display: none;
+    }
 }
 
 .o-searchResults {
