@@ -2,7 +2,8 @@
 ---
 
 ready = ->
-    window.track_visit()
+    currentPage = window.location.pathname.replace('/docs/', '')
+    window.track_visit(currentPage)
     window.cookies_handleBanner()
     window.sidebar_retainScrollPosition()
     window.sidebar_retainActiveState()
