@@ -1,10 +1,11 @@
 ---
 ---
 
-window.track_visit = ->
+window.track_visit = (pageTitle) ->
     $.post "https://grakn.ai/hsengt",
         {
+            "utk": $.cookie('hubspotutk'),
             "platform": "documentation",
             "action": "visit",
-            "utk": $.cookie('hubspotutk')
+            "subject": pageTitle
         }
