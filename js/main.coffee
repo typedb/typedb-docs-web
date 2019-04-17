@@ -25,8 +25,13 @@ ready = ->
     window.syntax_generateGenericSpan()
     window.autoLinkKeywords_generate()
 
+    window.fixedElement_githubEditBtn()
+
 handleBeforeTurbolinkVisit = ->
     window.sidebar_storeScrollPosition()
 
 $(document).on 'turbolinks:load', ready
 $(document).on "turbolinks:before-visit", () -> handleBeforeTurbolinkVisit()
+
+$(window).resize ->
+    window.fixedElement_githubEditBtn()
