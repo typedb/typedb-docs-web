@@ -54,3 +54,28 @@ ul.toc {
     margin-top: 35px;
   }
 }
+
+// for the button that allows editing the current page on Github
+.m-editOnGithub {
+  background-color: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 0 0 5px 5px;
+  border-top: none;
+  color: #8695a2;
+  font-size: 13px;
+  padding: 6px 8px;
+  position: fixed;
+  text-decoration: none;
+  z-index: 10001;
+
+  &:visited { color: #8695a2; }
+  &:hover {
+    color: #55626d;
+    text-decoration: none;
+  }
+
+  .fa-github {
+    margin-right: 2px;
+    font-size: 14px;
+  }
+}
