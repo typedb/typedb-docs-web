@@ -3,5 +3,9 @@ layout: default
 ---
 
 <div class="page-content">
+    <a id="editOnGithub" class="m-editOnGithub" href="{{site.github_editme_path}}{{page.path | replace: 'docs/', ''}}" target="_blank">
+        <i class="fab fa-2x fa-github"></i>
+        Edit on Github
+    </a>
     {{ content | toc }}
 </div>
