@@ -7,7 +7,7 @@
 
 		{% assign number_of_returns = prop[lang].returns | size %}
 		{% if number_of_returns > 0 %}
-			<h4>Returns</h4>
+			<h4 class="returns-heading">Returns</h4>
 			<div class="api-returns">
 				{% for return in prop[lang].returns %}
 					<b>{{ return | markdownify }}</b>
