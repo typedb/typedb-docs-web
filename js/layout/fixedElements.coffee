@@ -5,6 +5,6 @@ window.fixedElement_githubEditBtn = ->
     right = $('#o-sidebar').offset().left
     right = right + parseInt($('#o-content').css('padding-right').replace("px", ""))/2
     $('#editOnGithub').css({
-        top: top + "px",
+        top: (top - 1) + "px",
         right: right + "px"
     })

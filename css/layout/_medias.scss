@@ -28,6 +28,16 @@
     .topbar__links--desktop {
         display: none !important;
     }
+
+    .o-searchbar {
+        .a-searchIcon {
+            margin-left: 20px;
+        }
+
+        input {
+            width: calc(100% - 69px) !important;
+        }
+    }
 }
 
 @media screen and (min-width: 990px) {
