@@ -28,11 +28,6 @@
         overflow-y: scroll;
         position: fixed;
         width: $sidebar_width;
-
-        &::-webkit-scrollbar {
-            width: 0px;
-            background: transparent; /* make scrollbar transparent */
-        }
     }
 }
 
