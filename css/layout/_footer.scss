@@ -143,7 +143,7 @@
         }
 
         &--github,
-        &--slack {
+        &--discord {
           font-weight: 300;
 
           strong {
@@ -161,13 +161,13 @@
           }
         }
 
-        &--slack {
-          margin-left: -4px;
+        &--discord {
+          margin-left: -10px;
           img {
-            margin-right: 0.8rem !important;
+            width: 38px;
           }
           strong {
-            color: #d30d0c;
+            color: #738bd8;
           }
         }
 
