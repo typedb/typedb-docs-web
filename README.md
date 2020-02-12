@@ -4,7 +4,7 @@
 In order to clone `web-dev` along with its submodule `docs`, run:
 
 ```
-$ git clone https://github.com/graknlabs/web-dev.git --recursive
+$ git clone git@github.com:graknlabs/web-dev.git --recursive
 ```
 
 ## Requirements
