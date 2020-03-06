@@ -23,7 +23,11 @@
       width: 160px;
 
       &:after { content: none !important; }
-      img { display: block; }
+      img { 
+        height: 31px;
+        display: block; 
+        margin-bottom: 4px;
+      }
     }
 
     &__links {
