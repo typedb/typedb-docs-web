@@ -4,17 +4,23 @@
 In order to clone `web-dev` along with its submodule `docs`, run:
 
 ```
-$ git clone https://github.com/graknlabs/web-dev.git --recursive
+$ git clone git@github.com:graknlabs/web-dev.git --recursive
 ```
 
 ## Requirements
 
 ### Ruby
-Install the required version of Ruby as specified in the [`Gemfile`](Gemfile)
+1. Install [Homebrew](https://brew.sh/)
+2. Install `gpg`: `brew install gnupg`
+3. Install the mpapis public key (required for installing RVM): `gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3`. Alternatively, try [these instructions](https://rvm.io/rvm/security#alternatives).
+4. Install RVM: `\curl -sSL https://get.rvm.io | bash -s stable --ruby`
+5. Install the version of ruby specific in [`Gemfile`](Gemfile) using [RVM](https://rvm.io/rvm/install): `rvm install x.x.x`
+6. Use the recently installed version of ruby as default: `rvm use x.x.x --default`
 
 ### Gems
 
 **Arch Linux**
+
 ```
 $ yaourt -S ruby-bundler
 $ bundle install
@@ -22,11 +28,16 @@ $ bundle install
 
 **macOS**
 
-Install the required verion of Ruby (as specified in the `Gemfile`). Installing Ruby using [RVM](https://rvm.io/rvm/install) is encouraged.
-
 ```
 $ gem install bundler
 $ bundle install
+```
+
+## Symlinking YAML files of `/docs` to `/_data`
+Given that Jekyll can only read data from files placed under `_data` and we'd like these files to be defined within the `docs` submodule, we need to run the `symlink_creator.sh` to create symlinks in `_data`.
+
+```
+sh symlink_creator.sh
 ```
 
 ## Build
