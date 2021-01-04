@@ -101,4 +101,4 @@ defaults:
 description: "A Distributed Knowledge Graph"
 # the description is used in the feed.xml file
 
-sitemap_url: http://dev.grakn.ai
+sitemap_url: http://docs.grakn.ai
