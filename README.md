@@ -68,4 +68,4 @@ You can now view the documentation by navigating your web browser to `http://127
 
 ## Deploy
 
-Any commit pushed to this repository triggers an automatic deploy. Commits on `master` deploy to production at [dev.grakn.ai](https://dev.grakn.ai) and commits on `development` deploy to staging at [grakn-web-dev-wip.herokuapp.com](http://grakn-web-dev-wip.herokuapp.com).
+Any commit pushed to this repository triggers an automatic deploy. Commits on `master` deploy to production at [docs.grakn.ai](https://docs.grakn.ai) and commits on `development` deploy to staging at [grakn-web-dev-wip.herokuapp.com](http://grakn-web-dev-wip.herokuapp.com).

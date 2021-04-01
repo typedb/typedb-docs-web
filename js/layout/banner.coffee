@@ -2,8 +2,7 @@
 ---
 window.cookies_handleCosmosBanner = () ->
 
-	# shouldHideBanner = $.cookie('closed-cosmos-banner');
-	shouldHideBanner = true;
+	shouldHideBanner = $.cookie('closed-cosmos-banner');
 	if shouldHideBanner 
 		closeBanner()
 	else
