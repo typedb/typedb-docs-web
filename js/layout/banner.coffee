@@ -13,7 +13,7 @@ window.cookies_handleCosmosBanner = () ->
 			$.cookie('closed-cosmos-banner', true);
 			closeBanner()
 		else
-			window.open 'https://grakncosmos.com'
+			window.open 'https://community.grakn.ai/grakn-orbit-2021'
 
 
 closeBanner = ->
