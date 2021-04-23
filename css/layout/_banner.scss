@@ -80,7 +80,7 @@ body.banner-showing {
     margin: 0 auto;
 
     .banner-filler {
-      height: 0;
+      height: 1px;
       width: 127px;
     }
 
@@ -127,6 +127,7 @@ body.banner-showing {
 
     background-image: url("https://grakn.ai/assets/img/banners/banner-close.svg");
     background-repeat: no-repeat;
+    background-size: contain;
     cursor: pointer;
 
     position: absolute;
@@ -167,6 +168,12 @@ body.banner-showing {
 
       .banner-button {
         margin: 0 auto;
+      }
+      .banner-btn-close {
+        right: 10px;
+        top: 10px;
+        height: 28px;
+        width: 28px;
       }
     }
 
