@@ -79,8 +79,9 @@ body.banner-showing {
     display: flex;
     margin: 0 auto;
 
-    .banner-logo {
-      height: 30px;
+    .banner-filler {
+      height: 0;
+      width: 127px;
     }
 
     .banner-text {
@@ -114,7 +115,7 @@ body.banner-showing {
       color: #0a0926;
       cursor: pointer;
       font-family: "Titillium";
-      font-weight: 600;
+      font-weight: 400;
       line-height: 30px;
       text-align: center;
     }
