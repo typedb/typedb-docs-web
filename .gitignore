@@ -1,21 +1,20 @@
-# jekyll
-_site/
-.sass-cache/
-.jekyll-metadata
-
-## node
-node_modules/
-package-lock.json
-
-## IDE
-.vscode/
-.idea
-
-## misc
+# OSX files
 .DS_Store
 
-_data/concept_api
-_data/client_api
-_data/views
-_data/04_concept_api
-_data/03_client_api
+# IDE folders
+.vscode
+.idea
+.ijwb
+
+# Bazel
+bazel-*
+
+local
+
+.terraform*
+
+pages/.sass-cache
+pages/_site
+
+pages-metalsmith/dist
+pages-metalsmith/node_modules

@@ -66,6 +66,34 @@ This starts a WEBrick web server on 127.0.0.1:4005. Same command with `-H 0.0.0.
 
 You can now view the documentation by navigating your web browser to `http://127.0.0.1:4005`
 
-## Deploy
+## Infrastructure manual
 
-Any commit pushed to this repository triggers an automatic deploy. Commits on `master` deploy to production at [docs.grakn.ai](https://docs.grakn.ai) and commits on `development` deploy to staging at [grakn-web-dev-wip.herokuapp.com](http://grakn-web-dev-wip.herokuapp.com).
+**NOTE:** All the following code assumes you have GCP credentials and nomad credential environment variables set up in your shell. Refer to `web-infrastructure` repo on how to set them up.
+
+#### Deployment
+
+1. First we need to deploy the nomad client to run the web-docs server. We can change the nomad client image version to the one we desire. You don't need to perform this step if there's no change needed for the server hardware.
+
+    ```
+   terraform plan && terraform apply
+    ```
+
+2. We then need to insert the following credentials needed by the web-docs server to run. You don't need to perform this step if the credentials are already present on the vault server.
+
+    ```
+   vault kv put web/keystore value=$(cat keystore | base64)
+   vault kv put web/keystore-password value=$(cat keystore-password)
+   vault kv put web-docs/application-secret value=$(cat application-secret)
+    ```
+ 
+3. Deploy the new version of web-docs to `repo.vaticle.com`.
+
+    ```
+   DEPLOY_ARTIFACT_USERNAME=<username> DEPLOY_ARTIFACT_PASSWORD=<password> bazel run --define version=(git rev-parse HEAD) //:deploy-web-docs -- snapshot
+    ```
+   
+4. Run the new web-docs application through nomad.
+
+    ```
+   VERSION=(git rev-parse HEAD) envsubst <web-docs.nomad | nomad job run -
+    ```

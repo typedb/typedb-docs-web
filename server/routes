@@ -1,0 +1,1 @@
+GET     /$file<.*>     com.vaticle.web.main.server.FileController.serve(file, default="index.html")

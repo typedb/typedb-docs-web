@@ -1,0 +1,31 @@
+config:
+  version-candidate: VERSION
+  dependencies:
+    dependencies: [build]
+
+build:
+  correctness:
+    build:
+      image: vaticle-ubuntu-20.04
+      command: |
+        git submodule update --init --recursive
+        pushd pages && bash symlink_creator.sh && bundle install && popd
+        bazel build //... --spawn_strategy=local
+
+release:
+  deployment:
+    deploy-artifact-release:
+      image: vaticle-ubuntu-20.04
+      command: |
+        git submodule update --init --recursive
+        pushd pages && bash symlink_creator.sh && bundle install && popd
+        export DEPLOY_ARTIFACT_USERNAME=$REPO_VATICLE_USERNAME
+        export DEPLOY_ARTIFACT_PASSWORD=$REPO_VATICLE_PASSWORD
+        bazel run --define version=$(cat VERSION) //:deploy-web-docs --spawn_strategy=local -- release
+    deploy-production:
+      image: vaticle-ubuntu-20.04
+      dependencies: [deploy-artifact-release]
+      command: |
+        echo $NOMAD_CACERT_BASE64 | base64 -d > /tmp/nomad-ca.pem
+        export NOMAD_CACERT=/tmp/nomad-ca.pem
+        VERSION=$(cat VERSION) envsubst <infrastructure/web-docs.nomad | nomad job run -

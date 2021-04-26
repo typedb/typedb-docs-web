@@ -1,4 +1,6 @@
-[submodule "docs"]
-	path = docs
-	url = http://github.com/graknlabs/docs.git
-	branch = development
+[submodule "pages/docs"]
+	path = pages/docs
+	url = https://github.com/vaticle/docs.git
+[submodule "pages-metalsmith/src/docs"]
+	path = pages-metalsmith/src/docs
+	url = https://github.com/vaticle/docs

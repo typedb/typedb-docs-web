@@ -39,6 +39,7 @@ toc:
 
 exclude:
   - .gitignore
+  - BUILD
   - Gemfile
   - Gemfile.lock
   - config.ru
