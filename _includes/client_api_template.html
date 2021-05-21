@@ -11,7 +11,7 @@
 {% include api/generic.html data=site.data.client_api.transaction language=include.language class_prefix="client-api" %}
 
 {% if lang == "java" %}
-  {% include api/generic.html data=site.data.client_api.graql language=include.language class_prefix="client-api" %}
+  {% include api/generic.html data=site.data.client_api.typeql language=include.language class_prefix="client-api" %}
 {% endif %}
 
 {% if lang == "javascript" or lang == "python" %}

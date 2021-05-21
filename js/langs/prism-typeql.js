@@ -6,7 +6,7 @@
  */
 
 (function () {
-    Prism.languages.graql = {
+    Prism.languages.typeql = {
       comment: {
           pattern: /#.*/,
           alias: 'comment'
@@ -17,7 +17,7 @@
       },
       keyword: {
           pattern: /((?:(?![-a-zA-Z_0-9]|\$).)|^|\s)(as|sub|sub!|has|key|abstract|relates|plays|datatype|boolean|double|long|string|date|match|isa|isa!|contains|regex|val|via|id|label|define|undefine|get|insert|delete|aggregate|compute|std|median|mean|max|min|sum|count|group|path|centrality|cluster|degree|k-core|where|from|to|in|of|limit|offset|sort|asc|desc|when|then|commit)(?![-a-zA-Z_0-9])/,
-          alias: 'graql-keyword',
+          alias: 'typeql-keyword',
           lookbehind: true
       },
       super: {
@@ -26,7 +26,7 @@
           lookbehind: true
       },
       special: {
-          pattern: /graql>|results>|\.\.\./
+          pattern: /typeql>|results>|\.\.\./
       },
       variable: {
           pattern: /\$[-a-zA-Z_0-9]+/,

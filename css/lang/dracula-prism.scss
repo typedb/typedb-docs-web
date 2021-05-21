@@ -226,11 +226,11 @@ code[class*="language-"] {
   }
 }
 
-.language-graql, {
+.language-typeql, {
   .token {
     color: #e2e2e2;
 
-    &.graql-keyword {
+    &.typeql-keyword {
       color: #d39eff;
     }
 
