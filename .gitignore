@@ -15,6 +15,3 @@ local
 
 pages/.sass-cache
 pages/_site
-
-pages-metalsmith/dist
-pages-metalsmith/node_modules
