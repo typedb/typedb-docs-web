@@ -10,10 +10,6 @@ job "web-docs" {
     value     = "web-docs"
   }
 
-//  update {
-//    auto_revert  = true
-//  }
-
   group "web-docs" {
     count = 1
 
@@ -28,6 +24,10 @@ job "web-docs" {
 
     task "web-docs" {
       driver = "java"
+
+      meta {
+        commit = "${COMMIT}"
+      }
 
       config {
         jar_path = "local/web-docs-${VERSION}/server.jar"
