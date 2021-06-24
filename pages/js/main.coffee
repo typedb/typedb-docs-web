@@ -19,7 +19,6 @@ ready = ->
     window.util_handleLinks()
     window.util_handleURLParams()
     window.util_escapeSpecialChars()
-    window.footer_handleSubscribe()
     window.footer_fetchLatestVersion()
     window.syntax_applyHighlighting()
     window.syntax_generateGenericSpan()

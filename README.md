@@ -1,10 +1,10 @@
-# GRAKN.AI Documentation
+# Vaticle Documentation
 
 ## Clone
-In order to clone `web-dev` along with its submodule `docs`, run:
+In order to clone `web-docs` along with its submodule `docs`, run:
 
 ```
-$ git clone git@github.com:graknlabs/web-dev.git --recursive
+$ git clone git@github.com:vaticle/web-docs.git --recursive
 ```
 
 ## Requirements

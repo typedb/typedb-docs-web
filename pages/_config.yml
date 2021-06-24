@@ -2,13 +2,13 @@
 output: web
 # this property is useful for conditional filtering of content that is separate from the PDF.
 
-topnav_title: GRAKN.AI
+topnav_title: Vaticle
 # this appears on the top navigation bar next to the home button
 
-title: GRAKN.AI
+title: Vaticle
 # this appears in the html browser tab for the site title (seen mostly by search engines, not users)
 
-company_name: GRAKN.AI
+company_name: Vaticle
 # this appears in the footer
 
 github_editme_path: https://github.com/vaticle/docs/blob/master/
@@ -102,4 +102,4 @@ defaults:
 description: "A Distributed Knowledge Graph"
 # the description is used in the feed.xml file
 
-sitemap_url: http://docs.grakn.ai
+sitemap_url: https://docs.vaticle.com
