@@ -1,4 +1,11 @@
-.header-appBar, .header-mainMenu {
+$color-purple-400: #392D7F;
+$color-purple-600: #261C5E;
+$border-black: #180F49;
+$header-box-shadow: 2px 2px 1px -1px rgba(0,0,0,0.2),2px 2px 3px 0px rgba(0,0,0,0.14),2px 1px 5px 0px rgba(0,0,0,0.12);
+$menu-width-tablet: 196px;
+$submenu-width-desktop: 158px;
+
+.header-appBar, .header-menu {
   * {
     -moz-osx-font-smoothing: grayscale;
   }
@@ -30,9 +37,13 @@
 
 .header-toolbar {
   flex: 1;
-  margin: auto 50px;
+  margin: auto 30px;
   display: flex;
   align-items: center;
+
+  a:focus, button:focus {
+    outline: none;
+  }
 
   @media(max-width: 1199px) {
     margin: auto 17px auto 32px;
@@ -40,54 +51,19 @@
   }
 }
 
-.MuiIconButton-edgeStart {
-  margin-left: -12px;
-}
-
-.MuiIconButton-root {
-  flex: 0 0 auto;
-  color: rgba(0, 0, 0, 0.54);
-  padding: 12px;
-  overflow: visible;
-  font-size: 1.7142857142857142rem;
-  text-align: center;
-  transition: background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  border-radius: 50%;
-}
-
-.MuiButtonBase-root {
-  color: inherit;
-  border: 0;
-  cursor: pointer;
-  margin: 0;
-  margin-left: 0px;
-  display: inline-flex;
-  outline: 0;
-  padding: 0;
-  position: relative;
-  align-items: center;
-  border-radius: 0;
-  vertical-align: middle;
-  -moz-appearance: none;
-  justify-content: center;
-  text-decoration: none;
-  -moz-user-select: none;
-  background-color: transparent;
-  -webkit-appearance: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.MuiIconButton-label {
-  width: 100%;
+.header-logoContainer {
   display: flex;
-  align-items: inherit;
-  justify-content: inherit;
+  align-items: center;
+
+  @media(min-width: 1200px) {
+    padding: 0 20px;
+  }
 }
 
 .header-logo {
   width: 125px;
   height: 38px;
-  margin-top: -2px;
+  margin-top: -5px;
 }
 
 .header-desktopItems {
@@ -108,16 +84,132 @@
   }
 }
 
-.header-linkText {
-  color: #FFF;
-  padding: 12px 0;
-  font-size: 18px;
-  line-height: 1.5;
-}
+.header-menu {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 
-.header-toolbarItem {
-  @media(min-width: 1200px) {
-    margin-left: 35px;
+  @media(max-width: 1199px) {
+    flex-direction: column;
+  }
+
+  @media (min-width: 768px) and (max-width: 1199px) {
+    position: relative;
+    border-right: 1px solid $border-black;
+    width: $menu-width-tablet;
+  }
+
+  @media(max-width: 767px) {
+    width: 100%;
+  }
+
+  a:focus, button:focus {
+    outline: none;
+  }
+
+  // Links in menu and submenu items
+  a, a:visited, div[tabindex] {
+    color: #FFF;
+    display: inline-block;
+    padding: 0 20px;
+    width: 100%;
+    transition: background-color 150ms ease;
+    cursor: pointer;
+
+    @media(max-width: 1199px) {
+      padding: 0 24px;
+    }
+
+    &:hover:not(.header-noHover) {
+      @media(min-width: 768px) {
+        background-color: $color-purple-400;
+
+        > ul {
+          display: block;
+
+          @media(max-width: 767px) {
+            transform: translateX(0px);
+          }
+        }
+      }
+    }
+
+    &:focus:not(.header-noHover) {
+      @media(max-width: 1199px) {
+        background-color: $color-purple-400;
+
+        > ul {
+          display: block;
+
+          @media(max-width: 767px) {
+            transform: translateX(0px);
+          }
+        }
+      }
+    }
+
+    // Submenus
+    > ul {
+      z-index: 2000;
+      background-color: $color-purple-600;
+      position: absolute;
+      transition: transform 250ms ease-in-out;
+      white-space: nowrap;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      @media(min-width: 1200px) {
+        left: -1px;
+        border: 1px solid $border-black;
+        box-shadow: $header-box-shadow;
+        width: $submenu-width-desktop;
+      }
+
+      @media(min-width: 768px) {
+        display: none;
+      }
+
+      @media(max-width: 1199px) {
+        right: 0;
+        transform: translateX(100%);
+        height: 100%;
+      }
+
+      @media (min-width: 768px) and (max-width: 1199px) {
+        left: 0;
+        top: 0;
+        border-right: 1px solid $border-black;
+        width: $menu-width-tablet;
+      }
+
+      @media(max-width: 767px) {
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+
+  // Menu and submenu items
+  li {
+    line-height: 40px;
+    font-size: 16px;
+
+    @media(max-width: 1199px) {
+      line-height: 50px;
+      font-size: 18px;
+    }
+  }
+
+  // Menu items, top level only
+  > li {
+    font-size: 18px;
+
+    @media(min-width: 1200px) {
+      line-height: 80px;
+      position: relative;
+    }
   }
 }
 
@@ -125,59 +217,70 @@
   flex: 1;
 }
 
-.header-linkUnderline {
-  border: 0;
-  height: 1px;
-  margin: 0;
-  background-color: #FFF;
-}
-
-.header-vaticleButton, a.header-vaticleButton {
+a.header-vaticleSecondaryButton {
   height: 40px;
-  display: inline-flex;
+  display: inline-block;
+  padding: 0 !important;
   position: relative;
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  align-items: center;
   font-weight: 600;
-  line-height: 24px;
+  line-height: 24px !important;
   border-radius: 5px;
-  justify-content: center;
   border: 1px solid rgb(2, 218, 201);
   background-color: transparent;
-  color: rgb(2, 218, 201);
   font-size: 16px;
+  color: rgb(2, 218, 201) !important;
 
   &:hover {
     background-color: rgb(2, 218, 201);
-    color: rgb(29, 19, 84);
     border-color: rgb(2, 218, 201);
+    color: rgb(29, 19, 84) !important;
   }
 }
 
-.header-childDiv {
-  margin: 6px 16px;
-}
+.header-download {
+  padding: 0 20px;
 
-.header-externalLinksDownload {
   @media(max-width: 1199px) {
     order: 99;
+    padding: 10px 24px;
   }
+    
+  @media(max-width: 767px) {
+    align-self: flex-start;
+  }
+}
+
+.header-downloadContent {
+  width: 100%;
+  height: 100%;
+  display: inline-flex;
+  padding: 6px 16px;
+  align-items: center;
+  justify-content: center;
 }
 
 .header-externalLinksGithub {
   @media(min-width: 1200px) {
-    margin-left: 35px;
+    height: 80px;
   }
 
   @media(max-width: 1199px) {
-    margin-top: 18px;
-    margin-bottom: 18px;
+    padding-top: 8px;
+  }
+
+  @media(max-width: 767px) {
+    align-self: flex-start;
   }
 }
 
 .header-githubButton {
   color: #FFF !important;
   font-size: 36px;
+}
+
+.header-hamburger {
+  align-self: center;
 }
 
 .gPTVUv {
@@ -243,15 +346,16 @@
   }
 }
 
-.header-mainMenu {
+.header-mobileMenu {
   top: 80px;
   width: 100%;
   height: 0;
   z-index: 500;
   overflow: hidden;
   position: fixed;
-  box-shadow: 2px 2px 1px -1px rgba(0,0,0,0.2),2px 2px 3px 0px rgba(0,0,0,0.14),2px 1px 5px 0px rgba(0,0,0,0.12);
-  background-color: #180F49;
+  box-shadow: $header-box-shadow;
+  background-color: $color-purple-600;
+  transition: height 350ms ease-in-out, width 350ms ease-in-out, margin-left 350ms ease-out;
 
   &.invisible {
     visibility: hidden;
@@ -269,33 +373,49 @@
     }
   }
 
-  @media(min-width: 768px) {
-    transition: height 350ms ease-in-out;
-  }
-
   @media(max-width: 767px) {
     width: 100vw;
     height: calc(100vh - 80px);
     margin-left: -100vw;
-    transition: margin-left 350ms ease-out;
   }
 }
 
-.header-mainMenuContent {
-  margin: 24px 32px;
+.header-mobileMenuContent {
+  height: 100%;
   display: flex;
   justify-content: space-between;
-}
 
-.header-sitemapMenu {
-  display: flex;
-  flex-direction: column;
+  @media(max-width: 767px) {
+    flex-direction: column;
+    justify-content: flex-start;
+    position: relative;
+  }
 }
 
 .header-linksMenu {
-  display: flex;
-  align-items: flex-end;
-  flex-direction: column;
+  @media(max-width: 1199px) {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  @media (min-width: 768px) and (max-width: 1199px) {
+    text-align: end;
+  }
+  
+  @media(max-width: 767px) {
+    margin-bottom: 20px;
+  }
+}
+
+.header-backMenuItem {
+  @media(min-width: 768px) {
+    display: none;
+  }
+}
+
+.header-backButton {
+  height: 24px;
+  width: 21px;
 }
 
 .header-githubIcon {
