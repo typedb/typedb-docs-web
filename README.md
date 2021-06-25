@@ -92,10 +92,6 @@ The infrastructure package contains the nomad client machine definition (written
 
 **NOTE:** If, when upgrading the Docs styles (CSS/JS), the style changes do not appear in the live site, this may be caused by the Cloudflare cache. A person with admin permissions in Cloudflare can clear the cache to fix this issue.
 
-
-#### Operation
-
-
 #### Operation
 
 To ssh into the machine, install the `gcloud` CLI and use the following command.
