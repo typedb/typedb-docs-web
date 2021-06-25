@@ -89,3 +89,5 @@ The infrastructure package contains the nomad client machine definition (written
     ```
  
 3. Then follow the steps in the Release pipeline defined in grabl.
+
+**NOTE:** If, when upgrading the Docs styles (CSS/JS), the style changes do not appear in the live site, this may be caused by the Cloudflare cache. A person with admin permissions in Cloudflare can clear the cache to fix this issue.
