@@ -99,3 +99,5 @@ To ssh into the machine, install the `gcloud` CLI and use the following command.
 ```
 gcloud ssh web-docs
 ```
+
+To view the logs of the job, go to the nomad GUI and select the job `web-docs` and view its log there.
