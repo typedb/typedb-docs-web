@@ -2,8 +2,6 @@
 ---
 
 ready = ->
-    currentPage = window.location.pathname.replace('/docs/', '')
-    window.track_visit(currentPage)
     window.cookies_handleBanner()
     window.sidebar_retainScrollPosition()
     window.sidebar_retainActiveState()
@@ -19,11 +17,9 @@ ready = ->
     window.util_handleLinks()
     window.util_handleURLParams()
     window.util_escapeSpecialChars()
-    window.footer_fetchLatestVersion()
     window.syntax_applyHighlighting()
     window.syntax_generateGenericSpan()
     window.autoLinkKeywords_generate()
-
     window.fixedElement_githubEditBtn()
 
 handleBeforeTurbolinkVisit = ->
