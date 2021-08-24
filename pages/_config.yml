@@ -53,8 +53,8 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - docs/images/source/
-  - docs/03-client-api/references/
-  - docs/04-concept-api/references/
+  - docs/04-client-api/references/
+  - docs/05-concept-api/references/
   - docs/08-examples/migration-notes
   - node_modules
   - package-lock.json

@@ -4,8 +4,8 @@
 # The symlinks are placed under the `_data` directory
 
 # Example 1:
-# original yaml file located at `docs/03-client-api/references/answer.yml`
-# symlink gets created at `_data/03_client_api/references/answer.yml`
+# original yaml file located at `docs/04-client-api/references/answer.yml`
+# symlink gets created at `_data/04_client_api/references/answer.yml`
 
 # Example 2:
 # original yaml file located at `docs/views/sidebar.yml`
@@ -16,7 +16,7 @@ set -xe
 
 absolute_path_prefix=$(pwd)
 
-whitelist_dirs=(03_client_api 04_concept_api views) # only create symlinks if the file is contained within the given directory names
+whitelist_dirs=(04_client_api 05_concept_api views) # only create symlinks if the file is contained within the given directory names
 
 for original in $(find docs -name '*.yml'); do
     symlink=${original#"docs/"} # remove prefix
