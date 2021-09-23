@@ -13,7 +13,7 @@ dev/setup-resources.sh
 ## Run local dev server
 
 ```shell script
-bazel run //server:server-bin
+bazel run //server:server-bin -- --resources `pwd`/local/resources> --pages `pwd`/local/pages
 ```
 
 The following executable flags are **required**:

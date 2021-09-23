@@ -99,7 +99,7 @@ defaults:
 
 # these are defaults used for the frontmatter for these file types
 
-description: "A Distributed Knowledge Graph"
+description: "A Strongly Typed Database"
 # the description is used in the feed.xml file
 
 sitemap_url: https://docs.vaticle.com
