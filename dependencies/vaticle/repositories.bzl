@@ -4,12 +4,12 @@ def vaticle_dependencies():
     git_repository(
         name = "vaticle_dependencies",
         remote = "https://github.com/lolski/dependencies",
-        commit = "984f7070d55fce7c72585301ca4017bb7991e2c4", # sync-marker: do not remove this comment, this is used for sync-dependencies by @vaticle_dependencies
+        commit = "573fc693d11144db5fa54d579eddfd7140b61be2", # sync-marker: do not remove this comment, this is used for sync-dependencies by @vaticle_dependencies
     )
 
 def vaticle_web_main():
     git_repository(
         name = "vaticle_web_main",
         remote = "git@github.com:vaticle/web-main.git",
-        commit = "c2e554e5cf557fa081ec3660a9c9f357cb2c1a8f", # sync-marker: do not remove this comment, this is used for sync-dependencies by @vaticle_web_main
+        commit = "10dd017cdb31c5dab10836394402d6cd9e9208e9", # sync-marker: do not remove this comment, this is used for sync-dependencies by @vaticle_web_main
     )
