@@ -11,5 +11,5 @@ def vaticle_web_main():
     git_repository(
         name = "vaticle_web_main",
         remote = "git@github.com:vaticle/web-main.git",
-        commit = "10dd017cdb31c5dab10836394402d6cd9e9208e9", # sync-marker: do not remove this comment, this is used for sync-dependencies by @vaticle_web_main
+        commit = "0b2bf9501362c060318b2116005736d0a876c75d", # sync-marker: do not remove this comment, this is used for sync-dependencies by @vaticle_web_main
     )
