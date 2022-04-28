@@ -24,3 +24,10 @@ deploy_artifact(
     release = deployment['artifact.release'],
     snapshot = deployment['artifact.snapshot'],
 )
+
+filegroup(
+    name = "ci",
+    data = [
+        "@vaticle_dependencies//tool/release/version:bump",
+    ],
+)

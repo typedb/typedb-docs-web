@@ -11,6 +11,15 @@ vaticle_dependencies()
 load("@vaticle_dependencies//builder/java:deps.bzl", java_deps = "deps")
 java_deps()
 
+# Load //builder/python
+load("@vaticle_dependencies//builder/python:deps.bzl", python_deps = "deps")
+python_deps()
+
+# Load //tool/common
+load("@vaticle_dependencies//tool/common:deps.bzl", "vaticle_dependencies_ci_pip",
+    vaticle_dependencies_tool_maven_artifacts = "maven_artifacts")
+vaticle_dependencies_ci_pip()
+
 #####################################################################
 # Load @vaticle_bazel_distribution from (@vaticle_dependencies) #
 #####################################################################
@@ -77,5 +86,6 @@ bind(
 ###############
 load("@vaticle_dependencies//library/maven:rules.bzl", "maven")
 maven(
-    vaticle_web_docs_artifacts
+    vaticle_web_docs_artifacts +
+    vaticle_dependencies_tool_maven_artifacts
 )
