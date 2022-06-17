@@ -68,6 +68,8 @@ For pkg-config to find openssl@3 you may need to set:
 ```
 
 ## Symlinking YAML files of `/docs` to `/_data`
+Make sure you've cloned the `docs` submodule of web-docs as well by calling `git submodule update --init`.
+
 Given that Jekyll can only read data from files placed under `_data` and we'd like these files to be defined within the `docs` submodule,
 we need to run the `symlink_creator.sh` to create symlinks in `_data`.
 
