@@ -5,9 +5,9 @@
 ## Ruby
 1. Install [Homebrew](https://brew.sh/)
 2. Install `gpg`: `brew install gnupg`
-3. Install the mpapis public key (required for installing RVM): `gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3`. Alternatively, try [these instructions](https://rvm.io/rvm/security#alternatives).
+3. Install the mpapis public key (required for installing RVM): `gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 && gpg --keyserver hkp://keys.gnupg.net --recv-keys 7D2BAF1CF37B13E2069D6956105BD0E739499BDB`. Alternatively, try [these instructions](https://rvm.io/rvm/security#alternatives).
 4. Install RVM: `\curl -sSL https://get.rvm.io | bash -s stable --ruby`
-5. Install the version of ruby specific in [`Gemfile`](Gemfile) using [RVM](https://rvm.io/rvm/install): `rvm install x.x.x`
+5. Install the version of ruby specified at the bottom of [`Gemfile.lock`](Gemfile.lock) using [RVM](https://rvm.io/rvm/install): `rvm install x.x.x`
 6. Use the recently installed version of ruby as default: `rvm use x.x.x --default`
 
 ## Gems
