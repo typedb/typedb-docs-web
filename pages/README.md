@@ -26,6 +26,10 @@ $ gem install bundler
 $ bundle install
 ```
 
+## Node.js
+
+A javascript runtime (such as [Node.js](https://nodejs.org/en/download/)) is required to use `jekyll build`.
+
 ### Troubleshooting
 
 #### Any error
