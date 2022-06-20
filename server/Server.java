@@ -4,6 +4,7 @@ import com.vaticle.web.main.server.CommandLineOptions;
 import com.vaticle.web.main.server.FileController;
 import com.vaticle.web.main.server.Resources;
 import com.vaticle.web.main.server.ServerProperties;
+import controllers.Default;
 import play.Application;
 import play.ApplicationLoader;
 import play.BuiltInComponentsFromContext;
@@ -61,10 +62,11 @@ public class Server {
 
         @Override
         public Router router() {
+            Default defaultController = new Default();
             String pagesRoot = System.getProperty("pages.root");
             if (pagesRoot == null) pagesRoot = ".";
             FileController pages = new FileController(Paths.get(pagesRoot).toAbsolutePath());
-            return new Routes(scalaHttpErrorHandler(), pages).asJava();
+            return new Routes(scalaHttpErrorHandler(), defaultController, pages).asJava();
         }
     }
 }

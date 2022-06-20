@@ -1,1 +1,7 @@
+GET     /docs/workbase/overview           controllers.Default.redirect(to = "/docs/studio/overview")
+GET     /docs/workbase/connection         controllers.Default.redirect(to = "/docs/studio/overview")
+GET     /docs/workbase/visualisation      controllers.Default.redirect(to = "/docs/studio/overview")
+GET     /docs/workbase/investigation      controllers.Default.redirect(to = "/docs/studio/overview")
+GET     /docs/workbase/schema-designer    controllers.Default.redirect(to = "/docs/studio/overview")
+
 GET     /$file<.*>     com.vaticle.web.main.server.FileController.serve(file, default="index.html")
