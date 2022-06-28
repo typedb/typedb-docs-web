@@ -45,7 +45,7 @@ $submenu-width-desktop: 186px;
     outline: none;
   }
 
-  @media(max-width: 1199px) {
+  @media(max-width: 1359px) {
     margin: auto 17px auto 32px;
     justify-content: space-between;
   }
@@ -55,7 +55,7 @@ $submenu-width-desktop: 186px;
   display: flex;
   align-items: center;
 
-  @media(min-width: 1200px) {
+  @media(min-width: 1360px) {
     padding: 0 20px;
   }
 }
@@ -73,13 +73,13 @@ $submenu-width-desktop: 186px;
 }
 
 .header-showDesktop {
-  @media(max-width: 1199px) {
+  @media(max-width: 1359px) {
     display: none !important;
   }
 }
 
 .header-hideDesktop {
-  @media(min-width: 1200px) {
+  @media(min-width: 1360px) {
     display: none !important;
   }
 }
@@ -90,11 +90,11 @@ $submenu-width-desktop: 186px;
   padding: 0;
   list-style: none;
 
-  @media(max-width: 1199px) {
+  @media(max-width: 1359px) {
     flex-direction: column;
   }
 
-  @media (min-width: 768px) and (max-width: 1199px) {
+  @media (min-width: 768px) and (max-width: 1359px) {
     position: relative;
     border-right: 1px solid $border-black;
     width: $menu-width-tablet;
@@ -117,7 +117,7 @@ $submenu-width-desktop: 186px;
     transition: background-color 150ms ease;
     cursor: pointer;
 
-    @media(max-width: 1199px) {
+    @media(max-width: 1359px) {
       padding: 0 24px;
     }
 
@@ -136,7 +136,7 @@ $submenu-width-desktop: 186px;
     }
 
     &:focus:not(.header-noHover) {
-      @media(max-width: 1199px) {
+      @media(max-width: 1359px) {
         background-color: $color-purple-400;
 
         > ul {
@@ -160,7 +160,7 @@ $submenu-width-desktop: 186px;
       padding: 0;
       list-style: none;
 
-      @media(min-width: 1200px) {
+      @media(min-width: 1360px) {
         left: -1px;
         border: 1px solid $border-black;
         box-shadow: $header-box-shadow;
@@ -171,13 +171,13 @@ $submenu-width-desktop: 186px;
         display: none;
       }
 
-      @media(max-width: 1199px) {
+      @media(max-width: 1359px) {
         right: 0;
         transform: translateX(100%);
         height: 100%;
       }
 
-      @media (min-width: 768px) and (max-width: 1199px) {
+      @media (min-width: 768px) and (max-width: 1359px) {
         left: 0;
         top: 0;
         border-right: 1px solid $border-black;
@@ -196,7 +196,7 @@ $submenu-width-desktop: 186px;
     line-height: 40px;
     font-size: 16px;
 
-    @media(max-width: 1199px) {
+    @media(max-width: 1359px) {
       line-height: 50px;
       font-size: 18px;
     }
@@ -206,7 +206,7 @@ $submenu-width-desktop: 186px;
   > li {
     font-size: 18px;
 
-    @media(min-width: 1200px) {
+    @media(min-width: 1360px) {
       line-height: 80px;
       position: relative;
     }
@@ -241,7 +241,7 @@ a.header-vaticleSecondaryButton {
 .header-download {
   padding: 0 20px;
 
-  @media(max-width: 1199px) {
+  @media(max-width: 1359px) {
     order: 99;
     padding: 10px 24px;
   }
@@ -261,11 +261,11 @@ a.header-vaticleSecondaryButton {
 }
 
 .header-externalLinksGithub {
-  @media(min-width: 1200px) {
+  @media(min-width: 1360px) {
     height: 80px;
   }
 
-  @media(max-width: 1199px) {
+  @media(max-width: 1359px) {
     padding-top: 8px;
   }
 
@@ -393,12 +393,12 @@ a.header-vaticleSecondaryButton {
 }
 
 .header-linksMenu {
-  @media(max-width: 1199px) {
+  @media(max-width: 1359px) {
     display: flex;
     flex-direction: column;
   }
   
-  @media (min-width: 768px) and (max-width: 1199px) {
+  @media (min-width: 768px) and (max-width: 1359px) {
     text-align: end;
   }
   
