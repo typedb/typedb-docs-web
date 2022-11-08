@@ -33,7 +33,7 @@ The infrastructure package contains the nomad client machine definition (written
    vault kv put web-docs/application-secret value=$(cat application-secret)
     ```
  
-3. Then follow the steps in the Release pipeline defined in grabl.
+3. Then follow the steps in the Release pipeline defined in Factory.
 
 **NOTE:** If, when upgrading the Docs styles (CSS/JS), the style changes do not appear in the live site, this may be caused by the Cloudflare cache. A person with admin permissions in Cloudflare can clear the cache to fix this issue.
 
