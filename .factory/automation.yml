@@ -19,6 +19,7 @@ release:
       command: |
         git submodule update --init --recursive
         pushd pages && bash symlink_creator.sh && bundle install && popd
+        sudo ln -s /usr/bin/python3 /usr/bin/python
         export DEPLOY_ARTIFACT_USERNAME=$REPO_VATICLE_USERNAME
         export DEPLOY_ARTIFACT_PASSWORD=$REPO_VATICLE_PASSWORD
         bazel run --define version=$(cat VERSION) //:deploy-web-docs --spawn_strategy=local -- release
