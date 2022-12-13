@@ -16,7 +16,7 @@
           alias: 'string'
       },
       keyword: {
-          pattern: /((?:(?![-a-zA-Z_0-9]|\$).)|^|\s)(as|sub|sub!|has|key|abstract|relates|plays|datatype|boolean|double|long|string|date|match|isa|isa!|contains|regex|val|via|id|label|define|undefine|get|insert|delete|aggregate|compute|std|median|mean|max|min|sum|count|group|path|centrality|cluster|degree|k-core|where|from|to|in|of|limit|offset|sort|asc|desc|when|then|commit)(?![-a-zA-Z_0-9])/,
+          pattern: /((?:(?![-a-zA-Z_0-9]|\$).)|^|\s)(as|sub|sub!|has|owns|@key|abstract|relates|plays|boolean|double|long|string|date|value|match|is|isa|isa!|contains|regex|val|iid|label|define|undefine|get|insert|delete|std|median|mean|max|min|sum|count|group|limit|offset|sort|asc|desc|when|then|commit)(?![-a-zA-Z_0-9])/,
           alias: 'typeql-keyword',
           lookbehind: true
       },
