@@ -1,36 +1,47 @@
+# Documentation build guide
 
+To be able to build the documentation you need to set up the proper environment:
 
-# Requirements
+1. [Install a compatible version of Ruby](#install-ruby)
+2. [Install Ruby gems](#install-ruby-gems)
+    - [Troubleshooting](#troubleshooting-bundle-installation)
+3. [Install Node.js](#install-nodejs)
+4. [Symlinking YAML files](#symlinking-yaml-files-of-docs-to-_data)
+
+After you have set up the environment you can build the Documentation:
+
+1. [Build](#build-documentation)
+2. [Clean up after previous build operation](#clean-up)
+3. [Live web-server](#live-web-server)
+   - [Troubleshooting web server](#troubleshooting-web-server)
 
 ## Install Ruby
-1. Install [Homebrew](https://brew.sh/)
-2. Install `gpg`: `brew install gnupg`
-3. Install the mpapis public key (required for installing RVM): `gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 && gpg --keyserver hkp://keys.gnupg.net --recv-keys 7D2BAF1CF37B13E2069D6956105BD0E739499BDB`. Alternatively, try [these instructions](https://rvm.io/rvm/security#alternatives).
-4. Install RVM: `\curl -sSL https://get.rvm.io | bash -s stable --ruby`
-5. Install the version of ruby specified at the bottom of [`Gemfile.lock`](Gemfile.lock) using [RVM](https://rvm.io/rvm/install): `rvm install x.x.x`
-6. Use the recently installed version of ruby as default: `rvm use x.x.x --default`
+1. Clone this repository to your local machine: `git clone git@github.com:vaticle/web-docs.git --recursive`. The `--recursive` option needed to include the docs content as a submodule in the `pages/docs` directory.
+2. Install [Homebrew](https://brew.sh/) if you don't have it already.
+3. Install `gpg`: `brew install gnupg`
+4. Install the mpapis public key (required for installing RVM): `gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 && gpg --keyserver hkp://keys.gnupg.net --recv-keys 7D2BAF1CF37B13E2069D6956105BD0E739499BDB`. Alternatively, try [these instructions](https://rvm.io/rvm/security#alternatives).
+5. Install RVM: `\curl -sSL https://get.rvm.io | bash -s stable --ruby`
+6. Using RVM, install the version of ruby specified at the bottom of [`Gemfile.lock`](Gemfile.lock), or the closest available version: `rvm install x.x.x`, where `x.x.x` — is the version, available for installation, closest to the mentioned in the file, for example: `2.3.8`. 
+7. Use the recently installed version of ruby as default: `rvm use x.x.x --default`
 
 ## Install Ruby Gems
 
-**Arch Linux**
+Navigate your CLI terminal to the pages directory inside the cloned web-docs repository: `cd web-docs/pages`. Then proceed to install Ruby Gems by executing following commands.
+
+### Arch Linux
 
 ```
 $ yaourt -S ruby-bundler
 $ bundle install
 ```
-
-**macOS**
+### MacOS
 
 ```
 $ gem install bundler
 $ bundle install
 ```
 
-## Install Node.js
-
-A javascript runtime (such as [Node.js](https://nodejs.org/en/download/)) is required to use `jekyll build`.
-
-### Troubleshooting 
+### Troubleshooting bundle installation
 
 #### Any error
 
@@ -54,7 +65,7 @@ brew info openssl
 Follow the instructions in the output of `brew info openssl`, which at the time of writing reads:
 ```
 openssl@3 is keg-only, which means it was not symlinked into /usr/local,
-because macOS provides LibreSSL.
+because MacOS provides LibreSSL.
 
 If you need to have openssl@3 first in your PATH, run:
   echo 'export PATH="/usr/local/opt/openssl@3/bin:$PATH"' >> ~/.zshrc
@@ -67,36 +78,26 @@ For pkg-config to find openssl@3 you may need to set:
   export PKG_CONFIG_PATH="/usr/local/opt/openssl@3/lib/pkgconfig"
 ```
 
+## Install Node.js
+
+A javascript runtime (such as [Node.js](https://nodejs.org/en/download/)) is required to use 
+Jekyll build.
+
+Install it: `brew install node`.
+
 ## Symlinking YAML files of `/docs` to `/_data`
+
 Make sure you've cloned the `docs` submodule of web-docs as well by calling `git submodule update --init`.
 
-Given that Jekyll can only read data from files placed under `_data` and we'd like these files to be defined within the `docs` submodule,
-we need to run the `symlink_creator.sh` to create symlinks in `_data`.
+Given that Jekyll can only read data from files placed under `_data` and we'd like these files to be defined within the `docs` submodule, we need to run the `symlink_creator.sh` to create symlinks in `_data`. This script is located in the `pages` directory of the repository. You can run it by the following command.
 
 ```
 sh symlink_creator.sh
 ```
 
-# Local development server
+## Build documentation web portal
 
-```
-$ jekyll serve --trace --livereload
-```
-
-This starts a WEBrick web server on 127.0.0.1:4005. Same command with `-H 0.0.0.0` and `-P $PORT` starts the server in production.
-
-You can now view the documentation by navigating your web browser to `http://127.0.0.1:4005`.
-
-### Troubleshooting
-
-If `jekyll serve --trace --livereload` gives the following error:
-```
-symbol not found in flat namespace '_SSL_get1_peer_certificate'
-```
-Simply run `jekyll serve` instead.
-
-
-# Build
+### Build documentation
 
 ```
 $ jekyll build
@@ -104,10 +105,32 @@ $ jekyll build
 
 Running this command parses all markdown files in `docs/` to HTML and places them under `_site/docs/` directory. Any other files or folders are also moved into `_site/` unless explicitly excluded in [`_config.yml`](_config.yml).
 
-## Clean
+### Clean up
 
 ```
 $ jekyll clean
 ```
 
 Running this command removes `_site`, `.jekyll-metadata` and `.sass-cache`.
+
+### Live web server
+
+The following command starts a WEBrick web server.
+
+```
+$ jekyll serve --trace --livereload
+```
+
+You can now view the documentation by navigating your web browser to `http://127.0.0.1:4005`.
+
+Same command with `-H 0.0.0.0` and `-P $PORT` options starts the server in production.
+
+#### Troubleshooting web server
+
+If `jekyll serve --trace --livereload` gives the following error:
+
+```
+symbol not found in flat namespace '_SSL_get1_peer_certificate'
+```
+
+or any other SSL error, simply run `jekyll serve` instead.
