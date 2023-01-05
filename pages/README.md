@@ -2,7 +2,7 @@
 
 To be able to build the documentation you need to set up the proper environment:
 
-1. [Install a compatible version of Ruby](#install-ruby)
+1. [Install Ruby](#install-ruby)
 2. [Install Ruby gems](#install-ruby-gems)
     - [Troubleshooting](#troubleshooting-bundle-installation)
 3. [Install Node.js](#install-nodejs)
@@ -11,9 +11,9 @@ To be able to build the documentation you need to set up the proper environment:
 After you have set up the environment you can build the Documentation:
 
 1. [Build](#build-documentation)
-2. [Clean up after previous build operation](#clean-up)
-3. [Live web-server](#live-web-server)
+2. [Live web-server](#live-web-server)
    - [Troubleshooting web server](#troubleshooting-web-server)
+3. [Clean up after previous build](#clean-up)
 
 ## Install Ruby
 1. Clone this repository to your local machine: `git clone git@github.com:vaticle/web-docs.git --recursive`. The `--recursive` option needed to include the docs content as a submodule in the `pages/docs` directory.
