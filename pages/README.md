@@ -21,8 +21,8 @@ After you have set up the environment you can build the Documentation:
 3. Install `gpg`: `brew install gnupg`
 4. Install the mpapis public key (required for installing RVM): `gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 && gpg --keyserver hkp://keys.gnupg.net --recv-keys 7D2BAF1CF37B13E2069D6956105BD0E739499BDB`. Alternatively, try [these instructions](https://rvm.io/rvm/security#alternatives).
 5. Install RVM: `\curl -sSL https://get.rvm.io | bash -s stable --ruby`
-6. Using RVM, install the version of ruby specified at the bottom of [`Gemfile.lock`](Gemfile.lock), or the closest available version: `rvm install x.x.x`, where `x.x.x` — is the version, available for installation, closest to the mentioned in the file, for example: `2.3.8`. 
-7. Use the recently installed version of ruby as default: `rvm use x.x.x --default`
+6. Using RVM, install ruby 3.0.0: `rvm install 3.0.0`. 
+7. Use the recently installed version of ruby as default: `rvm use 3.0.0 --default`
 
 ## Install Ruby Gems
 
@@ -95,6 +95,8 @@ Given that Jekyll can only read data from files placed under `_data` and we'd li
 sh symlink_creator.sh
 ```
 
+After that, installation is complete.
+
 ## Build documentation web portal
 
 ### Build documentation
@@ -105,17 +107,9 @@ $ jekyll build
 
 Running this command parses all markdown files in `docs/` to HTML and places them under `_site/docs/` directory. Any other files or folders are also moved into `_site/` unless explicitly excluded in [`_config.yml`](_config.yml).
 
-### Clean up
-
-```
-$ jekyll clean
-```
-
-Running this command removes `_site`, `.jekyll-metadata` and `.sass-cache`.
-
 ### Live web server
 
-The following command starts a WEBrick web server.
+The following command builds documentation and starts a WEBrick web server with the resulted web portal.
 
 ```
 $ jekyll serve --trace --livereload
@@ -134,3 +128,11 @@ symbol not found in flat namespace '_SSL_get1_peer_certificate'
 ```
 
 or any other SSL error, simply run `jekyll serve` instead.
+
+### Clean up
+
+```
+$ jekyll clean
+```
+
+Running this command removes `_site`, `.jekyll-metadata` and `.sass-cache`.
