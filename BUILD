@@ -7,18 +7,41 @@ WEB_DOCS_DIST_ADDITIONAL_FILES = {
     "//server:server-bin_deploy.jar": "server.jar",
 }
 
+WEB_DOCS_DEV_DIST_ADDITIONAL_FILES = {
+    "//server/resources:conf/web-docs-dev.properties": "resources/conf/web-docs.properties",
+    "//server:server-bin_deploy.jar": "server.jar",
+}
+
 assemble_targz(
     name = "web-docs",
     additional_files = WEB_DOCS_DIST_ADDITIONAL_FILES,
     targets = [
-        "//pages:pages",
+        "//pages",
     ],
     output_filename = "web-docs"
+)
+
+assemble_targz(
+    name = "web-docs-dev",
+    additional_files = WEB_DOCS_DEV_DIST_ADDITIONAL_FILES,
+    targets = [
+        "//pages",
+    ],
+    output_filename = "web-docs-dev"
 )
 
 deploy_artifact(
     name = "deploy-web-docs",
     target = ":web-docs",
+    artifact_group = "vaticle_web_docs",
+    artifact_name = "web-docs-{version}.tar.gz",
+    release = deployment['artifact.release'],
+    snapshot = deployment['artifact.snapshot'],
+)
+
+deploy_artifact(
+    name = "deploy-web-docs-dev",
+    target = ":web-docs-dev",
     artifact_group = "vaticle_web_docs",
     artifact_name = "web-docs-{version}.tar.gz",
     release = deployment['artifact.release'],

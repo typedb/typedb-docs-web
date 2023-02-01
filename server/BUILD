@@ -1,6 +1,27 @@
 load("@io_bazel_rules_scala//scala:scala.bzl", "scala_library", "scala_binary", "scala_test")
 load("@io_bazel_rules_play_routes//play-routes:play-routes.bzl", "play_routes")
 
+SERVER_DEPS = [
+    "@vaticle_web_main//server:server-misc",
+    "@vaticle_web_main//server:file-controller",
+    "@vaticle_web_main//server/api",
+    ":server-routes-lib",
+    "@maven//:com_typesafe_akka_akka_actor_typed_2_12",
+    "@maven//:com_typesafe_akka_akka_stream_2_12",
+    "@maven//:com_typesafe_play_filters_helpers_2_12",
+    "@maven//:com_typesafe_play_play_2_12",
+    "@maven//:com_typesafe_play_play_server_2_12",
+    "@maven//:info_picocli_picocli",
+    "@maven//:org_jetbrains_kotlin_kotlin_stdlib_jdk7",
+    "@maven//:org_slf4j_slf4j_api",
+]
+
+SERVER_RUNTIME_DEPS = [
+    "@maven//:com_typesafe_play_play_akka_http_server_2_12",
+    "@maven//:com_typesafe_play_build_link",
+    "@maven//:ch_qos_logback_logback_classic",
+]
+
 java_binary(
     name = "server-bin",
     main_class = "com.vaticle.web.docs.server.Server",
@@ -11,29 +32,12 @@ java_binary(
 java_library(
     name = "server-lib",
     srcs = ["Server.java"],
-    deps = [
-        "@vaticle_web_main//server:server-misc",
-        "@vaticle_web_main//server:file-controller",
-        "@vaticle_web_main//server/api",
-        ":server-routes-lib",
-        "@maven//:com_typesafe_akka_akka_actor_typed_2_12",
-        "@maven//:com_typesafe_akka_akka_stream_2_12",
-        "@maven//:com_typesafe_play_filters_helpers_2_12",
-        "@maven//:com_typesafe_play_play_2_12",
-        "@maven//:com_typesafe_play_play_server_2_12",
-        "@maven//:info_picocli_picocli",
-        "@maven//:org_jetbrains_kotlin_kotlin_stdlib_jdk7",
-        "@maven//:org_slf4j_slf4j_api",
-    ],
+    deps = SERVER_DEPS,
     resources = [
         "application.conf",
     ],
     resource_strip_prefix = "server",
-    runtime_deps = [
-        "@maven//:com_typesafe_play_play_akka_http_server_2_12",
-        "@maven//:com_typesafe_play_build_link",
-        "@maven//:ch_qos_logback_logback_classic",
-    ],
+    runtime_deps = SERVER_RUNTIME_DEPS,
 )
 
 play_routes(

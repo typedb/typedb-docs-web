@@ -65,8 +65,14 @@ public class Server {
             Default defaultController = new Default();
             String pagesRoot = System.getProperty("pages.root");
             if (pagesRoot == null) pagesRoot = ".";
-            FileController pages = new FileController(Paths.get(pagesRoot).toAbsolutePath());
-            return new Routes(scalaHttpErrorHandler(), defaultController, pages).asJava();
+            final String robotsTxt;
+            if (System.getProperty("environment").equals("prod")) {
+                robotsTxt = "# This is a blank robots.txt file. All robots may freely crawl this site. I, for one, welcome our new robot overlords. Beep boop, beep boop.";
+            } else {
+                robotsTxt = "# Block all search engine crawlers\nUser-agent: *\nDisallow: /";
+            }
+            FileController pages = new FileController(Paths.get(pagesRoot).toAbsolutePath(), robotsTxt);
+            return new Routes(scalaHttpErrorHandler(), pages, defaultController).asJava();
         }
     }
 }
