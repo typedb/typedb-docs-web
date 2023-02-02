@@ -1,4 +1,4 @@
-job "web-docs-staging" {
+job "web-docs" {
   region = "uk"
 
   datacenters = ["uk"]
@@ -7,10 +7,10 @@ job "web-docs-staging" {
 
   constraint {
     attribute = "${node.class}"
-    value     = "web-docs-staging"
+    value     = "web-docs"
   }
 
-  group "web-docs-staging" {
+  group "web-docs" {
     count = 1
 
     network {
@@ -22,7 +22,7 @@ job "web-docs-staging" {
       }
     }
 
-    task "web-docs-staging" {
+    task "web-docs" {
       driver = "java"
 
       meta {
