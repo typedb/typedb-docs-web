@@ -16,6 +16,11 @@ resource "google_compute_address" "web_docs_static_ip" {
   name = "web-docs-static-ip"
 }
 
+# WARNING: Destroy this resource will not guarantee terraform allocate the same IP address after apply
+resource "google_compute_address" "web_docs_staging_static_ip" {
+  name = "web-docs-staging-static-ip"
+}
+
 resource "google_compute_firewall" "web_docs_firewall" {
   name    = "web-docs-firewall"
   network = "default"
@@ -25,7 +30,8 @@ resource "google_compute_firewall" "web_docs_firewall" {
     ports    = ["443"]
   }
 
-  target_tags = ["web-docs"]
+  source_ranges = ["0.0.0.0/0"]
+  target_tags = ["web-docs", "web-docs-staging"]
 }
 
 data "http" "startup_script_template" {
@@ -36,6 +42,15 @@ data "template_file" "web_docs_startup_script" {
   template = data.http.startup_script_template.body
   vars = {
     APPLICATION = "web-docs"
+    SECRET = "web"
+    EXTRA_SCRIPT = ""
+  }
+}
+
+data "template_file" "web_docs_staging_startup_script" {
+  template = data.http.startup_script_template.body
+  vars = {
+    APPLICATION = "web-docs-staging"
     SECRET = "web"
     EXTRA_SCRIPT = ""
   }
@@ -72,4 +87,37 @@ resource "google_compute_instance" "web_docs" {
   tags = ["nomad-client", "web-docs"]
 
   metadata_startup_script = data.template_file.web_docs_startup_script.rendered
+}
+
+resource "google_compute_instance" "web_docs_staging" {
+  name                      = "web-docs-staging"
+  machine_type              = "n1-standard-2"
+
+  boot_disk {
+    initialize_params {
+      image = "vaticle-web-prod/nomad-client-77101614b940b872a97efa8ecca7783b2e4471a2"
+    }
+    device_name = "boot"
+  }
+
+  service_account {
+    email = "grabl-prod@vaticle-web-prod.iam.gserviceaccount.com"
+    scopes = [
+      "https://www.googleapis.com/auth/logging.write",
+      "https://www.googleapis.com/auth/monitoring",
+      "https://www.googleapis.com/auth/cloud-platform",
+    ]
+  }
+
+  network_interface {
+    network = "default"
+
+    access_config {
+      nat_ip = google_compute_address.web_docs_staging_static_ip.address
+    }
+  }
+
+  tags = ["nomad-client", "web-docs-staging"]
+
+  metadata_startup_script = data.template_file.web_docs_staging_startup_script.rendered
 }
