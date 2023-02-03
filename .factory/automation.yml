@@ -13,6 +13,9 @@ build:
         pushd pages && bash symlink_creator.sh && bundle install && popd
         bazel build //... --spawn_strategy=local
     deploy-artifact-snapshot:
+      filter:
+        owner: vaticle
+        branch: [master, development]
       image: vaticle-ubuntu-20.04
       command: |
         git submodule update --init --recursive
@@ -22,6 +25,9 @@ build:
         export DEPLOY_ARTIFACT_PASSWORD=$REPO_VATICLE_PASSWORD
         bazel run --define version=$(git rev-parse HEAD) //:deploy-web-docs-dev --spawn_strategy=local -- snapshot
     deploy-nomad-staging:
+      filter:
+        owner: vaticle
+        branch: [master, development]
       image: vaticle-ubuntu-20.04
       dependencies: [deploy-artifact-snapshot]
       command: |
@@ -30,6 +36,9 @@ build:
         VERSION=$(git rev-parse HEAD) COMMIT=$(git rev-parse HEAD) envsubst <infrastructure/web-docs-staging.nomad | nomad job run -
 
 release:
+  filter:
+    owner: vaticle
+    branch: master
   deployment:
     deploy-artifact-release:
       image: vaticle-ubuntu-20.04
