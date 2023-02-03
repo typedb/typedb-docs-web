@@ -30,13 +30,13 @@ job "web-docs-staging" {
       }
 
       config {
-        jar_path = "local/web-docs-0.0.0-${COMMIT}/server.jar"
+        jar_path = "local/web-docs-dev-${COMMIT}/server.jar"
         jvm_options = ["-Dpidfile.path=/dev/null"]
-        args = ["--resources=local/web-docs-0.0.0-${COMMIT}/resources", "--pages=local/web-docs-0.0.0-${COMMIT}/_site"]
+        args = ["--resources=local/web-docs-dev-${COMMIT}/resources", "--pages=local/web-docs-dev-${COMMIT}/_site"]
       }
 
       artifact {
-        source = "https://repo.vaticle.com/repository/artifact-snapshot/vaticle_web_docs/${COMMIT}/web-docs-0.0.0-${COMMIT}.tar.gz"
+        source = "https://repo.vaticle.com/repository/artifact-snapshot/vaticle_web_docs/${COMMIT}/web-docs-${COMMIT}.tar.gz"
       }
 
       template {
