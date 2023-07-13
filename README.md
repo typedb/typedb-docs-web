@@ -12,7 +12,7 @@ These instructions are for compiling the docs site locally.
 
 ### Prerequisites
 
-1. The `content` submodule must be fetched.
+1. The `content` submodule must be fetched. If it's the first time fetching it, use `git submodule update --init --recursive`. Otherwise, omit the `--init` flag.
 2. Install Node.js v18, preferably through [NVM (Node Version Manager)](https://github.com/nvm-sh/nvm): `nvm install 18`, or `nvm use 18` if already installed
 3. In the project root directory run `npm i` to install Antora, Gulp and all required `node_modules`
 
