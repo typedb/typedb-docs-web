@@ -3,14 +3,14 @@ site:
   start_page: typedb:ROOT:overview.adoc
 content:
   sources:
-    - url: ..
-      start_path: docs/content/typedb-src
+    - url: .
+      start_path: content/typedb-src
       branches: HEAD
-    - url: ..
-      start_path: docs/content/clients-src
+    - url: .
+      start_path: content/clients-src
       branches: HEAD
-    - url: ..
-      start_path: docs/content/typeql-src
+    - url: .
+      start_path: content/typeql-src
       branches: HEAD
 asciidoc:
   attributes:

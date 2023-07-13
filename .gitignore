@@ -10,6 +10,8 @@
 bazel-*
 
 local
+dist
+node_modules
 
 .terraform*
 
