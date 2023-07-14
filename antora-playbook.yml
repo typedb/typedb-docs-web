@@ -1,6 +1,9 @@
 site:
   title: TypeDB Documentation portal
   start_page: typedb:ROOT:overview.adoc
+  robots: allow
+  keys:
+    google_analytics: G-SNVZCNLJ9R
 content:
   sources:
     - url: .
