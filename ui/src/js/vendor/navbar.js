@@ -4,19 +4,19 @@ let hoveredMenuItemIndex = undefined;
 ;(function () {
   let mobileMenuBtn = document.querySelector("button[_ngcontent-bfa-c139]")
   mobileMenuBtn.addEventListener('click', function(e){
-    console.log("e",e)
     e.target.closest("button[_ngcontent-bfa-c139]").classList.toggle("tb-opened");
     let topbarMenuMobile = document.querySelector("td-topbar-menu-mobile[_ngcontent-bfa-c139]")
     topbarMenuMobile.toggleAttribute("hidden");
 
 
     let atagExpandableList = document.querySelectorAll("a[_ngcontent-bfa-c141]") || []
-    console.log("atagExpandable0", atagExpandableList)
     if(atagExpandableList.length>0){
       for(let atag of atagExpandableList){
         atag.addEventListener('click', function(event){
-          event.target.classList.toggle("tm-expanded");
-          let parent = event.target.parentNode
+          let parent = event.target.closest('li')
+          let aEle = parent.querySelector('a[_ngcontent-bfa-c141]')
+          aEle.classList.toggle("tm-expanded");
+
           let submenu = parent.querySelector("td-topbar-menu-panel-mobile[_ngcontent-bfa-c141]")
           submenu.toggleAttribute("hidden");
 
@@ -31,7 +31,7 @@ let hoveredMenuItemIndex = undefined;
 })()
 
 function updateMenuPanelVisibility() {
-    for (const i of [1, 2, 3]) {
+    for (const i of [1, 2, 3,4]) {
         if ([hoveredMenuItemIndex, hoveredMenuPanelIndex].includes(i)) {
             document.getElementById(`topbarMenuPanel${i}`).removeAttribute('hidden');
         } else {
@@ -40,7 +40,7 @@ function updateMenuPanelVisibility() {
     }
 }
 
-for (const i of [1, 2, 3]) {
+for (const i of [1, 2, 3,4]) {
     document.getElementById(`topbarMenuItem${i}`).addEventListener('mouseenter', () => {
         hoveredMenuItemIndex = i;
         hoveredMenuPanelIndex = undefined;
