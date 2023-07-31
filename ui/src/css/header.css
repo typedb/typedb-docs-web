@@ -584,7 +584,6 @@ td-topbar-menu-mobile {
   li[_ngcontent-bfa-c141]
   > a.tm-expanded[_ngcontent-bfa-c141] {
   color: #02dac9;
-  text-decoration: underline;
   font-weight: 600;
 }
 @media (max-width: 767px) {
