@@ -6,16 +6,16 @@ site:
     google_analytics: G-SNVZCNLJ9R
 content:
   sources:
-    - url: .
+    - url: ..
       start_path: docs/content/typedb-src
       branches: HEAD
-    - url: .
+    - url: ..
       start_path: docs/content/clients-src
       branches: HEAD
-    - url: .
+    - url: ..
       start_path: docs/content/typeql-src
       branches: HEAD
-    - url: .
+    - url: ..
       start_path: docs/content/cloud-src
       branches: HEAD
 asciidoc:
