@@ -3,8 +3,8 @@
     "scripts": {
         "postinstall": "../install-additional-deps.sh",
         "build": "../build.sh",
-        "build-ci-dev": "../build.sh https://development.typedb.com/docs/",
-        "build-ci-prod": "../build.sh https://typedb.com/docs/"
+        "build-ci-dev": "../build.sh /docs",
+        "build-ci-prod": "../build.sh /docs"
     },
     "devDependencies": {
         "@antora/cli": "3.1",
