@@ -2,7 +2,7 @@
     "name": "typedb-web-docs",
     "scripts": {
         "postinstall": "../install-additional-deps.sh",
-        "build": "../build.sh",
+        "build": "URL=/docs ../build.sh",
         "build-ci-dev": "../build.sh /docs",
         "build-ci-prod": "../build.sh /docs"
     },
