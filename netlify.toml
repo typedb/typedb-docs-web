@@ -1,8 +1,2 @@
 [build]
 ignore = "/bin/false"
-
-#[context.master]
-#command = "npm run build-ci-prod"
-#
-#[context.development]
-#command = "npm run build-ci-dev"

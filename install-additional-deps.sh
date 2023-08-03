@@ -1,1 +1,1 @@
-cd ../ui && npm i -g gulp && npm i
+cd ui && npm i -g gulp && npm i
