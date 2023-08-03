@@ -7,8 +7,8 @@
         "build-ci-prod": "../build.sh /docs"
     },
     "devDependencies": {
-        "@antora/cli": "3.1",
-        "@antora/site-generator": "3.1",
+        "@antora/cli": "3.1.4",
+        "@antora/site-generator": "3.1.4",
         "@asciidoctor/tabs": "1.0.0-beta.3"
     },
     "engines": {
