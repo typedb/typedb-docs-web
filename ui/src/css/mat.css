@@ -274,8 +274,38 @@
         line-height: 24px;
     }
 }
+.text-16-28 {
+  font-size: 16px;
+  line-height: 28px;
+}
+@media (max-width: 1199px) {
+  .text-16-28-tablet {
+      font-size: 16px;
+      line-height: 28px;
+  }
+}
+@media (max-width: 767px) {
+  .text-16-28-mobile {
+      font-size: 16px;
+      line-height: 28px;
+  }
+}
+.text-28-43 {
+  font-size: 28px;
+  line-height: 43px;
+}
+@media (max-width: 1199px) {
+  .text-22-33-tablet {
+      font-size: 22px;
+      line-height: 33px;
+  }
+}
 
-
+@media (max-width: 767px){
+.text-12-18-mobile {
+    font-size: 12px;
+    line-height: 18px;
+}}
 
 h1, h2, h3, h4, h5, h6, p, ul, ol, pre {
   margin: 0;
