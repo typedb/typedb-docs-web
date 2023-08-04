@@ -7,11 +7,8 @@
   .body {
     display: flex;
     margin-left: 290px;
-    /* overflow-y: scroll; */
     margin-top: 40px;
-    /* position: fixed; */
     width: 100%;
-    /* height: calc(100% - 140px); */
   }
 }
 
