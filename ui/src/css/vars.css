@@ -1,6 +1,7 @@
 :root {
   /* colors */
   --color-white: #fff;
+  --color-dark-white: #d7d4e5;
   --color-smoke-10: #fefefe;
   --color-smoke-30: #fafafa;
   --color-smoke-50: #f5f5f5;
@@ -35,7 +36,7 @@
   --body-font-size--desktop: 1em; /* 18px */
   --body-font-size--print: 0.9375em; /* 15px */
   --body-line-height: 1.15;
-  --body-font-color: var(--color-white);
+  --body-font-color: var(--color-dark-white);
   --body-font-family: "Titillium Web", sans-serif;
   --body-font-weight-bold: 600;
   --monospace-font-family: "Ubuntu Mono", monospace;
