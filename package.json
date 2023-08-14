@@ -2,7 +2,9 @@
     "name": "typedb-web-docs",
     "scripts": {
         "postinstall": "./install-additional-deps.sh",
-        "build": "./build.sh"
+        "build": "./build.sh",
+        "build-ci-dev": "URL=https://development.typedb.com/docs ./build.sh",
+        "build-ci-prod": "URL=https://typedb.com/docs ./build.sh"
     },
     "devDependencies": {
         "@antora/cli": "3.1.4",
