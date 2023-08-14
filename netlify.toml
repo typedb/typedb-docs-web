@@ -1,2 +1,8 @@
 [build]
 ignore = "/bin/false"
+
+[context.production]
+command = "pnpm run build-ci-prod"
+
+[context.development]
+command = "pnpm run build-ci-dev"
