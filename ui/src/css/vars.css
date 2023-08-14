@@ -1,6 +1,7 @@
 :root {
   /* colors */
   --color-white: #fff;
+  --color-dark-white: #d7d4e5;
   --color-smoke-10: #fefefe;
   --color-smoke-30: #fafafa;
   --color-smoke-50: #f5f5f5;
@@ -17,17 +18,17 @@
   --color-jet-70: #222;
   --color-jet-80: #191919;
   --color-black: #000;
-  --color-grey: #B9B6C7;
-  --color-light-purple: #2D2A46;
-  --color-purple: #1A182A;
+  --color-grey: #b9b6c7;
+  --color-light-purple: #2d2a46;
+  --color-purple: #1a182a;
   --color-deep-purple: #151322;
-  --color-black-purple: #0E0D17;
-  --color-green: #02DAC9;
-  --color-red: #E96464;
-  --color-secondary-light-grey: #958FA8;
+  --color-black-purple: #0e0d17;
+  --color-green: #02dac9;
+  --color-red: #e96464;
+  --color-secondary-light-grey: #958fa8;
   --color-secondary-purple: #232135;
-  --color-secondary-blue: #7BA0FF;
-  --color-secondary-yellow: #FFE49E;
+  --color-secondary-blue: #7ba0ff;
+  --color-secondary-yellow: #ffe49e;
   /* fonts */
   --rem-base: 16; /* used to compute rem value from desired pixel value (e.g., calc(18 / var(--rem-base) * 1rem) = 18px) */
   --font-weight-semi-bold: 600;
@@ -35,29 +36,29 @@
   --body-font-size--desktop: 1em; /* 18px */
   --body-font-size--print: 0.9375em; /* 15px */
   --body-line-height: 1.15;
-  --body-font-color: var(--color-white);
+  --body-font-color: var(--color-dark-white);
   --body-font-family: "Titillium Web", sans-serif;
   --body-font-weight-bold: 600;
   --monospace-font-family: "Ubuntu Mono", monospace;
   --monospace-font-weight-bold: 700;
-    --font-size-xxl: 56px;
-    --line-height-xxl: 64px;
-    --font-size-xl: 40px;
-    --line-height-xl: 54px;
-    --font-size-l: 32px;
-    --line-height-l: 44px;
-    --font-size-ml: 28px;
-    --line-height-ml: 36px;
-    --line-height-ml-sparse: 42px;
-    --font-size-m: 24px;
-    --line-height-m: 32px;
-    --font-size-s: 18px;
-    --line-height-s: 26px;
-    --font-size-xs: 16px;
-    --line-height-xs: 24px;
-    --line-height-xs-sparse: 28px;
-    --font-size-xxs: 14px;
-    --line-height-xxs: 21px;
+  --font-size-xxl: 56px;
+  --line-height-xxl: 64px;
+  --font-size-xl: 40px;
+  --line-height-xl: 54px;
+  --font-size-l: 32px;
+  --line-height-l: 44px;
+  --font-size-ml: 28px;
+  --line-height-ml: 36px;
+  --line-height-ml-sparse: 42px;
+  --font-size-m: 24px;
+  --line-height-m: 32px;
+  --font-size-s: 18px;
+  --line-height-s: 26px;
+  --font-size-xs: 16px;
+  --line-height-xs: 24px;
+  --line-height-xs-sparse: 28px;
+  --font-size-xxs: 14px;
+  --line-height-xxs: 21px;
   /* base */
   --body-background: var(--color-black-purple);
   --panel-background: var(--color-black-purple);
@@ -175,4 +176,13 @@
   --z-index-toolbar: 2;
   --z-index-page-version-menu: 3;
   --z-index-navbar: 4;
+
+  /* size */
+  --topbar-height: 80px;
+  --topbar-height-mobile: 48px;
+
+  --media-max-width-mobile: 767px;
+  --media-min-width-tablet: 768px;
+  --media-max-width-tablet: 1199px;
+  --media-min-width-desktop: 1200px;
 }

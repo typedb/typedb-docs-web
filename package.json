@@ -2,14 +2,11 @@
     "name": "typedb-web-docs",
     "scripts": {
         "postinstall": "./install-additional-deps.sh",
-        "build": "./build.sh",
-        "build-ci-development": "./build.sh https://development.dev.typedb.com/docs",
-        "build-ci-staging": "./build.sh https://staging.dev.typedb.com/docs",
-        "build-ci-live": "./build.sh https://dev.typedb.com/docs"
+        "build": "./build.sh"
     },
     "devDependencies": {
-        "@antora/cli": "3.1",
-        "@antora/site-generator": "3.1",
+        "@antora/cli": "3.1.4",
+        "@antora/site-generator": "3.1.4",
         "@asciidoctor/tabs": "1.0.0-beta.3"
     },
     "engines": {
