@@ -18,9 +18,10 @@ These instructions are for compiling the docs site locally.
 
 #### Caveats
 
-⚠️ `pnpm` is not compatible with the Antora UI bundle. Use `npm` instead.
-
-⚠️ v18 is the **only** supported version of Node.js. The build may fail on other Node versions.
+- ⚠️ `pnpm` is not compatible with the Antora UI bundle. Use `npm` instead.
+- ⚠️ v18 is the **only** supported version of Node.js. The build may fail on other Node versions.
+- ⚠️ Changing branches and doing merges often results in the `content` submodule being flagged as changed. You can run
+`git submodule update --recursive` to fix this by updating your submodule state to the one marked in Git.
 
 ### Build
 
