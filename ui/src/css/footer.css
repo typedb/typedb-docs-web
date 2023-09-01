@@ -1,17 +1,30 @@
-footer.footer {
-  background-color: var(--footer-background);
-  color: var(--footer-font-color);
-  font-size: calc(15 / var(--rem-base) * 1rem);
-  line-height: var(--footer-line-height);
-  padding: 1.5rem;
+.text-28-43 {
+  font-size: 28px;
+  line-height: 43px;
 }
 
-.footer p {
-  margin: 0.5rem 0;
+.text-16-28 {
+  font-size: 16px;
+  line-height: 28px;
 }
 
-.footer a {
-  color: var(--footer-link-font-color);
+.text-14-21 {
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@media (max-width: 1199px) {
+  .text-22-33-tablet {
+    font-size: 22px;
+    line-height: 33px;
+  }
+}
+
+@media (max-width: 767px) {
+  .text-12-18-mobile {
+    font-size: 12px;
+    line-height: 18px;
+  }
 }
 
 footer[_ngcontent-ng-c3449931361] {
@@ -210,11 +223,11 @@ a[_ngcontent-ng-c3502156813] {
   display: flex;
   border-width: 1px;
   border-style: solid;
-  border-radius: 5px;
+  border-radius: var(--border-radius);
   justify-content: center;
   align-items: center;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: var(--font-weight-semi-bold);
   line-height: 24px;
   transition-property: background-color, border, box-shadow, opacity;
   transition-duration: 0.1s;

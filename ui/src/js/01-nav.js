@@ -4,10 +4,8 @@
   var SECT_CLASS_RX = /^sect(\d)$/
 
   var navContainer = document.querySelector('.nav-container')
-  // var navToggle = document.querySelector('.nav-toggle')
   var nav = navContainer.querySelector('.nav')
 
-  // navToggle.addEventListener('click', showNav)
   navContainer.addEventListener('click', trapEvent)
 
   var menuPanel = navContainer.querySelector('[data-panel=menu]')
@@ -44,7 +42,7 @@
     })
 
   if (explorePanel) {
-    explorePanel.querySelector('.context').addEventListener('click', function () {
+    explorePanel.querySelector('.context-container').addEventListener('click', function () {
       // NOTE logic assumes there are only two panels
       find(nav, '[data-panel]').forEach(function (panel) {
         panel.classList.toggle('is-active')
