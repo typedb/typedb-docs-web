@@ -459,6 +459,16 @@ i.fa {
   vertical-align: middle;
 }
 
+.doc .imageblock.framed img,
+.doc .imageblock.framed object,
+.doc .imageblock.framed svg,
+.doc .image.framed > img,
+.doc .image.framed > object,
+.doc .image.framed > svg {
+  border-radius: var(--border-radius);
+  border: 1px solid var(--color-light-purple);
+}
+
 .doc .image:not(.left):not(.right) > img {
   margin-top: -0.2em;
 }
