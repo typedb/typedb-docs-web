@@ -800,8 +800,8 @@ i.fa {
   position: absolute;
   top: 1.25rem;
   right: 1.25rem;
-  background: #0e0d17;
-  box-shadow: 0 0 0.25rem 0.25rem #0e0d17;
+  background: var(--color-black-purple);
+  box-shadow: 0 0 0.25rem 0.25rem var(--color-black-purple);
 }
 
 .doc .source-toolbox .source-lang {

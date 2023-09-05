@@ -18,17 +18,21 @@
 .tablist > ul {
   display: flex;
   border-bottom: 1px solid var(--panel-border-color);
+  height: 3.25rem;
 }
 
 .tablist > ul li {
   flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  padding: 1.5rem 0.75rem;
+  padding: 0 0.75rem;
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 1rem;
   line-height: 2rem;
   font-weight: normal;
-  color: var(--color-white);
+  color: var(--body-font-color);
 }
 
 .tablist > ul li + li {
@@ -38,6 +42,10 @@
 .tabs.is-loading .tablist li:first-child,
 .tabs:not(.is-loading) .tablist li.is-selected {
   background: var(--color-purple);
+  color: var(--color-green);
+}
+
+.tabs:not(.is-loading) .tablist li:hover {
   color: var(--color-green);
   text-decoration: underline;
 }
