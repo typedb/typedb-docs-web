@@ -1,2 +1,5 @@
 [build]
 ignore = "/bin/false"
+
+[build.processing.html]
+  pretty_urls = false
