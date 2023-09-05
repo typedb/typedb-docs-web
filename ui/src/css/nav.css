@@ -23,7 +23,7 @@
 
 .nav-panel-explore {
   position: relative;
-  color: #fff;
+  color: var(--color-white);
   line-height: 1.25;
 }
 

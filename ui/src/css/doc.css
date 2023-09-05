@@ -34,7 +34,7 @@
   margin-left: -1rem;
   padding-left: 1rem;
   margin-top: 1rem;
-  color: #ffffff;
+  color: var(--color-white);
   font-weight: var(--body-font-weight-bold);
 }
 
