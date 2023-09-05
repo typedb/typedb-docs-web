@@ -13,7 +13,6 @@ const postcss = require('gulp-postcss')
 const postcssCalc = require('postcss-calc')
 const postcssImport = require('postcss-import')
 const postcssUrl = require('postcss-url')
-const postcssVar = require('postcss-custom-properties')
 const { Transform } = require('stream')
 const map = (transform) => new Transform({ objectMode: true, transform })
 const through = () => map((file, enc, next) => next(null, file))
@@ -36,7 +35,7 @@ module.exports = (src, dest, preview) => () => {
       }),
     postcssUrl([
       {
-        filter: new RegExp('^src/css/[~][^/]*(?:font|face)[^/]*/.*/files/.+[.](?:ttf|woff2?)$'),
+        filter: /^src[\\\/]css[\\\/][~][^\\\/]*(?:font|face)[^\\\/]*[\\\/].*[\\\/]files[\\\/].+[.](?:ttf|woff2?)$/,
         url: (asset) => {
           const relpath = asset.pathname.substr(1)
           const abspath = require.resolve(relpath)
@@ -47,9 +46,6 @@ module.exports = (src, dest, preview) => () => {
         },
       },
     ]),
-    postcssVar({ preserve: preview }),
-    // NOTE to make vars.css available to all top-level stylesheets, use the next line in place of the previous one
-    //postcssVar({ importFrom: path.join(src, 'css', 'vars.css'), preserve: preview }),
     preview ? postcssCalc : () => {}, // cssnano already applies postcssCalc
     autoprefixer,
     preview
