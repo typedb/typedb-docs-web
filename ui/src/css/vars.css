@@ -38,11 +38,9 @@
   --main-gap: 1rem;
   --search-height: calc(48 / var(--rem-base) * 1rem);
   --search-offset: calc(var(--header-height) + var(--main-padding));
-  --main-offset: var(--search-offset);
-  /* use line below if search is displayed */
-  /* --main-offset: calc(
+  --main-offset: calc(
     var(--search-offset) + var(--search-height) + var(--main-gap)
-  ); */
+  );
   --main-viewport-height: calc(100vh - var(--main-offset));
   /* admonitions */
   --important-color: var(--color-secondary-yellow);
