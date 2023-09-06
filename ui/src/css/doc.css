@@ -353,10 +353,10 @@
   color: var(--color-white);
 }
 
-.doc .admonitionblock table,
-.doc .admonitionblock tbody,
-.doc .admonitionblock tr,
-.doc .admonitionblock td {
+.doc .admonitionblock > table,
+.doc .admonitionblock > table > tbody,
+.doc .admonitionblock > table > tbody > tr,
+.doc .admonitionblock > table > tbody > tr > td {
   display: block;
   padding: 0;
 }
