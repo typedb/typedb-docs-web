@@ -27,8 +27,6 @@ ui:
   bundle:
     url: ./ui/build/ui-bundle.zip
     snapshot: true
-urls:
-  html_extension_style: drop
 output:
   clean: true
   dir: ./dist
