@@ -62,13 +62,13 @@
 .search-result-dataset {
   position: relative;
   border: 1px solid var(--panel-border-color);
-  background: rgba(21, 19, 34, 0.5);
+  background: var(--color-deep-purple-50);
   border-radius: var(--border-radius);
   overflow: auto;
   overscroll-behavior: none;
   padding: 1rem;
   max-height: calc(100vh - var(--main-offset));
-  box-shadow: 0 4px 8px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 8px 4px var(--color-black-50);
   backdrop-filter: blur(20px);
 }
 
@@ -95,7 +95,7 @@
   color: var(--color-white);
   font-weight: 600;
   font-size: 0.875rem;
-  padding: 0.5rem 0.5rem 0.5rem 0;
+  padding: 1rem 1rem 1rem 0;
   text-align: right;
   position: relative;
   word-wrap: break-word;
@@ -110,15 +110,15 @@
 .search-result-document-hit > a {
   color: inherit;
   display: block;
-  padding: 0.55rem 0.25rem 0.55rem 0.75rem;
+  padding: 1rem 0.25rem 1rem 1rem;
 }
 
 .search-result-document-hit > a:hover {
-  background-color: rgba(69, 142, 225, 0.05);
+  background: var(--color-light-purple-50);
 }
 
 .search-result-document-hit .search-result-highlight {
-  background: rgb(246, 201, 76, 0.25);
+  background: var(--search-highlight-color);
   padding: 0 0.1em;
   font-weight: 600;
 }
