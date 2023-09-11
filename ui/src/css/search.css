@@ -115,6 +115,7 @@
 
 .search-result-document-hit > a:hover {
   background: var(--color-light-purple-50);
+  text-decoration: inherit;
 }
 
 .search-result-document-hit .search-result-highlight {
