@@ -9,3 +9,4 @@
 from = "https://development--typedb-docs.netlify.app/*"
 to = "https://development.typedb.com/docs/:splat"
 status = 301
+force = true
