@@ -6,6 +6,6 @@
   pretty_urls = false
 
 [[headers]]
-  for = "/*"
+  for = "development--typedb-docs.netlify.app/*"
   [headers.values]
     X-Robots-Tag = "noindex"
