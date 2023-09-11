@@ -4,3 +4,8 @@
 
 [build.processing.html]
   pretty_urls = false
+
+[[redirects]]
+from = "https://development--typedb-docs.netlify.app/*"
+to = "https://development.typedb.com/docs/:splat"
+status = 301
