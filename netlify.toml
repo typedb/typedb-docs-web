@@ -4,3 +4,8 @@
 
 [build.processing.html]
   pretty_urls = false
+
+[[headers]]
+  for = "https://development--typedb-docs.netlify.app/*
+  [headers.values]
+    X-Robots-Tag = "noindex"
