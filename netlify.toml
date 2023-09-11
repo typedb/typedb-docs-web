@@ -1,4 +1,5 @@
 [build]
+  command = "npm run build-ci"
   ignore = "/bin/false"
 
 [build.processing.html]
