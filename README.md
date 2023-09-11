@@ -27,7 +27,7 @@ These instructions are for compiling the docs site locally.
 
 In the project root directory, run:
 ```shell
-./build.sh
+npm run build
 ```
 
 The docs site will be built and output to `dist`.
