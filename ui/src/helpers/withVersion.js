@@ -5,13 +5,21 @@ const fs = require("fs");
 
 const hexMap = {};
 
-module.exports = (path, context) => {
+module.exports = path => {
   hexMap[path] =
     hexMap[path] ??
     crypto
       .createHash("sha256")
-      .update(fs.readFileSync(`./ui/public/_/${path}`))
+      .update(getFileContent(path))
       .digest("hex")
       .slice(-16);
-  return `${context.data.root.uiRootPath}/${path}?v=${hexMap[path]}`;
+  return `${path}?v=${hexMap[path]}`;
 };
+
+function getFileContent(path) {
+  try {
+    return fs.readFileSync(`./ui/public/_/${path}`);
+  } catch {
+    return Date.now().toString();
+  }
+}
