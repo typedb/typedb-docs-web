@@ -240,80 +240,66 @@
   line-height: 1.75;
 }
 
+.doc table.tableblock {
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
 .doc table.tableblock,
 .doc table.tableblock > * > tr > * {
   border: 0 solid var(--table-border-color);
 }
 
-.doc table.tableblock tr:first-child > * {
-  border-top: 0;
+.doc table.tableblock > * > tr:first-child > * {
+  border-top-width: 1px;
 }
 
-.doc table.tableblock tr > *:first-child {
-  border-left: 0;
-}
-
-.doc table.tableblock tr > *:last-child {
-  border-right: 0;
-}
-
-.doc table.tableblock > tbody tr:last-child > * {
-  border-bottom: 0;
-}
-
-.doc table.grid-all > * > tr > * {
-  border-width: 1px;
-}
-
-.doc table.grid-cols > * > tr > * {
-  border-width: 0 1px;
-}
-
-.doc table.grid-rows > * > tr > * {
-  border-width: 1px 0;
-}
-
-.doc table.tableblock > thead th {
-  border-bottom-width: 1px;
-}
-
-.doc table.frame-all {
-  box-shadow: 0 0 0 1px var(--table-border-color);
-  border-radius: var(--border-radius);
-}
-
-.doc table.frame-ends {
-  border-width: 1px 0;
-}
-
-.doc table.frame-sides {
-  border-width: 0 1px;
-}
-
-.doc table.frame-none > colgroup + * > :first-child > *,
-.doc table.frame-sides > colgroup + * > :first-child > * {
+.doc table.tableblock > thead + tbody > tr:first-child > * {
   border-top-width: 0;
 }
 
-/* NOTE let the grid win in case of frame-none */
-.doc table.frame-sides > :last-child > :last-child > * {
-  border-bottom-width: 0;
+.doc table.tableblock > * > tr:last-child > * {
+  border-bottom-width: 1px;
 }
 
-.doc table.frame-none > * > tr > :first-child,
-.doc table.frame-ends > * > tr > :first-child {
-  border-left-width: 0;
+.doc table.tableblock > * > tr > * {
+  border-left-width: 1px;
 }
 
-.doc table.frame-none > * > tr > :last-child,
-.doc table.frame-ends > * > tr > :last-child {
-  border-right-width: 0;
+.doc table.tableblock > * > tr > *:last-child {
+  border-right-width: 1px;
 }
 
-.doc table.stripes-all > tbody > tr,
-.doc table.stripes-odd > tbody > tr:nth-of-type(odd),
-.doc table.stripes-even > tbody > tr:nth-of-type(even),
-.doc table.stripes-hover > tbody > tr:hover {
+.doc table.tableblock > * > tr:first-child > *:first-child {
+  border-top-left-radius: var(--border-radius);
+}
+
+.doc table.tableblock > * > tr:first-child > *:last-child {
+  border-top-right-radius: var(--border-radius);
+}
+
+.doc table.tableblock > thead + tbody > tr:first-child > *:first-child {
+  border-top-left-radius: 0;
+}
+
+.doc table.tableblock > thead + tbody > tr:first-child > *:last-child {
+  border-top-right-radius: 0;
+}
+
+.doc table.tableblock > tbody > tr:last-child > *:first-child {
+  border-bottom-left-radius: var(--border-radius);
+}
+
+.doc table.tableblock > tbody > tr:last-child > *:last-child {
+  border-bottom-right-radius: var(--border-radius);
+}
+
+.doc table.tableblock > tbody > tr {
+  background: var(--doc-background);
+}
+
+.doc table.tableblock > thead > tr,
+.doc table.tableblock > tbody > tr:nth-of-type(even) {
   background: var(--table-stripe-background);
 }
 
