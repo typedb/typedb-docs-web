@@ -142,6 +142,12 @@
   padding: 0.25rem 0.5rem;
 }
 
+.doc table.tableblock p code,
+.doc table.tableblock thead code,
+.doc table.tableblock .colist > table code {
+  background: var(--color-black-purple);
+}
+
 .doc code,
 .doc pre {
   hyphens: none;
@@ -231,76 +237,50 @@
   margin-top: 0;
 }
 
-.doc table.tableblock th,
-.doc table.tableblock td {
+.doc table.tableblock > * > tr > * {
   padding: 0.75rem 1.25rem;
-  font-weight: normal;
   color: var(--color-white);
   font-size: 1rem;
   line-height: 1.75;
 }
 
+.doc table.tableblock > * > tr > th {
+  font-weight: var(--font-weight-semi-bold);
+}
+
+.doc table.tableblock > * > tr > td {
+  font-weight: normal;
+}
+
 .doc table.tableblock {
-  border-collapse: separate;
-  border-spacing: 0;
+  background: var(--table-body-background);
+  border-radius: var(--border-radius);
+  box-shadow: 0 0 0 1px var(--table-border-color);
+  overflow: hidden;
 }
 
-.doc table.tableblock,
-.doc table.tableblock > * > tr > * {
-  border: 0 solid var(--table-border-color);
+.doc table.tableblock > thead > tr > * {
+  background: var(--table-header-background);
 }
 
-.doc table.tableblock > * > tr:first-child > * {
-  border-top-width: 1px;
-}
-
-.doc table.tableblock > thead + tbody > tr:first-child > * {
-  border-top-width: 0;
-}
-
-.doc table.tableblock > * > tr:last-child > * {
-  border-bottom-width: 1px;
-}
-
-.doc table.tableblock > * > tr > * {
-  border-left-width: 1px;
-}
-
-.doc table.tableblock > * > tr > *:last-child {
-  border-right-width: 1px;
-}
-
-.doc table.tableblock > * > tr:first-child > *:first-child {
+.doc table.tableblock > thead > tr > *:first-child {
   border-top-left-radius: var(--border-radius);
 }
 
-.doc table.tableblock > * > tr:first-child > *:last-child {
+.doc table.tableblock > thead > tr > *:last-child {
   border-top-right-radius: var(--border-radius);
 }
 
-.doc table.tableblock > thead + tbody > tr:first-child > *:first-child {
-  border-top-left-radius: 0;
+.doc table.tableblock > colgroup col:not(:first-of-type) {
+  border-left: 1px solid var(--table-border-color);
 }
 
-.doc table.tableblock > thead + tbody > tr:first-child > *:last-child {
-  border-top-right-radius: 0;
+.doc table.tableblock > * > tr {
+  border-bottom: 1px solid var(--table-border-color);
 }
 
-.doc table.tableblock > tbody > tr:last-child > *:first-child {
-  border-bottom-left-radius: var(--border-radius);
-}
-
-.doc table.tableblock > tbody > tr:last-child > *:last-child {
-  border-bottom-right-radius: var(--border-radius);
-}
-
-.doc table.tableblock > tbody > tr {
-  background: var(--doc-background);
-}
-
-.doc table.tableblock > thead > tr,
-.doc table.tableblock > tbody > tr:nth-of-type(even) {
-  background: var(--table-stripe-background);
+.doc table.tableblock > tbody > tr:last-child {
+  border-bottom-width: 0;
 }
 
 .doc table.tableblock > tfoot {

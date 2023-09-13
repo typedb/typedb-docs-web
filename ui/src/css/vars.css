@@ -83,7 +83,8 @@
   --quote-font-color: var(--color-white);
   --quote-attribution-font-color: var(--doc-font-color);
   --table-border-color: var(--panel-border-color);
-  --table-stripe-background: var(--panel-background);
+  --table-header-background: var(--color-black-purple);
+  --table-body-background: var(--color-deep-purple);
   --table-footer-background: var(--panel-background);
   /* toc */
   --toc-width: calc(184 / var(--rem-base) * 1rem);
