@@ -4,8 +4,6 @@
   padding: var(--main-padding);
   max-width: calc(1440 / var(--rem-base) * 1rem);
   display: flex;
-  flex-flow: row wrap;
   align-items: flex-start;
-  justify-content: center;
   gap: 1rem;
 }

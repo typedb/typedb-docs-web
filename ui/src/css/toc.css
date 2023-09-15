@@ -1,14 +1,10 @@
 .toc.sidebar {
   display: var(--hide-tablet, block);
   position: sticky;
-  top: var(--main-offset);
+  top: var(--content-offset);
   flex: 0 0 var(--toc-width);
-  max-height: var(--main-viewport-height);
+  max-height: calc(100vh - var(--content-offset));
   overflow-y: auto;
-}
-
-.toc-menu {
-  color: var(--toc-font-color);
 }
 
 .toc .toc-menu h3 {
@@ -89,7 +85,7 @@
 
 .toc .toc-menu a.is-active {
   border-left-color: var(--link-font-color);
-  color: var(--doc-font-color);
+  color: var(--link-font-color);
 }
 
 .sidebar.toc .toc-menu a:focus {
