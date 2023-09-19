@@ -1,26 +1,18 @@
-.toc-menu {
-  color: var(--toc-font-color);
-}
-
-.toc.sidebar .toc-menu {
-  margin-right: 0.75rem;
-  position: fixed;
+.toc.sidebar {
+  display: var(--hide-tablet, block);
+  position: sticky;
+  top: var(--content-offset);
+  flex: 0 0 var(--toc-width);
+  max-height: calc(100vh - var(--content-offset));
+  overflow-y: auto;
 }
 
 .toc .toc-menu h3 {
   color: var(--toc-heading-font-color);
-  font-size: calc(16 / var(--rem-base) * 1rem);
+  font-size: 1rem;
   font-weight: var(--body-font-weight-bold);
   line-height: 1.3;
-  margin: 0 -0.5px;
   padding-bottom: 0.25rem;
-}
-
-.toc.sidebar .toc-menu h3 {
-  display: flex;
-  flex-direction: column;
-  height: 2.5rem;
-  justify-content: flex-end;
 }
 
 .toc .toc-menu ul {
@@ -93,7 +85,7 @@
 
 .toc .toc-menu a.is-active {
   border-left-color: var(--link-font-color);
-  color: var(--doc-font-color);
+  color: var(--link-font-color);
 }
 
 .sidebar.toc .toc-menu a:focus {

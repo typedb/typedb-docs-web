@@ -44,14 +44,6 @@
   menu.appendChild(title)
   menu.appendChild(list)
 
-  var startOfContent = !document.getElementById('toc') && article.querySelector('h1.page ~ :not(.is-before-toc)')
-  if (startOfContent) {
-    var embeddedToc = document.createElement('aside')
-    embeddedToc.className = 'toc embedded'
-    embeddedToc.appendChild(menu.cloneNode(true))
-    startOfContent.parentNode.insertBefore(embeddedToc, startOfContent)
-  }
-
   window.addEventListener('load', function () {
     onScroll()
     window.addEventListener('scroll', onScroll)

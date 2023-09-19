@@ -1,41 +1,17 @@
-@media screen and (max-width: 1300px) {
-  aside.toc.sidebar {
-    display: none;
-  }
+main.article {
+  flex: 1;
 
-  main > .content {
-    overflow-x: auto;
-  }
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  gap: 1rem;
 }
 
-@media screen and (min-width: 1024px) {
-  main {
-    min-width: 0; /* min-width: 0 required for flexbox to constrain overflowing elements */
-  }
-
-  main > .content {
-    display: flex;
-  }
-
-  aside.toc.embedded {
-    display: none;
-  }
-
-  aside.toc.sidebar {
-    flex: 0 0 var(--toc-width);
-    order: 1;
-      margin-left: 16px;
-  }
+main.article > .content {
+  flex: 1;
+  overflow: hidden;
 }
 
-@media screen and (min-width: 1300px) {
-    main {
-        margin-left: 30px;
-    }
-}
-
-@media screen and (min-width: 1216px) {
-  aside.toc.sidebar {
-    flex-basis: var(--toc-width--widescreen);
-  }
+main.article * {
+  scroll-margin-top: var(--content-offset);
 }

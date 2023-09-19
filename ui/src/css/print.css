@@ -74,15 +74,4 @@
   .doc .listingblock code[data-lang]::before {
     display: block;
   }
-
-  footer.footer {
-    background: none;
-    border-top: 1px solid var(--panel-border-color);
-    color: var(--quote-attribution-font-color);
-    padding: 0.25rem 0.5rem 0;
-  }
-
-  .footer * {
-    color: inherit;
-  }
 }

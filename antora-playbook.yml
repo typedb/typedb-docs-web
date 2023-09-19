@@ -2,8 +2,6 @@ site:
   title: TypeDB Documentation portal
   start_page: typedb:ROOT:overview.adoc
   robots: allow
-  keys:
-    google_analytics: G-SNVZCNLJ9R
 content:
   sources:
     - url: .
@@ -18,6 +16,9 @@ content:
     - url: .
       start_path: content/cloud-src
       branches: HEAD
+antora:
+  extensions:
+    - "@antora/lunr-extension"
 asciidoc:
   attributes:
     source-highlighter: ~

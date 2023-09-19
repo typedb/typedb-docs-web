@@ -1,2 +1,6 @@
 [build]
-ignore = "/bin/false"
+  command = "npm run build-ci"
+  ignore = "/bin/false"
+
+[build.processing.html]
+  pretty_urls = false

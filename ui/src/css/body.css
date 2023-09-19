@@ -1,20 +1,9 @@
 .body {
-  margin-left: 0;
-  position: relative;
-}
-
-@media screen and (min-width: 1024px) {
-  .body {
-    display: flex;
-    margin-left: 290px;
-    margin-top: 40px;
-    width: 100%;
-  }
-}
-
-@media screen and (min-width: 1300px) {
-  .body {
-    margin-left: 0;
-    justify-content: center;
-  }
+  margin: 0 auto;
+  min-height: calc(100vh - var(--header-height));
+  padding: var(--main-padding);
+  max-width: calc(1440 / var(--rem-base) * 1rem);
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
 }

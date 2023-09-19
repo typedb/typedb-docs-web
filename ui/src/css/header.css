@@ -1,6 +1,39 @@
-body {
-  padding-top: var(--navbar-height);
+.text-18-26 {
+  font-size: 18px;
+  line-height: 26px;
 }
+
+.text-14-21 {
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@media (max-width: 767px) {
+  .text-16-24-mobile {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .text-14-21-mobile {
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  .text-12-18-mobile {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .text-12-16-mobile {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+
+header a {
+  color: var(--color-white);
+}
+
 header a:hover {
   text-decoration: none;
 }
@@ -9,28 +42,14 @@ td-topbar-menu-panel[_ngcontent-bfa-c139] {
   left: 0;
   right: 0;
   z-index: 700;
-  background-color: transparent;
-  border-bottom: 1px solid transparent;
+  background-color: #1a182a;
+  box-shadow: 0 1px #232135;
 }
 
 header[_ngcontent-bfa-c139] {
-  position: fixed;
+  position: sticky;
   top: 0;
-}
-
-@media (hover: hover) {
-  header[_ngcontent-bfa-c139] {
-    transition: background-color 100ms ease;
-  }
-  header[_ngcontent-bfa-c139]:hover {
-    background-color: #1a182a !important;
-    border-bottom-color: #232135 !important;
-  }
-}
-
-header.tb-solid[_ngcontent-bfa-c139] {
-  background-color: #1a182a !important;
-  border-bottom-color: #232135 !important;
+  box-shadow: 0 1px #232135, 0 0 0.5rem 0.5rem #0e0d17;
 }
 
 td-topbar-menu-mobile[_ngcontent-bfa-c139] {
@@ -366,9 +385,9 @@ header td-button a:visited {
   border-radius: var(--border-radius);
   justify-content: center;
   align-items: center;
-  font-size: var(--font-size-xs);
+  font-size: 1rem;
   font-weight: var(--font-weight-semi-bold);
-  line-height: var(--line-height-xs);
+  line-height: 1.5;
   transition-property: background-color, border, box-shadow, opacity;
   transition-duration: 100ms;
   transition-timing-function: ease;
@@ -584,7 +603,7 @@ td-topbar-menu-mobile {
   li[_ngcontent-bfa-c141]
   > a.tm-expanded[_ngcontent-bfa-c141] {
   color: #02dac9;
-  font-weight: 600;
+  font-weight: var(--font-weight-semi-bold);
 }
 @media (max-width: 767px) {
   .tm-primary-area[_ngcontent-bfa-c141]

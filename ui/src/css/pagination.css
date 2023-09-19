@@ -1,6 +1,6 @@
 nav.pagination {
   display: flex;
-  border-top: 1px solid var(--toolbar-border-color);
+  border-top: 1px solid var(--panel-border-color);
   line-height: 1;
   margin: 2rem -1rem -1rem;
   padding: 0.75rem 1rem 0;
@@ -23,7 +23,7 @@ nav.pagination .next {
 }
 
 nav.pagination span::before {
-  color: var(--toolbar-muted-color);
+  color: var(--color-secondary-light-grey);
   font-size: 0.75em;
   padding-bottom: 0.1em;
 }
@@ -44,7 +44,7 @@ nav.pagination a {
 
 nav.pagination a::before,
 nav.pagination a::after {
-  color: var(--toolbar-muted-color);
+  color: var(--color-secondary-light-grey);
   font-weight: normal;
   font-size: 1.5em;
   line-height: 0.75;

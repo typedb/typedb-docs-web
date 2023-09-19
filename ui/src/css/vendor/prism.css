@@ -57,6 +57,10 @@ pre[class*="language-"] {
     color: var(--color-prism-pink);
 }
 
+.token.annotation {
+    color: var(--color-prism-orange);
+}
+
 .token.error {
     color: var(--color-prism-red);
 }
