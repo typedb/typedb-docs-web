@@ -2,9 +2,9 @@
   display: var(--hide-mobile, block);
   position: sticky;
   top: var(--main-offset);
+  max-height: calc(100vh - var(--main-offset));
   flex: 0 0 calc(244 / var(--rem-base) * 1rem);
-  max-height: var(--main-viewport-height);
-
+  z-index: 2;
   overflow-y: auto;
 }
 

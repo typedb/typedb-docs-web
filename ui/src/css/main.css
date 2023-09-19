@@ -1,8 +1,17 @@
 main.article {
   flex: 1;
+
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+main.article > .content {
+  flex: 1;
   overflow: hidden;
 }
 
 main.article * {
-  scroll-margin-top: var(--main-offset);
+  scroll-margin-top: var(--content-offset);
 }
