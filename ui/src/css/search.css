@@ -1,6 +1,6 @@
 .search {
   position: sticky;
-  top: var(--search-offset);
+  top: var(--main-offset);
   z-index: 1;
 
   box-shadow: 0 calc(var(--main-padding) / -2) calc(var(--main-gap) / 2)
@@ -54,7 +54,7 @@
   z-index: 100;
   display: block;
   left: -1px;
-  right: 50%;
+  right: -1px;
   top: 100%;
   margin-top: 0.5rem;
 }
