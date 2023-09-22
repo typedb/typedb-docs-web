@@ -39,33 +39,33 @@
 }
 
 .doc h1 {
-  font-size: 1.5rem;
-  line-height: 2rem;
+  font-size: var(--font-size-h1);
+  line-height: var(--line-height-h1);
 }
 
 .doc h2 {
-  font-size: 1.375rem;
-  line-height: 1.5;
+    font-size: var(--font-size-h2);
+    line-height: var(--line-height-h2);
 }
 
 .doc h3 {
-  font-size: 1.25rem;
-  line-height: 1.5;
+    font-size: var(--font-size-h3);
+    line-height: var(--line-height-h3);
 }
 
 .doc h4 {
-  font-size: 1rem;
-  line-height: 1.5;
+    font-size: var(--font-size-h4);
+    line-height: var(--line-height-h4);
 }
 
 .doc h5 {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+    font-size: var(--font-size-h5);
+    line-height: var(--line-height-h5);
 }
 
 .doc h6 {
-  font-size: 0.75rem;
-  line-height: 1rem;
+    font-size: var(--font-size-h6);
+    line-height: var(--line-height-h6);
 }
 
 .doc h1 .anchor,
@@ -105,7 +105,6 @@
   margin-top: 0;
 }
 
-.doc p,
 .doc dl {
   margin: 0;
 }

@@ -21,8 +21,59 @@
   --color-red-15: rgba(233, 99, 99, 0.15);
   --color-secondary-yellow-15: rgba(255, 228, 158, 0.15);
   --color-secondary-blue-15: rgba(123, 160, 255, 0.15);
+
   /* fonts */
-  --rem-base: 16; /* used to compute rem value from desired pixel value (e.g., calc(18 / var(--rem-base) * 1rem) = 18px) */
+  --rem-base: 17; /* used to compute rem value from desired pixel value (e.g., calc(18 / var(--rem-base) * 1rem) = 18px) */
+
+    /* todo: refactor into rem units? */
+    --font-size-h1: 51px;
+    --line-height-h1: calc(59px / var(--font-size-h1));
+    --font-size-h1-mobile: 31px;
+    --line-height-h1-mobile: calc(39px / var(--font-size-h1-mobile));
+
+    --font-size-h2: 39px;
+    --line-height-h2: calc(47px / var(--font-size-h2));
+    --font-size-h2-mobile: 25px;
+    --line-height-h2-mobile: calc(33px / var(--font-size-h2-mobile));
+
+    --font-size-h3: 25px;
+    --line-height-h3: calc(33px / var(--font-size-h3));
+    --font-size-h3-mobile: 19px;
+    --line-height-h3-mobile: calc(27px / var(--font-size-h3-mobile));
+
+    --font-size-h4: 21px;
+    --line-height-h4: calc(29px / var(--font-size-h4));
+    --font-size-h4-mobile: 17px;
+    --line-height-h4-mobile: calc(25px / var(--font-size-h4-mobile));
+
+    --font-size-h5: 19px;
+    --line-height-h5: calc(27px / var(--font-size-h5));
+    --font-size-h5-mobile: 17px;
+    --line-height-h5-mobile: calc(25px / var(--font-size-h5-mobile));
+
+    --font-size-h6: 17px;
+    --line-height-h6: calc(25px / var(--font-size-h6));
+    --font-size-h6-mobile: 15px;
+    --line-height-h6-mobile: calc(23px / var(--font-size-h6-mobile));
+
+    --font-size-p1: 21px;
+    --line-height-p1: calc(29px / var(--font-size-p1));
+    --font-size-p1-mobile: 17px;
+    --line-height-p1-mobile: calc(25px / var(--font-size-p1-mobile));
+
+    --font-size-p2: 17px;
+    --line-height-p2: calc(25px / var(--font-size-p2));
+    --font-size-p2-mobile: 15px;
+    --line-height-p2-mobile: calc(23px / var(--font-size-p2-mobile));
+
+    --font-size-aside: 15px;
+    --line-height-aside: calc(23px / var(--font-size-aside));
+    --font-size-aside-mobile: 13px;
+    --line-height-aside-mobile: calc(21px / var(--font-size-aside-mobile));
+
+    --font-size-code: 14px;
+    --line-height-code: calc(21px / var(--font-size-code));
+
   --font-weight-semi-bold: 600;
   --body-font-size: 1rem; /* 16px */
   --body-line-height: 1.5;
@@ -55,9 +106,9 @@
   --warning-background: var(--color-red-15);
   /* doc */
   --doc-background: var(--color-purple);
-  --doc-font-size: inherit;
+  --doc-font-size: var(--font-size-p2);
   --doc-font-weight: 300;
-  --doc-line-height: 1.5;
+  --doc-line-height: var(--line-height-p2);
   --section-divider-color: var(--panel-border-color);
   --link-font-color: var(--color-green);
   --link_hover-font-color: var(--color-green);
