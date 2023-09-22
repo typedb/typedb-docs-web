@@ -26,13 +26,13 @@
   --rem-base: 17; /* used to compute rem value from desired pixel value (e.g., calc(18 / var(--rem-base) * 1rem) = 18px) */
 
     /* todo: refactor into rem units? */
-    --font-size-h1: 51px;
-    --line-height-h1: calc(59px / var(--font-size-h1));
+    --font-size-h1: 41px;
+    --line-height-h1: calc(49px / var(--font-size-h1));
     --font-size-h1-mobile: 31px;
     --line-height-h1-mobile: calc(39px / var(--font-size-h1-mobile));
 
-    --font-size-h2: 39px;
-    --line-height-h2: calc(47px / var(--font-size-h2));
+    --font-size-h2: 33px;
+    --line-height-h2: calc(41px / var(--font-size-h2));
     --font-size-h2-mobile: 25px;
     --line-height-h2-mobile: calc(33px / var(--font-size-h2-mobile));
 
@@ -56,10 +56,7 @@
     --font-size-h6-mobile: 15px;
     --line-height-h6-mobile: calc(23px / var(--font-size-h6-mobile));
 
-    --font-size-p1: 21px;
-    --line-height-p1: calc(29px / var(--font-size-p1));
-    --font-size-p1-mobile: 17px;
-    --line-height-p1-mobile: calc(25px / var(--font-size-p1-mobile));
+    /* TODO: rename p2 to p1 once the codebase is cleaner */
 
     --font-size-p2: 17px;
     --line-height-p2: calc(25px / var(--font-size-p2));
