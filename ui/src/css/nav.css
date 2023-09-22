@@ -149,7 +149,7 @@
   left: 0;
   top: 0;
   bottom: 0;
-  width: 3px;
+  width: 2px;
   background: var(--color-green);
 }
 
@@ -162,9 +162,8 @@
   padding: 0.5rem 24px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.625rem;
-  border-radius: var(--border-radius);
+  justify-content: flex-start;
+  gap: 8px;
 
   font-size: 1rem;
   line-height: 1.5;
@@ -185,6 +184,10 @@ button.nav-text:hover,
   background: var(--color-purple);
 }
 
+.nav-item.is-current-page .nav-text {
+    color: var(--color-green);
+}
+
 .nav-external-link-icon,
 .nav-text-toggle-icon {
   flex-shrink: 0;
@@ -200,12 +203,20 @@ button.nav-text:hover,
   opacity: 0;
 }
 
+.nav-item-expandable .nav-text-toggle {
+    margin-left: -28px;
+}
+
 .nav-text-toggle-icon {
   color: var(--color-dark-white);
 }
 
+.nav-item > .nav-text .nav-text-toggle-icon {
+    transform: rotate(-90deg);
+}
+
 .nav-item.is-active > .nav-text .nav-text-toggle-icon {
-  transform: rotate(180deg);
+  transform: none;
 }
 
 .nav-item.is-current-page .nav-text,

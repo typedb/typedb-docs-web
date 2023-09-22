@@ -72,9 +72,9 @@
     --line-height-code: calc(21px / var(--font-size-code));
 
   --font-weight-semi-bold: 600;
-  --body-font-size: 1rem; /* 16px */
+  --body-font-size: var(--font-size-p2); /* 16px */
   --body-line-height: 1.5;
-  --body-font-color: var(--color-dark-white);
+  --body-font-color: var(--color-white);
   --body-font-family: "Titillium Web", sans-serif;
   --body-font-weight-bold: 700;
   --monospace-font-family: "Ubuntu Mono", monospace;
