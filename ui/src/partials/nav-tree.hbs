@@ -2,7 +2,7 @@
 <ul class="nav-list">
   {{#each navigation}}
   <li
-    class="nav-item{{#if (eq ./url @root.page.url)}} is-current-page{{/if}}{{#if ./items.length}} nav-item-expandable{{/if}}{{#if ../expandNav}} is-active{{/if}}"
+    class="nav-item{{#if (eq ./url @root.page.url)}} is-current-page{{/if}}{{#if ./items.length}} nav-item-expandable{{#if ../expandNav}} is-active{{/if}}{{/if}}"
     data-depth="{{or ../level 0}}"
   >
     {{#if ./content}}
