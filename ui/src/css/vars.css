@@ -71,10 +71,10 @@
     --font-size-code: 14px;
     --line-height-code: calc(21px / var(--font-size-code));
 
-  --font-weight-semi-bold: 500;
+  --font-weight-normal: 400;
   --body-font-size: var(--font-size-p2); /* 16px */
   --body-line-height: 1.5;
-  --body-font-color: var(--color-white);
+  --body-font-color: var(--color-dark-white);
   --body-font-family: "Titillium Web", sans-serif;
   --body-font-weight-bold: 600;
   --monospace-font-family: "Ubuntu Mono", monospace;
@@ -104,18 +104,18 @@
   /* doc */
   --doc-background: var(--color-purple);
   --doc-font-size: var(--font-size-p2);
-  --doc-font-weight: 300;
+  --doc-font-weight: 200;
   --doc-line-height: var(--line-height-p2);
   --section-divider-color: var(--panel-border-color);
   --link-font-color: var(--color-green);
   --link_hover-font-color: var(--color-green);
   --link_unresolved-font-color: var(--important-color);
   --abstract-background: var(--color-black-purple);
-  --abstract-font-color: var(--color-white);
+  --abstract-font-color: var(--color-dark-white);
   --abstract-border-color: var(--panel-border-color);
   --caption-font-color: var(--color-secondary-light-grey);
   --caption-font-style: italic;
-  --caption-font-weight: var(--font-weight-semi-bold);
+  --caption-font-weight: var(--font-weight-normal);
   --code-background: var(--panel-background);
   --code-font-color: var(--color-secondary-pink);
   --code-border-color: var(--color-light-purple);
@@ -127,7 +127,7 @@
   --pre-border-color: var(--panel-border-color);
   --quote-background: var(--color-black-purple);
   --quote-border-color: var(--color-secondary-light-grey);
-  --quote-font-color: var(--color-white);
+  --quote-font-color: var(--color-dark-white);
   --quote-attribution-font-color: var(--body-font-color);
   --table-border-color: var(--panel-border-color);
   --table-header-background: var(--color-black-purple);

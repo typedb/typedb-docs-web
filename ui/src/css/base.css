@@ -65,7 +65,7 @@ b,
 dt,
 strong,
 th {
-  font-weight: var(--font-weight-semi-bold);
+  font-weight: var(--font-weight-normal);
 }
 
 sub,

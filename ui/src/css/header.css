@@ -386,7 +386,7 @@ header td-button a:visited {
   justify-content: center;
   align-items: center;
   font-size: 1rem;
-  font-weight: var(--font-weight-semi-bold);
+  font-weight: var(--font-weight-normal);
   line-height: 1.5;
   transition-property: background-color, border, box-shadow, opacity;
   transition-duration: 100ms;
@@ -603,7 +603,7 @@ td-topbar-menu-mobile {
   li[_ngcontent-bfa-c141]
   > a.tm-expanded[_ngcontent-bfa-c141] {
   color: #02dac9;
-  font-weight: var(--font-weight-semi-bold);
+  font-weight: var(--font-weight-normal);
 }
 @media (max-width: 767px) {
   .tm-primary-area[_ngcontent-bfa-c141]

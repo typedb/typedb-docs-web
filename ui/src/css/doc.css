@@ -7,6 +7,7 @@
   font-weight: var(--doc-font-weight);
   hyphens: auto;
   line-height: var(--doc-line-height);
+  letter-spacing: .016em;
 }
 
 .doc .sect1:not(:first-of-type) {
@@ -35,7 +36,7 @@
   padding-left: 1rem;
   margin-top: 1rem;
   color: var(--color-white);
-  font-weight: var(--font-weight-semi-bold);
+  font-weight: var(--font-weight-normal);
 }
 
 .doc h1 {
@@ -244,7 +245,7 @@
 }
 
 .doc table.tableblock > * > tr > th {
-  font-weight: var(--font-weight-semi-bold);
+  font-weight: var(--font-weight-normal);
 }
 
 .doc table.tableblock > * > tr > td {
@@ -333,7 +334,7 @@
 }
 
 .doc .admonitionblock .icon::after {
-  font-weight: var(--font-weight-semi-bold);
+  font-weight: var(--font-weight-normal);
 }
 
 .doc .admonitionblock.note {
@@ -857,7 +858,7 @@ i.fa {
 }
 
 .doc td.hdlist1 {
-  font-weight: var(--font-weight-semi-bold);
+  font-weight: var(--font-weight-normal);
   padding-right: 0.25rem;
 }
 
@@ -964,7 +965,7 @@ i.fa {
 .doc .menuseq i.caret::before {
   content: "\203a";
   font-size: 1.1em;
-  font-weight: var(--font-weight-semi-bold);
+  font-weight: var(--font-weight-normal);
   line-height: calc(1 / 1.1);
 }
 
