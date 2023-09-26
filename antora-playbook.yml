@@ -21,6 +21,7 @@ antora:
     - "@antora/lunr-extension"
 asciidoc:
   attributes:
+    page-pagination: "@"
     source-highlighter: ~
   extensions:
     - "@asciidoctor/tabs"

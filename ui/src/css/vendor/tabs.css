@@ -41,7 +41,7 @@
 
 .tabs.is-loading .tablist li:first-child,
 .tabs:not(.is-loading) .tablist li.is-selected {
-  background: var(--color-purple);
+  background: var(--color-secondary-purple);
   color: var(--color-green);
 }
 
