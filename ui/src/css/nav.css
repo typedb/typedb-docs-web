@@ -22,7 +22,7 @@
 .nav-panel-explore .context-container {
   border-radius: var(--border-radius);
   border: 1px solid var(--panel-border-color);
-  background: var(--color-secondary-purple);
+  background: var(--color-purple);
   display: flex;
   cursor: pointer;
 }
@@ -119,7 +119,7 @@
 .nav-panel-explore .component .version.is-current a {
   color: var(--color-green);
   border-color: currentColor;
-  font-weight: var(--body-font-weight-bold);
+  font-weight: var(--font-weight-semi-bold);
 }
 
 .nav-list {

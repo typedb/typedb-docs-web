@@ -35,7 +35,7 @@
   padding-left: 1rem;
   margin-top: 1rem;
   color: var(--color-white);
-  font-weight: var(--body-font-weight-bold);
+  font-weight: var(--font-weight-semi-bold);
 }
 
 .doc h1 {
@@ -857,7 +857,7 @@ i.fa {
 }
 
 .doc td.hdlist1 {
-  font-weight: var(--body-font-weight-bold);
+  font-weight: var(--font-weight-semi-bold);
   padding-right: 0.25rem;
 }
 
@@ -964,7 +964,7 @@ i.fa {
 .doc .menuseq i.caret::before {
   content: "\203a";
   font-size: 1.1em;
-  font-weight: var(--body-font-weight-bold);
+  font-weight: var(--font-weight-semi-bold);
   line-height: calc(1 / 1.1);
 }
 
