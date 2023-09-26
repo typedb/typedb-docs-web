@@ -1,7 +1,7 @@
 {{#with page.navigation}}
 <div class="nav-panel-menu" data-panel="menu">
   <nav class="nav-menu">
-{{> nav-tree navigation=this}}
+{{> nav-tree navigation=this expandNav=(ne ../page.attributes.expand-nav undefined)}}
   </nav>
 </div>
 {{/with}}
