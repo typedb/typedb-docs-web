@@ -138,8 +138,8 @@
   background: var(--code-background);
   border-radius: var(--border-radius);
   border: 1px solid var(--code-border-color);
-  font-size: 0.875rem;
-  padding: 0.25rem 0.5rem;
+  font-size: 15px;
+  padding: 4px 6px;
 }
 
 .doc table.tableblock p code,
@@ -154,9 +154,9 @@
 }
 
 .doc pre {
-  font-size: 0.875rem;
-  line-height: 1.375rem;
-  font-weight: normal;
+  font-size: 15px;
+  line-height: 23px;
+  font-weight: 300;
   margin: 0;
 }
 
