@@ -77,7 +77,7 @@
   --body-font-color: var(--color-dark-white);
   --body-font-family: "Titillium Web", sans-serif;
   --body-font-weight-bold: 600;
-  --monospace-font-family: "Ubuntu Mono", monospace;
+  --monospace-font-family: "Monaco", monospace;
   --monospace-font-weight-bold: 700;
   /* base */
   --body-background: var(--color-black-purple);
