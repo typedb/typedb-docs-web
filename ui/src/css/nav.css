@@ -3,7 +3,7 @@
   position: sticky;
   top: var(--main-offset);
   max-height: calc(100vh - var(--main-offset));
-  flex: 0 0 calc(244 / var(--rem-base) * 1rem);
+  flex: 0 0 calc(248 / var(--rem-base) * 1rem);
   z-index: 2;
   overflow-y: auto;
 }
@@ -159,7 +159,7 @@
   border: none;
   background: none;
 
-  padding: 0.5rem 24px;
+  padding: 8px 24px 8px 32px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
