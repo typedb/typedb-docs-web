@@ -71,7 +71,7 @@
     --font-size-code: 14px;
     --line-height-code: calc(21px / var(--font-size-code));
 
-  --font-weight-normal: 400;
+  --font-weight-semi-bold: 400;
   --body-font-size: var(--font-size-p2); /* 16px */
   --body-line-height: 1.5;
   --body-font-color: var(--color-dark-white);
@@ -115,7 +115,7 @@
   --abstract-border-color: var(--panel-border-color);
   --caption-font-color: var(--color-secondary-light-grey);
   --caption-font-style: italic;
-  --caption-font-weight: var(--font-weight-normal);
+  --caption-font-weight: var(--font-weight-semi-bold);
   --code-background: var(--panel-background);
   --code-font-color: var(--color-secondary-pink);
   --code-border-color: var(--color-light-purple);

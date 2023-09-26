@@ -29,7 +29,7 @@
 
 .nav-panel-explore .context {
   flex-grow: 1;
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-semi-bold);
   padding: 8px 14px;
   display: flex;
   align-items: center;
@@ -119,7 +119,7 @@
 .nav-panel-explore .component .version.is-current a {
   color: var(--color-green);
   border-color: currentColor;
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-semi-bold);
 }
 
 .nav-list {
@@ -221,7 +221,7 @@ button.nav-text:hover,
 
 .nav-item.is-current-page .nav-text,
 .nav-item.is-current-path > .nav-text {
-  font-weight: var(--font-weight-normal);
+  font-weight: var(--font-weight-semi-bold);
 }
 
 .nav-item[data-depth="0"] {
