@@ -15,7 +15,7 @@ body {
   color: var(--body-font-color);
   font-family: var(--body-font-family);
   line-height: var(--body-line-height);
-  font-weight: var(--doc-font-weight);
+  font-weight: var(--font-weight-light);
   letter-spacing: 0.016em;
   margin: 0;
   tab-size: 4;
