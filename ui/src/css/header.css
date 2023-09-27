@@ -343,10 +343,6 @@ header h4 {
   margin: 0;
 }
 
-header h4 {
-  font-weight: normal;
-}
-
 header .mp-column a:hover {
   text-decoration: none;
 }
