@@ -152,7 +152,7 @@ h5, h6 {
   background: var(--code-background);
   border-radius: var(--border-radius);
   border: 1px solid var(--code-border-color);
-  font-size: 14px;
+  font-size: var(--font-size-code);
   padding: 4px 6px;
 }
 
@@ -168,7 +168,7 @@ h5, h6 {
 }
 
 .doc pre {
-  font-size: 13px;
+  font-size: var(--font-size-code);
   line-height: 21px;
   margin: 0;
 }
