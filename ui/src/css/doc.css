@@ -153,7 +153,7 @@ h5, h6 {
   border-radius: var(--border-radius);
   border: 1px solid var(--code-border-color);
   font-size: var(--font-size-code);
-  padding: 4px 6px;
+  padding: 6px 6px 3px 6px;
 }
 
 .doc table.tableblock p code,
