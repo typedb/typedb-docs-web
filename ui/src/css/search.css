@@ -67,7 +67,7 @@
   overflow: auto;
   overscroll-behavior: none;
   padding: 1rem;
-  max-height: calc(100vh - var(--main-offset));
+  max-height: calc(100vh - var(--content-offset));
   box-shadow: 0 4px 8px 4px var(--color-black-50);
   backdrop-filter: blur(20px);
 }
