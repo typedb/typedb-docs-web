@@ -1,5 +1,5 @@
 @import "typeface-titillium-web.css";
-@import "typeface-ubuntu-mono.css";
+@import "typeface-monaco.css";
 
 @import "vars.css";
 @import "base.css";
@@ -16,7 +16,6 @@
 
 @import "footer.css";
 
-@import "highlight.css";
 @import "print.css";
 @import "vendor/prism.css";
 @import "vendor/tabs.css";

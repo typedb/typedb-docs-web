@@ -18,7 +18,7 @@
   ],
   "devDependencies": {
     "@asciidoctor/core": "~2.2",
-    "@fontsource/titillium-web": "~4.5",
+    "@fontsource/titillium-web": "^5.0.12",
     "@fontsource/ubuntu-mono": "~4.5",
     "autoprefixer": "~9.7",
     "browser-pack-flat": "~3.4",
