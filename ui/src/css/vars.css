@@ -72,6 +72,7 @@
     --line-height-code: calc(21px / var(--font-size-code));
 
   --font-weight-light: 200;
+  --font-weight-regular: 300;
   --font-weight-semi-bold: 400;
   --font-weight-bold: 600;
 
