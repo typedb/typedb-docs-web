@@ -168,7 +168,7 @@ h5, h6 {
 }
 
 .doc pre {
-  font-size: 13px;
+  font-size: var(--font-size-code);
   line-height: 21px;
   margin: 0;
 }

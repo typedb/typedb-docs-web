@@ -68,7 +68,7 @@
     --font-size-aside-mobile: 13px;
     --line-height-aside-mobile: calc(21px / var(--font-size-aside-mobile));
 
-    --font-size-code: 14px;
+    --font-size-code: 13px;
     --line-height-code: calc(21px / var(--font-size-code));
 
   --font-weight-light: 200;
