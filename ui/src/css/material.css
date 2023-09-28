@@ -1,0 +1,274 @@
+body .mat-icon {
+  width: 1em;
+  height: 1em;
+}
+
+body .mat-icon svg {
+  display: block;
+}
+
+body .mat-mdc-icon-button {
+  padding: 0.25em;
+  margin: -0.25em;
+  width: 1.5em;
+  height: 1.5em;
+}
+
+body .mat-mdc-icon-button .mat-icon {
+  display: block;
+  font-size: inherit;
+}
+
+body .mat-mdc-icon-button svg {
+  width: auto;
+  height: auto;
+}
+
+body .mat-icon,
+body .mat-mdc-icon-button {
+  font-size: 24px;
+}
+
+body .mat-icon.td-icon-small,
+body .mat-mdc-icon-button.td-icon-small {
+  font-size: 20px;
+}
+
+body .mat-icon.td-icon-large,
+body .mat-mdc-icon-button.td-icon-large {
+  font-size: 32px;
+}
+
+body .mat-icon.td-icon-xl,
+body .mat-mdc-icon-button.td-icon-xl {
+  font-size: 40px;
+}
+
+/* angular material styles */
+
+.cdk-visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+  outline: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  left: 0;
+}
+
+[dir="rtl"] .cdk-visually-hidden {
+  left: auto;
+  right: 0;
+}
+
+.mat-icon {
+  -webkit-user-select: none;
+  user-select: none;
+  background-repeat: no-repeat;
+  display: inline-block;
+  fill: currentColor;
+  height: 24px;
+  width: 24px;
+  overflow: hidden;
+}
+
+.mdc-icon-button {
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  background-color: rgba(0, 0, 0, 0);
+  fill: currentColor;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  z-index: 0;
+  overflow: visible;
+}
+.mdc-icon-button .mdc-icon-button__touch {
+  position: absolute;
+  top: 50%;
+  height: 48px;
+  left: 50%;
+  width: 48px;
+  transform: translate(-50%, -50%);
+}
+@media screen and (forced-colors: active) {
+  .mdc-icon-button.mdc-ripple-upgraded--background-focused
+    .mdc-icon-button__focus-ring,
+  .mdc-icon-button:not(.mdc-ripple-upgraded):focus
+    .mdc-icon-button__focus-ring {
+    display: block;
+  }
+}
+.mdc-icon-button:disabled {
+  cursor: default;
+  pointer-events: none;
+}
+.mdc-icon-button[hidden] {
+  display: none;
+}
+.mdc-icon-button--display-flex {
+  align-items: center;
+  display: inline-flex;
+  justify-content: center;
+}
+.mdc-icon-button__focus-ring {
+  pointer-events: none;
+  border: 2px solid rgba(0, 0, 0, 0);
+  border-radius: 6px;
+  box-sizing: content-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  width: 100%;
+  display: none;
+}
+@media screen and (forced-colors: active) {
+  .mdc-icon-button__focus-ring {
+    border-color: CanvasText;
+  }
+}
+.mdc-icon-button__focus-ring::after {
+  content: "";
+  border: 2px solid rgba(0, 0, 0, 0);
+  border-radius: 8px;
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: calc(100% + 4px);
+  width: calc(100% + 4px);
+}
+@media screen and (forced-colors: active) {
+  .mdc-icon-button__focus-ring::after {
+    border-color: CanvasText;
+  }
+}
+.mdc-icon-button__icon {
+  display: inline-block;
+}
+.mdc-icon-button__icon.mdc-icon-button__icon--on {
+  display: none;
+}
+.mdc-icon-button--on .mdc-icon-button__icon {
+  display: none;
+}
+.mdc-icon-button--on .mdc-icon-button__icon.mdc-icon-button__icon--on {
+  display: inline-block;
+}
+.mdc-icon-button__link {
+  height: 100%;
+  left: 0;
+  outline: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.mat-mdc-icon-button {
+  height: var(--mdc-icon-button-state-layer-size);
+  width: var(--mdc-icon-button-state-layer-size);
+  color: var(--mdc-icon-button-icon-color);
+  --mdc-icon-button-state-layer-size: 48px;
+  --mdc-icon-button-icon-size: 24px;
+  --mdc-icon-button-disabled-icon-color: black;
+  --mdc-icon-button-disabled-icon-opacity: 0.38;
+}
+.mat-mdc-icon-button .mdc-button__icon {
+  font-size: var(--mdc-icon-button-icon-size);
+}
+.mat-mdc-icon-button svg,
+.mat-mdc-icon-button img {
+  width: var(--mdc-icon-button-icon-size);
+  height: var(--mdc-icon-button-icon-size);
+}
+.mat-mdc-icon-button:disabled {
+  opacity: var(--mdc-icon-button-disabled-icon-opacity);
+}
+.mat-mdc-icon-button:disabled {
+  color: var(--mdc-icon-button-disabled-icon-color);
+}
+.mat-mdc-icon-button {
+  padding: 12px;
+  font-size: var(--mdc-icon-button-icon-size);
+  border-radius: 50%;
+  flex-shrink: 0;
+  text-align: center;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.mat-mdc-icon-button svg {
+  vertical-align: baseline;
+}
+.mat-mdc-icon-button[disabled] {
+  cursor: default;
+  pointer-events: none;
+  opacity: 1;
+}
+.mat-mdc-icon-button .mat-mdc-button-ripple,
+.mat-mdc-icon-button .mat-mdc-button-persistent-ripple,
+.mat-mdc-icon-button .mat-mdc-button-persistent-ripple::before {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  pointer-events: none;
+  border-radius: inherit;
+}
+.mat-mdc-icon-button .mat-mdc-button-ripple {
+  overflow: hidden;
+}
+.mat-mdc-icon-button .mat-mdc-button-persistent-ripple::before {
+  content: "";
+  opacity: 0;
+  background-color: var(--mat-mdc-button-persistent-ripple-color);
+}
+.mat-mdc-icon-button .mat-ripple-element {
+  background-color: var(--mat-mdc-button-ripple-color);
+}
+.mat-mdc-icon-button .mdc-button__label {
+  z-index: 1;
+}
+.mat-mdc-icon-button .mat-mdc-focus-indicator {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+}
+.mat-mdc-icon-button:focus .mat-mdc-focus-indicator::before {
+  content: "";
+}
+.mat-mdc-icon-button .mat-mdc-button-touch-target {
+  position: absolute;
+  top: 50%;
+  height: 48px;
+  left: 50%;
+  width: 48px;
+  transform: translate(-50%, -50%);
+}
+.mat-mdc-icon-button._mat-animation-noopable {
+  transition: none !important;
+  animation: none !important;
+}
+.mat-mdc-icon-button .mat-mdc-button-persistent-ripple {
+  border-radius: 50%;
+}
+.mat-mdc-icon-button.mat-unthemed:not(.mdc-ripple-upgraded):focus::before,
+.mat-mdc-icon-button.mat-primary:not(.mdc-ripple-upgraded):focus::before,
+.mat-mdc-icon-button.mat-accent:not(.mdc-ripple-upgraded):focus::before,
+.mat-mdc-icon-button.mat-warn:not(.mdc-ripple-upgraded):focus::before {
+  background: rgba(0, 0, 0, 0);
+  opacity: 1;
+}
