@@ -238,7 +238,13 @@ button.nav-text:hover,
   background: var(--panel-border-color);
 }
 
-.nav-item.is-current-page > .nav-text-container::before,
-.nav-item.is-current-path:not(.is-active) > .nav-text-container::before {
+.nav-item.is-current-page:not(.nav-item-expandable)
+  > .nav-text-container::before,
+.nav-item.is-current-path:not(.nav-item-expandable):not(.is-active)
+  > .nav-text-container::before {
   background: var(--color-green);
+}
+
+.nav-item.is-current-page > * > .nav-text-toggle-button {
+  color: var(--color-green);
 }
