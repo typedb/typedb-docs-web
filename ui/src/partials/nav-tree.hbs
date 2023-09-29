@@ -6,32 +6,35 @@
     data-depth="{{or ../level 0}}"
   >
     {{#if ./content}}
-      {{#if ./url}}
-        <a class="nav-link" href="{{~#if (eq ./urlType 'internal')}}{{{relativize ./url}}}{{~else}}{{{./url}}}" target="_blank{{~/if}}">
-          {{#if (eq ./url @root.page.url)}}<div class="nav-link-active-indicator"></div>{{/if}}
-          <p class="nav-text">
-            <span>{{{./content}}}</span>
-            {{#if (ne ./urlType 'internal')}}
-            <svg class="nav-external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M16.6707 8.97635L6.64706 19L5 17.353L15.0237 7.3293H6.1889V5H19V17.8111H16.6707V8.97635Z" />
-            </svg>
-            {{/if}}
-          </p>
-        </a>
-      {{else}}
-        {{#if (and ./items.length ../level)}}
-        <button class="nav-text nav-text-toggle">
-          <svg class="nav-text-toggle-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 13.1671L17.4447 7.72237L19 9.27768L12 16.2777L5 9.27768L6.55531 7.72237L12 13.1671Z"/>
-          </svg>
-          <span>{{{./content}}}</span>
-        </button>
-        {{else}}
-        <p class="nav-text">
-            <span>{{{./content}}}</span>
-        </p>
-        {{/if}}
+    <div class="nav-text-container">
+      {{#if (and ./items.length ../level)}}
+      <button class="nav-text-toggle-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M13.0913 12L8 6.90867L9.45437 5.4543L16 12L9.45437 18.5457L8 17.0913L13.0913 12Z"/>
+        </svg>
+      </button>
       {{/if}}
+      {{#if ./url}}
+      <a class="nav-text nav-link" href="{{~#if (eq ./urlType 'internal')}}{{{relativize ./url}}}{{~else}}{{{./url}}}" target="_blank{{~/if}}">
+        <span>{{{./content}}}</span>
+        {{#if (ne ./urlType 'internal')}}
+        <svg class="nav-external-link-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M16.6707 8.97635L6.64706 19L5 17.353L15.0237 7.3293H6.1889V5H19V17.8111H16.6707V8.97635Z" />
+        </svg>
+        {{/if}}
+      </a>
+      {{else}}
+      {{#if (and ./items.length ../level)}}
+      <button class="nav-text nav-text-toggle">
+        <span>{{{./content}}}</span>
+      </button>
+      {{else}}
+      <p class="nav-text">
+        <span>{{{./content}}}</span>
+      </p>
+      {{/if}}
+      {{/if}}
+    </div>
     {{/if}}
     {{> nav-tree navigation=./items expandNav=../expandNav level=(increment ../level)}}
   </li>

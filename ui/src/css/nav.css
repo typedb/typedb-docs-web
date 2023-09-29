@@ -131,13 +131,58 @@
   font-weight: var(--font-weight-regular);
 }
 
-.nav-item .nav-item:not(.is-active) > .nav-list {
+.nav-item[data-depth="0"] {
+  margin-top: 1rem;
+  border-top: 1px solid var(--panel-border-color);
+  padding-top: 1rem;
+}
+
+.nav-item .nav-item:not(.is-active) .nav-list {
   display: none;
 }
 
-.nav-link {
+.nav-item.is-active > * > .nav-text-toggle-button {
+  transform: rotate(90deg);
+}
+
+.nav-text-container {
   position: relative;
-  display: block;
+  display: flex;
+  align-items: center;
+}
+
+.nav-text-toggle-button {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  padding: 4px;
+  margin: -4px;
+  background: none;
+  border: none;
+}
+
+.nav-text {
+  width: 100%;
+  padding: 8px 24px;
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+p.nav-text {
+  padding: 8px 14px;
+  font-weight: var(--font-weight-bold);
+}
+
+.nav-text-toggle {
+  background: none;
+  border: none;
+  text-align: left;
+}
+
+.nav-link {
   color: inherit;
 }
 
@@ -145,110 +190,55 @@
   text-decoration: none;
 }
 
-.nav-link-active-indicator {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 2px;
-  background: var(--color-green);
-}
-
-.nav-text {
-  width: 100%;
-  border-radius: var(--border-radius);
-  border: none;
-  background: none;
-
-  padding: 8px 24px 8px 32px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 8px;
-
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-p.nav-text {
-  cursor: default;
-}
-
-.nav-link .nav-text,
-button.nav-text {
-  cursor: pointer;
-}
-
-.nav-link .nav-text:hover,
-button.nav-text:hover,
-.nav-item.is-current-page .nav-text {
-  background: var(--color-purple);
-}
-
-.nav-item.is-current-page .nav-text {
-    color: var(--color-green);
-}
-
-.nav-external-link-icon,
-.nav-text-toggle-icon {
-  flex-shrink: 0;
-  height: 1.25rem;
-  width: 1.25rem;
-}
-
 .nav-external-link-icon {
-  color: var(--color-white);
+  flex-shrink: 0;
+  height: 20px;
+  width: 20px;
 }
 
-.nav-item:not(:hover) > .nav-link .nav-external-link-icon {
+.nav-item:not(:hover) > * > .nav-link .nav-external-link-icon {
   opacity: 0;
 }
 
-.nav-item-expandable .nav-text-toggle {
-    margin-left: -28px;
-    width: calc(100% + 28px);
+a.nav-text:hover,
+button.nav-text:hover,
+.nav-item.is-current-page > * > .nav-text,
+.nav-item.is-current-path:not(.is-active) > * > .nav-text {
+  background: var(--color-purple);
 }
 
-.nav-text-toggle-icon {
-  color: var(--color-dark-white);
+.nav-item.is-current-page > * > .nav-text {
+  color: var(--color-green);
+  font-weight: var(--font-weight-bold);
 }
 
-.nav-item > .nav-text .nav-text-toggle-icon {
-    transform: rotate(-90deg);
-}
-
-.nav-item.is-active > .nav-text .nav-text-toggle-icon {
-  transform: none;
-}
-
-.nav-item.is-current-page .nav-text,
-.nav-item.is-current-path > .nav-text {
-  font-weight: var(--font-weight-semi-bold);
-}
-
-.nav-item[data-depth="0"] {
-  margin-top: 1rem;
-  border-top: 1px solid var(--panel-border-color);
-  padding-top: 1rem;
-}
-
-.nav-item[data-depth="0"] > .nav-text {
-  font-size: 0.75rem;
-  color: var(--color-secondary-light-grey);
+.nav-item.is-current-path > * > .nav-text {
+  font-weight: var(--font-weight-bold);
 }
 
 .nav-item[data-depth="1"] > .nav-list {
   padding-left: 1.25rem;
 }
 
-.nav-item[data-depth="2"] {
-  border-left: 1px solid var(--color-light-purple);
+.nav-item[data-depth="2"] > * > .nav-text {
+  padding-left: 12px;
 }
 
-.nav-item[data-depth="2"].is-current-page {
-  color: var(--color-green);
+.nav-item[data-depth="1"] > .nav-text-container::before,
+.nav-item[data-depth="2"] > .nav-text-container::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
 }
 
-.nav-item[data-depth="2"] .nav-link-active-indicator {
-  width: 0.125rem;
+.nav-item[data-depth="2"] > .nav-text-container::before {
+  background: var(--panel-border-color);
+}
+
+.nav-item.is-current-page > .nav-text-container::before,
+.nav-item.is-current-path:not(.is-active) > .nav-text-container::before {
+  background: var(--color-green);
 }
