@@ -164,6 +164,9 @@
   function highlightText(doc, terms) {
     const text = doc.text;
     const positions = getTermPosition(text, terms);
+    if (!positions.length) {
+      return [];
+    }
     return buildHighlightedText(text, positions, snippetLength);
   }
 
