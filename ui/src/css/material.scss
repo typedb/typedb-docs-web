@@ -1,47 +1,46 @@
-body .mat-icon {
-  width: 1em;
-  height: 1em;
-}
+body {
+  .mat-icon {
+    width: 1em;
+    height: 1em;
 
-body .mat-icon svg {
-  display: block;
-}
+    svg {
+      display: block;
+    }
+  }
 
-body .mat-mdc-icon-button {
-  padding: 0.25em;
-  margin: -0.25em;
-  width: 1.5em;
-  height: 1.5em;
-}
+  .mat-mdc-icon-button {
+    padding: 0.25em;
+    margin: -0.25em;
+    width: 1.5em;
+    height: 1.5em;
 
-body .mat-mdc-icon-button .mat-icon {
-  display: block;
-  font-size: inherit;
-}
+    .mat-icon {
+      display: block;
+      font-size: inherit;
+    }
 
-body .mat-mdc-icon-button svg {
-  width: auto;
-  height: auto;
-}
+    svg {
+      width: auto;
+      height: auto;
+    }
+  }
 
-body .mat-icon,
-body .mat-mdc-icon-button {
-  font-size: 24px;
-}
+  .mat-icon,
+  .mat-mdc-icon-button {
+    font-size: 24px;
 
-body .mat-icon.td-icon-small,
-body .mat-mdc-icon-button.td-icon-small {
-  font-size: 20px;
-}
+    &.td-icon-small {
+      font-size: 20px;
+    }
 
-body .mat-icon.td-icon-large,
-body .mat-mdc-icon-button.td-icon-large {
-  font-size: 32px;
-}
+    &.td-icon-large {
+      font-size: 32px;
+    }
 
-body .mat-icon.td-icon-xl,
-body .mat-mdc-icon-button.td-icon-xl {
-  font-size: 40px;
+    &.td-icon-xl {
+      font-size: 40px;
+    }
+  }
 }
 
 /* angular material styles */

@@ -141,16 +141,12 @@
   --toc-line-height: 1.2;
   /* search */
   --search-highlight-color: rgba(246, 201, 76, 0.25);
-}
 
-@media (max-width: 1199px) {
-  :root {
+  @media (max-width: 1199px) {
     --hide-tablet: none;
   }
-}
 
-@media (max-width: 767px) {
-  :root {
+  @media (max-width: 767px) {
     --hide-mobile: none;
 
     --body-font-size: 14px;
