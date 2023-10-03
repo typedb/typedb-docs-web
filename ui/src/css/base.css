@@ -122,6 +122,24 @@ table {
   display: none !important;
 }
 
+@media (max-width: 767px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .hide-gt-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+
 .flex {
   flex: 1;
 }
