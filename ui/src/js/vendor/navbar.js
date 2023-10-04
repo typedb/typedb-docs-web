@@ -1,65 +1,67 @@
-let hoveredMenuPanelIndex = undefined;
-let hoveredMenuItemIndex = undefined;
+(function() {
+  const menuButton = document.querySelector("header .tb-hamburger-button");
+  menuButton.addEventListener("click", function(e) {
+    menuButton.classList.toggle("tb-opened");
+    document.querySelector("td-topbar-menu-mobile").toggleAttribute("hidden");
+  });
 
-;(function () {
-  let mobileMenuBtn = document.querySelector("button[_ngcontent-bfa-c139]")
-  mobileMenuBtn.addEventListener('click', function(e){
-    e.target.closest("button[_ngcontent-bfa-c139]").classList.toggle("tb-opened");
-    let topbarMenuMobile = document.querySelector("td-topbar-menu-mobile[_ngcontent-bfa-c139]")
-    topbarMenuMobile.toggleAttribute("hidden");
+  document
+    .querySelectorAll("td-topbar-menu-mobile button.tb-menu-panel-header")
+    .forEach(el =>
+      el.addEventListener("click", function(event) {
+        el.classList.toggle("tm-expanded");
+        el.parentElement
+          .querySelector("td-topbar-menu-panel-mobile")
+          .toggleAttribute("hidden");
+      })
+    );
+})();
 
-
-    let atagExpandableList = document.querySelectorAll("a[_ngcontent-bfa-c141]") || []
-    if(atagExpandableList.length>0){
-      for(let atag of atagExpandableList){
-        atag.addEventListener('click', function(event){
-          let parent = event.target.closest('li')
-          let aEle = parent.querySelector('a[_ngcontent-bfa-c141]')
-          aEle.classList.toggle("tm-expanded");
-
-          let submenu = parent.querySelector("td-topbar-menu-panel-mobile[_ngcontent-bfa-c141]")
-          submenu.toggleAttribute("hidden");
-
-        })
-      }
-
-    }
-  })
-
-
-
-})()
+let hoveredMenuPanelEl = undefined;
+let hoveredMenuItemEl = undefined;
 
 function updateMenuPanelVisibility() {
-    for (const i of [1, 2, 3,4]) {
-        if ([hoveredMenuItemIndex, hoveredMenuPanelIndex].includes(i)) {
-            document.getElementById(`topbarMenuPanel${i}`).removeAttribute('hidden');
-        } else {
-            document.getElementById(`topbarMenuPanel${i}`).setAttribute('hidden', '');
-        }
+  Array.from(document.getElementsByTagName("td-topbar-menu-panel")).forEach(
+    el => {
+      const itemEl = el.parentElement.querySelector(".tb-menu-panel-header");
+
+      if (hoveredMenuPanelEl === el || hoveredMenuItemEl === itemEl) {
+        el.removeAttribute("hidden");
+      } else {
+        el.setAttribute("hidden", "");
+      }
     }
+  );
 }
 
-for (const i of [1, 2, 3,4]) {
-    document.getElementById(`topbarMenuItem${i}`).addEventListener('mouseenter', () => {
-        hoveredMenuItemIndex = i;
-        hoveredMenuPanelIndex = undefined;
-        updateMenuPanelVisibility();
+Array.from(document.getElementsByClassName("tb-menu-panel-header")).forEach(
+  el => {
+    el.addEventListener("mouseenter", () => {
+      hoveredMenuPanelEl = undefined;
+      hoveredMenuItemEl = el;
+      updateMenuPanelVisibility();
     });
+    el.addEventListener("mouseleave", () => {
+      if (hoveredMenuItemEl === el) {
+        hoveredMenuItemEl = undefined;
+      }
+      updateMenuPanelVisibility();
+    });
+  }
+);
 
-    document.getElementById(`topbarMenuItem${i}`).addEventListener('mouseleave', () => {
-        if (hoveredMenuItemIndex === i) hoveredMenuItemIndex = undefined;
-        updateMenuPanelVisibility();
+Array.from(document.getElementsByTagName("td-topbar-menu-panel")).forEach(
+  el => {
+    el.addEventListener("mouseenter", () => {
+      hoveredMenuPanelEl = el;
+      hoveredMenuItemEl = undefined;
+      updateMenuPanelVisibility();
     });
-
-    document.getElementById(`topbarMenuPanel${i}`).addEventListener('mouseenter', () => {
-        hoveredMenuPanelIndex = i;
-        hoveredMenuItemIndex = undefined;
-        updateMenuPanelVisibility();
+    el.addEventListener("mouseleave", () => {
+      if (hoveredMenuPanelEl === el) {
+        hoveredMenuPanelEl = undefined;
+      }
+      updateMenuPanelVisibility();
     });
-
-    document.getElementById(`topbarMenuPanel${i}`).addEventListener('mouseleave', () => {
-        if (hoveredMenuPanelIndex === i) hoveredMenuPanelIndex = undefined;
-        updateMenuPanelVisibility();
-    });
-}
+  }
+);

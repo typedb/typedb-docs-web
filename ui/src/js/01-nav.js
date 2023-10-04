@@ -21,25 +21,9 @@
     menuPanel.scrollTop = 0;
   }
 
-  find(menuPanel, ".nav-item-toggle").forEach(function(btn) {
-    var li = btn.parentElement;
-    btn.addEventListener("click", toggleActive.bind(li));
-    var navItemSpan = findNextElement(btn, ".nav-text");
-    if (navItemSpan) {
-      navItemSpan.style.cursor = "pointer";
-      navItemSpan.addEventListener("click", toggleActive.bind(li));
-    }
-  });
-
-  find(menuPanel, ".nav-text-toggle").forEach(function(btn) {
-    var li = btn.parentElement;
-    btn.addEventListener("click", toggleActive.bind(li));
-    var navItemSpan = findNextElement(btn, ".nav-text");
-    if (navItemSpan) {
-      navItemSpan.style.cursor = "pointer";
-      navItemSpan.addEventListener("click", toggleActive.bind(li));
-    }
-  });
+  find(menuPanel, ".nav-text-toggle-button, .nav-text-toggle").forEach(el =>
+    el.addEventListener("click", toggleActive.bind(el.closest("li")))
+  );
 
   if (explorePanel) {
     explorePanel
@@ -185,12 +169,5 @@
 
   function find(from, selector) {
     return [].slice.call(from.querySelectorAll(selector));
-  }
-
-  function findNextElement(from, selector) {
-    var el = from.nextElementSibling;
-    return el && selector
-      ? el[el.matches ? "matches" : "msMatchesSelector"](selector) && el
-      : el;
   }
 })();
