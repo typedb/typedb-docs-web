@@ -1,6 +1,7 @@
 [build]
-  command = "npm run build-ci"
-  ignore = "/bin/false"
+    command = "npm run build-ci"
+    publish = "dist/"
+    ignore = "/bin/false"
 
 [build.processing.html]
-  pretty_urls = true
+    pretty_urls = true
