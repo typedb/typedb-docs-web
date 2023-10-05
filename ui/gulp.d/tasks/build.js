@@ -17,7 +17,7 @@ const uglify = require("gulp-uglify");
 const vfs = require("vinyl-fs");
 
 module.exports = (src, dest, preview) => () => {
-  const sassIncludePath = "../main/common/src/scss";
+  const sassIncludePath = "../typedb-web-main/common/src/scss";
   const opts = { base: src, cwd: src };
   const sourcemaps = preview || process.env.SOURCEMAPS === "true";
   const postcssPlugins = [
