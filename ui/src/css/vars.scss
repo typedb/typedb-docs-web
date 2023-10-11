@@ -1,26 +1,28 @@
+@import "colors";
+
 :root {
   /* colors */
-  --color-white: #ffffff;
-  --color-dark-white: #e1dfed;
-  --color-light-purple: #2d2a46;
-  --color-purple: #1a182a;
-  --color-deep-purple: #151322;
-  --color-black-purple: #0e0d17;
-  --color-green: #02dac9;
-  --color-red: #e96464;
-  --color-secondary-light-grey: #958fa8;
-  --color-secondary-grey: #63607c;
-  --color-secondary-purple: #232135;
-  --color-secondary-yellow: #ffe49e;
-  --color-secondary-pink: #ff87dc;
-  --color-secondary-blue: #7ba0ff;
+  --color-white: #{$color-vaticle-white};
+  --color-dark-white: #{$color-vaticle-dark-white};
+  --color-light-purple: #{$color-vaticle-light-purple};
+  --color-purple: #{$color-vaticle-purple};
+  --color-deep-purple: #{$color-vaticle-deep-purple};
+  --color-black-purple: #{$color-vaticle-black-purple};
+  --color-green: #{$color-vaticle-green};
+  --color-red: #{$color-vaticle-red};
+  --color-secondary-light-grey: #{$color-vaticle-secondary-light-grey};
+  --color-secondary-grey: #{$color-vaticle-secondary-grey};
+  --color-secondary-purple: #{$color-vaticle-secondary-purple};
+  --color-secondary-yellow: #{$color-vaticle-secondary-yellow};
+  --color-secondary-pink: #{$color-vaticle-secondary-pink};
+  --color-secondary-blue: #{$color-vaticle-secondary-blue};
   --color-black-50: rgba(0, 0, 0, 0.5);
-  --color-light-purple-50: rgba(45, 42, 70, 0.5);
-  --color-deep-purple-50: rgba(21, 19, 34, 0.5);
-  --color-green-15: rgba(2, 218, 201, 0.15);
-  --color-red-15: rgba(233, 99, 99, 0.15);
-  --color-secondary-yellow-15: rgba(255, 228, 158, 0.15);
-  --color-secondary-blue-15: rgba(123, 160, 255, 0.15);
+  --color-light-purple-50: #{rgba($color-vaticle-light-purple, 0.5)};
+  --color-deep-purple-50: #{rgba($color-vaticle-deep-purple, 0.5)};
+  --color-green-15: #{rgba($color-vaticle-green, 0.15)};
+  --color-red-15: #{rgba($color-vaticle-red, 0.15)};
+  --color-secondary-yellow-15: #{rgba($color-vaticle-secondary-yellow, 0.15)};
+  --color-secondary-blue-15: #{rgba($color-vaticle-secondary-blue, 0.15)};
 
   /* fonts */
   --rem-base: 17; /* used to compute rem value from desired pixel value (e.g., calc(18 / var(--rem-base) * 1rem) = 18px) */
