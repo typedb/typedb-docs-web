@@ -25,14 +25,14 @@ body {
 a {
   text-decoration: none;
   cursor: pointer;
-}
 
-a:hover {
-  text-decoration: underline;
-}
+  &:hover {
+    text-decoration: underline;
+  }
 
-a:active {
-  background-color: none;
+  &:active {
+    background-color: none;
+  }
 }
 
 h1,
@@ -122,6 +122,39 @@ table {
   display: none !important;
 }
 
+@media (max-width: 767px) {
+  .hide-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .hide-gt-mobile {
+    display: none !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hide-desktop {
+    display: none !important;
+  }
+}
+
 .flex {
   flex: 1;
+}
+
+h1,
+h2 {
+  font-weight: var(--font-weight-bold);
+}
+
+h3,
+h4 {
+  font-weight: var(--font-weight-semi-bold);
+}
+
+h5,
+h6 {
+  font-weight: var(--font-weight-light);
 }
