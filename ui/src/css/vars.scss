@@ -94,9 +94,6 @@
   --main-gap: 1rem;
   --search-height: calc(50 / var(--rem-base) * 1rem);
   --main-offset: calc(var(--header-height) + var(--main-padding));
-  --content-offset: calc(
-    var(--main-offset) + var(--search-height) + var(--main-gap)
-  );
   /* admonitions */
   --important-color: var(--color-secondary-yellow);
   --important-background: var(--color-secondary-yellow-15);
