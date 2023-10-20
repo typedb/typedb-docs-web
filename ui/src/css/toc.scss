@@ -1,9 +1,9 @@
 .toc.sidebar {
   display: var(--hide-tablet, block);
   position: sticky;
-  top: var(--content-offset);
+  top: var(--main-offset);
   flex: 0 0 var(--toc-width);
-  max-height: calc(100vh - var(--content-offset));
+  max-height: calc(100vh - var(--main-offset));
   overflow-y: auto;
 }
 

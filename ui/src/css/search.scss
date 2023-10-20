@@ -1,13 +1,9 @@
 .search {
   position: sticky;
-  top: var(--main-offset);
+  top: 0;
   z-index: 1;
 
-  box-shadow: 0 calc(var(--main-padding) / -2) calc(var(--main-gap) / 2)
-    calc(var(--main-gap) / 2 + var(--main-padding) / 2) var(--body-background);
-
   height: var(--search-height);
-  flex-basis: 100%;
 
   border-radius: var(--border-radius);
   border: 1px solid var(--color-light-purple);
@@ -54,7 +50,8 @@
   z-index: 100;
   display: block;
   left: -1px;
-  right: -1px;
+  width: var(--search-result-width);
+  max-width: calc(100vw - var(--main-padding) * 2);
   top: 100%;
   margin-top: 0.5rem;
 }
@@ -67,7 +64,7 @@
   overflow: auto;
   overscroll-behavior: none;
   padding: 1rem;
-  max-height: calc(100vh - var(--content-offset));
+  max-height: calc(100vh - var(--main-offset) - var(--search-height) - 1rem);
   box-shadow: 0 4px 8px 4px var(--color-black-50);
   backdrop-filter: blur(20px);
 }
