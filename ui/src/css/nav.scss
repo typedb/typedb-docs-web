@@ -3,7 +3,7 @@
   position: sticky;
   top: var(--main-offset);
   height: calc(100vh - var(--main-offset));
-  flex: 0 0 calc(248 / var(--rem-base) * 1rem);
+  flex: 0 0 var(--nav-width);
   z-index: 2;
 }
 
