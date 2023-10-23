@@ -3,11 +3,14 @@
 /* Modified by Vaticle */
 
 .tabs {
-  border-radius: var(--border-radius);
-  border: 1px solid var(--panel-border-color);
-  background: var(--panel-background);
-  overflow: hidden;
   margin: 2.5rem 0;
+
+  > .content {
+    border-radius: var(--border-radius);
+    border: 1px solid var(--panel-border-color);
+    background: var(--panel-background);
+    overflow: hidden;
+  }
 }
 
 .tablist.ulist,

@@ -17,15 +17,14 @@ const uglify = require("gulp-uglify");
 const vfs = require("vinyl-fs");
 
 module.exports = (src, dest, preview) => () => {
+  const sassIncludePath = "../typedb-web-main/common/src/styles";
   const opts = { base: src, cwd: src };
   const sourcemaps = preview || process.env.SOURCEMAPS === "true";
   const postcssPlugins = [
     postcssUrl([
       {
-        filter: /^src[\\\/]css[\\\/][~][^\\\/]*(?:font|face)[^\\\/]*[\\\/].*[\\\/]files[\\\/].+[.](?:ttf|woff2?)$/,
         url: asset => {
-          const relpath = asset.pathname.substr(1);
-          const abspath = require.resolve(relpath);
+          const abspath = ospath.resolve(sassIncludePath, asset.pathname);
           const basename = ospath.basename(abspath);
           const destpath = ospath.join(dest, "font", basename);
           if (!fs.pathExistsSync(destpath)) fs.copySync(abspath, destpath);
@@ -58,7 +57,9 @@ module.exports = (src, dest, preview) => () => {
     //vfs.src(require.resolve('<package-name-or-require-path>'), opts).pipe(concat('js/vendor/<library-name>.js')),
     vfs
       .src(["css/site.scss"], { ...opts, sourcemaps })
-      .pipe(sass().on("error", sass.logError))
+      .pipe(
+        sass({ includePaths: [sassIncludePath] }).on("error", sass.logError)
+      )
       .pipe(postcss(file => ({ plugins: postcssPlugins, options: { file } }))),
     vfs.src("font/*.{ttf,woff*(2)}", opts),
     vfs.src("img/**/*.{gif,ico,jpg,png,svg}", opts).pipe(
