@@ -230,8 +230,17 @@
     margin-top: 0.5rem;
   }
 
-  td.tableblock > .content > :first-child {
-    margin-top: 0;
+  td.tableblock {
+    > .content > :first-child {
+      margin-top: 0;
+    }
+
+    .listingblock > .content {
+      display: flex;
+      > pre {
+        width: 0;
+      }
+    }
   }
 
   table.tableblock {
