@@ -1,13 +1,20 @@
 .doc {
-  background: var(--doc-background);
-  border: 1px solid var(--panel-border-color);
-  border-radius: var(--border-radius);
-  padding: 2rem;
   font-size: var(--doc-font-size);
   font-weight: var(--font-weight-light);
   hyphens: auto;
   line-height: var(--doc-line-height);
   letter-spacing: 0.016em;
+
+  .sect1 {
+    background: var(--doc-background);
+    border: 1px solid var(--panel-border-color);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+
+    > :first-of-type {
+      margin-top: 0;
+    }
+  }
 
   .sect1:not(:first-of-type) {
     margin-top: 2.5rem;
