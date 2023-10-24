@@ -1,9 +1,9 @@
 .body {
   margin: 0 auto;
   min-height: calc(100vh - var(--header-height));
-  padding: var(--main-padding);
-  max-width: var(--main-width);
+  padding: var(--body-padding);
+  max-width: var(--body-width);
   display: flex;
   align-items: flex-start;
-  gap: 1rem;
+  gap: var(--body-gap);
 }
