@@ -1,27 +1,31 @@
 .doc {
-  background: var(--doc-background);
-  border: 1px solid var(--panel-border-color);
-  border-radius: var(--border-radius);
-  padding: 2rem;
   font-size: var(--doc-font-size);
   font-weight: var(--font-weight-light);
   hyphens: auto;
   line-height: var(--doc-line-height);
   letter-spacing: 0.016em;
 
-  .sect1:not(:first-of-type) {
-    margin-top: 2.5rem;
+  .sect1 {
+    background: var(--doc-background);
+    border: 1px solid var(--panel-border-color);
+    border-radius: var(--border-radius);
+    padding: 24px 28px;
+
+    > :first-of-type {
+      margin-top: 0;
+    }
   }
 
-  .sect2:not(:first-of-type) {
-    margin-top: 2rem;
+  .sect1:not(:first-child) {
+    margin-top: 24px;
   }
 
-  .sect3:not(:first-of-type),
-  .sect4:not(:first-of-type),
-  .sect5:not(:first-of-type),
-  .sect6:not(:first-of-type) {
-    margin-top: 1.5rem;
+  .sect2:not(:first-child),
+  .sect3:not(:first-child),
+  .sect4:not(:first-child),
+  .sect5:not(:first-child),
+  .sect6:not(:first-child) {
+    margin-top: 24px;
   }
 
   h1,
@@ -188,7 +192,8 @@
   }
 
   .stretch {
-    width: 100%;
+    width: calc(100% - 2px);
+    margin-left: 1px;
   }
 
   .underline {

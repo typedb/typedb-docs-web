@@ -51,7 +51,7 @@
   display: block;
   left: -1px;
   width: var(--search-result-width);
-  max-width: calc(100vw - var(--main-padding) * 2);
+  max-width: calc(100vw - var(--body-padding) * 2);
   top: 100%;
   margin-top: 0.5rem;
 }
