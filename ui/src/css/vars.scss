@@ -30,46 +30,22 @@
   /* todo: refactor into rem units? */
   --font-size-h1: 41px;
   --line-height-h1: calc(49px / var(--font-size-h1));
-  --font-size-h1-mobile: 31px;
-  --line-height-h1-mobile: calc(39px / var(--font-size-h1-mobile));
-
   --font-size-h2: 33px;
   --line-height-h2: calc(41px / var(--font-size-h2));
-  --font-size-h2-mobile: 25px;
-  --line-height-h2-mobile: calc(33px / var(--font-size-h2-mobile));
-
   --font-size-h3: 25px;
   --line-height-h3: calc(33px / var(--font-size-h3));
-  --font-size-h3-mobile: 19px;
-  --line-height-h3-mobile: calc(27px / var(--font-size-h3-mobile));
-
   --font-size-h4: 21px;
   --line-height-h4: calc(29px / var(--font-size-h4));
-  --font-size-h4-mobile: 17px;
-  --line-height-h4-mobile: calc(25px / var(--font-size-h4-mobile));
-
   --font-size-h5: 19px;
   --line-height-h5: calc(27px / var(--font-size-h5));
-  --font-size-h5-mobile: 17px;
-  --line-height-h5-mobile: calc(25px / var(--font-size-h5-mobile));
-
   --font-size-h6: 17px;
   --line-height-h6: calc(25px / var(--font-size-h6));
-  --font-size-h6-mobile: 15px;
-  --line-height-h6-mobile: calc(23px / var(--font-size-h6-mobile));
-
-  /* TODO: rename p2 to p1 once the codebase is cleaner */
-
+  --font-size-p1: 21px;
+  --line-height-p1: calc(29px / var(--font-size-p2));
   --font-size-p2: 17px;
   --line-height-p2: calc(25px / var(--font-size-p2));
-  --font-size-p2-mobile: 15px;
-  --line-height-p2-mobile: calc(23px / var(--font-size-p2-mobile));
-
   --font-size-aside: 15px;
   --line-height-aside: calc(23px / var(--font-size-aside));
-  --font-size-aside-mobile: 13px;
-  --line-height-aside-mobile: calc(21px / var(--font-size-aside-mobile));
-
   --font-size-code: 13px;
   --line-height-code: calc(21px / var(--font-size-code));
 
@@ -90,10 +66,10 @@
   --panel-border-color: var(--color-light-purple);
   --border-radius: calc(5 / var(--rem-base) * 1rem); /* 5px */
   --header-height: 80px;
-  --main-width: calc(1440 / var(--rem-base) * 1rem);
-  --main-padding: calc(40 / var(--rem-base) * 1rem);
-  --main-gap: 1rem;
-  --main-offset: calc(var(--header-height) + var(--main-padding) + 1px);
+  --body-width: calc(1440 / var(--rem-base) * 1rem);
+  --body-padding: calc(40 / var(--rem-base) * 1rem);
+  --body-gap: 32px;
+  --main-offset: calc(var(--header-height) + var(--body-padding) + 1px);
   /* nav */
   --nav-width: calc(248 / var(--rem-base) * 1rem);
   /* admonitions */
@@ -142,8 +118,8 @@
   --toc-line-height: 1.2;
   /* search */
   --search-result-width: calc(
-    min(var(--main-width), 100vw) - var(--main-padding) * 2 - var(--toc-width) -
-      var(--main-gap) - var(--nav-width)
+    min(var(--body-width), 100vw) - var(--body-padding) * 2 - var(--toc-width) -
+      var(--body-gap) - var(--nav-width)
   );
   --search-height: calc(50 / var(--rem-base) * 1rem);
   --search-highlight-color: rgba(246, 201, 76, 0.25);
@@ -152,7 +128,7 @@
     --hide-tablet: none;
 
     --search-result-width: calc(
-      min(var(--main-width), 100vw) - var(--main-padding) * 2 - var(--main-gap) -
+      min(var(--body-width), 100vw) - var(--body-padding) * 2 - var(--body-gap) -
         var(--nav-width)
     );
   }
@@ -161,5 +137,32 @@
     --hide-mobile: none;
 
     --body-font-size: 14px;
+
+    --font-size-h1: 31px;
+    --line-height-h1: calc(39px / var(--font-size-h1));
+
+    --font-size-h2: 25px;
+    --line-height-h2: calc(33px / var(--font-size-h2));
+
+    --font-size-h3: 19px;
+    --line-height-h3: calc(27px / var(--font-size-h3));
+
+    --font-size-h4: 17px;
+    --line-height-h4: calc(25px / var(--font-size-h4));
+
+    --font-size-h5: 17px;
+    --line-height-h5: calc(25px / var(--font-size-h5));
+
+    --font-size-h6: 15px;
+    --line-height-h6: calc(23px / var(--font-size-h6));
+
+    --font-size-p1: 19px;
+    --line-height-p1: calc(27px / var(--font-size-p2));
+
+    --font-size-p2: 15px;
+    --line-height-p2: calc(23px / var(--font-size-p2));
+
+    --font-size-aside: 13px;
+    --line-height-aside: calc(21px / var(--font-size-aside));
   }
 }
