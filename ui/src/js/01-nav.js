@@ -10,7 +10,6 @@
 
   var menuPanel = navContainer.querySelector("[data-panel=menu]");
   if (!menuPanel) return;
-  var explorePanel = navContainer.querySelector("[data-panel=explore]");
 
   var currentPageItem = menuPanel.querySelector(".is-current-page");
   var originalPageItem = currentPageItem;
@@ -24,24 +23,6 @@
   find(menuPanel, ".nav-text-toggle-button, .nav-text-toggle").forEach(el =>
     el.addEventListener("click", toggleActive.bind(el.closest("li")))
   );
-
-  if (explorePanel) {
-    explorePanel
-      .querySelector(".context-container")
-      .addEventListener("click", function() {
-        explorePanel.classList.toggle("is-active");
-      });
-
-    function closeExplorePanel(ev) {
-      if (explorePanel.contains(ev.target)) {
-        return;
-      }
-      explorePanel.classList.toggle("is-active", false);
-    }
-
-    window.addEventListener("click", closeExplorePanel);
-    navContainer.addEventListener("click", closeExplorePanel);
-  }
 
   // NOTE prevent text from being selected by double click
   menuPanel.addEventListener("mousedown", function(e) {

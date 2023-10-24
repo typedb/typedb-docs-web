@@ -2,7 +2,7 @@
   margin: 0 auto;
   min-height: calc(100vh - var(--header-height));
   padding: var(--main-padding);
-  max-width: calc(1440 / var(--rem-base) * 1rem);
+  max-width: var(--main-width);
   display: flex;
   align-items: flex-start;
   gap: 1rem;
