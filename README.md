@@ -37,7 +37,7 @@ These instructions are for compiling the docs site locally.
 In the project root directory, run:
 
 ```shell
-npm run build
+pnpm build
 ```
 
 The docs site will be built and output to `dist`.

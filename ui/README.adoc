@@ -133,7 +133,7 @@ Clone the default UI project using git:
 The example above clones Antora's default UI project and then switches to the project folder on your filesystem.
 Stay in this project folder when executing all subsequent commands.
 
-Use npm to install the project's dependencies inside the project.
+Use pnpm to install the project's dependencies inside the project.
 In your terminal, execute the following command:
 
  $ pnpm install
