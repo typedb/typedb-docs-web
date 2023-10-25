@@ -1,18 +1,19 @@
 {
-    "name": "typedb-web-docs",
-    "scripts": {
-        "postinstall": "cd typedb-web-main/common && pnpm i && cd ../../ui && npm i && cd ..",
-        "build-ui": "cd ui && npm run build && cd ..",
-        "build": "npm run build-ui && antora antora-playbook.yml",
-        "build-ci": "./build-ci.sh"
-    },
-    "devDependencies": {
-        "@antora/cli": "3.1.4",
-        "@antora/lunr-extension": "1.0.0-alpha.8",
-        "@antora/site-generator": "3.1.4",
-        "@asciidoctor/tabs": "1.0.0-beta.3"
-    },
-    "engines": {
-        "node": ">=18.0 <19.0"
-    }
+  "name": "typedb-web-docs",
+  "scripts": {
+    "postinstall": "cd ui && pnpm i && cd ..",
+    "build-ui": "cd ui && npm run build && cd ..",
+    "build": "npm run build-ui && antora antora-playbook.yml",
+    "build-ci": "./build-ci.sh"
+  },
+  "devDependencies": {
+    "@antora/cli": "3.1.4",
+    "@antora/lunr-extension": "1.0.0-alpha.8",
+    "@antora/site-generator": "3.1.4",
+    "@asciidoctor/tabs": "1.0.0-beta.3"
+  },
+  "engines": {
+    "node": ">=18.0 <19.0"
+  },
+  "packageManager": "pnpm@8.6.7"
 }

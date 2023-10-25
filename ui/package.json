@@ -18,6 +18,7 @@
   ],
   "devDependencies": {
     "@asciidoctor/core": "~2.2",
+    "@fontsource/titillium-web": "5.0.17",
     "browser-pack-flat": "~3.4",
     "browserify": "~16.5",
     "eslint": "~6.8",
@@ -51,6 +52,8 @@
     "sass": "1.68.0",
     "stylelint": "~13.3",
     "stylelint-config-standard": "~20.0",
+    "typedb-web-common": "file:../typedb-web-main/common",
     "vinyl-fs": "~3.0"
-  }
+  },
+  "packageManager": "pnpm@8.6.7"
 }
