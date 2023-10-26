@@ -17,14 +17,17 @@ const uglify = require("gulp-uglify");
 const vfs = require("vinyl-fs");
 
 module.exports = (src, dest, preview) => () => {
-  const sassIncludePath = "../typedb-web-main/common/src/styles";
+  const sassIncludePath = "./node_modules/typedb-web-common/src/styles";
   const opts = { base: src, cwd: src };
   const sourcemaps = preview || process.env.SOURCEMAPS === "true";
   const postcssPlugins = [
     postcssUrl([
       {
         url: asset => {
-          const abspath = ospath.resolve(sassIncludePath, asset.pathname);
+          1;
+          const abspath = asset.pathname.startsWith("~")
+            ? ospath.resolve("./node_modules", asset.pathname.slice(1))
+            : ospath.resolve(sassIncludePath, asset.pathname);
           const basename = ospath.basename(abspath);
           const destpath = ospath.join(dest, "font", basename);
           if (!fs.pathExistsSync(destpath)) fs.copySync(abspath, destpath);

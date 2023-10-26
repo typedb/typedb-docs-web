@@ -51,7 +51,7 @@
   display: block;
   left: -1px;
   width: var(--search-result-width);
-  max-width: calc(100vw - var(--main-padding) * 2);
+  max-width: calc(100vw - var(--body-padding) * 2);
   top: 100%;
   margin-top: 0.5rem;
 }
@@ -66,6 +66,7 @@
   padding: 1rem;
   max-height: calc(100vh - var(--main-offset) - var(--search-height) - 1rem);
   box-shadow: 0 4px 8px 4px var(--color-black-50);
+  -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
 }
 

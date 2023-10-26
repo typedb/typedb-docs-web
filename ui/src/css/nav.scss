@@ -81,6 +81,11 @@
       margin-top: 1rem;
       border-top: 1px solid var(--panel-border-color);
     }
+
+    > .nav-text-container {
+      font-size: var(--font-size-p1);
+      margin-bottom: 0.5rem;
+    }
   }
 
   &[data-depth="1"] > .nav-list {
@@ -137,7 +142,7 @@
 }
 
 p.nav-text {
-  padding: 8px 14px;
+  padding: 8px 10px;
   font-weight: var(--font-weight-bold);
 }
 

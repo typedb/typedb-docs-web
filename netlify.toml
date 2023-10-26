@@ -1,5 +1,5 @@
 [build]
-    command = "npm run build-ci"
+    command = "pnpm build-ci"
     publish = "dist/"
     ignore = "/bin/false"
 

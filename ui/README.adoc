@@ -106,7 +106,7 @@ The Gulp CLI package provides the `gulp` command which, in turn, executes the ve
 
 You can install the Gulp CLI globally (which resolves to a location in your user directory if you're using nvm) using the following command:
 
- $ npm install -g gulp-cli
+ $ pnpm install -g gulp-cli
 
 Verify the Gulp CLI is installed and on your PATH by running:
 
@@ -133,10 +133,10 @@ Clone the default UI project using git:
 The example above clones Antora's default UI project and then switches to the project folder on your filesystem.
 Stay in this project folder when executing all subsequent commands.
 
-Use npm to install the project's dependencies inside the project.
+Use pnpm to install the project's dependencies inside the project.
 In your terminal, execute the following command:
 
- $ npm install
+ $ pnpm install
 
 This command installs the dependencies listed in [.path]_package.json_ into the [.path]_node_modules/_ folder inside the project.
 This folder does not get included in the UI bundle and should _not_ be committed to the source control repository.
