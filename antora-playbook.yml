@@ -16,6 +16,8 @@ content:
     - url: .
       start_path: content/cloud-src
       branches: HEAD
+urls:
+  latest_version_segment: ""
 antora:
   extensions:
     - "@antora/lunr-extension"
