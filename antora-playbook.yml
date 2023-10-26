@@ -17,6 +17,7 @@ content:
       start_path: content/cloud-src
       branches: HEAD
 urls:
+  html_extension_style: drop
   latest_version_segment: ""
 antora:
   extensions:
@@ -31,8 +32,6 @@ ui:
   bundle:
     url: ./ui/build/ui-bundle.zip
     snapshot: true
-urls:
-  html_extension_style: drop
 output:
   clean: true
   dir: ./dist
