@@ -2,27 +2,27 @@
 
 :root {
   /* colors */
-  --color-white: #{$color-vaticle-white};
-  --color-dark-white: #{$color-vaticle-dark-white};
-  --color-light-purple: #{$color-vaticle-light-purple};
-  --color-purple: #{$color-vaticle-purple};
-  --color-deep-purple: #{$color-vaticle-deep-purple};
-  --color-black-purple: #{$color-vaticle-black-purple};
-  --color-green: #{$color-vaticle-green};
-  --color-red: #{$color-vaticle-red};
-  --color-secondary-light-grey: #{$color-vaticle-secondary-light-grey};
-  --color-secondary-grey: #{$color-vaticle-secondary-grey};
-  --color-secondary-purple: #{$color-vaticle-secondary-purple};
-  --color-secondary-yellow: #{$color-vaticle-secondary-yellow};
-  --color-secondary-pink: #{$color-vaticle-secondary-pink};
-  --color-secondary-blue: #{$color-vaticle-secondary-blue};
+  --color-white: #{$color-white};
+  --color-dark-white: #{$color-dark-white};
+  --color-light-purple: #{$color-light-purple};
+  --color-purple: #{$color-purple};
+  --color-deep-purple: #{$color-deep-purple};
+  --color-black-purple: #{$color-black-purple};
+  --color-green: #{$color-green};
+  --color-red: #{$color-red};
+  --color-secondary-light-grey: #{$color-secondary-light-grey};
+  --color-secondary-grey: #{$color-secondary-grey};
+  --color-secondary-purple: #{$color-secondary-purple};
+  --color-secondary-yellow: #{$color-secondary-yellow};
+  --color-secondary-pink: #{$color-secondary-pink};
+  --color-secondary-blue: #{$color-secondary-blue};
   --color-black-50: rgba(0, 0, 0, 0.5);
-  --color-light-purple-50: #{rgba($color-vaticle-light-purple, 0.5)};
-  --color-deep-purple-50: #{rgba($color-vaticle-deep-purple, 0.5)};
-  --color-green-15: #{rgba($color-vaticle-green, 0.15)};
-  --color-red-15: #{rgba($color-vaticle-red, 0.15)};
-  --color-secondary-yellow-15: #{rgba($color-vaticle-secondary-yellow, 0.15)};
-  --color-secondary-blue-15: #{rgba($color-vaticle-secondary-blue, 0.15)};
+  --color-light-purple-50: #{rgba($color-light-purple, 0.5)};
+  --color-deep-purple-50: #{rgba($color-deep-purple, 0.5)};
+  --color-green-15: #{rgba($color-green, 0.15)};
+  --color-red-15: #{rgba($color-red, 0.15)};
+  --color-secondary-yellow-15: #{rgba($color-secondary-yellow, 0.15)};
+  --color-secondary-blue-15: #{rgba($color-secondary-blue, 0.15)};
 
   /* fonts */
   --rem-base: 17; /* used to compute rem value from desired pixel value (e.g., calc(18 / var(--rem-base) * 1rem) = 18px) */
@@ -99,7 +99,7 @@
   --code-font-color: var(--color-secondary-pink);
   --code-border-color: var(--color-light-purple);
   --example-background: var(--panel-background);
-  --example-border-color: var(--color-secondary-grey);
+  --example-border-color: var(--panel-border-color);
   --kbd-background: var(--panel-background);
   --kbd-border-color: var(--color-dark-white);
   --pre-background: var(--color-black-purple);
