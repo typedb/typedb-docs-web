@@ -1,9 +1,119 @@
+@use "colors" as *;
+@use "sizes" as *;
+
 .body {
-  margin: 0 auto;
-  min-height: calc(100vh - var(--header-height));
+  --font-size-h1: 41px;
+  --line-height-h1: calc(49px / var(--font-size-h1));
+  --font-size-h2: 33px;
+  --line-height-h2: calc(41px / var(--font-size-h2));
+  --font-size-h5: 19px;
+  --line-height-h5: calc(27px / var(--font-size-h5));
+  --font-size-h6: 17px;
+  --line-height-h6: calc(25px / var(--font-size-h6));
+
+  /* base */
+  --panel-background: var(--color-deep-purple);
+  --panel-border-color: var(--color-light-purple);
+  --body-width: 1440px;
+  --body-padding: 40px;
+  --body-gap: 32px;
+  --main-offset: calc(var(--topbar-height) + var(--body-padding) + 1px);
+  /* nav */
+  --nav-width: 248px;
+  /* admonitions */
+  --important-color: var(--color-secondary-yellow);
+  --important-background: #{rgba($color-secondary-yellow, 0.15)};
+  --note-color: var(--color-secondary-blue);
+  --note-background: #{rgba($color-secondary-blue, 0.15)};
+  --tip-color: var(--color-green);
+  --tip-background: #{rgba($color-green, 0.15)};
+  --warning-color: var(--color-red);
+  --warning-background: #{rgba($color-red, 0.15)};
+  /* doc */
+  --doc-background: var(--color-purple);
+  --doc-font-size: var(--font-size-p2);
+  --doc-line-height: var(--line-height-p2);
+  --section-divider-color: var(--panel-border-color);
+  --link-font-color: var(--color-green);
+  --link_hover-font-color: var(--color-green);
+  --link_unresolved-font-color: var(--important-color);
+  --abstract-background: var(--color-black-purple);
+  --abstract-font-color: var(--color-dark-white);
+  --abstract-border-color: var(--panel-border-color);
+  --caption-font-color: var(--color-secondary-light-grey);
+  --caption-font-style: italic;
+  --caption-font-weight: var(--font-weight-semi-bold);
+  --code-background: var(--panel-background);
+  --code-font-color: var(--color-secondary-pink);
+  --code-border-color: var(--color-light-purple);
+  --example-background: var(--panel-background);
+  --example-border-color: var(--panel-border-color);
+  --kbd-background: var(--panel-background);
+  --kbd-border-color: var(--color-dark-white);
+  --pre-background: var(--color-black-purple);
+  --pre-border-color: var(--panel-border-color);
+  --quote-background: var(--color-black-purple);
+  --quote-border-color: var(--color-secondary-light-grey);
+  --quote-font-color: var(--color-dark-white);
+  --quote-attribution-font-color: var(--default-text-color);
+  --table-border-color: var(--panel-border-color);
+  --table-header-background: var(--color-black-purple);
+  --table-body-background: var(--color-deep-purple);
+  --table-footer-background: var(--panel-background);
+  /* toc */
+  --toc-width: 184px;
+  --toc-border-color: var(--panel-border-color);
+  --toc-line-height: 1.2;
+  /* search */
+  --search-result-background: #{rgba($color-deep-purple, 0.5)};
+  --search-result-hover-color: #{rgba($color-light-purple, 0.5)};
+  --search-result-width: calc(
+    min(var(--body-width), 100vw) - var(--body-padding) * 2 - var(--toc-width) -
+      var(--body-gap) - var(--nav-width)
+  );
+  --search-shadow-color: rgba(0, 0, 0, 0.5);
+  --search-height: 50px;
+  --search-highlight-color: rgba(246, 201, 76, 0.25);
+
+  @media (max-width: $media-max-width-mobile) {
+    --font-size-h5: 17px;
+    --line-height-h5: calc(25px / var(--font-size-h5));
+
+    --font-size-h6: 15px;
+    --line-height-h6: calc(23px / var(--font-size-h6));
+  }
+
+  @media (max-width: $media-max-width-tablet) {
+    --toc-width: 0;
+  }
+
+  margin: var(--topbar-height) auto 0;
+  min-height: calc(100vh - var(--topbar-height));
   padding: var(--body-padding);
   max-width: var(--body-width);
   display: flex;
   align-items: flex-start;
   gap: var(--body-gap);
+
+  p {
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  button {
+    cursor: pointer;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+
+    &::-moz-focus-inner {
+      border: none;
+      padding: 0;
+    }
+  }
+
+  table {
+    border-collapse: collapse;
+    word-wrap: normal; /* table widths aren't computed as expected when word-wrap is enabled */
+  }
 }

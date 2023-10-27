@@ -61,7 +61,10 @@ module.exports = (src, dest, preview) => () => {
     vfs
       .src(["css/site.scss"], { ...opts, sourcemaps })
       .pipe(
-        sass({ includePaths: [sassIncludePath] }).on("error", sass.logError)
+        sass({ includePaths: [sassIncludePath, "./node_modules"] }).on(
+          "error",
+          sass.logError
+        )
       )
       .pipe(postcss(file => ({ plugins: postcssPlugins, options: { file } }))),
     vfs.src("font/*.{ttf,woff*(2)}", opts),
