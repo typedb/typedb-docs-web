@@ -1,75 +1,8 @@
 header[_ngcontent-ng-c1391601438] {
   background-color: #1a182a !important;
   border-bottom-color: #232135 !important;
-  position: sticky !important;
-  line-height: calc(25 / 17);
 
   box-shadow: 0 0 0.5rem 0.5rem var(--body-background);
-}
-
-/* typography */
-
-header[_ngcontent-ng-c1391601438] h5 {
-  font-size: 17px;
-  line-height: 1.4705882353;
-}
-
-@media (max-width: 767px) {
-  header[_ngcontent-ng-c1391601438] h5 {
-    font-size: 15px;
-    line-height: 1.5333333333;
-  }
-}
-
-header[_ngcontent-ng-c1391601438] p,
-header[_ngcontent-ng-c1391601438] .text-p2 {
-  font-size: 17px;
-  line-height: 1.4705882353;
-}
-
-@media (max-width: 767px) {
-  header[_ngcontent-ng-c1391601438] p,
-  header[_ngcontent-ng-c1391601438] .text-p2 {
-    font-size: 15px;
-    line-height: 1.5333333333;
-  }
-}
-
-header[_ngcontent-ng-c1391601438] aside,
-header[_ngcontent-ng-c1391601438] .text-aside {
-  font-size: 15px;
-  line-height: 1.5333333333;
-}
-
-@media (max-width: 767px) {
-  header[_ngcontent-ng-c1391601438] aside,
-  header[_ngcontent-ng-c1391601438] .text-aside {
-    font-size: 13px;
-    line-height: 1.6153846154;
-  }
-}
-
-header[_ngcontent-ng-c1391601438] dt {
-  font-weight: inherit;
-}
-
-header[_ngcontent-ng-c1391601438] dd {
-  font-weight: 300;
-  margin: 0;
-  padding: 0;
-}
-
-header[_ngcontent-ng-c1391601438] a {
-  color: #fff;
-}
-
-header[_ngcontent-ng-c1391601438] a:hover {
-  text-decoration: none;
-}
-
-header[_ngcontent-ng-c1391601438] button {
-  font-weight: initial;
-  line-height: initial;
 }
 
 /* topbar styles */
