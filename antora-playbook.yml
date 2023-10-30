@@ -1,6 +1,6 @@
 site:
   title: TypeDB Documentation portal
-  start_page: typedb:ROOT:overview.adoc
+  start_page: typedb:ROOT:home/overview.adoc
   robots: allow
 content:
   sources:
@@ -12,9 +12,6 @@ content:
       branches: HEAD
     - url: .
       start_path: content/typeql-src
-      branches: HEAD
-    - url: .
-      start_path: content/cloud-src
       branches: HEAD
 urls:
   latest_version_segment: ""
