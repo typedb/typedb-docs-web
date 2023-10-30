@@ -1,4 +1,4 @@
-@use "sizes" as *;
+@use "mixins" as *;
 
 .doc {
   font-size: var(--doc-font-size);
@@ -1018,6 +1018,35 @@
         text-align: right;
         width: 1.5em;
       }
+    }
+  }
+
+  .openblock {
+    @each $cols in (2, 3) {
+      &.cols-#{$cols} > .content {
+        display: grid;
+        grid-template-columns: repeat(#{$cols}, 1fr);
+        gap: 1rem;
+      }
+    }
+  }
+
+  .sidebarblock {
+    &.clickable {
+      @include card-padding;
+
+      border-radius: var(--border-radius);
+      background: var(--color-deep-purple);
+      border: 1px solid var(--content-border-color);
+      cursor: pointer;
+
+      &:hover {
+        border-color: var(--link_hover-font-color);
+      }
+    }
+
+    > .content > :first-child {
+      margin-top: 0;
     }
   }
 }
