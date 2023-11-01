@@ -15,8 +15,9 @@ content:
       branches: HEAD
     - url: .
       start_path: content/home-src
-      branches: HEAD      
+      branches: HEAD
 urls:
+  html_extension_style: drop
   latest_version_segment: ""
 antora:
   extensions:
