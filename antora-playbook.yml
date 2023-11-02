@@ -14,7 +14,7 @@ content:
       start_path: content/typeql-src
       branches: HEAD
     - url: .
-      start_path: content/cloud-src
+      start_path: content/home-src
       branches: HEAD
 antora:
   extensions:
