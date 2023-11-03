@@ -4,6 +4,7 @@ const browserify = require("browserify");
 const concat = require("gulp-concat");
 const fs = require("fs-extra");
 const imagemin = require("gulp-imagemin");
+const rename = require("gulp-rename");
 const merge = require("merge-stream");
 const ospath = require("path");
 const path = ospath.posix;
@@ -43,6 +44,14 @@ module.exports = (src, dest, preview) => () => {
   ];
 
   return merge(
+    vfs
+      .src("../node_modules/typedb-web-common/lib/*.js", {
+        ...opts,
+        read: false
+      })
+      .pipe(bundle(opts))
+      .pipe(rename(path => ({ ...path, dirname: "js" })))
+      .pipe(uglify({ output: { comments: /^! / } })),
     vfs.src("ui.yml", { ...opts, allowEmpty: true }),
     vfs
       .src("js/+([0-9])-*.js", { ...opts, read: false, sourcemaps })
