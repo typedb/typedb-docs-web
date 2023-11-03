@@ -1,6 +1,6 @@
 site:
   title: TypeDB Documentation portal
-  start_page: typedb:ROOT:overview.adoc
+  start_page: home:ROOT:overview.adoc
   robots: allow
 content:
   sources:
@@ -15,7 +15,9 @@ content:
       branches: HEAD
     - url: .
       start_path: content/home-src
-      branches: HEAD
+      branches: HEAD      
+urls:
+  latest_version_segment: ""
 antora:
   extensions:
     - "@antora/lunr-extension"
@@ -29,8 +31,6 @@ ui:
   bundle:
     url: ./ui/build/ui-bundle.zip
     snapshot: true
-urls:
-  html_extension_style: drop
 output:
   clean: true
   dir: ./dist

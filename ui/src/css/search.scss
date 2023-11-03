@@ -37,6 +37,8 @@
     box-shadow: none;
     outline: none;
     flex-grow: 1;
+    font-size: inherit;
+    font-weight: inherit;
 
     &::placeholder {
       color: var(--color-secondary-light-grey);
@@ -59,13 +61,13 @@
 .search-result-dataset {
   position: relative;
   border: 1px solid var(--panel-border-color);
-  background: var(--color-deep-purple-50);
+  background: var(--search-result-background);
   border-radius: var(--border-radius);
   overflow: auto;
   overscroll-behavior: none;
   padding: 1rem;
   max-height: calc(100vh - var(--main-offset) - var(--search-height) - 1rem);
-  box-shadow: 0 4px 8px 4px var(--color-black-50);
+  box-shadow: 0 4px 8px 4px var(--search-shadow-color);
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
 }
@@ -102,7 +104,7 @@
 .search-result-document-hit {
   flex: 1;
   font-size: 0.875rem;
-  color: var(--body-font-color);
+  color: var(--default-text-color);
 
   > a {
     color: inherit;
@@ -110,7 +112,7 @@
     padding: 1rem 0.25rem 1rem 1rem;
 
     &:hover {
-      background: var(--color-light-purple-50);
+      background: var(--search-result-hover-color);
       text-decoration: inherit;
     }
   }
@@ -122,7 +124,7 @@
   }
 
   .search-result-section-title {
-    color: var(--body-font-color);
+    color: var(--default-text-color);
     font-weight: 600;
     font-size: 1.05em;
     margin-bottom: 0.25em;
