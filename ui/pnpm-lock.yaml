@@ -59,6 +59,9 @@ devDependencies:
   gulp-postcss:
     specifier: ~8.0
     version: 8.0.0
+  gulp-rename:
+    specifier: ~2.0
+    version: 2.0.0
   gulp-sass:
     specifier: 5.1.0
     version: 5.1.0
@@ -3936,6 +3939,11 @@ packages:
       postcss: 7.0.39
       postcss-load-config: 2.1.2
       vinyl-sourcemaps-apply: 0.2.1
+    dev: true
+
+  /gulp-rename@2.0.0:
+    resolution: {integrity: sha512-97Vba4KBzbYmR5VBs9mWmK+HwIf5mj+/zioxfZhOKeXtx5ZjBk57KFlePf5nxq9QsTtFl0ejnHE3zTC9MHXqyQ==}
+    engines: {node: '>=4'}
     dev: true
 
   /gulp-sass@5.1.0:

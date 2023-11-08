@@ -4,6 +4,7 @@ const browserify = require("browserify");
 const concat = require("gulp-concat");
 const fs = require("fs-extra");
 const imagemin = require("gulp-imagemin");
+const rename = require("gulp-rename");
 const merge = require("merge-stream");
 const ospath = require("path");
 const path = ospath.posix;
@@ -17,16 +18,20 @@ const uglify = require("gulp-uglify");
 const vfs = require("vinyl-fs");
 
 module.exports = (src, dest, preview) => () => {
-  const sassIncludePath = "./node_modules/typedb-web-common/src/styles";
+  const commonSource = "node_modules/typedb-web-common/src";
+  const sassIncludePath = `${commonSource}/styles`;
   const opts = { base: src, cwd: src };
   const sourcemaps = preview || process.env.SOURCEMAPS === "true";
   const postcssPlugins = [
     postcssUrl([
       {
+        filter: asset => asset.url.endsWith(".svg"),
+        url: asset => path.join("..", asset.url)
+      },
+      {
         url: asset => {
-          1;
           const abspath = asset.pathname.startsWith("~")
-            ? ospath.resolve("./node_modules", asset.pathname.slice(1))
+            ? ospath.resolve("node_modules", asset.pathname.slice(1))
             : ospath.resolve(sassIncludePath, asset.pathname);
           const basename = ospath.basename(abspath);
           const destpath = ospath.join(dest, "font", basename);
@@ -61,13 +66,16 @@ module.exports = (src, dest, preview) => () => {
     vfs
       .src(["css/site.scss"], { ...opts, sourcemaps })
       .pipe(
-        sass({ includePaths: [sassIncludePath, "./node_modules"] }).on(
+        sass({ includePaths: [sassIncludePath, "node_modules"] }).on(
           "error",
           sass.logError
         )
       )
       .pipe(postcss(file => ({ plugins: postcssPlugins, options: { file } }))),
     vfs.src("font/*.{ttf,woff*(2)}", opts),
+    vfs
+      .src(`../${commonSource}/icons/*.svg`, opts)
+      .pipe(rename(path => ({ ...path, dirname: "icons" }))),
     vfs.src("img/**/*.{gif,ico,jpg,png,svg}", opts).pipe(
       preview
         ? through()
