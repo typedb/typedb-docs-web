@@ -4,7 +4,6 @@ const browserify = require("browserify");
 const concat = require("gulp-concat");
 const fs = require("fs-extra");
 const imagemin = require("gulp-imagemin");
-const rename = require("gulp-rename");
 const merge = require("merge-stream");
 const ospath = require("path");
 const path = ospath.posix;
@@ -74,9 +73,6 @@ module.exports = (src, dest, preview) => () => {
       )
       .pipe(postcss(file => ({ plugins: postcssPlugins, options: { file } }))),
     vfs.src("font/*.{ttf,woff*(2)}", opts),
-    vfs
-      .src(`../${commonSource}/icons/*.svg`, opts)
-      .pipe(rename(path => ({ ...path, dirname: "icons" }))),
     vfs.src("img/**/*.{gif,ico,jpg,png,svg}", opts).pipe(
       preview
         ? through()
