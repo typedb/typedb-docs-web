@@ -1,5 +1,5 @@
-@use "colors" as *;
-@use "sizes" as *;
+@use "colors";
+@use "media";
 
 .body {
   --font-size-h1: 41px;
@@ -22,13 +22,13 @@
   --nav-width: 248px;
   /* admonitions */
   --important-color: var(--color-secondary-yellow);
-  --important-background: #{rgba($color-secondary-yellow, 0.15)};
+  --important-background: #{rgba(colors.$secondary-yellow, 0.15)};
   --note-color: var(--color-secondary-blue);
-  --note-background: #{rgba($color-secondary-blue, 0.15)};
+  --note-background: #{rgba(colors.$secondary-blue, 0.15)};
   --tip-color: var(--color-green);
-  --tip-background: #{rgba($color-green, 0.15)};
+  --tip-background: #{rgba(colors.$green, 0.15)};
   --warning-color: var(--color-red);
-  --warning-background: #{rgba($color-red, 0.15)};
+  --warning-background: #{rgba(colors.$red, 0.15)};
   /* doc */
   --doc-background: var(--color-purple);
   --doc-font-size: var(--font-size-p2);
@@ -43,15 +43,11 @@
   --caption-font-color: var(--color-secondary-light-grey);
   --caption-font-style: italic;
   --caption-font-weight: var(--font-weight-semi-bold);
-  --code-background: var(--panel-background);
-  --code-font-color: var(--color-secondary-pink);
-  --code-border-color: var(--color-light-purple);
   --example-background: var(--panel-background);
   --example-border-color: var(--panel-border-color);
   --kbd-background: var(--panel-background);
   --kbd-border-color: var(--color-dark-white);
   --pre-background: var(--color-black-purple);
-  --pre-border-color: var(--panel-border-color);
   --quote-background: var(--color-black-purple);
   --quote-border-color: var(--color-secondary-light-grey);
   --quote-font-color: var(--color-dark-white);
@@ -65,8 +61,8 @@
   --toc-border-color: var(--panel-border-color);
   --toc-line-height: 1.2;
   /* search */
-  --search-result-background: #{rgba($color-deep-purple, 0.5)};
-  --search-result-hover-color: #{rgba($color-light-purple, 0.5)};
+  --search-result-background: #{rgba(colors.$deep-purple, 0.5)};
+  --search-result-hover-color: #{rgba(colors.$light-purple, 0.5)};
   --search-result-width: calc(
     min(var(--body-width), 100vw) - var(--body-padding) * 2 - var(--toc-width) -
       var(--body-gap) - var(--nav-width)
@@ -75,7 +71,7 @@
   --search-height: 50px;
   --search-highlight-color: rgba(246, 201, 76, 0.25);
 
-  @media (max-width: $media-max-width-mobile) {
+  @media (max-width: media.$max-width-mobile) {
     --font-size-h5: 17px;
     --line-height-h5: calc(25px / var(--font-size-h5));
 
@@ -83,7 +79,7 @@
     --line-height-h6: calc(23px / var(--font-size-h6));
   }
 
-  @media (max-width: $media-max-width-tablet) {
+  @media (max-width: media.$max-width-tablet) {
     --toc-width: 0;
   }
 
