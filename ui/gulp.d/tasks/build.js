@@ -26,7 +26,8 @@ module.exports = (src, dest, preview) => () => {
     postcssUrl([
       {
         filter: asset => asset.url.endsWith(".svg"),
-        url: asset => path.join("..", asset.url)
+        url: "inline",
+        basePath: ospath.resolve(commonSource)
       },
       {
         url: asset => {
