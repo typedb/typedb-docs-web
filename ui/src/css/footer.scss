@@ -9,9 +9,8 @@ footer[_ngcontent-ng-c2358121668] {
 a[_ngcontent-ng-c2358121668],
 a[_ngcontent-ng-c2358121668]:visited,
 a[_ngcontent-ng-c2358121668] p[_ngcontent-ng-c2358121668] {
-  color: var(--default-heading-color);
+  color: var(--body-heading-color);
 }
-
 a[_ngcontent-ng-c2358121668]:hover,
 a[_ngcontent-ng-c2358121668]:focus,
 a[_ngcontent-ng-c2358121668]:visited:hover,
@@ -32,13 +31,11 @@ a[_ngcontent-ng-c2358121668]:focus p[_ngcontent-ng-c2358121668] {
   max-width: var(--section-max-width);
   padding: 40px 0;
 }
-
 @media (max-width: 767px) {
   .ft-section[_ngcontent-ng-c2358121668] {
     padding: 24px 0;
   }
 }
-
 .ft-section[_ngcontent-ng-c2358121668]:not(:first-child) {
   border-top: 1px solid var(--content-border-color);
 }
@@ -48,13 +45,11 @@ a[_ngcontent-ng-c2358121668]:focus p[_ngcontent-ng-c2358121668] {
   flex-direction: row;
   justify-content: space-between;
 }
-
 @media (max-width: 767px) {
   .ft-social-section[_ngcontent-ng-c2358121668] {
     flex-direction: column;
     gap: 24px;
   }
-
   .ft-social-section[_ngcontent-ng-c2358121668] td-button a {
     width: 100%;
   }
@@ -66,7 +61,6 @@ a[_ngcontent-ng-c2358121668]:focus p[_ngcontent-ng-c2358121668] {
   gap: 24px;
   height: 48px;
 }
-
 @media (max-width: 767px) {
   .ft-social-links[_ngcontent-ng-c2358121668] {
     align-self: stretch;
@@ -74,13 +68,11 @@ a[_ngcontent-ng-c2358121668]:focus p[_ngcontent-ng-c2358121668] {
     height: 32px;
   }
 }
-
 .ft-social-links[_ngcontent-ng-c2358121668]
   .mat-icon[_ngcontent-ng-c2358121668] {
   color: var(--color-white);
   font-size: 48px;
 }
-
 @media (max-width: 767px) {
   .ft-social-links[_ngcontent-ng-c2358121668]
     .mat-icon[_ngcontent-ng-c2358121668] {
@@ -94,7 +86,6 @@ a[_ngcontent-ng-c2358121668]:focus p[_ngcontent-ng-c2358121668] {
   justify-content: space-between;
   gap: 32px 104px;
 }
-
 .ft-nav-section[_ngcontent-ng-c2358121668] ul[_ngcontent-ng-c2358121668],
 .ft-nav-section[_ngcontent-ng-c2358121668] li[_ngcontent-ng-c2358121668] {
   list-style: none;
@@ -103,12 +94,10 @@ a[_ngcontent-ng-c2358121668]:focus p[_ngcontent-ng-c2358121668] {
 .ft-contact-section[_ngcontent-ng-c2358121668] ul[_ngcontent-ng-c2358121668] {
   margin-top: 32px;
 }
-
 .ft-contact-section[_ngcontent-ng-c2358121668]
   li[_ngcontent-ng-c2358121668]:not(:first-child) {
   margin-top: 12px;
 }
-
 .ft-contact-section[_ngcontent-ng-c2358121668] a[_ngcontent-ng-c2358121668] {
   display: flex;
   flex-direction: row;
@@ -122,13 +111,11 @@ a[_ngcontent-ng-c2358121668]:focus p[_ngcontent-ng-c2358121668] {
   justify-content: space-between;
   gap: 104px;
 }
-
 @media (max-width: 1199px) {
   .ft-sitemap-section[_ngcontent-ng-c2358121668] {
     gap: 72px;
   }
 }
-
 @media (max-width: 767px) {
   .ft-sitemap-section[_ngcontent-ng-c2358121668] {
     flex-wrap: wrap;
@@ -136,29 +123,24 @@ a[_ngcontent-ng-c2358121668]:focus p[_ngcontent-ng-c2358121668] {
     gap: 32px 24px;
   }
 }
-
 .ft-sitemap-section[_ngcontent-ng-c2358121668] ul[_ngcontent-ng-c2358121668] {
   margin-top: 34px;
 }
-
 @media (max-width: 1199px) {
   .ft-sitemap-section[_ngcontent-ng-c2358121668] ul[_ngcontent-ng-c2358121668] {
     margin-top: 32px;
   }
 }
-
 @media (max-width: 767px) {
   .ft-sitemap-section[_ngcontent-ng-c2358121668] ul[_ngcontent-ng-c2358121668] {
     margin-top: 16px;
     width: 144px;
   }
 }
-
 .ft-sitemap-section[_ngcontent-ng-c2358121668]
   li[_ngcontent-ng-c2358121668]:not(:first-child) {
   margin-top: 20px;
 }
-
 @media (max-width: 767px) {
   .ft-sitemap-section[_ngcontent-ng-c2358121668]
     li[_ngcontent-ng-c2358121668]:not(:first-child) {
@@ -172,7 +154,6 @@ a[_ngcontent-ng-c2358121668]:focus p[_ngcontent-ng-c2358121668] {
   justify-content: space-between;
   align-items: flex-end;
 }
-
 @media (max-width: 767px) {
   .ft-copyright-section[_ngcontent-ng-c2358121668] {
     flex-direction: column;
@@ -189,27 +170,22 @@ a[_ngcontent-ng-c2358121668]:focus p[_ngcontent-ng-c2358121668] {
   gap: 4px;
   line-height: 22px;
 }
-
 .ft-credits[_ngcontent-ng-c2358121668] .mat-icon[_ngcontent-ng-c2358121668] {
   font-size: 16px;
 }
-
 .ft-credits[_ngcontent-ng-c2358121668]
   .ft-icon-code[_ngcontent-ng-c2358121668] {
   color: var(--color-green);
 }
-
 .ft-credits[_ngcontent-ng-c2358121668]
   .ft-icon-heart[_ngcontent-ng-c2358121668] {
   color: var(--color-red);
 }
-
 .ft-credits[_ngcontent-ng-c2358121668]
   .ft-logo-vaticle[_ngcontent-ng-c2358121668] {
   width: 52px;
   height: unset;
 }
-
 .ft-credits[_ngcontent-ng-c2358121668] strong[_ngcontent-ng-c2358121668] {
   margin-bottom: 2px;
 }
