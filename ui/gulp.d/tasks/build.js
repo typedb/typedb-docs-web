@@ -17,16 +17,21 @@ const uglify = require("gulp-uglify");
 const vfs = require("vinyl-fs");
 
 module.exports = (src, dest, preview) => () => {
-  const sassIncludePath = "./node_modules/typedb-web-common/src/styles";
+  const commonSource = "node_modules/typedb-web-common/src";
+  const sassIncludePath = `${commonSource}/styles`;
   const opts = { base: src, cwd: src };
   const sourcemaps = preview || process.env.SOURCEMAPS === "true";
   const postcssPlugins = [
     postcssUrl([
       {
+        filter: asset => asset.url.endsWith(".svg"),
+        url: "inline",
+        basePath: ospath.resolve(commonSource)
+      },
+      {
         url: asset => {
-          1;
           const abspath = asset.pathname.startsWith("~")
-            ? ospath.resolve("./node_modules", asset.pathname.slice(1))
+            ? ospath.resolve("node_modules", asset.pathname.slice(1))
             : ospath.resolve(sassIncludePath, asset.pathname);
           const basename = ospath.basename(abspath);
           const destpath = ospath.join(dest, "font", basename);
@@ -61,7 +66,7 @@ module.exports = (src, dest, preview) => () => {
     vfs
       .src(["css/site.scss"], { ...opts, sourcemaps })
       .pipe(
-        sass({ includePaths: [sassIncludePath, "./node_modules"] }).on(
+        sass({ includePaths: [sassIncludePath, "node_modules"] }).on(
           "error",
           sass.logError
         )

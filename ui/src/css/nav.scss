@@ -47,12 +47,12 @@
     display: none;
   }
 
-  &:not(:hover) > * > .nav-link .nav-external-link-icon {
+  &:not(:hover) > * > .nav-link svg {
     opacity: 0;
   }
 
-  &.is-active > * > .nav-text-toggle-button {
-    transform: rotate(90deg);
+  &:not(.is-active) > * > .nav-text-toggle-button {
+    transform: rotate(-90deg);
   }
 
   &.is-current-page > * {
@@ -166,7 +166,7 @@ p.nav-text {
   text-decoration: none;
 }
 
-.nav-external-link-icon {
+.nav-link svg {
   flex-shrink: 0;
   height: 20px;
   width: 20px;
