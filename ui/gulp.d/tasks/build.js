@@ -1,25 +1,28 @@
 "use strict";
 
 const browserify = require("browserify");
-const concat = require("gulp-concat");
 const fs = require("fs-extra");
+const concat = require("gulp-concat");
 const imagemin = require("gulp-imagemin");
-const rename = require("gulp-rename");
+const postcss = require("gulp-postcss");
+const sass = require("gulp-sass")(require("sass"));
+const uglify = require("gulp-uglify");
 const merge = require("merge-stream");
 const ospath = require("path");
-const path = ospath.posix;
-const postcss = require("gulp-postcss");
 const postcssUrl = require("postcss-url");
-const sass = require("gulp-sass")(require("sass"));
 const { Transform } = require("stream");
+const vfs = require("vinyl-fs");
+const webpack = require("webpack-stream");
+const path = ospath.posix;
 const map = transform => new Transform({ objectMode: true, transform });
 const through = () => map((file, enc, next) => next(null, file));
-const uglify = require("gulp-uglify");
-const vfs = require("vinyl-fs");
 
 module.exports = (src, dest, preview) => () => {
-  const commonSource = "node_modules/typedb-web-common/src";
-  const sassIncludePath = `${commonSource}/styles`;
+  const commonPackage = "node_modules/typedb-web-common";
+  const commonLib = `${commonPackage}/lib`;
+  const commonSrc = `${commonPackage}/src`;
+  const sassIncludePath = `${commonSrc}/styles`;
+  const commonScripts = ["prism-components"];
   const opts = { base: src, cwd: src };
   const sourcemaps = preview || process.env.SOURCEMAPS === "true";
   const postcssPlugins = [
@@ -27,7 +30,7 @@ module.exports = (src, dest, preview) => () => {
       {
         filter: asset => asset.url.endsWith(".svg"),
         url: "inline",
-        basePath: ospath.resolve(commonSource)
+        basePath: ospath.resolve(commonSrc)
       },
       {
         url: asset => {
@@ -44,14 +47,6 @@ module.exports = (src, dest, preview) => () => {
   ];
 
   return merge(
-    vfs
-      .src("../node_modules/typedb-web-common/lib/*.js", {
-        ...opts,
-        read: false
-      })
-      .pipe(bundle(opts))
-      .pipe(rename(path => ({ ...path, dirname: "js" })))
-      .pipe(uglify({ output: { comments: /^! / } })),
     vfs.src("ui.yml", { ...opts, allowEmpty: true }),
     vfs
       .src("js/+([0-9])-*.js", { ...opts, read: false, sourcemaps })
@@ -63,6 +58,17 @@ module.exports = (src, dest, preview) => () => {
       .src("js/vendor/*([^.])?(.bundle).js", { ...opts, read: false })
       .pipe(bundle(opts))
       .pipe(uglify({ output: { comments: /^! / } })),
+    vfs.src(`${commonLib}/*.js`).pipe(
+      webpack({
+        mode: "production",
+        entry: Object.fromEntries(
+          commonScripts.map(name => [name, `./${commonLib}/${name}.js`])
+        ),
+        output: {
+          filename: "js/[name].js"
+        }
+      })
+    ),
     vfs
       .src("js/vendor/*.min.js", opts)
       .pipe(
