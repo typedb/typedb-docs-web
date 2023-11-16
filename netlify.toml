@@ -2,3 +2,6 @@
     command = "pnpm build-ci"
     publish = "dist/"
     ignore = "/bin/false"
+
+[build.processing.html]
+    pretty_urls = true
