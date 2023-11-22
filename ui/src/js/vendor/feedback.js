@@ -6,7 +6,6 @@
     scriptEl.src = `//js.hsforms.net/forms/embed/v2.js`;
     document.head.appendChild(scriptEl);
     feedbackButton.addEventListener("click", () => {
-        toggleDialogVisibility();
         window.hbspt.forms.create({
             region: "na1",
             portalId: "4332244",
@@ -20,6 +19,7 @@
                 onSuccess(formEl, submissionValues);
             },
         });
+        toggleDialogVisibility();
     });
     cdkOverlayBackdrop.addEventListener("click", () => { toggleDialogVisibility(); });
     closeButton.addEventListener("click", () => { toggleDialogVisibility(); });
