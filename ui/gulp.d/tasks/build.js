@@ -1,32 +1,41 @@
 "use strict";
 
 const browserify = require("browserify");
-const concat = require("gulp-concat");
 const fs = require("fs-extra");
+const concat = require("gulp-concat");
 const imagemin = require("gulp-imagemin");
+const postcss = require("gulp-postcss");
+const sass = require("gulp-sass")(require("sass"));
+const uglify = require("gulp-uglify");
 const merge = require("merge-stream");
 const ospath = require("path");
-const path = ospath.posix;
-const postcss = require("gulp-postcss");
 const postcssUrl = require("postcss-url");
-const sass = require("gulp-sass")(require("sass"));
 const { Transform } = require("stream");
+const vfs = require("vinyl-fs");
+const webpack = require("webpack-stream");
+const path = ospath.posix;
 const map = transform => new Transform({ objectMode: true, transform });
 const through = () => map((file, enc, next) => next(null, file));
-const uglify = require("gulp-uglify");
-const vfs = require("vinyl-fs");
 
 module.exports = (src, dest, preview) => () => {
-  const sassIncludePath = "./node_modules/typedb-web-common/src/styles";
+  const commonPackage = "node_modules/typedb-web-common";
+  const commonLib = `${commonPackage}/lib`;
+  const commonSrc = `${commonPackage}/src`;
+  const sassIncludePath = `${commonSrc}/styles`;
+  const commonScripts = ["prism-components"];
   const opts = { base: src, cwd: src };
   const sourcemaps = preview || process.env.SOURCEMAPS === "true";
   const postcssPlugins = [
     postcssUrl([
       {
+        filter: asset => asset.url.endsWith(".svg"),
+        url: "inline",
+        basePath: ospath.resolve(commonSrc)
+      },
+      {
         url: asset => {
-          1;
           const abspath = asset.pathname.startsWith("~")
-            ? ospath.resolve("./node_modules", asset.pathname.slice(1))
+            ? ospath.resolve("node_modules", asset.pathname.slice(1))
             : ospath.resolve(sassIncludePath, asset.pathname);
           const basename = ospath.basename(abspath);
           const destpath = ospath.join(dest, "font", basename);
@@ -49,6 +58,17 @@ module.exports = (src, dest, preview) => () => {
       .src("js/vendor/*([^.])?(.bundle).js", { ...opts, read: false })
       .pipe(bundle(opts))
       .pipe(uglify({ output: { comments: /^! / } })),
+    vfs.src(`${commonLib}/*.js`).pipe(
+      webpack({
+        mode: "production",
+        entry: Object.fromEntries(
+          commonScripts.map(name => [name, `./${commonLib}/${name}.js`])
+        ),
+        output: {
+          filename: "js/[name].js"
+        }
+      })
+    ),
     vfs
       .src("js/vendor/*.min.js", opts)
       .pipe(
@@ -61,7 +81,7 @@ module.exports = (src, dest, preview) => () => {
     vfs
       .src(["css/site.scss"], { ...opts, sourcemaps })
       .pipe(
-        sass({ includePaths: [sassIncludePath, "./node_modules"] }).on(
+        sass({ includePaths: [sassIncludePath, "node_modules"] }).on(
           "error",
           sass.logError
         )
