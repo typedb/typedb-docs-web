@@ -3,6 +3,9 @@
     const cdkOverlayBackdrop = document.querySelector(".cdk-overlay-backdrop");
     const closeButton = document.querySelector("td-dialog-close-button button");
     let formServed = false;
+    const scriptEl = document.createElement("script");
+    scriptEl.src = `//js.hs-scripts.com/4332244.js`;
+    document.head.appendChild(scriptEl);
     feedbackButton.addEventListener("click", () => {
         toggleDialogVisibility();
         if (!formServed) {
