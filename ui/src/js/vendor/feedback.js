@@ -30,7 +30,6 @@ function toggleDialogVisibility() {
     const cdkOverlayContainer = document.querySelector(".cdk-overlay-container");
     cdkOverlayBackdrop.classList.toggle("cdk-overlay-backdrop-showing");
     cdkOverlayContainer.classList.toggle("cdk-visually-hidden");
-    document.getElementById("popup-hubspot-form-holder").innerHTML = "";
 }
 
 function onLoadingChange() {
