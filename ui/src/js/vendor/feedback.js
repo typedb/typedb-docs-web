@@ -4,7 +4,7 @@
     const closeButton = document.querySelector("td-dialog-close-button button");
     let formServed = false;
     const scriptEl = document.createElement("script");
-    scriptEl.src = `//js.hs-scripts.com/4332244.js`;
+    scriptEl.src = `//js.hsforms.net/forms/embed/v2.js`;
     document.head.appendChild(scriptEl);
     feedbackButton.addEventListener("click", () => {
         toggleDialogVisibility();
