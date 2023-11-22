@@ -40,6 +40,4 @@ function onLoadingChange() {
 
 }
 
-function onSuccess() {
-    alert("Your feedback has been submitted - thank you!");
-}
+function onSuccess() {}
