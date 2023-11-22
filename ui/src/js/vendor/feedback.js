@@ -15,7 +15,7 @@
                 portalId: "4332244",
                 formId: "b5b6e7c0-ba28-4623-9164-ab508589443b",
                 formInstanceId: "popup-hubspot-form-holder",
-                target: `#$popup-hubspot-form-holder`,
+                target: `#popup-hubspot-form-holder`,
                 onFormError: () => { onLoadingChange(false); },
                 onFormSubmit: () => { onLoadingChange(true); },
                 onFormSubmitted: (formEl, { submissionValues }) => {
