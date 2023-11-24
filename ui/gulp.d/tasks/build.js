@@ -15,8 +15,10 @@ const vfs = require("vinyl-fs");
 const webpack = require("webpack-stream");
 const {
   generateTopbar
-} = require("typedb-web-common/lib/topbar/generateTopbar");
-const { getTopbarData } = require("typedb-web-common/lib/topbar/getTopbarData");
+} = require("typedb-web-common/lib/topbar/generate-topbar");
+const {
+  getTopbarData
+} = require("typedb-web-common/lib/topbar/get-topbar-data");
 
 const path = ospath.posix;
 const map = transform => new Transform({ objectMode: true, transform });
@@ -27,7 +29,7 @@ module.exports = (src, dest, preview) => cb => {
   const commonLib = `${commonPackage}/lib`;
   const commonSrc = `${commonPackage}/src`;
   const sassIncludePath = `${commonSrc}/styles`;
-  const commonScripts = ["prism", "topbar/setupTopbarListeners"];
+  const commonScripts = ["prism", "topbar/setup-topbar-listeners"];
   const opts = { base: src, cwd: src };
   const sourcemaps = preview || process.env.SOURCEMAPS === "true";
   const postcssPlugins = [
