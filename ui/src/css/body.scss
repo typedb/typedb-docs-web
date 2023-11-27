@@ -17,7 +17,7 @@
   --body-width: 1440px;
   --body-padding: 40px;
   --body-gap: 32px;
-  --main-offset: calc(var(--topbar-height) + var(--body-padding) + 1px);
+  --main-offset: calc(var(--topbar-height) + var(--body-padding));
   /* nav */
   --nav-width: 248px;
   /* admonitions */
@@ -90,6 +90,14 @@
   display: flex;
   align-items: flex-start;
   gap: var(--body-gap);
+
+  .td-topbar.td-topbar-has-banner + & {
+    margin-top: calc(var(--topbar-height) + var(--banner-height));
+    min-height: calc(100vh - var(--topbar-height) - var(--banner-height));
+    --main-offset: calc(
+      var(--topbar-height) + var(--banner-height) + var(--body-padding)
+    );
+  }
 
   p {
     font-size: inherit;

@@ -13,16 +13,23 @@ const postcssUrl = require("postcss-url");
 const { Transform } = require("stream");
 const vfs = require("vinyl-fs");
 const webpack = require("webpack-stream");
+const {
+  generateTopbar
+} = require("typedb-web-common/lib/topbar/generate-topbar");
+const {
+  getTopbarData
+} = require("typedb-web-common/lib/topbar/get-topbar-data");
+
 const path = ospath.posix;
 const map = transform => new Transform({ objectMode: true, transform });
 const through = () => map((file, enc, next) => next(null, file));
 
-module.exports = (src, dest, preview) => () => {
+module.exports = (src, dest, preview) => cb => {
   const commonPackage = "node_modules/typedb-web-common";
   const commonLib = `${commonPackage}/lib`;
   const commonSrc = `${commonPackage}/src`;
   const sassIncludePath = `${commonSrc}/styles`;
-  const commonScripts = ["prism-components"];
+  const commonScripts = ["prism", "topbar/setup-topbar-listeners"];
   const opts = { base: src, cwd: src };
   const sourcemaps = preview || process.env.SOURCEMAPS === "true";
   const postcssPlugins = [
@@ -46,7 +53,7 @@ module.exports = (src, dest, preview) => () => {
     ])
   ];
 
-  return merge(
+  merge(
     vfs.src("ui.yml", { ...opts, allowEmpty: true }),
     vfs
       .src("js/+([0-9])-*.js", { ...opts, read: false, sourcemaps })
@@ -62,7 +69,7 @@ module.exports = (src, dest, preview) => () => {
       webpack({
         mode: "production",
         entry: Object.fromEntries(
-          commonScripts.map(name => [name, `./${commonLib}/${name}.js`])
+          commonScripts.map(name => [name, `./${commonLib}/${name}`])
         ),
         output: {
           filename: "js/[name].js"
@@ -114,7 +121,13 @@ module.exports = (src, dest, preview) => () => {
       base: ospath.join(src, "static"),
       dot: true
     })
-  ).pipe(vfs.dest(dest, { sourcemaps: sourcemaps && "." }));
+  )
+    .pipe(vfs.dest(dest, { sourcemaps: sourcemaps && "." }))
+    .on("end", async () => {
+      const data = await getTopbarData();
+      const topbarHTML = generateTopbar(data, "https://typedb.com");
+      fs.writeFile(`${dest}/partials/header-content.hbs`, topbarHTML, cb);
+    });
 };
 
 function bundle({ base: basedir, ext: bundleExt = ".bundle.js" }) {

@@ -9187,7 +9187,7 @@ packages:
     resolution: {directory: ../typedb-web-main/common, type: directory}
     id: file:../typedb-web-main/common
     name: typedb-web-common
-    hasBin: true
+    requiresBuild: true
     peerDependencies:
       '@fontsource/titillium-web': 5.x
       prismjs: 1.29.x
