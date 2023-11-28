@@ -121,19 +121,19 @@
     height: 1.25rem;
 
     &.icon-important {
-      @include url-icon("icons/stars.svg", var(--color-secondary-yellow));
+      @include url-icon(url("icons/stars.svg"), var(--color-secondary-yellow));
     }
 
     &.icon-note {
-      @include url-icon("icons/note.svg", var(--color-secondary-blue));
+      @include url-icon(url("icons/note.svg"), var(--color-secondary-blue));
     }
 
     &.icon-tip {
-      @include url-icon("icons/lightbulb.svg", var(--color-green));
+      @include url-icon(url("icons/lightbulb.svg"), var(--color-green));
     }
 
     &.icon-warning {
-      @include url-icon("icons/warning.svg", var(--color-red));
+      @include url-icon(url("icons/warning.svg"), var(--color-red));
     }
   }
 
