@@ -3,7 +3,7 @@
     const cdkOverlayBackdrop = document.querySelector(".cdk-overlay-backdrop");
     const closeButton = document.querySelector("td-dialog-close-button button");
     const scriptEl = document.createElement("script");
-    scriptEl.src = `//js.hsforms.net/forms/embed/v2.js`;
+    scriptEl.src = `https://js.hsforms.net/forms/embed/v2.js`;
     document.head.appendChild(scriptEl);
     feedbackButton.addEventListener("click", () => {
         window.hbspt.forms.create({

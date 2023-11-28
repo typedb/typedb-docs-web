@@ -1,10 +1,14 @@
+@use "topbar";
+@use "footer";
+
 @import "fonts";
 
 @import "vars";
 @import "base";
 @import "material";
 
-@import "header";
+@include topbar.styles("icons");
+@include footer.styles("icons");
 
 @import "body";
 @import "search";
