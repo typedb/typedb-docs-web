@@ -46,14 +46,15 @@
     "postcss-custom-properties": "~9.1",
     "postcss-url": "~8.0",
     "prettier-eslint": "~9.0",
-    "prismjs": "1.29.0",
     "require-directory": "~2.1",
     "require-from-string": "~2.0",
     "sass": "1.68.0",
     "stylelint": "~13.3",
     "stylelint-config-standard": "~20.0",
     "typedb-web-common": "file:../typedb-web-main/common",
-    "vinyl-fs": "~3.0"
+    "vinyl-fs": "~3.0",
+    "webpack": "5.89.0",
+    "webpack-stream": "7.0.0"
   },
   "packageManager": "pnpm@8.6.7"
 }

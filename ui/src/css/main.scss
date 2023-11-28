@@ -11,8 +11,4 @@ main.article {
     flex: 1;
     overflow: hidden;
   }
-
-  * {
-    scroll-margin-top: var(--main-offset);
-  }
 }
