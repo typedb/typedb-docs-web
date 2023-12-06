@@ -10,11 +10,14 @@
     tab-size: 4;
     word-wrap: anywhere;
 
+    .sect1,
+    #preamble {
+        overflow: auto hidden;
+    }
+
     .sect1 {
         @include card-appearance;
         @include card-padding;
-
-        overflow: auto hidden;
 
         > :first-of-type {
             margin-top: 0;
@@ -260,6 +263,10 @@
         border-radius: var(--border-radius);
         border: 1px solid;
         color: var(--color-white);
+
+        @media (max-width: media.$max-width-mobile) {
+            padding: var(--card-padding);
+        }
 
         > table,
         > table > tbody,
