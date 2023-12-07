@@ -337,6 +337,26 @@
         &.text-right {
             align-items: flex-end;
         }
+
+        &.left {
+            float: none;
+            display: block;
+
+            .image > img {
+                float: left;
+                margin: 0 1em 1em 0;
+            }
+        }
+
+        &.right {
+            float: none;
+            display: block;
+
+            .image > img {
+                float: right;
+                margin: 0 0 1em 1em;
+            }
+        }
     }
 
     .imageblock img,
@@ -359,10 +379,6 @@
     .image.framed > svg {
         border-radius: var(--border-radius);
         border: 1px solid var(--color-light-purple);
-    }
-
-    .image:not(.left):not(.right) > img {
-        margin-top: -0.2em;
     }
 
     .videoblock iframe {
