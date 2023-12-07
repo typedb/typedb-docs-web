@@ -622,40 +622,34 @@
         margin-left: 1rem;
 
         > summary {
-            display: block;
+            display: flex;
+            align-items: center;
             position: relative;
             line-height: var(--doc-line-height);
             margin-bottom: 0.5rem;
+            color: var(--color-green);
+
+            &:hover {
+                text-decoration: underline;
+            }
 
             &::-webkit-details-marker {
                 display: none;
             }
 
             &::before {
+                flex-shrink: 0;
                 content: "";
-                border: solid transparent;
-                border-left-color: currentColor;
-                border-width: 0.3em 0 0.3em 0.5em;
-                position: absolute;
-                top: calc((var(--doc-line-height) * 0.5 - 0.3) * 1em);
-                left: -1rem;
-                transform: translateX(15%);
-            }
-
-            &::after {
-                content: "";
-                width: 1rem;
-                height: 1em;
-                position: absolute;
-                top: calc((var(--doc-line-height) * 0.5 - 0.5) * 1em);
-                left: -1rem;
+                width: 20px;
+                height: 20px;
+                margin-right: 4px;
+                @include url-icon(url("icons/arrow-down.svg"), var(--color-dark-white));
+                transform: rotate(-90deg);
             }
         }
 
         &[open] > summary::before {
-            border-color: currentColor transparent transparent;
-            border-width: 0.5rem 0.3rem 0;
-            transform: translateY(15%);
+            transform: rotate(0deg);
         }
 
         &.result {
