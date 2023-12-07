@@ -1,181 +1,253 @@
+@use "media";
+@use "mixins" as *;
+
+@media (max-width: media.$max-width-mobile) {
+    html.is-clipped--navbar {
+        overflow-y: hidden;
+    }
+}
+
 .nav-container {
-  display: block;
-  position: sticky;
-  top: var(--main-offset);
-  height: calc(100vh - var(--main-offset));
-  flex: 0 0 var(--nav-width);
-  z-index: 2;
+    display: block;
+    position: sticky;
+    top: var(--main-offset);
+    height: calc(100vh - var(--main-offset));
+    flex: 0 0 var(--nav-width);
+    z-index: 2;
+
+    @media (max-width: media.$max-width-mobile) {
+        height: auto;
+        flex: auto;
+        box-shadow: 0px calc(var(--body-padding) / -2) var(--body-padding) calc(var(--body-padding) * 3 / 2)
+            var(--body-background);
+        background: var(--body-background);
+    }
 }
 
 .nav {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  font-size: inherit;
-  line-height: inherit;
-  font-weight: inherit;
-
-  .panels {
     display: flex;
     flex-direction: column;
-    overflow: hidden auto;
+    height: 100%;
+    font-size: inherit;
+    line-height: inherit;
+    font-weight: inherit;
 
-    &::before {
-      content: "";
-      position: sticky;
-      top: 0;
-      box-shadow: 0 0 0.5rem 0.5rem var(--body-background);
-      z-index: 1;
+    .panels {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden auto;
+
+        &::before {
+            content: "";
+            position: sticky;
+            top: 0;
+            box-shadow: 0 0 0.5rem 0.5rem var(--body-background);
+            z-index: 1;
+        }
     }
-  }
+
+    @media (max-width: media.$max-width-mobile) {
+        &:not(.nav-opened) .panels {
+            display: none;
+        }
+
+        .panels {
+            position: fixed;
+            inset: calc(var(--main-offset) + var(--search-height)) 0 0;
+            padding: 0 var(--body-padding);
+            background: var(--body-background);
+            z-index: 2;
+        }
+    }
+}
+
+.nav-toggle-button {
+    display: none;
+
+    appearance: none;
+    outline: none;
+
+    align-items: center;
+    justify-content: center;
+    background: var(--color-purple);
+    border: 1px solid var(--color-light-purple);
+    border-radius: var(--border-radius);
+    height: var(--search-height);
+    width: var(--search-height);
+    cursor: pointer;
+
+    &::after {
+        content: "";
+        width: 24px;
+        height: 24px;
+
+        .nav.nav-opened & {
+            @include url-icon(url("icons/close.svg"), currentColor);
+        }
+
+        .nav:not(.nav-opened) & {
+            @include url-icon(url("icons/function.svg"), currentColor);
+        }
+    }
+
+    @media (max-width: media.$max-width-mobile) {
+        display: flex;
+    }
 }
 
 .nav-search {
-  border-bottom: 1px solid var(--panel-border-color);
-  padding-bottom: 1rem;
+    border-bottom: 1px solid var(--panel-border-color);
+    padding-bottom: 1rem;
+
+    @media (max-width: media.$max-width-mobile) {
+        display: flex;
+        gap: 0.5em;
+        padding-bottom: 0;
+        border-bottom: 0;
+    }
 }
 
 .nav-list {
-  list-style: none;
-  margin-bottom: 1rem;
+    list-style: none;
+    margin-bottom: 1rem;
 }
 
 .nav-item {
-  color: var(--color-white);
-  font-weight: var(--font-weight-regular);
+    color: var(--color-white);
+    font-weight: var(--font-weight-regular);
 
-  & &:not(.is-active) .nav-list {
-    display: none;
-  }
-
-  &:not(:hover) > * > .nav-link svg {
-    opacity: 0;
-  }
-
-  &:not(.is-active) > * > .nav-text-toggle-button {
-    transform: rotate(-90deg);
-  }
-
-  &.is-current-page > * {
-    > .nav-text {
-      color: var(--color-green);
-      font-weight: var(--font-weight-bold);
+    & &:not(.is-active) .nav-list {
+        display: none;
     }
 
-    > .nav-text-toggle-button {
-      color: var(--color-green);
-    }
-  }
-
-  &.is-current-path > * > .nav-text {
-    font-weight: var(--font-weight-bold);
-  }
-
-  .nav-item.is-current-page,
-  .nav-item.is-current-path:not(.is-active) {
-    &:not(.nav-item-expandable) > .nav-text-container::before {
-      background: var(--color-green);
-    }
-  }
-
-  &[data-depth="0"] {
-    padding-top: 1rem;
-
-    & + & {
-      margin-top: 1rem;
-      border-top: 1px solid var(--panel-border-color);
+    &:not(:hover) > * > .nav-link svg {
+        opacity: 0;
     }
 
-    > .nav-text-container {
-      font-size: var(--font-size-p1);
-      margin-bottom: 0.5rem;
-    }
-  }
-
-  &[data-depth="1"] > .nav-list {
-    padding-left: 1.25rem;
-  }
-
-  &[data-depth="2"] {
-    > * > .nav-text {
-      padding-left: 12px;
+    &:not(.is-active) > * > .nav-text-toggle-button {
+        transform: rotate(-90deg);
     }
 
-    > .nav-text-container::before {
-      background: var(--panel-border-color);
-    }
-  }
+    &.is-current-page > * {
+        > .nav-text {
+            color: var(--color-green);
+            font-weight: var(--font-weight-bold);
+        }
 
-  &[data-depth="1"],
-  &[data-depth="2"] {
-    > .nav-text-container::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 2px;
+        > .nav-text-toggle-button {
+            color: var(--color-green);
+        }
     }
-  }
+
+    &.is-current-path > * > .nav-text {
+        font-weight: var(--font-weight-bold);
+    }
+
+    .nav-item.is-current-page,
+    .nav-item.is-current-path:not(.is-active) {
+        &:not(.nav-item-expandable) > .nav-text-container::before {
+            background: var(--color-green);
+        }
+    }
+
+    &[data-depth="0"] {
+        padding-top: 1rem;
+
+        & + & {
+            margin-top: 1rem;
+            border-top: 1px solid var(--panel-border-color);
+        }
+
+        > .nav-text-container {
+            font-size: var(--font-size-p1);
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    &[data-depth="1"] > .nav-list {
+        padding-left: 1.25rem;
+    }
+
+    &[data-depth="2"] {
+        > * > .nav-text {
+            padding-left: 12px;
+        }
+
+        > .nav-text-container::before {
+            background: var(--panel-border-color);
+        }
+    }
+
+    &[data-depth="1"],
+    &[data-depth="2"] {
+        > .nav-text-container::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+        }
+    }
 }
 
 .nav-text-container {
-  position: relative;
-  display: flex;
-  align-items: center;
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .nav-text-toggle-button {
-  position: absolute;
-  width: 28px;
-  height: 28px;
-  padding: 4px;
-  margin: -4px;
-  background: none;
-  border: none;
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    padding: 4px;
+    margin: -4px;
+    background: none;
+    border: none;
 }
 
 .nav-text {
-  width: 100%;
-  padding: 8px 24px;
-  border-radius: var(--border-radius);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
+    width: 100%;
+    padding: 8px 24px;
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
 }
 
 p.nav-text {
-  padding: 8px 10px;
-  font-weight: var(--font-weight-bold);
+    padding: 8px 10px;
+    font-weight: var(--font-weight-bold);
 }
 
 .nav-text-toggle {
-  background: none;
-  border: none;
-  text-align: left;
+    background: none;
+    border: none;
+    text-align: left;
 }
 
 .nav-link {
-  aside &,
-  aside &:visited {
-    color: inherit;
-  }
+    aside &,
+    aside &:visited {
+        color: inherit;
+    }
 }
 
 .nav-link:hover {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .nav-link svg {
-  flex-shrink: 0;
-  height: 20px;
-  width: 20px;
+    flex-shrink: 0;
+    height: 20px;
+    width: 20px;
 }
 
 a.nav-text:hover,
 button.nav-text:hover,
 .nav-item.is-current-page > * > .nav-text,
 .nav-item.is-current-path:not(.is-active) > * > .nav-text {
-  background: var(--color-purple);
+    background: var(--color-purple);
 }
