@@ -619,8 +619,6 @@
     }
 
     details {
-        margin-left: 1rem;
-
         > summary {
             display: flex;
             align-items: center;
@@ -646,6 +644,10 @@
                 @include url-icon(url("icons/arrow-down.svg"), var(--color-dark-white));
                 transform: rotate(-90deg);
             }
+        }
+
+        > .content {
+            margin-left: 1rem;
         }
 
         &[open] > summary::before {
