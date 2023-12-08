@@ -106,7 +106,7 @@
         }
 
         &.icon-tip {
-            @include url-icon(url("icons/lightbulb.svg"), var(--color-green));
+            @include url-icon(url("icons/bulb.svg"), var(--color-green));
         }
 
         &.icon-warning {

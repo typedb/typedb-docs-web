@@ -32,6 +32,14 @@
     line-height: inherit;
     font-weight: inherit;
 
+    .panels-container {
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
     .panels {
         display: flex;
         flex-direction: column;
