@@ -13,9 +13,7 @@ const postcssUrl = require("postcss-url");
 const { Transform } = require("stream");
 const vfs = require("vinyl-fs");
 const webpack = require("webpack-stream");
-const { generateTopbar } = require("typedb-web-common/lib/topbar/generate-topbar");
-const { getTopbarData } = require("typedb-web-common/lib/topbar/get-topbar-data");
-const { generateFooter, getFooterData } = require("typedb-web-common/lib/footer");
+const { generateFooter, generateTopbar, getFooterData, getTopbarData } = require("typedb-web-common/lib");
 
 const path = ospath.posix;
 const map = (transform) => new Transform({ objectMode: true, transform });
@@ -23,10 +21,8 @@ const through = () => map((file, enc, next) => next(null, file));
 
 module.exports = (src, dest, preview) => (cb) => {
     const commonPackage = "node_modules/typedb-web-common";
-    const commonLib = `${commonPackage}/lib`;
     const commonSrc = `${commonPackage}/src`;
     const sassIncludePath = `${commonSrc}/styles`;
-    const commonScripts = ["prism", "topbar/setup-topbar-listeners"];
     const opts = { base: src, cwd: src };
     const sourcemaps = preview || process.env.SOURCEMAPS === "true";
     const postcssPlugins = [
@@ -62,12 +58,12 @@ module.exports = (src, dest, preview) => (cb) => {
             .src("js/vendor/*([^.])?(.bundle).js", { ...opts, read: false })
             .pipe(bundle(opts))
             .pipe(uglify({ output: { comments: /^! / } })),
-        vfs.src(`${commonLib}/*.js`).pipe(
+        vfs.src("js/common.js", { ...opts, read: false }).pipe(
             webpack({
                 mode: "production",
-                entry: Object.fromEntries(commonScripts.map((name) => [name, `./${commonLib}/${name}`])),
+                entry: `./${src}/js/common.js`,
                 output: {
-                    filename: "js/[name].js",
+                    filename: "js/common.js",
                 },
             })
         ),
