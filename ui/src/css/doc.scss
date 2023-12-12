@@ -994,3 +994,18 @@
         }
     }
 }
+
+.doc-404 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1.page {
+        font-size: 144px;
+    }
+
+    .paragraph {
+        max-width: 600px;
+        text-align: center;
+    }
+}

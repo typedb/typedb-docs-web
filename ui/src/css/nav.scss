@@ -17,7 +17,7 @@
 
     @media (max-width: media.$max-width-mobile) {
         height: auto;
-        flex: auto;
+        flex-basis: auto;
         box-shadow: 0px calc(var(--body-padding) / -2) var(--body-padding) calc(var(--body-padding) * 3 / 2)
             var(--body-background);
         background: var(--body-background);
