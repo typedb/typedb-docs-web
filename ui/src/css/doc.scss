@@ -596,12 +596,24 @@
         font-style: var(--caption-font-style);
         font-weight: var(--caption-font-weight);
         hyphens: none;
-        letter-spacing: 0.01em;
-        padding-bottom: 0.075rem;
     }
 
     .tableblock caption {
-        text-align: left;
+        caption-side: bottom;
+        color: var(--color-dark-white);
+        font-weight: var(--font-weight-light);
+        margin-top: 8px;
+        font-size: 20px;
+        letter-spacing: inherit;
+        padding-bottom: 0;
+
+        @media (min-width: media.$min-width-tablet) and (max-width: media.$max-width-tablet) {
+            font-size: 14px;
+        }
+
+        @media (max-width: media.$max-width-mobile) {
+            font-size: 12px;
+        }
     }
 
     .ulist,
