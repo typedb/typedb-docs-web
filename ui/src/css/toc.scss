@@ -1,7 +1,6 @@
 @use "media";
 
 .toc {
-    font-size: inherit;
     line-height: inherit;
     font-weight: inherit;
 }
@@ -35,8 +34,6 @@
 }
 
 .toc .toc-menu ul {
-    font-size: 15px;
-    line-height: var(--toc-line-height);
     list-style: none;
     margin: 0;
     padding: 0;
@@ -83,28 +80,38 @@
     color: inherit;
     border-left: 2px solid var(--toc-border-color);
     display: inline-block;
-    padding: 0.25rem 0 0.25rem 0.5rem;
+    padding-left: 0.5rem;
     text-decoration: none;
 }
 
-.sidebar.toc .toc-menu a {
-    display: block;
-    outline: none;
-}
+.toc {
+    &.toc a {
+        display: block;
+        color: inherit;
+        text-decoration: none;
+        font-size: 15px;
+        line-height: var(--toc-line-height);
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+        outline: none;
 
-.toc .toc-menu a:hover {
-    color: var(--link-font-color);
-}
+        &:focus-visible {
+            background: var(--panel-background);
+        }
 
-.toc .toc-menu a.is-active {
-    border-left-color: var(--link-font-color);
-    color: var(--link-font-color);
-}
+        &:hover {
+            color: var(--link-font-color);
+        }
 
-.sidebar.toc .toc-menu a:focus {
-    background: var(--panel-background);
-}
+        &.is-active {
+            border-left-color: var(--link-font-color);
+            color: var(--link-font-color);
+        }
+    }
 
-.toc .toc-menu .is-hidden-toc {
-    display: none !important;
+    .toc-additional {
+        border-top: 1px solid var(--panel-border-color);
+        margin-top: 1rem;
+        padding: 1rem 0;
+    }
 }

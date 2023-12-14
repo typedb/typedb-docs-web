@@ -1,3 +1,11 @@
 <aside class="toc sidebar" data-title="{{{or page.attributes.toctitle 'Contents'}}}" data-levels="{{{or page.attributes.toclevels 2}}}">
   <div class="toc-menu"></div>
+  <div class="toc-additional">
+    {{#with (editUrl)}}
+    <a href="{{this}}" target="_blank">Edit on Github</a>
+    {{/with}}
+    {{#with (reportUrl)}}
+    <a id="report-link" href="{{this}}" target="_blank">Report an issue</a>
+    {{/with}}
+  </div>
 </aside>

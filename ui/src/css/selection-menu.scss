@@ -1,0 +1,67 @@
+@use "mixins" as *;
+
+.selection-menu {
+    position: absolute;
+    z-index: 1;
+    transform: translate(-50%, -100%);
+    margin-top: -0.5rem;
+    padding: 0.25rem;
+
+    display: flex;
+    gap: 0.25rem;
+
+    &:not(.is-active) {
+        display: none;
+    }
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+    }
+
+    &::before {
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+        width: 0.5rem;
+        height: 0.5rem;
+        background: var(--color-light-purple);
+        border-radius: 2px;
+    }
+
+    &::after {
+        inset: 0;
+        background: var(--color-light-purple);
+        border-radius: 4px;
+    }
+
+    button {
+        background: none;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        outline: 0;
+    }
+
+    button,
+    a,
+    a:hover {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    .selection-copy-button {
+        --icon: url("icons/copy.svg");
+        @include url-icon(var(--icon), var(--color-white));
+
+        &.clicked {
+            --icon: url("icons/check.svg");
+        }
+    }
+
+    .selection-report-link {
+        @include url-icon(url("icons/warning.svg"), var(--color-white));
+    }
+}

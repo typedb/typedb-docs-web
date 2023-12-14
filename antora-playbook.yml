@@ -1,36 +1,38 @@
 site:
-  title: TypeDB Documentation portal
-  start_page: home:ROOT:overview.adoc
-  robots: allow
+    title: TypeDB Documentation portal
+    start_page: home:ROOT:overview.adoc
+    robots: allow
 content:
-  sources:
-    - url: .
-      start_path: content/typedb-src
-      branches: HEAD
-    - url: .
-      start_path: content/drivers-src
-      branches: HEAD
-    - url: .
-      start_path: content/typeql-src
-      branches: HEAD
-    - url: .
-      start_path: content/home-src
-      branches: HEAD      
+    sources:
+        - url: .
+          start_path: content/typedb-src
+          branches: HEAD
+        - url: .
+          start_path: content/drivers-src
+          branches: HEAD
+        - url: .
+          start_path: content/typeql-src
+          branches: HEAD
+        - url: .
+          start_path: content/home-src
+          branches: HEAD
+    edit_url: "https://github.com/vaticle/typedb-docs/edit/development/:{path}"
 urls:
-  latest_version_segment: ""
+    latest_version_segment: ""
 antora:
-  extensions:
-    - "@antora/lunr-extension"
+    extensions:
+        - "@antora/lunr-extension"
 asciidoc:
-  attributes:
-    page-pagination: "@"
-    source-highlighter: ~
-  extensions:
-    - "@asciidoctor/tabs"
+    attributes:
+        page-issue-url: "https://github.com/vaticle/typedb-docs/issues/new"
+        page-pagination: "@"
+        source-highlighter: ~
+    extensions:
+        - "@asciidoctor/tabs"
 ui:
-  bundle:
-    url: ./ui/build/ui-bundle.zip
-    snapshot: true
+    bundle:
+        url: ./ui/build/ui-bundle.zip
+        snapshot: true
 output:
-  clean: true
-  dir: ./dist
+    clean: true
+    dir: ./dist
