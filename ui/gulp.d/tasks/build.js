@@ -1,5 +1,6 @@
 "use strict";
 
+const autoprefixer = require("autoprefixer");
 const browserify = require("browserify");
 const fs = require("fs-extra");
 const concat = require("gulp-concat");
@@ -44,6 +45,7 @@ module.exports = (src, dest, preview) => (cb) => {
                 },
             },
         ]),
+        autoprefixer({ cascade: false }),
     ];
 
     merge(
