@@ -75,6 +75,7 @@
     appearance: none;
     outline: none;
 
+    flex-shrink: 0;
     align-items: center;
     justify-content: center;
     background: var(--color-purple);
@@ -90,11 +91,11 @@
         height: 24px;
 
         .nav.nav-opened & {
-            @include url-icon(url("icons/close.svg"), currentColor);
+            @include url-icon(url("icons/close.svg"), var(--color-white));
         }
 
         .nav:not(.nav-opened) & {
-            @include url-icon(url("icons/function.svg"), currentColor);
+            @include url-icon(url("icons/function.svg"), var(--color-white));
         }
     }
 
