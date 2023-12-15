@@ -1,4 +1,4 @@
-# TypeDB Docs Framework
+# TypeDB Docs Website
 
 The TypeDB docs subsite is an [Antora playbook](https://antora.org), whose UI bundle sources are in the `ui`
 directory, and whose content is sourced from https://github.com/vaticle/docs and integrated as a Git submodule into
