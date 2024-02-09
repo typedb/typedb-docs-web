@@ -5,9 +5,6 @@ site:
 content:
   sources:
     - url: .
-      start_path: content/typedb-src
-      branches: HEAD
-    - url: .
       start_path: content/drivers-src
       branches: HEAD
     - url: .
