@@ -714,6 +714,7 @@
             padding: 1.25rem;
             padding-right: calc(1.25rem + 1.25rem + 0.5rem); /* padding + icon + gap */
             display: flex;
+            max-height: 500px;
         }
     }
 
