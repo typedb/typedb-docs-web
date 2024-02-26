@@ -5,13 +5,16 @@ site:
 content:
   sources:
     - url: .
-      start_path: content/typedb-src
-      branches: HEAD
-    - url: .
       start_path: content/drivers-src
       branches: HEAD
     - url: .
       start_path: content/typeql-src
+      branches: HEAD
+    - url: .
+      start_path: content/manual-src
+      branches: HEAD
+    - url: .
+      start_path: content/learn-src
       branches: HEAD
     - url: .
       start_path: content/home-src
