@@ -50,6 +50,8 @@
     h5,
     h6 {
         position: relative;
+        margin-left: -1rem;
+        padding-left: 1rem;
         margin-top: 1rem;
         color: var(--color-white);
 
@@ -61,7 +63,6 @@
             font-weight: normal;
             line-height: normal;
             padding-top: 0.05em;
-            margin-left: -1rem;
 
             &::before {
                 content: "\00a7";
@@ -845,6 +846,7 @@
             font-style: italic;
             color: white;
             margin: 1rem 0rem 0.25rem;
+            font-weight: var(--font-weight-semi-bold);
         }
 
         dd {
