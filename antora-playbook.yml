@@ -3,6 +3,7 @@ site:
   start_page: home:ROOT:overview.adoc
   robots: allow
 content:
+  edit_url: 'https://github.com/vaticle/typedb-docs/edit/development/{path}' 
   sources:
     - url: .
       start_path: content/typeql-src
