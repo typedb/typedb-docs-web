@@ -24,7 +24,8 @@
     top: var(--main-offset);
     flex: 0 0 var(--toc-width);
     max-height: calc(100vh - var(--main-offset));
-    overflow-y: auto;
+    overflow: auto;
+    padding-bottom: 0.5rem;
 
     @media (max-width: media.$max-width-tablet) {
         display: none;
@@ -113,4 +114,68 @@
 
 .toc .toc-menu .is-hidden-toc {
     display: none !important;
+}
+
+.toc .toc-links {
+    margin-left: calc(0.5rem + 2px);
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--panel-border-color);
+}
+
+.toc-links-button {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    padding: 2px 2px 0px 2px;
+    margin: 0px 0px -10px;
+    background: none;
+    border: none;
+}
+
+.toc-link-container {
+    position: relative;
+    display: inline-block;
+
+    & .toc-link-tooltip-wrapper {
+        position: absolute;
+        z-index: 1;
+
+        & .toc-link-tooltip {
+            visibility: hidden;
+            position: fixed;
+            width: 120px;
+            margin-left: -127px;
+            margin-top: -24px;
+            padding: 4px 9px 6px;
+            font-size: 12px;
+            font-style: italic;
+            color: inherit;
+            background-color: var(--panel-background);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--panel-border-color);
+            opacity: .99;
+        }
+    }
+
+    &:hover .toc-link-tooltip {
+        visibility: visible;
+    }
+}
+
+.toc .toc-links ul {
+    list-style: none;
+}
+
+.toc .toc-links a {
+    font-size: 15px;
+    letter-spacing: 0.016em;
+    margin-top: 10px;
+    padding-left: 30px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.toc .toc-links a:hover {
+    color: var(--link-font-color);
 }
