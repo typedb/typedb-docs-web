@@ -24,6 +24,8 @@
     top: var(--main-offset);
     flex: 0 0 var(--toc-width);
     max-height: calc(100vh - var(--main-offset));
+    overflow: auto;
+    padding-bottom: 0.5rem;
 
     @media (max-width: media.$max-width-tablet) {
         display: none;
@@ -135,24 +137,28 @@
     position: relative;
     display: inline-block;
 
-    & .toc-link-note {
-        visibility: hidden;
-        font-style: italic;
-        color: inherit;
-        font-size: 12px;
-        background-color: var(--panel-background);
-        border-radius: var(--border-radius);
-        border: 1px solid var(--panel-border-color);
-        width: 120px;
-        padding: 4px 9px 6px;
+    & .toc-link-tooltip-wrapper {
         position: absolute;
         z-index: 1;
-        top: -5px;
-        right: 105%;
-        opacity: .99;
+
+        & .toc-link-tooltip {
+            visibility: hidden;
+            position: fixed;
+            width: 120px;
+            margin-left: -127px;
+            margin-top: -24px;
+            padding: 4px 9px 6px;
+            font-size: 12px;
+            font-style: italic;
+            color: inherit;
+            background-color: var(--panel-background);
+            border-radius: var(--border-radius);
+            border: 1px solid var(--panel-border-color);
+            opacity: .99;
+        }
     }
 
-    &:hover .toc-link-note {
+    &:hover .toc-link-tooltip {
         visibility: visible;
     }
 }

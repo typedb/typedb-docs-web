@@ -4,7 +4,9 @@
       <div class="clickable toc-link toc-link-container">
         <button class="toc-links-button">{{{ icon "github" }}}</button>
         <a href="{{fixEditUrl page.editUrl}}">Edit this page</a>
-        <span class="toc-link-note">Edit this page directly on Github.</span>
+        <div class="toc-link-tooltip-wrapper">
+          <span class="toc-link-tooltip">Edit this page directly on Github.</span>
+        </div>
       </div>
     </li>
     <li>
@@ -13,21 +15,27 @@
           <button class="toc-links-button">{{{ icon "doc" }}}</button>
           <a>Request changes</a>
         </div>
-        <span class="toc-link-note">Note: you can select text on the page to be quoted in your change request.</span>
+        <div class="toc-link-tooltip-wrapper">
+          <span class="toc-link-tooltip">Note: you can select text on the page to be quoted in your change request.</span>
+        </div>
       </div>
     </li>
     <li>
       <div class="clickable toc-link toc-link-container">
         <button class="toc-links-button">{{{ icon "discord-rectangle" }}}</button>
         <a href="https://discord.com/channels/665254494820368395/983769458269114408">Ask a question</a>
-        <span class="toc-link-note">Ask a question on our Discord server.</span>
+        <div class="toc-link-tooltip-wrapper">
+          <span class="toc-link-tooltip">Ask a question on our Discord server.</span>
+        </div>
       </div>
     </li>
     <li>
       <div class="toc-link toc-link-container" onclick="document.getElementById('feedback-btn').click()">
         <button class="toc-links-button">{{{ icon "stars"}}}</button>
         <a>Give us feedback</a>
-        <span class="toc-link-note">Do you like TypeDB? Don't forget to star us on Github!</span>
+        <div class="toc-link-tooltip-wrapper">
+          <span class="toc-link-tooltip">Do you like TypeDB? Don't forget to star us on Github!</span>
+        </div>
       </div>
     </li>
   </ul>
