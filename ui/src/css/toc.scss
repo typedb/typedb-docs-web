@@ -21,11 +21,13 @@
 .toc.sidebar {
     display: block;
     position: sticky;
-    top: var(--main-offset);
-    flex: 0 0 var(--toc-width);
-    max-height: calc(100vh - var(--main-offset));
-    overflow: auto;
+    margin-left: calc(0px - var(--doc-tooltip-width));
+    padding-left: var(--doc-tooltip-width);
     padding-bottom: 0.5rem;
+    top: var(--main-offset);
+    flex: 0 0 calc(var(--toc-width) + var(--doc-tooltip-width));
+    max-height: calc(100vh - var(--main-offset));
+    overflow-y: auto;
 
     @media (max-width: media.$max-width-tablet) {
         display: none;
@@ -123,7 +125,7 @@
     border-top: 1px solid var(--panel-border-color);
 }
 
-.toc-links-button {
+.toc-link-button {
     position: absolute;
     width: 20px;
     height: 20px;
@@ -135,27 +137,22 @@
 
 .toc-link-container {
     position: relative;
-    display: inline-block;
 
-    & .toc-link-tooltip-wrapper {
+    & .toc-link-tooltip {
+        visibility: hidden;
+        width: calc(var(--doc-tooltip-width) - 9px);
         position: absolute;
         z-index: 1;
-
-        & .toc-link-tooltip {
-            visibility: hidden;
-            position: fixed;
-            width: 120px;
-            margin-left: -127px;
-            margin-top: -24px;
-            padding: 4px 9px 6px;
-            font-size: 12px;
-            font-style: italic;
-            color: inherit;
-            background-color: var(--panel-background);
-            border-radius: var(--border-radius);
-            border: 1px solid var(--panel-border-color);
-            opacity: .99;
-        }
+        bottom: 0px;
+        right: 100%;
+        margin-right: 9px;
+        padding: 4px 9px 6px;
+        font-size: var(--font-size-code);
+        font-style: italic;
+        color: inherit;
+        background-color: var(--panel-background);
+        border-radius: var(--border-radius);
+        border: 1px solid var(--panel-border-color);
     }
 
     &:hover .toc-link-tooltip {
