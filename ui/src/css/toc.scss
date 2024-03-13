@@ -23,6 +23,7 @@
     position: sticky;
     margin-left: calc(0px - var(--doc-tooltip-width));
     padding-left: var(--doc-tooltip-width);
+    pointer-events: none;
     padding-bottom: 0.5rem;
     top: var(--main-offset);
     flex: 0 0 calc(var(--toc-width) + var(--doc-tooltip-width));
@@ -32,6 +33,10 @@
     @media (max-width: media.$max-width-tablet) {
         display: none;
     }
+}
+
+.toc .toc-menu {
+    pointer-events: all;
 }
 
 .toc .toc-menu h3 {
@@ -123,6 +128,7 @@
     margin-top: 1rem;
     padding-top: 1rem;
     border-top: 1px solid var(--panel-border-color);
+    pointer-events: all;
 }
 
 .toc-link-button {
