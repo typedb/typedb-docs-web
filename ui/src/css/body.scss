@@ -17,19 +17,20 @@
     --panel-border-color: var(--color-light-purple);
     --body-width: 1440px;
     --body-padding: 40px;
+    --body-padding-sides: 20px;
     --body-gap: 32px;
     --main-offset: calc(var(--topbar-height) + var(--body-padding));
     /* nav */
     --nav-width: 244px;
     /* admonitions */
     --important-color: var(--color-secondary-yellow);
-    --important-background: #{rgba(colors.$secondary-yellow, 0.15)};
+    --important-background: #{rgba(colors.$secondary-yellow, 0.1)};
     --note-color: var(--color-secondary-blue);
-    --note-background: #{rgba(colors.$secondary-blue, 0.15)};
+    --note-background: #{rgba(colors.$secondary-blue, 0.1)};
     --tip-color: var(--color-green);
-    --tip-background: #{rgba(colors.$green, 0.15)};
+    --tip-background: #{rgba(colors.$green, 0.1)};
     --warning-color: var(--color-red);
-    --warning-background: #{rgba(colors.$red, 0.15)};
+    --warning-background: #{rgba(colors.$red, 0.1)};
     /* doc */
     --doc-font-size: var(--font-size-p2);
     --doc-line-height: var(--line-height-p2);
@@ -48,7 +49,7 @@
     --kbd-background: var(--panel-background);
     --kbd-border-color: var(--color-dark-white);
     --pre-background: var(--color-black-purple);
-    --quote-background: var(--color-black-purple);
+    --quote-background: rgb(48, 45, 67);
     --quote-border-color: var(--color-secondary-light-grey);
     --quote-font-color: var(--color-dark-white);
     --quote-attribution-font-color: var(--default-text-color);
@@ -56,9 +57,10 @@
     --table-header-background: var(--color-black-purple);
     --table-body-background: var(--color-deep-purple);
     --table-footer-background: var(--panel-background);
+    --doc-max-width: calc(var(--body-width) - var(--nav-width) - var(--toc-width) - 2*var(--body-padding-sides));
     /* toc */
-    --toc-width: 184px;
-    --toc-border-color: var(--panel-border-color);
+    --toc-width: 236px;
+    --toc-border-color: var(--color-black-purple);
     --toc-line-height: 1.2;
     /* search */
     --search-result-background: #{rgba(colors.$deep-purple, 0.5)};
@@ -69,6 +71,7 @@
 
     @media (max-width: media.$max-width-tablet) {
         --body-padding: var(--section-page-margin);
+        --body-padding-sides: var(--section-page-margin);
         --body-gap: 16px;
 
         --search-result-width: calc(100vw - var(--body-padding) * 2 - var(--body-gap) - var(--nav-width));
@@ -92,7 +95,7 @@
 
     margin: var(--topbar-height) auto 0;
     min-height: calc(100vh - var(--topbar-height));
-    padding: var(--body-padding);
+    padding: var(--body-padding) var(--body-padding-sides) var(--body-padding);
     max-width: var(--body-width);
     display: flex;
     align-items: flex-start;

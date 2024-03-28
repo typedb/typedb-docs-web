@@ -3,12 +3,19 @@ site:
   start_page: home:ROOT:overview.adoc
   robots: allow
 content:
+  edit_url: 'https://github.com/vaticle/typedb-docs/edit/development/{path}' 
   sources:
     - url: .
       start_path: content/drivers-src
       branches: HEAD
     - url: .
       start_path: content/typeql-src
+      branches: HEAD
+    - url: .
+      start_path: content/manual-src
+      branches: HEAD
+    - url: .
+      start_path: content/learn-src
       branches: HEAD
     - url: .
       start_path: content/home-src

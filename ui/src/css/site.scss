@@ -11,6 +11,7 @@
 @include topbar.styles("icons");
 @include footer.styles("icons");
 
+@import "doc_vars";
 @import "body";
 @import "search";
 @import "nav";

@@ -9,15 +9,19 @@
     letter-spacing: 0.016em;
     tab-size: 4;
     word-wrap: anywhere;
+    max-width: var(--doc-max-width);
+    padding: 0px var(--doc-padding) 0px;
 
     .sect1,
     #preamble {
         overflow: auto hidden;
+        padding:  0px;
     }
 
     .sect1 {
         @include card-appearance;
         @include card-padding;
+        margin: 0px;
 
         > :first-of-type {
             margin-top: 0;
@@ -72,6 +76,12 @@
 
     > h1.page:first-child {
         margin-top: 0;
+        padding-left: 1rem;
+    }
+
+    b, strong {
+        color: white;
+        font-weight: var(--font-weight-semi-bold);
     }
 
     dl {
@@ -194,7 +204,6 @@
     .imageblock,
     .listingblock,
     .literalblock,
-    .tabs,
     .sidebarblock,
     .verseblock,
     .videoblock,
@@ -233,6 +242,14 @@
         @include content-table;
     }
 
+    table.tableblock > * > tr > td {
+        font-weight: var(--font-weight-light);
+    }
+
+    table.tableblock > * > tr > * {
+        font-size: var(--font-size-aside);
+    }
+
     .halign-left {
         text-align: left;
     }
@@ -258,10 +275,10 @@
     }
 
     .admonitionblock {
-        margin: 1.5rem 0;
+        position: relative;
+        margin: 1.5rem 0 0;
         padding: 1.25rem;
         border-radius: var(--border-radius);
-        border: 1px solid;
         color: var(--color-white);
 
         @media (max-width: media.$max-width-mobile) {
@@ -276,13 +293,25 @@
             padding: 0;
         }
 
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+        }
+
         &.note {
-            border-color: var(--note-color);
             background: var(--note-background);
 
             .icon::after {
                 content: "Note";
             }
+        }
+
+        &.note::before {
+            background: var(--note-color);
         }
 
         &.important {
@@ -294,8 +323,11 @@
             }
         }
 
+        &.important::before {
+            background: var(--important-color);
+        }
+
         &.tip {
-            border-color: var(--tip-color);
             background: var(--tip-background);
 
             .icon::after {
@@ -303,13 +335,20 @@
             }
         }
 
+        &.tip::before {
+            background: var(--tip-color);
+        }
+
         &.warning {
-            border-color: var(--warning-color);
             background: var(--warning-background);
 
             .icon::after {
                 content: "Warning";
             }
+        }
+
+        &.warning::before {
+            background: var(--warning-color);
         }
 
         .icon {
@@ -329,6 +368,7 @@
         flex-direction: column;
         align-items: center;
         text-align: center;
+        margin: 1rem 0rem 1rem;
 
         &.text-left {
             align-items: flex-start;
@@ -344,7 +384,7 @@
 
             .image > img {
                 float: left;
-                margin: 0 1em 1em 0;
+                margin: 1rem 1rem 1rem 0;
             }
         }
 
@@ -354,7 +394,7 @@
 
             .image > img {
                 float: right;
-                margin: 0 0 1em 1em;
+                margin: 1rem 0 1rem 1rem;
             }
         }
     }
@@ -411,7 +451,18 @@
         }
 
         blockquote {
-            margin-top: 1rem;
+            margin-top: 0.25rem;
+
+            .paragraph {
+                margin-top: 0px;
+
+                em {
+                    font-weight: var(--font-weight-light);
+                    font-size: var(--font-size-p1);
+                    color: var(--color-dark-white);
+                    opacity: 0.9;
+                }
+            }
         }
 
         .paragraph {
@@ -536,12 +587,16 @@
     }
 
     .olist ol {
-        padding-left: 2rem;
+        padding: .25rem 0rem .5rem 2rem;
     }
 
     .ulist ul {
-        padding-left: 0;
+        padding: .25rem 0rem .5rem 1rem;
         list-style: none;
+    }
+    
+    .tablist ul {
+        padding: 0px;
     }
 
     .ulist li {
@@ -714,6 +769,7 @@
             padding: 1.25rem;
             padding-right: calc(1.25rem + 1.25rem + 0.5rem); /* padding + icon + gap */
             display: flex;
+            max-height: 500px;
         }
     }
 
@@ -799,6 +855,9 @@
     .dlist {
         dt {
             font-style: italic;
+            color: white;
+            margin: 1rem 0rem 0.25rem;
+            font-weight: var(--font-weight-semi-bold);
         }
 
         dd {
@@ -953,7 +1012,7 @@
     #footnotes {
         font-size: 0.85em;
         line-height: 1.5;
-        margin: 2rem -0.5rem 0;
+        margin: 2rem 0 0;
 
         hr {
             border-top-width: 1px;
