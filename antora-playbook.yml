@@ -20,12 +20,6 @@ content:
     - url: .
       start_path: content/home-src
       branches: HEAD
-    - url: .
-      start_path: content/manual-src
-      branches: HEAD
-    - url: .
-      start_path: content/learn-src
-      branches: HEAD
 urls:
   latest_version_segment: ""
 antora:
