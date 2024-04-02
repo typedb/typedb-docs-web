@@ -39,6 +39,10 @@
     pointer-events: all;
 }
 
+.toc .no-toc {
+    display: none;
+}
+
 .toc .toc-menu h3 {
     font-size: 1rem;
     font-weight: var(--font-weight-semi-bold);
