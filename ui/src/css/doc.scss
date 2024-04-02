@@ -26,6 +26,10 @@
         > :first-of-type {
             margin-top: 0;
         }
+
+        #_blank_heading {
+            margin-top: -1rem;
+        }
     }
 
     .sect1,
@@ -1078,5 +1082,26 @@
     .paragraph {
         max-width: 600px;
         text-align: center;
+    }
+}
+
+.doc-preamble-card {
+    #preamble {
+        @include card-appearance;
+        @include card-padding;
+
+        margin-top: 24px;
+
+        @media (max-width: media.$max-width-tablet) {
+            margin-top: 16px;
+        }
+
+        > .sectionbody > :first-child {
+            margin-top: 0;
+        }
+        .imageblock {
+            margin-top: 0;
+            margin-bottom: calc(var(--font-size-p2) * -2);
+        }
     }
 }
