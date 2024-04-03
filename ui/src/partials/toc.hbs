@@ -1,4 +1,4 @@
 <aside class="toc sidebar" data-title="{{or page.attributes.toctitle 'On this page'}}" data-levels="{{or page.attributes.toclevels 1 }}">
-  <div class="toc-menu"></div> 
+  <div class="toc-menu {{#if page.attributes.no-toc}}no-toc{{/if}}"></div>
   {{> toc-links}}
 </aside>

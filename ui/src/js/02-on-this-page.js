@@ -48,6 +48,7 @@
     if (startOfContent) {
         var embeddedToc = document.createElement("aside");
         embeddedToc.className = "toc embedded";
+        if (sidebar.querySelector(".no-toc")) { embeddedToc.className += " no-toc"; }
         embeddedToc.appendChild(menu.cloneNode(true));
         startOfContent.parentNode.insertBefore(embeddedToc, startOfContent);
     }
