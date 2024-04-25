@@ -19,7 +19,10 @@ content:
       branches: HEAD
     - url: .
       start_path: content/home-src
-      branches: HEAD      
+      branches: HEAD
+    - url: https://github.com/izmalk/typedb-driver.git
+      start_path: docs
+      branches: drivers-api-ref-docs-content
 urls:
   latest_version_segment: ""
 antora:
