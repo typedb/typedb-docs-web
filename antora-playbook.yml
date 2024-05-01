@@ -22,7 +22,7 @@ content:
       branches: HEAD
     - url: https://github.com/vaticle/typedb-driver.git
       start_path: docs
-      branches: development
+      branches: master
 urls:
   latest_version_segment: ""
 antora:
