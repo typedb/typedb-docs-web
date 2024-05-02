@@ -4,3 +4,11 @@
 [submodule "typedb-web-main"]
 	path = typedb-web-main
 	url = git@github.com:vaticle/typedb-web-main.git
+[submodule "content222"]
+	path = content2
+	url = git@github.com:vaticle/typedb-docs.git
+	branch = 2.x
+[submodule "content333"]
+	path = content3
+	url = git@github.com:vaticle/typedb-docs.git
+	branch = 3.x
