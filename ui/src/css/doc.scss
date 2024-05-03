@@ -242,6 +242,12 @@
         }
     }
 
+    .table_wrapper {
+        display: block;
+        max-width: calc(100% - 2px);
+        overflow-x: auto;
+    }
+
     table.tableblock {
         @include content-table;
     }
@@ -361,8 +367,12 @@
             align-items: center;
 
             &::after {
-                font-weight: var(--font-weight-semi-bold);
+                font-weight: var(--font-weight-regular);
             }
+        }
+
+        .content {
+            margin-top: -0.5rem;
         }
     }
 
@@ -406,12 +416,16 @@
     .imageblock img,
     .imageblock object,
     .imageblock svg,
-    .image > img,
     .image > object,
-    .image > svg {
+    .image > svg,
+    .image > img {
         display: inline-block;
         height: auto;
         max-width: 100%;
+        vertical-align: middle;
+    }
+
+    :not(.imageblock) :not(.tableblock) .image > img {
         vertical-align: middle;
     }
 
@@ -651,28 +665,25 @@
     .videoblock .title,
     .tableblock caption {
         color: var(--caption-font-color);
-        font-size: 16px;
+        font-size: 18px;
         font-style: var(--caption-font-style);
         font-weight: var(--caption-font-weight);
         hyphens: none;
+
+        @media (min-width: media.$min-width-tablet) and (max-width: media.$max-width-tablet) {
+            font-size: 16px;
+        }
+
+        @media (max-width: media.$max-width-mobile) {
+            font-size: 14px;
+        }
     }
 
     .tableblock caption {
         caption-side: bottom;
-        color: var(--color-dark-white);
-        font-weight: var(--font-weight-light);
         margin-top: 8px;
-        font-size: 20px;
         letter-spacing: inherit;
         padding-bottom: 0;
-
-        @media (min-width: media.$min-width-tablet) and (max-width: media.$max-width-tablet) {
-            font-size: 14px;
-        }
-
-        @media (max-width: media.$max-width-mobile) {
-            font-size: 12px;
-        }
     }
 
     .ulist,
@@ -1048,6 +1059,23 @@
                 gap: 1rem;
             }
         }
+
+        @media (max-width: media.$max-width-mobile) {
+            @each $cols in (2, 3) {
+                &.cols-#{$cols} > .content {
+                    grid-template-columns: repeat(1, 1fr);
+                    gap: 0;
+                }
+            }
+        }
+
+        @media (min-width: media.$min-width-tablet) and (max-width: media.$max-width-tablet) {
+            @each $cols in (2, 3) {
+                &.cols-#{$cols} > .content {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+        }
     }
 
     .sidebarblock {
@@ -1066,6 +1094,7 @@
 
         > .content > :first-child {
             margin-top: 0;
+            margin-bottom: -10px;
         }
     }
 }
