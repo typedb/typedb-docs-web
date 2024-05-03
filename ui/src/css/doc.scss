@@ -1064,6 +1064,7 @@
             @each $cols in (2, 3) {
                 &.cols-#{$cols} > .content {
                     grid-template-columns: repeat(1, 1fr);
+                    gap: 0;
                 }
             }
         }
