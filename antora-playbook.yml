@@ -6,20 +6,35 @@ content:
   edit_url: 'https://github.com/vaticle/typedb-docs/edit/development/{path}' 
   sources:
     - url: .
-      start_path: content/drivers-src
+      start_path: content2/drivers-src
       branches: HEAD
     - url: .
-      start_path: content/typeql-src
+      start_path: content2/typeql-src
       branches: HEAD
     - url: .
-      start_path: content/manual-src
+      start_path: content2/manual-src
       branches: HEAD
     - url: .
-      start_path: content/learn-src
+      start_path: content2/learn-src
       branches: HEAD
     - url: .
-      start_path: content/home-src
-      branches: HEAD      
+      start_path: content2/home-src
+      branches: HEAD
+    - url: .
+      start_path: content3/drivers-src
+      branches: HEAD
+    - url: .
+      start_path: content3/typeql-src
+      branches: HEAD
+    - url: .
+      start_path: content3/manual-src
+      branches: HEAD
+    - url: .
+      start_path: content3/learn-src
+      branches: HEAD
+    - url: .
+      start_path: content3/home-src
+      branches: HEAD
 urls:
   latest_version_segment: ""
 antora:
