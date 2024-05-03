@@ -32,8 +32,8 @@
     --warning-color: var(--color-red);
     --warning-background: #{rgba(colors.$red, 0.1)};
     /* doc */
-    --doc-font-size: var(--font-size-p2);
-    --doc-line-height: var(--line-height-p2);
+    --doc-font-size: calc(var(--font-size-p2) + 1px);
+    --doc-line-height: calc(var(--line-height-p2) * 1.02);
     --section-divider-color: var(--panel-border-color);
     --link-font-color: var(--color-green);
     --link_hover-font-color: var(--color-green);
