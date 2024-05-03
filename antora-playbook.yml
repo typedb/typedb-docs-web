@@ -4,7 +4,7 @@ site:
   robots: allow
 content:
   edit_url: 'https://github.com/vaticle/typedb-docs/edit/development/{path}' 
-  sources:
+  sources: 
     - url: .
       start_path: content2/drivers-src
       branches: HEAD
