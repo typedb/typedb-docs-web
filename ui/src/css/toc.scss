@@ -37,6 +37,8 @@
 
 .toc .toc-menu {
     pointer-events: all;
+    border-top: 1px solid var(--panel-border-color);
+    padding-top: 1rem;
 }
 
 .toc .no-toc {

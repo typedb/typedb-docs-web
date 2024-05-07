@@ -2,7 +2,7 @@
   {{#if page.component}}
   <div class="context-container">
     <div class="context">
-      <span class="title">Version:</span>
+      <span class="title">Page Version</span>
       <span class="version">{{page.componentVersion.displayVersion}}</span>
     </div>
     <div class="context-divider"></div>
@@ -12,7 +12,7 @@
   <ul class="components">
     {{#each page.versions}}
     <li class="component{{#if (eq this @root.page.component)}} is-current{{/if}}">
-      <a class="title" href="{{{relativize ./url}}}">See {{./version}}</a>
+      <a class="title" href="{{{relativize ./url}}}">Version {{./version}}</a>
       <div>&nbsp;</div>
     </li>
     {{/each}}

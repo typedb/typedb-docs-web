@@ -264,21 +264,27 @@ button.nav-text:hover,
 
 .nav-panel-explore {
     position: relative;
-    color: var(--color-white);
+    color: var(--body-font-color);
     line-height: 1.25;
-    z-index: 99;
+    font-weight: var(--font-weight-light);
+    font-size: 15px;
+    pointer-events: all;
+    margin-bottom: 1rem;
+
+    @media (max-width: media.$max-width-mobile) {
+        margin-top: 1rem;
+    }
 
     .context-container {
         border-radius: var(--border-radius);
         border: 1px solid var(--panel-border-color);
-        background: var(--color-purple);
+        //background: var(--color-purple);
         display: flex;
         cursor: pointer;
     }
 
     .context {
         flex-grow: 1;
-        font-weight: var(--font-weight-semi-bold);
         padding: 8px 14px;
         display: flex;
         align-items: center;
@@ -315,6 +321,7 @@ button.nav-text:hover,
         top: 100%;
         margin-top: 0.25rem;
         z-index: 1;
+        padding: 0;
 
         background: var(--color-secondary-purple);
         border: 1px solid var(--color-light-purple);

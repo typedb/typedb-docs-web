@@ -111,23 +111,4 @@
     function find(from, selector) {
         return [].slice.call(from.querySelectorAll(selector));
     }
-
-    var explorePanel = navContainer.querySelector("[data-panel=explore]");
-    if (explorePanel) {
-        explorePanel
-            .querySelector(".context-container")
-            .addEventListener("click", function() {
-                explorePanel.classList.toggle("is-active");
-            });
-
-        function closeExplorePanel(ev) {
-            if (explorePanel.contains(ev.target)) {
-                return;
-            }
-            explorePanel.classList.toggle("is-active", false);
-        }
-
-        window.addEventListener("click", closeExplorePanel);
-        navContainer.addEventListener("click", closeExplorePanel);
-    }
 })();
