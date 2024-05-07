@@ -665,17 +665,17 @@
     .videoblock .title,
     .tableblock caption {
         color: var(--caption-font-color);
-        font-size: 18px;
+        font-size: 17px;
         font-style: var(--caption-font-style);
         font-weight: var(--caption-font-weight);
         hyphens: none;
 
         @media (min-width: media.$min-width-tablet) and (max-width: media.$max-width-tablet) {
-            font-size: 16px;
+            font-size: 15px;
         }
 
         @media (max-width: media.$max-width-mobile) {
-            font-size: 14px;
+            font-size: 13px;
         }
     }
 
