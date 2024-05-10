@@ -216,6 +216,11 @@
     background: none;
     border: none;
     color: var(--body-font-color);
+
+    @media(max-width: media.$max-width-mobile) {
+        width: 24px;
+        height: 24px;
+    }
 }
 
 .nav-text {
