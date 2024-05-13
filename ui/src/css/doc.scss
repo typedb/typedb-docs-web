@@ -42,7 +42,7 @@
         &:not(:first-child) {
             margin-top: 24px;
 
-            @media (max-width: media_docs.$max-width-tablet-docs) {
+            @media (max-width: media.$max-width-tablet) {
                 margin-top: 16px;
             }
         }
@@ -671,7 +671,7 @@
         font-weight: var(--caption-font-weight);
         hyphens: none;
 
-        @media (min-width: media.$min-width-tablet) and (max-width: media_docs.$max-width-tablet-docs) {
+        @media (min-width: media.$min-width-tablet) and (max-width: media.$max-width-tablet) {
             font-size: 15px;
         }
 
@@ -1061,7 +1061,7 @@
             }
         }
 
-        @media (max-width: media.$max-width-mobile) {
+        @media (max-width: media_docs.$max-width-1-col) {
             @each $cols in (2, 3) {
                 &.cols-#{$cols} > .content {
                     grid-template-columns: repeat(1, 1fr);
@@ -1070,7 +1070,7 @@
             }
         }
 
-        @media (min-width: media.$min-width-tablet) and (max-width: media_docs.$max-width-tablet-docs) {
+        @media (min-width: media_docs.$min-width-2-col) and (max-width: media_docs.$min-width-3-col) {
             @each $cols in (2, 3) {
                 &.cols-#{$cols} > .content {
                     grid-template-columns: repeat(2, 1fr);
@@ -1122,7 +1122,7 @@
 
         margin-top: 24px;
 
-        @media (max-width: media_docs.$max-width-tablet-docs) {
+        @media (max-width: media.$max-width-tablet) {
             margin-top: 16px;
         }
 

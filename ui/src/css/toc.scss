@@ -10,7 +10,7 @@
 .toc.embedded {
     display: none;
 
-    @media (max-width: media_docs.$max-width-tablet-docs) {
+    @media (max-width: media.$max-width-tablet) {
         display: block;
         position: relative;
         margin: 1rem 0 0;
@@ -51,7 +51,7 @@
     max-height: calc(100vh - var(--main-offset));
     overflow-y: auto;
 
-    @media (max-width: media_docs.$max-width-tablet-docs) {
+    @media (max-width: media.$max-width-tablet) {
         display: none;
     }
 }

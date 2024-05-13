@@ -20,7 +20,7 @@ $doc-toc-link-tooltip-width: 150px;
     --doc-padding: #{$doc-padding-desktop};
     --doc-tooltip-width: #{$doc-toc-link-tooltip-width};
 
-    @media (max-width: media_docs.$max-width-tablet-docs) {
+    @media (max-width: media.$max-width-tablet) {
         --doc-padding: #{$doc-padding-tablet};
     }
 
