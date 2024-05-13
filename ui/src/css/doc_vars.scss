@@ -1,5 +1,6 @@
 @use "media";
 @use "shapes" as *;
+@use "media_docs";
 
 // No card
 // $docs-card-padding-desktop: 43px;
@@ -19,7 +20,7 @@ $doc-toc-link-tooltip-width: 150px;
     --doc-padding: #{$doc-padding-desktop};
     --doc-tooltip-width: #{$doc-toc-link-tooltip-width};
 
-    @media (max-width: media.$max-width-tablet) {
+    @media (max-width: media_docs.$max-width-tablet-docs) {
         --doc-padding: #{$doc-padding-tablet};
     }
 

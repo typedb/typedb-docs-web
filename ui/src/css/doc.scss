@@ -1,4 +1,5 @@
 @use "media";
+@use "media_docs";
 @use "mixins" as *;
 
 .doc {
@@ -41,7 +42,7 @@
         &:not(:first-child) {
             margin-top: 24px;
 
-            @media (max-width: media.$max-width-tablet) {
+            @media (max-width: media_docs.$max-width-tablet-docs) {
                 margin-top: 16px;
             }
         }
@@ -670,7 +671,7 @@
         font-weight: var(--caption-font-weight);
         hyphens: none;
 
-        @media (min-width: media.$min-width-tablet) and (max-width: media.$max-width-tablet) {
+        @media (min-width: media.$min-width-tablet) and (max-width: media_docs.$max-width-tablet-docs) {
             font-size: 15px;
         }
 
@@ -1069,7 +1070,7 @@
             }
         }
 
-        @media (min-width: media.$min-width-tablet) and (max-width: media.$max-width-tablet) {
+        @media (min-width: media.$min-width-tablet) and (max-width: media_docs.$max-width-tablet-docs) {
             @each $cols in (2, 3) {
                 &.cols-#{$cols} > .content {
                     grid-template-columns: repeat(2, 1fr);
@@ -1121,7 +1122,7 @@
 
         margin-top: 24px;
 
-        @media (max-width: media.$max-width-tablet) {
+        @media (max-width: media_docs.$max-width-tablet-docs) {
             margin-top: 16px;
         }
 

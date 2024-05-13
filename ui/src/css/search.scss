@@ -1,4 +1,5 @@
 @use "media";
+@use "media_docs";
 
 .search {
     position: sticky;
@@ -58,7 +59,7 @@
     top: 100%;
     margin-top: 0.5rem;
 
-    @media (max-width: media.$max-width-tablet) {
+    @media (max-width: media_docs.$max-width-tablet-docs) {
         width: calc(var(--full-width) - var(--body-gap) - var(--nav-width));
     }
 
