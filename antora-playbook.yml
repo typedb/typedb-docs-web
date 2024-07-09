@@ -15,7 +15,7 @@ content:
       start_path: content/manual-src
       branches: HEAD
     - url: .
-      start_path: content/learn-src
+      start_path: content/academy-src
       branches: HEAD
     - url: .
       start_path: content/home-src
