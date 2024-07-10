@@ -1,9 +1,12 @@
 <div class="toc-academy">
+
+    {{!-- {{log site.components}} --}}
+
 {{#if (eq page.component.title 'TypeDB Academy')}}
   {{#with site.homeUrl}}
     <a href="{{{ @root.siteRootPath }}}{{{this}}}">TypeDB Docs{{{ icon "link" }}}</a>
   {{/with}}
 {{else}}
-    <a href="{{{ siteRootPath }}}/academy/overview.html">TypeDB Academy{{{ icon "link" }}}</a>
+    <a href="{{{ @root.siteRootPath }}}{{{ site.components.academy.latest.url }}}">TypeDB Academy{{{ icon "link" }}}</a>
 {{/if}}
 </div>
