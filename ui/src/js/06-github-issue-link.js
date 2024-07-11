@@ -11,9 +11,16 @@
 
   var issueContainer = document.querySelector(".issue-link");
 
-  issueContainer.addEventListener("mousedown", getQuotedText);
-  issueContainer.addEventListener("click", openIssue);
+  if (issueContainer) {
+    issueContainer.addEventListener("mousedown", getQuotedText);
+    issueContainer.addEventListener("click", openIssue);
+  }
 
+  var brokenLinkReport = document.querySelector(".broken-link-report");
+
+  if (brokenLinkReport) {
+    brokenLinkReport.addEventListener("click", openBrokenLinkIssue);
+  }
 
   function openIssue() {
     var article_url = window.location.href;
@@ -24,6 +31,17 @@
       "&title=" + ISSUE_DEFAULT_TITLE +
       "&article=" + encodeURIComponent(article_url) + 
       "&issue-description=" + encodeURIComponent(issue_preamble);
+    window.open(url, '_blank').focus();
+  }
+
+  function openBrokenLinkIssue() {
+    var article_url = window.location.href;
+    var issue_preamble = "Broken Link: ";
+
+    var url = ISSUE_REQUEST_URL +
+      "?template=" + ISSUE_TEMPLATE + 
+      "&title=" + encodeURIComponent("Found Broken Link") +
+      "&issue-description=" + encodeURIComponent(issue_preamble) + encodeURIComponent(article_url);
     window.open(url, '_blank').focus();
   }
 

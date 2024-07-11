@@ -214,3 +214,21 @@
 .toc .toc-links a:hover {
     color: var(--link-font-color);
 }
+
+.toc .toc-links .toc-academy {
+    pointer-events: all;
+    font-size: 15px;
+    letter-spacing: 0.016em;
+    font-weight: var(--font-weight-semi-bold);
+    a {
+        color: var(--link-font-color);
+    }
+    a svg {
+        text-decoration: none;
+        height: 17px;
+        margin-bottom: -3px;
+    }
+    .toc-link-button-academy {
+        color: var(--link-font-color);
+    }
+}
