@@ -215,27 +215,20 @@
     color: var(--link-font-color);
 }
 
-.toc .toc-academy {
-    margin-left: calc(0.5rem + 2px);
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--panel-border-color);
+.toc .toc-links .toc-academy {
     pointer-events: all;
-}
-
-.toc .toc-academy a {
     font-size: 15px;
     letter-spacing: 0.016em;
     font-weight: var(--font-weight-semi-bold);
-    margin-top: 10px;
-    color: inherit;
-    text-decoration: none;
-    svg {
+    a {
+        color: var(--link-font-color);
+    }
+    a svg {
+        text-decoration: none;
         height: 17px;
         margin-bottom: -3px;
     }
-}
-
-.toc .toc-academy a:hover {
-    color: var(--link-font-color);
+    .toc-link-button-academy {
+        color: var(--link-font-color);
+    }
 }
