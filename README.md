@@ -1,7 +1,7 @@
 # TypeDB Docs Website
 
 The TypeDB docs subsite is an [Antora playbook](https://antora.org), whose UI bundle sources are in the `ui`
-directory, and whose content is sourced from https://github.com/vaticle/docs and integrated as a Git submodule into
+directory, and whose content is sourced from https://github.com/typedb/typedb-docs and integrated as a Git submodule into
 the `content` directory.
 
 The UI bundle is based on https://gitlab.com/antora/antora-ui-default.
@@ -19,6 +19,24 @@ Installation instructions can be found at https://pnpm.io/installation.
 ## Development
 
 These instructions are for compiling the docs site locally.
+
+### Sourcing content
+
+#### Through Git
+
+The `content` directory is a Git submodule linked to https://github.com/typedb/typedb-docs, so you can fetch it with
+`git submodule update --recursive`. Add the `--init` flag if this is a freshly cloned repo.
+
+#### Through local symlink
+
+You can also symlink your local `typedb-docs` repo to the `content` directory:
+```shell
+rm -rf content
+```
+```shell
+ln -s /Users/{path_to_docs_repo}/typedb-docs content
+```
+This is especially helpful if you're developing `typedb-docs` locally.
 
 ### Prerequisites
 
