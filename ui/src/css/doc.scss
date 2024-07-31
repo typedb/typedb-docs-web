@@ -449,7 +449,8 @@
     .imageblock.framed svg,
     .image.framed > img,
     .image.framed > object,
-    .image.framed > svg {
+    .image.framed > svg,
+    .videoblock.framed iframe {
         border-radius: var(--border-radius);
         border: 1px solid var(--color-light-purple);
     }
