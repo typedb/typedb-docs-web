@@ -3,8 +3,8 @@ site:
   start_page: home:ROOT:overview.adoc
   robots: allow
 content:
-  edit_url: 'https://github.com/vaticle/typedb-docs/edit/development/{path}' 
-  sources: 
+  edit_url: 'https://github.com/vaticle/typedb-docs/edit/development/{path}'
+  sources:
     - url: .
       start_path: content2/drivers-src
       branches: HEAD
@@ -15,11 +15,14 @@ content:
       start_path: content2/manual-src
       branches: HEAD
     - url: .
-      start_path: content2/learn-src
+      start_path: content2/academy-src
       branches: HEAD
     - url: .
       start_path: content2/home-src
       branches: HEAD
+    - url: https://github.com/vaticle/typedb-driver.git
+      start_path: docs
+      branches: [master, '3.0'] # Following release of 3.0, this should read: ['2.x', master]
     - url: .
       start_path: content3/drivers-src
       branches: HEAD
