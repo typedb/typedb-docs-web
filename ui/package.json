@@ -49,7 +49,7 @@
         "sass": "1.68.0",
         "stylelint": "~13.3",
         "stylelint-config-standard": "~20.0",
-        "typedb-web-common": "file:../typedb-web-main/common",
+        "typedb-web-common": "file:../typedb-web/common",
         "vinyl-fs": "~3.0",
         "webpack": "5.89.0",
         "webpack-stream": "7.0.0"
