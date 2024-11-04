@@ -4,19 +4,19 @@
 
 .doc {
     font-size: var(--doc-font-size);
-    font-weight: var(--font-weight-light);
+    font-weight: var(--font-weight-regular);
     hyphens: auto;
     line-height: var(--doc-line-height);
     letter-spacing: 0.016em;
     tab-size: 4;
     word-wrap: anywhere;
     max-width: var(--doc-max-width);
-    padding: 0px var(--doc-padding) 0px;
+    padding: 16px var(--doc-padding-sides) 0;
 
     .sect1,
     #preamble {
         overflow: auto hidden;
-        padding:  0px;
+        padding: 0;
     }
 
     .sect1 {

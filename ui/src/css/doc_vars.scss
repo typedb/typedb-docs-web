@@ -1,3 +1,4 @@
+@use "colors";
 @use "media";
 @use "shapes" as *;
 @use "media_docs";
@@ -8,23 +9,37 @@
 // $docs-card-padding-mobile: 12px;
 
 // Card
-$doc-padding-desktop: 15px;
-$doc-padding-tablet: 10px;
-$doc-padding-mobile: 5px;
+$doc-padding-sides-desktop: 15px;
+$doc-padding-sides-tablet: 10px;
+$doc-padding-sides-mobile: 5px;
 $doc-toc-link-tooltip-width: 150px;
 
 // Long Card
 
 
 :root {
-    --doc-padding: #{$doc-padding-desktop};
+    --doc-padding-sides: #{$doc-padding-sides-desktop};
     --doc-tooltip-width: #{$doc-toc-link-tooltip-width};
+    --body-width: 1440px;
+    --body-padding-sides: 20px;
+    --body-padding-bottom: 40px;
+    --body-gap: 32px;
+    /* toolbar */
+    --toolbar-height: 57px;
+    /* nav */
+    --nav-width: 244px;
+    /* search */
+    --search-result-background: #{rgba(colors.$deep-purple, 0.5)};
+    --search-result-hover-color: #{rgba(colors.$light-purple, 0.5)};
+    --search-shadow-color: rgba(0, 0, 0, 0.5);
+    --search-height: 40px;
+    --search-highlight-color: rgba(246, 201, 76, 0.25);
 
     @media (max-width: media.$max-width-tablet) {
-        --doc-padding: #{$doc-padding-tablet};
+        --doc-padding-sides: #{$doc-padding-sides-tablet};
     }
 
     @media (max-width: media.$max-width-mobile) {
-        --doc-padding: #{$doc-padding-mobile};
+        --doc-padding-sides: #{$doc-padding-sides-mobile};
     }
 }

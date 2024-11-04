@@ -11,7 +11,7 @@
 
     border-radius: var(--border-radius);
     box-shadow: inset 0 0 0 1px var(--color-light-purple);
-    background: var(--color-purple);
+    background: var(--color-deep-purple);
     cursor: text;
 
     padding: 0 0.625rem;
@@ -49,7 +49,7 @@
 }
 
 .search-result-dropdown-menu {
-    --full-width: calc(min(var(--body-width), 100vw) - var(--body-padding) * 2);
+    --full-width: calc(min(var(--body-width), 100vw) - var(--section-page-margin) * 2);
     position: absolute;
     z-index: 100;
     display: block;

@@ -12,13 +12,15 @@
 @include footer.styles("icons");
 
 @import "doc_vars";
+
 @import "body";
-@import "search";
-@import "nav";
-@import "main";
 @import "doc";
-@import "toc";
+@import "main";
+@import "nav";
 @import "pagination";
+@import "search";
+@import "toc";
+@import "toolbar";
 
 @import "footer";
 

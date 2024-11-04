@@ -3,6 +3,10 @@
 @use "media_docs";
 @use "sass:math";
 
+html, body {
+    scroll-padding-top: calc(var(--scroll-padding) + var(--toolbar-height));
+}
+
 .body {
     --font-size-h1: 41px;
     --line-height-h1: #{calc(49px / 41px)};
@@ -16,13 +20,7 @@
     /* base */
     --panel-background: var(--color-deep-purple);
     --panel-border-color: var(--color-light-purple);
-    --body-width: 1440px;
-    --body-padding: 40px;
-    --body-padding-sides: 20px;
-    --body-gap: 32px;
-    --main-offset: calc(var(--topbar-height) + var(--body-padding));
-    /* nav */
-    --nav-width: 244px;
+    --main-offset: var(--topbar-height);
     /* admonitions */
     --important-color: var(--color-secondary-yellow);
     --important-background: #{rgba(colors.$secondary-yellow, 0.1)};
@@ -63,19 +61,13 @@
     --toc-width: 236px;
     --toc-border-color: var(--color-black-purple);
     --toc-line-height: 1.2;
-    /* search */
-    --search-result-background: #{rgba(colors.$deep-purple, 0.5)};
-    --search-result-hover-color: #{rgba(colors.$light-purple, 0.5)};
-    --search-shadow-color: rgba(0, 0, 0, 0.5);
-    --search-height: 50px;
-    --search-highlight-color: rgba(246, 201, 76, 0.25);
 
     @media (max-width: media.$max-width-tablet) {
-        --body-padding: var(--section-page-margin);
+        --body-padding-bottom: var(--section-page-margin);
         --body-padding-sides: var(--section-page-margin);
         --body-gap: 16px;
 
-        --search-result-width: calc(100vw - var(--body-padding) * 2 - var(--body-gap) - var(--nav-width));
+        --search-result-width: calc(100vw - 64px - var(--body-gap) - var(--nav-width));
     }
 
     @media (max-width: media.$max-width-mobile) {
@@ -91,26 +83,29 @@
         --font-size-h6: 15px;
         --line-height-h6: #{calc(23px / 15px)};
 
-        --search-result-width: calc(100vw - var(--body-padding) * 2);
+        --search-result-width: calc(100vw - 24px);
     }
 
-    margin: var(--topbar-height) auto 0;
-    min-height: calc(100vh - var(--topbar-height));
-    padding: var(--body-padding) var(--body-padding-sides) var(--body-padding);
+    margin: calc(var(--topbar-height) + var(--banner-height) + var(--toolbar-height)) auto 0;
+    min-height: calc(100vh - var(--topbar-height) - var(--banner-height) - var(--toolbar-height));
+    padding: 0 var(--body-padding-sides) var(--body-padding-bottom);
     max-width: var(--body-width);
-    display: flex;
-    align-items: flex-start;
-    gap: var(--body-gap);
 
-    @media (max-width: media.$max-width-mobile) {
-        flex-direction: column;
-        align-items: stretch;
+    .body-main {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--body-gap);
+
+        @media (max-width: media.$max-width-mobile) {
+            flex-direction: column;
+            align-items: stretch;
+        }
     }
 
     .td-topbar.td-topbar-has-banner + & {
         margin-top: calc(var(--topbar-height) + var(--banner-height));
         min-height: calc(100vh - var(--topbar-height) - var(--banner-height));
-        --main-offset: calc(var(--topbar-height) + var(--banner-height) + var(--body-padding));
+        --main-offset: calc(var(--topbar-height) + var(--banner-height));
 
         * {
             scroll-margin-top: var(--banner-height);

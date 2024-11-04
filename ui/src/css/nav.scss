@@ -10,7 +10,7 @@
 .nav-container {
     display: block;
     position: sticky;
-    top: var(--main-offset);
+    top: calc(var(--topbar-height) + var(--banner-height) + var(--toolbar-height));
     height: calc(100vh - var(--main-offset));
     flex: 0 0 var(--nav-width);
     z-index: 2;
@@ -18,8 +18,7 @@
     @media (max-width: media.$max-width-mobile) {
         height: auto;
         flex-basis: auto;
-        box-shadow: 0px calc(var(--body-padding) / -2) var(--body-padding) calc(var(--body-padding) * 3 / 2)
-            var(--body-background);
+        box-shadow: 0 -24px 12px 18px var(--body-background);
         background: var(--body-background);
     }
 }
@@ -61,7 +60,7 @@
         .panels {
             position: fixed;
             inset: calc(var(--main-offset) + var(--search-height)) 0 0;
-            padding: 0 var(--body-padding);
+            padding: 0 12px;
             background: var(--body-background);
             z-index: 2;
         }
@@ -101,18 +100,6 @@
 
     @media (max-width: media.$max-width-mobile) {
         display: flex;
-    }
-}
-
-.nav-search {
-    border-bottom: 1px solid var(--panel-border-color);
-    padding-bottom: 1rem;
-
-    @media (max-width: media.$max-width-mobile) {
-        display: flex;
-        gap: 0.5em;
-        padding-bottom: 0;
-        border-bottom: 0;
     }
 }
 
@@ -168,7 +155,12 @@
 
         > .nav-text-container {
             font-size: var(--font-size-p1);
+            font-weight: var(--font-weight-bold);
             margin-bottom: 0.5rem;
+
+            > .nav-text {
+                color: unset;
+            }
         }
     }
 
@@ -235,7 +227,6 @@
 
 p.nav-text {
     padding: 8px 10px 8px 24px;
-    font-weight: var(--font-weight-bold);
 }
 
 .nav-text-toggle {
