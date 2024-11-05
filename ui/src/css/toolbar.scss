@@ -34,6 +34,11 @@
             gap: 8px;
             align-items: center;
         }
+
+        .nav-text {
+            color: var(--color-white);
+            font-weight: var(--font-weight-regular);
+        }
     }
 
     .toolbar-search {

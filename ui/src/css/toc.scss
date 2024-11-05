@@ -161,6 +161,7 @@
     padding-top: 1rem;
     border-top: 1px solid var(--panel-border-color);
     pointer-events: all;
+    line-height: var(--toc-line-height);
 }
 
 .toc-link-button {
@@ -175,6 +176,7 @@
 
 .toc-link-container {
     position: relative;
+    padding: 4px 0 3px;
 
     & .toc-link-tooltip {
         visibility: hidden;
@@ -191,6 +193,7 @@
         background-color: var(--panel-background);
         border-radius: var(--border-radius);
         border: 1px solid var(--panel-border-color);
+        line-height: 18px;
     }
 
     &:hover .toc-link-tooltip {
@@ -219,9 +222,9 @@
     pointer-events: all;
     font-size: 15px;
     letter-spacing: 0.016em;
-    font-weight: var(--font-weight-semi-bold);
+    padding: 4px 0;
     a {
-        color: var(--link-font-color);
+        padding: 0;
     }
     a svg {
         text-decoration: none;
