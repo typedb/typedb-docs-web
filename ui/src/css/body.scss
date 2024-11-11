@@ -8,10 +8,12 @@ html, body {
 }
 
 .body {
-    --font-size-h1: 41px;
-    --line-height-h1: #{calc(49px / 41px)};
+    --font-size-h1: 37px;
+    --line-height-h1: #{calc(45px / 37px)};
     --font-size-h2: 33px;
     --line-height-h2: #{calc(41px / 33px)};
+    --font-size-h3: 21px;
+    --line-height-h3: #{calc(29px / 21px)};
     --font-size-h5: 19px;
     --line-height-h5: #{calc(27px / 19px)};
     --font-size-h6: 17px;

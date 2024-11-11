@@ -67,6 +67,10 @@
     }
 }
 
+.nav-menu > .nav-list > .nav-item:first-child > .nav-text-container > .nav-list > .nav-item:first-child {
+    display: none;
+}
+
 .nav-toggle-button {
     display: none;
 
@@ -108,13 +112,13 @@
     margin-bottom: 0.5rem;
 }
 
+.nav-item:not(.is-active) .nav-list {
+    display: none;
+}
+
 .nav-item {
     color: var(--color-white);
     font-weight: var(--font-weight-light);
-
-    & &:not(.is-active) .nav-list {
-        display: none;
-    }
 
     &:not(:hover) > * > .nav-link svg {
         opacity: 0;
@@ -147,33 +151,30 @@
 
     &[data-depth="0"] {
         padding-top: 1rem;
+        margin-left: 16px;
 
         & + & {
-            margin-top: 1rem;
-            border-top: 1px solid var(--panel-border-color);
+            //margin-top: 1rem;
+            //border-top: 1px solid var(--panel-border-color);
         }
 
         > .nav-text-container {
-            font-size: var(--font-size-p1);
-            font-weight: var(--font-weight-bold);
-            margin-bottom: 0.5rem;
+            font-size: 13px;
+            font-weight: var(--font-weight-semi-bold);
+            text-transform: uppercase;
+            margin-left: -12px;
 
             > .nav-text {
-                color: unset;
+                color: var(--color-dark-white);
             }
         }
     }
 
-    &[data-depth="1"] > .nav-list {
-        padding-left: 26px;
-    }
-
     &[data-depth="2"] {
-        > * > .nav-text {
-            padding-left: 15px;
-            font-weight: var(--font-weight-light);
-            color: var(--body-font-color);
-        }
+        //> * > .nav-text {
+        //    font-weight: var(--font-weight-light);
+        //    color: var(--body-font-color);
+        //}
 
         > .nav-text-container::before {
             background: var(--color-black-purple);
@@ -182,6 +183,10 @@
 
     &[data-depth="1"],
     &[data-depth="2"] {
+        text-transform: none;
+        font-size: var(--font-size-aside);
+        margin-left: 14px;
+
         > .nav-text-container::before {
             content: "";
             position: absolute;
@@ -195,7 +200,6 @@
 
 .nav-text-container {
     position: relative;
-    display: flex;
     align-items: center;
 }
 
@@ -204,14 +208,19 @@
     width: 28px;
     height: 28px;
     padding: 4px;
-    margin: -4px;
+    margin: 2px -6px 0;
     background: none;
     border: none;
     color: var(--body-font-color);
+    transition: transform 100ms ease-in-out;
 
     @media(max-width: media.$max-width-mobile) {
         width: 24px;
         height: 24px;
+    }
+
+    + .nav-text {
+        cursor: pointer;
     }
 }
 

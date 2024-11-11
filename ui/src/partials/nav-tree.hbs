@@ -1,39 +1,35 @@
 {{#if navigation.length}}
-<ul class="nav-list">
-  {{#each navigation}}
-  <li
-    class="nav-item{{#if (and ./url (eq ./url @root.page.url)) }} is-current-page{{/if}}{{#if ./items.length}} nav-item-expandable{{#if ../expandNav}} is-active{{/if}}{{/if}}"
-    data-depth="{{or ../level 0}}"
-  >
-    {{#if ./content}}
-    <div class="nav-text-container">
-      {{#if (and ./items.length ../level)}}
-      <button class="nav-text-toggle-button">
-        {{{ icon "arrow-down" }}}
-      </button>
-      {{/if}}
-      {{#if ./url}}
-      <a class="nav-text nav-link" href="{{~#if (eq ./urlType 'internal')}}{{{relativize ./url}}}{{~else}}{{{./url}}}" target="_blank{{~/if}}">
-        <span>{{{./content}}}</span>
-        {{#if (ne ./urlType 'internal')}}
-        {{{ icon "link" }}}
+  <ul class="nav-list">
+    {{#each navigation}}
+      <li
+        class="nav-item{{#if (eq ./url @root.page.url)}} is-current-page{{/if}}{{#if ./items.length}} nav-item-expandable{{#if ../expandNav}} is-active{{/if}}{{/if}}"
+        data-depth="{{or ../level 0}}"
+      >
+        {{#if ./content}}
+          <div class="nav-text-container">
+          {{#if ./items.length}}
+            <button class="nav-text-toggle-button">{{{ icon "arrow-down" }}}</button>
+          {{/if}}
+          {{#if ./url}}
+            <a class="nav-text nav-link" href="
+      {{~#if (eq ./urlType 'internal')}}{{{relativize ./url}}}
+            {{~else}}{{{./url}}}{{~/if}}">{{{./content}}}</a>
+          {{else}}
+            {{#if (and ./items.length ../level)}}
+              <button class="nav-text nav-text-toggle">
+                <span>{{{./content}}}</span>
+              </button>
+            {{else}}
+              <p class="nav-text">
+                <span>{{{./content}}}</span>
+              </p>
+            {{/if}}
+          {{/if}}
+            {{> nav-tree navigation=./items expandNav=../expandNav level=(increment ../level)}}
+          </div>
         {{/if}}
-      </a>
-      {{else}}
-      {{#if (and ./items.length ../level)}}
-      <button class="nav-text nav-text-toggle">
-        <span>{{{./content}}}</span>
-      </button>
-      {{else}}
-      <p class="nav-text">
-        <span>{{{./content}}}</span>
-      </p>
-      {{/if}}
-      {{/if}}
-    </div>
-    {{/if}}
-    {{> nav-tree navigation=./items expandNav=../expandNav level=(increment ../level)}}
-  </li>
-  {{/each}}
-</ul>
+      </li>
+    {{/each}}
+  </ul>
 {{/if}}
+

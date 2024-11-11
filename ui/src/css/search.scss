@@ -45,6 +45,12 @@
         width: 0;
         font-size: inherit;
         font-weight: var(--font-weight-semi-bold);
+
+        &::placeholder {
+            font-style: normal;
+            color: var(--color-secondary-grey);
+            opacity: 1;
+        }
     }
 }
 
