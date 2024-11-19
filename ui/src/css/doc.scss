@@ -475,7 +475,7 @@
 
         .attribution {
             color: var(--quote-attribution-font-color);
-            font-size: 15px;
+            font-size: var(--font-size-aside);
             margin-top: 0.75rem;
         }
 
@@ -676,18 +676,10 @@
     .videoblock .title,
     .tableblock caption {
         color: var(--caption-font-color);
-        font-size: 17px;
+        font-size: var(--font-size-p2);
         font-style: var(--caption-font-style);
         font-weight: var(--caption-font-weight);
         hyphens: none;
-
-        @media (min-width: media.$min-width-tablet) and (max-width: media.$max-width-tablet) {
-            font-size: 15px;
-        }
-
-        @media (max-width: media.$max-width-mobile) {
-            font-size: 13px;
-        }
     }
 
     .tableblock caption {
@@ -918,7 +910,7 @@
     }
 
     .colist {
-        font-size: 16px;
+        font-size: var(--font-size-p2);
         margin: 0.25rem 0 -0.25rem;
 
         > table {

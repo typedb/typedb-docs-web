@@ -7,7 +7,6 @@
 
 html, body {
     scroll-padding-top: calc(var(--scroll-padding) + var(--toolbar-height) + 12px);
-    --font-size-base: 16px;
     --font-size-h1: 38px;
     --line-height-h1: #{calc(48px / 38px)};
     --font-size-h2: 24px;
@@ -16,14 +15,6 @@ html, body {
     --line-height-h3: #{calc(30px / 20px)};
     --font-size-h5: 18px;
     --line-height-h5: #{calc(28px / 18px)};
-    --font-size-h6: 16px;
-    --line-height-h6: #{calc(26px / 16px)};
-    --font-size-p1: 20px;
-    --line-height-p1: 30px;
-    --font-size-p2: 16px;
-    --line-height-p2: 26px;
-    --font-size-aside: 14px;
-    --line-height-aside: 24px;
 }
 
 body.-toc {
@@ -79,8 +70,7 @@ body.-toc {
     --doc-max-width: calc(var(--body-width) - var(--nav-width) - var(--toc-width) - 2*var(--body-padding-sides));
     /* toc */
     --toc-width: 236px;
-    --toc-border-color: var(--color-black-purple);
-    --toc-line-height: 1.2;
+    --toc-line-height: 1.25;
 
     @media (max-width: media.$max-width-tablet) {
         --body-padding-bottom: var(--section-page-margin);
