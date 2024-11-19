@@ -149,7 +149,7 @@
     }
 
     &[data-depth="0"] {
-        padding-top: 1rem;
+        padding-top: 1.25rem;
         margin-left: 16px;
 
         & + & {
@@ -163,8 +163,9 @@
             > .nav-text {
                 font-size: 13px;
                 line-height: 32px;
-                font-weight: 500;
+                font-weight: var(--font-weight-semi-bold);
                 text-transform: uppercase;
+                letter-spacing: .5px;
                 color: var(--body-font-color);
             }
         }
@@ -233,7 +234,7 @@
 
 .nav-text {
     width: 100%;
-    padding: 4px 32px;
+    padding: 6px 32px;
     border-radius: var(--border-radius);
     display: flex;
     align-items: center;
