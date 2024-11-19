@@ -109,7 +109,6 @@
 
 .nav-list {
     list-style: none;
-    margin-bottom: 0.5rem;
 }
 
 .nav-item:not(.is-active) .nav-list {
@@ -130,11 +129,11 @@
 
     &.is-current-page > * {
         > .nav-text {
-            color: var(--color-green);
+            //color: var(--color-green);
         }
 
         > .nav-text-toggle-button {
-            color: var(--color-green);
+            //color: var(--color-green);
         }
     }
 
@@ -144,8 +143,8 @@
 
     .nav-item.is-current-page,
     .nav-item.is-current-path:not(.is-active) {
-        &:not(.nav-item-expandable) > .nav-text-container::before {
-            background: var(--color-green);
+        > .nav-text-container > .nav-text::before {
+            background: var(--color-secondary-pink);
         }
     }
 
@@ -159,14 +158,22 @@
         }
 
         > .nav-text-container {
-            font-size: 13px;
-            font-weight: var(--font-weight-semi-bold);
-            text-transform: uppercase;
             margin-left: -12px;
 
             > .nav-text {
-                color: var(--color-dark-white);
+                font-size: 13px;
+                line-height: 32px;
+                font-weight: 500;
+                text-transform: uppercase;
+                color: var(--body-font-color);
             }
+        }
+    }
+
+    &[data-depth="1"] {
+        .nav-text-toggle-button {
+            margin: 2px 4px 0;
+            color: var(--body-font-color);
         }
     }
 
@@ -187,13 +194,13 @@
         font-size: var(--font-size-aside);
         margin-left: 14px;
 
-        > .nav-text-container::before {
+        > .nav-text-container > .nav-text::before {
             content: "";
             position: absolute;
             left: 0;
             top: 0;
-            bottom: 0;
             width: 2px;
+            height: 34px;
         }
     }
 }
@@ -208,11 +215,11 @@
     width: 28px;
     height: 28px;
     padding: 4px;
-    margin: 2px -6px 0;
+    margin: 1px -6px 0;
     background: none;
     border: none;
-    color: var(--body-font-color);
-    transition: transform 100ms ease-in-out;
+    color: var(--color-secondary-pink);
+    //transition: transform 100ms ease-in-out;
 
     @media(max-width: media.$max-width-mobile) {
         width: 24px;
@@ -226,7 +233,7 @@
 
 .nav-text {
     width: 100%;
-    padding: 6px 24px;
+    padding: 4px 32px;
     border-radius: var(--border-radius);
     display: flex;
     align-items: center;
@@ -235,7 +242,7 @@
 }
 
 p.nav-text {
-    padding: 8px 10px 8px 24px;
+    padding: 0 10px 0 24px;
 }
 
 .nav-text-toggle {

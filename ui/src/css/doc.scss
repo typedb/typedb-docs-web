@@ -7,7 +7,7 @@
     font-weight: var(--font-weight-regular);
     hyphens: auto;
     line-height: var(--doc-line-height);
-    letter-spacing: 0.016em;
+    letter-spacing: var(--body-letter-spacing);
     tab-size: 4;
     word-wrap: anywhere;
     max-width: var(--doc-max-width);
@@ -32,13 +32,27 @@
         //}
     }
 
-    .sect1, .sect2, .sect3, .sect4, .sect5, .sect6 {
-        &:not(:first-child) {
-            margin-top: 40px;
+    .sect1 {
+        margin-top: 64px;
+
+        @media (max-width: media.$max-width-tablet) {
+            margin-top: 48px;
+        }
+
+        &:first-of-type {
+            margin-top: 32px;
 
             @media (max-width: media.$max-width-tablet) {
-                margin-top: 32px;
+                margin-top: 24px;
             }
+        }
+    }
+
+    .sect2, .sect3, .sect4, .sect5, .sect6 {
+        margin-top: 40px;
+
+        @media (max-width: media.$max-width-tablet) {
+            margin-top: 32px;
         }
     }
 
@@ -71,14 +85,6 @@
     > h1.page:first-child {
         margin-top: 0;
         padding-left: 1rem;
-    }
-
-    h2 {
-        text-transform: uppercase;
-        font-size: 19px;
-        font-weight: 400;
-        color: var(--color-green);
-        font-family: 'Ubuntu Mono', monospace;
     }
 
     b, strong {
@@ -355,7 +361,9 @@
             align-items: center;
 
             &::after {
-                font-weight: var(--font-weight-regular);
+                font-weight: var(--font-weight-semi-bold);
+                text-transform: uppercase;
+                font-size: 13px;
             }
         }
 
@@ -1058,16 +1066,16 @@
     .sidebarblock.clickable {
         @include card-padding;
 
-        border-radius: var(--border-radius);
+        border-radius: 20px;
         background-color: var(--color-purple);
-        //border: 1px solid var(--content-border-color);
-        box-shadow: 1px 1px 4px 1px #00000033;
+        border: 1px solid var(--content-border-color);
+        //box-shadow: 1px 1px 4px 1px #00000033;
         cursor: pointer;
         hyphens: none;
         transition: all 100ms;
 
         &:hover {
-            border-color: var(--link_hover-font-color);
+            border-color: var(--content-border-color);
             background-color: var(--color-light-purple);
         }
     }
@@ -1099,7 +1107,6 @@
         }
 
         &.link-panel {
-            border-radius: 20px;
             margin: 24px 0 0;
 
             + .link-panel {
@@ -1120,26 +1127,21 @@
 
             .paragraph {
                 margin-top: 0;
-                font-size: var(--font-size-aside);
-                line-height: var(--line-height-aside);
             }
 
             .imageblock {
                 grid-area: icon;
                 margin: 0;
 
-                + .paragraph {
+                + .paragraph, + .paragraph a {
                     font-size: var(--font-size-h4);
                     line-height: var(--line-height-h4);
                     font-weight: var(--font-weight-bold);
+                    color: var(--color-dark-white);
                     hyphens: none;
 
-                    a {
-                        color: var(--color-dark-white);
-
-                        &:hover {
-                            text-decoration: none;
-                        }
+                    &:hover {
+                        text-decoration: none;
                     }
                 }
             }

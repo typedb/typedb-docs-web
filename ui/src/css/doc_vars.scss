@@ -16,6 +16,8 @@ $doc-toc-link-tooltip-width: 150px;
 
 // Long Card
 
+$toolbar-height: 57px;
+
 
 :root {
     --doc-padding-sides: #{$doc-padding-sides-desktop};
@@ -25,14 +27,14 @@ $doc-toc-link-tooltip-width: 150px;
     --body-padding-bottom: 40px;
     --body-gap: 32px;
     /* toolbar */
-    --toolbar-height: 57px;
+    --toolbar-height: #{$toolbar-height};
     /* nav */
-    --nav-width: 244px;
+    --nav-width: 256px;
     /* search */
     --search-result-background: #{rgba(colors.$deep-purple, 0.5)};
     --search-result-hover-color: #{rgba(colors.$light-purple, 0.5)};
     --search-shadow-color: rgba(0, 0, 0, 0.5);
-    --search-height: 40px;
+    --search-height: 38px;
     --search-highlight-color: rgba(246, 201, 76, 0.25);
 
     @media (max-width: media.$max-width-tablet) {
