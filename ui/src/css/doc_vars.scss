@@ -43,5 +43,6 @@ $toolbar-height: 57px;
 
     @media (max-width: media.$max-width-mobile) {
         --doc-padding-sides: #{$doc-padding-sides-mobile};
+        --search-height: 34px;
     }
 }

@@ -31,7 +31,7 @@ body.-toc {
     /* base */
     --panel-background: var(--color-deep-purple);
     --panel-border-color: var(--color-light-purple);
-    --main-offset: #{shapes.$topbar-height + shapes.$banner-height + doc_vars.$toolbar-height};
+    --main-offset: 171px;
     /* admonitions */
     --important-color: var(--color-secondary-yellow);
     --important-background: #{rgba(colors.$secondary-yellow, 0.1)};
@@ -94,6 +94,7 @@ body.-toc {
         --line-height-h6: #{calc(23px / 15px)};
 
         --search-result-width: calc(100vw - 24px);
+        --main-offset: 121px;
     }
 
     margin: calc(var(--topbar-height) + var(--banner-height) + var(--toolbar-height)) auto 0;
@@ -104,7 +105,10 @@ body.-toc {
     .body-main {
         display: flex;
         align-items: flex-start;
-        gap: var(--body-gap);
+
+        @media (min-width: media.$min-width-tablet) {
+            gap: var(--body-gap);
+        }
 
         @media (max-width: media.$max-width-mobile) {
             flex-direction: column;
@@ -115,7 +119,6 @@ body.-toc {
     .td-topbar.td-topbar-has-banner + & {
         margin-top: calc(var(--topbar-height) + var(--banner-height));
         min-height: calc(100vh - var(--topbar-height) - var(--banner-height));
-        --main-offset: calc(var(--topbar-height) + var(--banner-height));
 
         * {
             scroll-margin-top: var(--banner-height);

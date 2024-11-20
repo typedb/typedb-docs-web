@@ -59,7 +59,7 @@
 
         .panels {
             position: fixed;
-            inset: calc(var(--main-offset) + var(--search-height)) 0 0;
+            inset: 171px 0 0;
             padding: 0 12px;
             background: var(--body-background);
             z-index: 2;
@@ -117,7 +117,7 @@
 
 .nav-item {
     color: var(--color-white);
-    font-weight: var(--font-weight-light);
+    font-weight: var(--font-weight-thin);
 
     &:not(:hover) > * > .nav-link svg {
         opacity: 0;
@@ -163,7 +163,7 @@
             > .nav-text {
                 font-size: 13px;
                 line-height: 32px;
-                font-weight: var(--font-weight-semi-bold);
+                font-weight: var(--font-weight-medium);
                 text-transform: uppercase;
                 letter-spacing: .5px;
                 color: var(--body-font-color);

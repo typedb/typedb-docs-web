@@ -18,9 +18,18 @@
     padding: 12px var(--body-padding-sides);
     max-width: var(--body-width);
 
+    @media (max-width: media.$max-width-mobile) {
+        padding-top: 6px;
+        padding-bottom: 6px;
+    }
+
     .nav-item {
         width: var(--nav-width);
         font-size: inherit;
+
+        @media (max-width: media.$max-width-mobile) {
+            width: 170px;
+        }
 
         .nav-link:hover {
             background: var(--color-deep-purple);
@@ -40,8 +49,12 @@
 
         .nav-text {
             color: var(--color-white);
-            font-weight: var(--font-weight-regular);
+            font-weight: var(--font-weight-light);
             padding-left: 4px;
+
+            @media (max-width: media.$max-width-mobile) {
+                padding: 6px 4px;
+            }
         }
     }
 

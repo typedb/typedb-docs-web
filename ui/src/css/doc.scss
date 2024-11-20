@@ -4,7 +4,7 @@
 
 .doc {
     font-size: var(--doc-font-size);
-    font-weight: var(--font-weight-regular);
+    font-weight: var(--font-weight-light);
     hyphens: auto;
     line-height: var(--doc-line-height);
     letter-spacing: var(--body-letter-spacing);
@@ -1130,7 +1130,7 @@
                 + .paragraph, + .paragraph a {
                     font-size: var(--font-size-h4);
                     line-height: var(--line-height-h4);
-                    font-weight: var(--font-weight-bold);
+                    font-weight: var(--font-weight-semi-bold);
                     color: var(--color-dark-white);
                     hyphens: none;
 
@@ -1152,7 +1152,7 @@
             color: var(--color-dark-white);
             font-style: normal;
             font-size: var(--font-size-h5);
-            font-weight: var(--font-weight-bold);
+            font-weight: var(--font-weight-semi-bold);
 
             &:hover {
                 text-decoration: none;
