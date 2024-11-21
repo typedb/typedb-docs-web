@@ -85,18 +85,16 @@ body.-toc {
     }
 
     @media (max-width: media.$max-width-mobile) {
-        --font-size-h1: 31px;
-        --line-height-h1: #{calc(39px / 31px)};
-
-        --font-size-h2: 25px;
-        --line-height-h2: #{calc(33px / 25px)};
-
-        --font-size-h5: 17px;
-        --line-height-h5: #{calc(25px / 17px)};
-
-        --font-size-h6: 15px;
-        --line-height-h6: #{calc(23px / 15px)};
-
+        --font-size-h1: 30px;
+        --line-height-h1: #{calc(40px / 30px)};
+        --font-size-h2: 24px;
+        --line-height-h2: #{calc(34px / 24px)};
+        --font-size-h4: 18px;
+        --line-height-h4: #{calc(28px / 18px)};
+        --font-size-h5: 18px;
+        --line-height-h5: #{calc(28px / 18px)};
+        --font-size-h6: 14px;
+        --line-height-h6: #{calc(24px / 14px)};
         --search-result-width: calc(100vw - 24px);
         --main-offset: 121px;
     }
