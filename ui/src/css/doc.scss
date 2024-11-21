@@ -1115,11 +1115,20 @@
             }
 
             > .content {
-                display: grid;
-                grid-template:
+                @media (min-width: media.$min-width-tablet) {
+                    display: grid;
+                    grid-template:
                     "icon title" 41px
                     "icon body" 1fr / 72px 1fr;
-                gap: 0 28px;
+                    gap: 0 28px;
+                }
+
+                @media (max-width: media.$max-width-mobile) {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 8px 0;
+                }
             }
 
             .paragraph {
@@ -1140,6 +1149,11 @@
                     &:hover {
                         text-decoration: none;
                     }
+                }
+
+                @media (max-width: media.$max-width-mobile) {
+                    transform: scale(.75);
+                    transform-origin: left;
                 }
             }
         }
