@@ -24,6 +24,10 @@ body.-toc {
         font-weight: 400;
         color: var(--color-green);
         font-family: 'Ubuntu Mono', monospace;
+
+        @media (max-width: media.$max-width-mobile) {
+            font-size: 17px;
+        }
     }
 }
 

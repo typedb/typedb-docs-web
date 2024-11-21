@@ -110,9 +110,12 @@
     .toc-menu a {
         color: inherit;
         display: inline-block;
-        border-left: 2px solid var(--color-light-purple);
         padding: 0.25rem 0 0.25rem 0.75rem;
         text-decoration: none;
+
+        @media (min-width: media.$min-width-tablet) {
+            border-left: 2px solid var(--color-light-purple);
+        }
     }
 
     &.sidebar .toc-menu a {
