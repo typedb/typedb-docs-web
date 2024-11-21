@@ -1152,8 +1152,9 @@
                 }
 
                 @media (max-width: media.$max-width-mobile) {
-                    transform: scale(.75);
-                    transform-origin: left;
+                    transform: scale(.66);
+                    transform-origin: 0 0;
+                    margin-bottom: -12px;
                 }
             }
         }
