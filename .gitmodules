@@ -1,6 +1,6 @@
 [submodule "content"]
 	path = content
-	url = https://github.com/vaticle/typedb-docs.git
+	url = git@github.com:typedb/typedb-docs.git
 [submodule "typedb-web"]
 	path = typedb-web
-	url = https://github.com/typedb/typedb-web.git
+	url = git@github.com:typedb/typedb-web.git
