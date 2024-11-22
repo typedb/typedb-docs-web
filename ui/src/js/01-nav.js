@@ -20,7 +20,7 @@
         panels.scrollTop = 0;
     }
 
-    find(menuPanel, ".nav-text-toggle-button, .nav-text-toggle").forEach((el) =>
+    find(menuPanel, ".nav-text-toggle-button, .nav-text-toggle, .nav-text-toggle-button + .nav-text").forEach((el) =>
         el.addEventListener("click", toggleActive.bind(el.closest("li")))
     );
 

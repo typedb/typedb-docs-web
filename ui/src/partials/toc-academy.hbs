@@ -1,19 +1,44 @@
 <div class="toc-links">
   <ul>
-    <li>
-      <div class="clickable toc-link toc-link-container toc-academy">
-        {{#if (eq page.component.title 'TypeDB Academy')}}
-        {{#with site.homeUrl}}
-            <button class="toc-link-button toc-link-button-academy">{{{ icon "book" }}}</button>
-            <a href="{{{ @root.siteRootPath }}}{{{this}}}">TypeDB Docs {{{ icon "arrow-right" }}}</a>
-            <span class="toc-link-tooltip">Visit TypeDB Docs for manuals and language reference.</span>
-        {{/with}}
-        {{else}}
-            <button class="toc-link-button toc-link-button-academy">{{{ icon "cap" }}}</button>
-            <a href="{{{ @root.siteRootPath }}}{{{ site.components.academy.latest.url }}}">TypeDB Academy {{{ icon "arrow-right" }}}</a>
-            <span class="toc-link-tooltip">Visit TypeDB Academy for a comprehensive learning experience.</span>
-        {{/if}}
-      </div>
-    </li>
+    {{#if (ne page.component.name 'home')}}
+      <li>
+        <div class="clickable toc-link toc-link-container toc-academy">
+          <a href="{{{ siteRootPath }}}{{{ site.components.home.latest.navigation.[0].url }}}">Get Started</a>
+          <div class="toc-link-tooltip">Just getting started with TypeDB? Your journey begins here.</div>
+        </div>
+      </li>
+    {{/if}}
+    {{#if (ne page.component.name 'manual')}}
+      <li>
+        <div class="clickable toc-link toc-link-container toc-academy">
+          <a href="{{{ siteRootPath }}}{{{ site.components.manual.latest.url }}}">Manual</a>
+          <div class="toc-link-tooltip">Understand TypeDB operations, management, and client applications.</div>
+        </div>
+      </li>
+    {{/if}}
+    {{#if (ne page.component.name 'drivers')}}
+      <li>
+        <div class="clickable toc-link toc-link-container toc-academy">
+          <a href="{{{ siteRootPath }}}{{{ site.components.drivers.latest.url }}}">Drivers</a>
+          <div class="toc-link-tooltip">Develop with TypeDB using our native language drivers.</div>
+        </div>
+      </li>
+    {{/if}}
+    {{#if (ne page.component.name 'typeql')}}
+      <li>
+        <div class="clickable toc-link toc-link-container toc-academy">
+          <a href="{{{ siteRootPath }}}{{{ site.components.typeql.latest.url }}}">TypeQL Reference</a>
+          <div class="toc-link-tooltip">Reference guide for TypeQL instructions and syntax.</div>
+        </div>
+      </li>
+    {{/if}}
+    {{#if (ne page.component.name 'academy')}}
+      <li>
+        <div class="clickable toc-link toc-link-container toc-academy">
+          <a href="{{{ siteRootPath }}}{{{ site.components.academy.latest.url }}}">TypeDB Academy</a>
+          <div class="toc-link-tooltip">Visit TypeDB Academy for a comprehensive learning experience.</div>
+        </div>
+      </li>
+    {{/if}}
   </ul>
 </div>

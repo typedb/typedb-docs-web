@@ -111,8 +111,8 @@ devDependencies:
     specifier: ~20.0
     version: 20.0.0(stylelint@13.3.3)
   typedb-web-common:
-    specifier: file:../typedb-web-main/common
-    version: file:../typedb-web-main/common(prismjs@1.29.0)
+    specifier: file:../typedb-web/common
+    version: file:../typedb-web/common(prismjs@1.29.0)
   vinyl-fs:
     specifier: ~3.0
     version: 3.0.3
@@ -9167,9 +9167,9 @@ packages:
     resolution: {integrity: sha512-V50KMwwzqJV0NpZIZFwfOD5/lyny3WlSzRiXgA0G7VUnRlqttta1L6UQIHzd6EuBY/cHGfwTIck7w1yH6Q5zUw==}
     dev: true
 
-  file:../typedb-web-main/common(prismjs@1.29.0):
-    resolution: {directory: ../typedb-web-main/common, type: directory}
-    id: file:../typedb-web-main/common
+  file:../typedb-web/common(prismjs@1.29.0):
+    resolution: {directory: ../typedb-web/common, type: directory}
+    id: file:../typedb-web/common
     name: typedb-web-common
     requiresBuild: true
     peerDependencies:

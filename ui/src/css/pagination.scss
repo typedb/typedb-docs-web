@@ -36,14 +36,14 @@ nav.pagination {
   }
 
   a {
-    font-weight: var(--font-weight-semi-bold);
+    font-weight: var(--font-weight-regular);
     line-height: 1.3;
     position: relative;
 
     &::before,
     &::after {
       color: var(--color-secondary-light-grey);
-      font-weight: normal;
+      font-weight: var(--font-weight-regular);
       font-size: 1.5em;
       line-height: 0.75;
       position: absolute;

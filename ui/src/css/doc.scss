@@ -7,53 +7,56 @@
     font-weight: var(--font-weight-light);
     hyphens: auto;
     line-height: var(--doc-line-height);
-    letter-spacing: 0.016em;
+    letter-spacing: var(--body-letter-spacing);
     tab-size: 4;
     word-wrap: anywhere;
     max-width: var(--doc-max-width);
-    padding: 0px var(--doc-padding) 0px;
+    padding: 16px var(--doc-padding-sides) 0;
 
-    .sect1,
-    #preamble {
-        overflow: auto hidden;
-        padding:  0px;
+    .sect1, #preamble {
+        overflow: visible;
+        padding: 0;
     }
 
     .sect1 {
-        @include card-appearance;
-        @include card-padding;
-        margin: 0px;
+        //@include card-appearance;
+        //@include card-padding;
+        //margin: 0px;
 
-        > :first-of-type {
-            margin-top: 0;
-        }
-
-        #_blank_heading {
-            margin-top: -1rem;
-        }
+        //> :first-of-type {
+        //    margin-top: 0;
+        //}
+        //
+        //#_blank_heading {
+        //    margin-top: -1rem;
+        //}
     }
 
-    .sect1,
-    .sect2,
-    .sect3,
-    .sect4,
-    .sect5,
-    .sect6 {
-        &:not(:first-child) {
-            margin-top: 24px;
+    .sect1 {
+        margin-top: 64px;
+
+        @media (max-width: media.$max-width-tablet) {
+            margin-top: 48px;
+        }
+
+        &:first-of-type {
+            margin-top: 32px;
 
             @media (max-width: media.$max-width-tablet) {
-                margin-top: 16px;
+                margin-top: 24px;
             }
         }
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
+    .sect2, .sect3, .sect4, .sect5, .sect6 {
+        margin-top: 40px;
+
+        @media (max-width: media.$max-width-tablet) {
+            margin-top: 32px;
+        }
+    }
+
+    h1, h2, h3, h4, h5, h6 {
         position: relative;
         margin-left: -1rem;
         padding-left: 1rem;
@@ -65,7 +68,7 @@
             visibility: hidden;
             left: 0;
             font-size: 0.8em;
-            font-weight: normal;
+            font-weight: var(--font-weight-medium);
             line-height: normal;
             padding-top: 0.05em;
 
@@ -200,23 +203,13 @@
         text-decoration: line-through;
     }
 
-    .paragraph,
-    .dlist,
-    .hdlist,
-    .olist,
-    .ulist,
-    .exampleblock,
-    .imageblock,
-    .listingblock,
-    .literalblock,
-    .sidebarblock,
-    .verseblock,
-    .videoblock,
-    .quoteblock,
-    .partintro,
-    details,
-    hr {
+    .paragraph, .dlist, .hdlist, .olist, .ulist, details {
         margin: 1rem 0 0;
+    }
+
+    .exampleblock, .imageblock, .listingblock, .literalblock, .verseblock, .videoblock, .openblock, .quoteblock,
+    .partintro, hr {
+        margin: 24px 0 0;
     }
 
     .tablecontainer,
@@ -368,7 +361,10 @@
             align-items: center;
 
             &::after {
-                font-weight: var(--font-weight-regular);
+                font-weight: var(--font-weight-medium);
+                text-transform: uppercase;
+                font-size: 13px;
+                letter-spacing: .5px;
             }
         }
 
@@ -382,6 +378,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
         text-align: center;
         margin: 1rem 0rem 1rem;
 
@@ -480,7 +477,7 @@
 
         .attribution {
             color: var(--quote-attribution-font-color);
-            font-size: 15px;
+            font-size: var(--font-size-aside);
             margin-top: 0.75rem;
         }
 
@@ -640,7 +637,7 @@
 
     .olist li + li,
     .ulist li + li {
-        margin-top: 0.75rem;
+        margin-top: 0.5rem;
     }
 
     .ulist li::before {
@@ -681,18 +678,10 @@
     .videoblock .title,
     .tableblock caption {
         color: var(--caption-font-color);
-        font-size: 17px;
+        font-size: var(--font-size-p2);
         font-style: var(--caption-font-style);
         font-weight: var(--caption-font-weight);
         hyphens: none;
-
-        @media (min-width: media.$min-width-tablet) and (max-width: media.$max-width-tablet) {
-            font-size: 15px;
-        }
-
-        @media (max-width: media.$max-width-mobile) {
-            font-size: 13px;
-        }
     }
 
     .tableblock caption {
@@ -858,7 +847,7 @@
             font-family: var(--default-font-family);
             font-size: 0.875rem;
             line-height: 1.5;
-            font-weight: normal;
+            font-weight: var(--font-weight-medium);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -888,7 +877,7 @@
             font-style: italic;
             color: white;
             margin: 1rem 0rem 0.25rem;
-            font-weight: var(--font-weight-semi-bold);
+            font-weight: var(--font-weight-medium);
         }
 
         dd {
@@ -914,7 +903,7 @@
     }
 
     td.hdlist1 {
-        font-weight: var(--font-weight-semi-bold);
+        font-weight: var(--font-weight-medium);
         padding-right: 0.25rem;
     }
 
@@ -923,7 +912,7 @@
     }
 
     .colist {
-        font-size: 16px;
+        font-size: var(--font-size-p2);
         margin: 0.25rem 0 -0.25rem;
 
         > table {
@@ -1023,7 +1012,7 @@
     .menuseq i.caret::before {
         content: "\203a";
         font-size: 1.1em;
-        font-weight: var(--font-weight-semi-bold);
+        font-weight: var(--font-weight-medium);
         line-height: calc(1 / 1.1);
     }
 
@@ -1067,6 +1056,24 @@
         }
     }
 
+    .openblock.link-panel,
+    .sidebarblock.clickable {
+        @include card-padding;
+
+        border-radius: 20px;
+        background-color: var(--color-purple);
+        border: 1px solid var(--content-border-color);
+        //box-shadow: 1px 1px 4px 1px #00000033;
+        cursor: pointer;
+        hyphens: none;
+        transition: all 100ms;
+
+        &:hover {
+            border-color: var(--content-border-color);
+            background-color: var(--color-light-purple);
+        }
+    }
+
     .openblock {
         @each $cols in (2, 3) {
             &.cols-#{$cols} > .content {
@@ -1080,7 +1087,6 @@
             @each $cols in (2, 3) {
                 &.cols-#{$cols} > .content {
                     grid-template-columns: repeat(1, 1fr);
-                    gap: 0;
                 }
             }
         }
@@ -1092,25 +1098,83 @@
                 }
             }
         }
+
+        &.link-panel {
+            margin: 24px 0 0;
+
+            + .link-panel {
+                margin-top: 24px;
+
+                @media (max-width: media.$max-width-mobile) {
+                    margin-top: 1rem;
+                }
+            }
+
+            &:hover {
+                //border-color: var(--color-green);
+            }
+
+            > .content {
+                @media (min-width: media.$min-width-tablet) {
+                    display: grid;
+                    grid-template:
+                    "icon title" 41px
+                    "icon body" 1fr / 72px 1fr;
+                    gap: 0 28px;
+                }
+
+                @media (max-width: media.$max-width-mobile) {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    gap: 8px 0;
+                }
+            }
+
+            .paragraph {
+                margin-top: 0;
+            }
+
+            .imageblock {
+                grid-area: icon;
+                margin: 0;
+
+                + .paragraph, + .paragraph a {
+                    font-size: var(--font-size-h4);
+                    line-height: var(--line-height-h4);
+                    font-weight: var(--font-weight-semi-bold);
+                    color: var(--color-dark-white);
+                    hyphens: none;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+                }
+
+                @media (max-width: media.$max-width-mobile) {
+                    transform: scale(.66);
+                    transform-origin: 0 0;
+                    margin-bottom: -12px;
+                }
+            }
+        }
     }
 
     .sidebarblock {
-        &.clickable {
-            @include card-padding;
-
-            border-radius: var(--border-radius);
-            background: var(--color-deep-purple);
-            border: 1px solid var(--content-border-color);
-            cursor: pointer;
-
-            &:hover {
-                border-color: var(--link_hover-font-color);
-            }
-        }
-
         > .content > :first-child {
             margin-top: 0;
-            margin-bottom: -10px;
+            margin-bottom: 0;
+        }
+
+        a {
+            color: var(--color-dark-white);
+            font-style: normal;
+            font-size: var(--font-size-h5);
+            font-weight: var(--font-weight-semi-bold);
+
+            &:hover {
+                text-decoration: none;
+            }
         }
     }
 }

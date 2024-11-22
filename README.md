@@ -8,6 +8,10 @@ The UI bundle is based on https://gitlab.com/antora/antora-ui-default.
 
 ## Install dependencies
 
+### Node.js
+
+Install Node.js v18, preferably through [NVM (Node Version Manager)](https://github.com/nvm-sh/nvm): `nvm install 18`, or `nvm use 18` if already installed.
+
 ### PNPM
 
 Check the `packageManager` entry in [package.json](./package.json) to find out the correct PNPM version.
@@ -16,11 +20,15 @@ Generally speaking, it's OK to use a different minor/patch version to the specif
 
 Installation instructions can be found at https://pnpm.io/installation.
 
+### Node modules
+
+In the project root directory run `pnpm i` to install Antora, Gulp and all required `node_modules`.
+
 ## Development
 
 These instructions are for compiling the docs site locally.
 
-### Sourcing content
+### Source content
 
 #### Through Git
 
@@ -38,18 +46,6 @@ ln -s /Users/{path_to_docs_repo}/typedb-docs content
 ```
 This is especially helpful if you're developing `typedb-docs` locally.
 
-### Prerequisites
-
-1. The `content` submodule must be fetched. If it's the first time fetching it, use `git submodule update --init --recursive`. Otherwise, omit the `--init` flag.
-2. Install Node.js v18, preferably through [NVM (Node Version Manager)](https://github.com/nvm-sh/nvm): `nvm install 18`, or `nvm use 18` if already installed
-3. In the project root directory run `pnpm i` to install Antora, Gulp and all required `node_modules`
-
-#### Caveats
-
-- ⚠️ v18 is the **only** supported version of Node.js. The build may fail on other Node versions.
-- ⚠️ Changing branches and doing merges often results in the `content` submodule being flagged as changed. You can run
-  `git submodule update --recursive` to fix this by updating your submodule state to the one marked in Git.
-
 ### Build
 
 In the project root directory, run:
@@ -61,3 +57,9 @@ pnpm build
 The docs site will be built and output to `dist`.
 
 Assuming the build is successful, it will log a file you can open in a browser to view the site.
+
+## Troubleshooting
+
+- ⚠️ v18 is the **only** supported version of Node.js. The build may fail on other Node versions.
+- ⚠️ Changing branches and doing merges often results in the `content` submodule being flagged as changed. You can run
+  `git submodule update --recursive` to fix this by updating your submodule state to the one marked in Git.
