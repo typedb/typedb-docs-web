@@ -59,7 +59,7 @@
         .nav-text {
             color: var(--color-white);
             font-weight: var(--font-weight-light);
-            padding-left: 12px;
+            padding-left: 0;
 
             @media (max-width: media.$max-width-mobile) {
                 padding: 6px 4px;
