@@ -93,11 +93,11 @@
     }
 
     &.nav-opened::after {
-        @include url-icon(url("icons/close.svg"), var(--color-secondary-pink));
+        @include url-icon(url("icons/close.svg"), var(--color-white));
     }
 
     &:not(.nav-opened)::after {
-        @include url-icon(url("icons/sitemap.svg"), var(--color-secondary-pink));
+        @include url-icon(url("icons/sitemap.svg"), var(--color-white));
     }
 
     @media (max-width: media.$max-width-mobile) {
@@ -142,7 +142,7 @@
     .nav-item.is-current-page,
     .nav-item.is-current-path:not(.is-active) {
         > .nav-text-container > .nav-text::before {
-            background: var(--color-secondary-pink);
+            background: var(--color-green);
         }
     }
 
@@ -221,7 +221,7 @@
     margin: 1px -6px 0;
     background: none;
     border: none;
-    color: var(--color-secondary-pink);
+    color: var(--color-white);
     //transition: transform 100ms ease-in-out;
 
     @media(max-width: media.$max-width-mobile) {
