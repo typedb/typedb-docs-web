@@ -47,7 +47,7 @@
         .nav-link svg {
             width: 16px;
             height: 16px;
-            color: var(--color-secondary-pink);
+            color: var(--color-white);
         }
 
         span {
@@ -67,7 +67,7 @@
         }
 
         .docs-home-icon {
-            @include url-icon(url("icons/home.svg"), var(--color-secondary-pink));
+            @include url-icon(url("icons/home.svg"), var(--color-white));
             width: 20px;
             height: 18px;
         }
