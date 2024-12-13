@@ -99,7 +99,7 @@ body.-toc {
         --main-offset: 121px;
     }
 
-    margin: calc(var(--topbar-height) + var(--banner-height) + var(--toolbar-height)) auto 0;
+    margin: 0 auto;
     min-height: calc(100vh - var(--topbar-height) - var(--banner-height) - var(--toolbar-height));
     padding: 0 var(--body-padding-sides) var(--body-padding-bottom);
     max-width: var(--body-width);
