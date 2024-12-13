@@ -5,8 +5,8 @@
 .toolbar-area {
     width: 100%;
     background: var(--color-black-purple);
-    position: fixed;
-    top: calc(var(--topbar-height) + var(--banner-height));
+    position: sticky;
+    top: 0;
     z-index: 50;
     border-bottom: 1px solid var(--color-light-purple);
 }

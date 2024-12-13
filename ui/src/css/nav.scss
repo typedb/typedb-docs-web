@@ -10,10 +10,13 @@
 .nav-container {
     display: block;
     position: sticky;
-    top: calc(var(--topbar-height) + var(--banner-height) + var(--toolbar-height));
-    height: calc(100vh - var(--main-offset));
+    top: var(--toolbar-height);
+    max-height: calc(100vh - var(--main-offset));
     flex: 0 0 var(--nav-width);
     z-index: 2;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-deep-purple) transparent;
 
     @media (max-width: media.$max-width-mobile) {
         height: auto;
