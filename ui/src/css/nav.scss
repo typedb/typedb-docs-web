@@ -11,9 +11,12 @@
     display: block;
     position: sticky;
     top: var(--toolbar-height);
-    height: calc(100vh - var(--main-offset));
+    max-height: calc(100vh - var(--main-offset));
     flex: 0 0 var(--nav-width);
     z-index: 2;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-deep-purple) transparent;
 
     @media (max-width: media.$max-width-mobile) {
         height: auto;
