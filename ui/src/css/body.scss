@@ -149,3 +149,7 @@ body.-toc {
         word-wrap: normal; /* table widths aren't computed as expected when word-wrap is enabled */
     }
 }
+
+.td-topbar {
+    border-bottom: 1px solid var(--content-border-color);
+}
