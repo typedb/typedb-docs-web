@@ -14,7 +14,7 @@ const postcssUrl = require("postcss-url");
 const { Transform } = require("stream");
 const vfs = require("vinyl-fs");
 const webpack = require("webpack-stream");
-const { footer, topbar, getFooterData, getTopbarData } = require("typedb-web-common/lib");
+const { generateFooter, topbar, getFooterData, getTopbarData } = require("typedb-web-common/lib");
 
 const path = ospath.posix;
 const map = (transform) => new Transform({ objectMode: true, transform });
@@ -112,7 +112,7 @@ module.exports = (src, dest, preview) => (cb) => {
             const topbarData = getTopbarData();
             const footerData = getFooterData();
             const topbarHTML = topbar(await topbarData, urlPrefix);
-            const footerHTML = footer(await footerData, urlPrefix);
+            const footerHTML = generateFooter(await footerData, urlPrefix);
             fs.writeFileSync(`${dest}/partials/header-content.hbs`, topbarHTML);
             fs.writeFileSync(`${dest}/partials/footer-content.hbs`, footerHTML);
             cb();
