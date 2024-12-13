@@ -46,9 +46,9 @@
         pointer-events: none;
         padding-top: 12px;
         padding-bottom: 0.5rem;
-        top: var(--main-offset);
+        top: var(--toolbar-height);
         flex: 0 0 calc(var(--toc-width) + var(--doc-tooltip-width));
-        max-height: calc(100vh - var(--main-offset));
+        max-height: calc(100vh - var(--toolbar-height));
         overflow-y: auto;
 
         @media (max-width: media.$max-width-tablet) {
