@@ -8,4 +8,3 @@
 [submodule "content/3.x"]
 	path = content/3.x
 	url = git@github.com:typedb/typedb-docs.git
-	branch = 3.x-development
