@@ -4,6 +4,7 @@
 [submodule "content2/2.x"]
 	path = content2/2.x
 	url = git@github.com:typedb/typedb-docs
+	branch = 2.x
 [submodule "content2/3.x"]
 	path = content2/3.x
 	url = git@github.com:typedb/typedb-docs
