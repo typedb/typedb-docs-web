@@ -1,0 +1,11 @@
+[submodule "typedb-web"]
+	path = typedb-web
+	url = git@github.com:typedb/typedb-web.git
+[submodule "content/2.x"]
+	path = content/2.x
+	url = git@github.com:typedb/typedb-docs.git
+	branch = 2.x
+[submodule "content/3.x"]
+	path = content/3.x
+	url = git@github.com:typedb/typedb-docs.git
+	branch = 3.x-development
