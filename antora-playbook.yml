@@ -6,37 +6,37 @@ content:
   edit_url: 'https://github.com/vaticle/typedb-docs/edit/development/{path}'
   sources:
     - url: .
-      start_path: content2/drivers
+      start_path: content/2.x/drivers
       branches: HEAD
     - url: .
-      start_path: content2/typeql
+      start_path: content/2.x/typeql
       branches: HEAD
     - url: .
-      start_path: content2/manual
+      start_path: content/2.x/manual
       branches: HEAD
     - url: .
-      start_path: content2/academy
+      start_path: content/2.x/academy
       branches: HEAD
     - url: .
-      start_path: content2/home
+      start_path: content/2.x/home
       branches: HEAD
     - url: https://github.com/vaticle/typedb-driver.git
       start_path: docs
       branches: [master, '3.0'] # Following release of 3.0, this should read: ['2.x', master]
     - url: .
-      start_path: content3/drivers-src
+      start_path: content/3.x/drivers-src
       branches: HEAD
     - url: .
-      start_path: content3/typeql-src
+      start_path: content/3.x/typeql-src
       branches: HEAD
     - url: .
-      start_path: content3/manual-src
+      start_path: content/3.x/manual-src
       branches: HEAD
     - url: .
-      start_path: content3/academy-src
+      start_path: content/3.x/academy-src
       branches: HEAD
     - url: .
-      start_path: content3/home-src
+      start_path: content/3.x/home-src
       branches: HEAD
 urls:
   latest_version_segment: ""
