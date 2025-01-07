@@ -3,26 +3,41 @@ site:
   start_page: home:ROOT:index.adoc
   robots: allow
 content:
-  edit_url: 'https://github.com/vaticle/typedb-docs/edit/development/{path}' 
+  edit_url: 'https://github.com/vaticle/typedb-docs/edit/development/{path}'
   sources:
     - url: .
-      start_path: content/drivers
+      start_path: content2/drivers
       branches: HEAD
     - url: .
-      start_path: content/typeql
+      start_path: content2/typeql
       branches: HEAD
     - url: .
-      start_path: content/manual
+      start_path: content2/manual
       branches: HEAD
     - url: .
-      start_path: content/academy
+      start_path: content2/academy
       branches: HEAD
     - url: .
-      start_path: content/home
+      start_path: content2/home
       branches: HEAD
     - url: https://github.com/vaticle/typedb-driver.git
       start_path: docs
-      branches: master
+      branches: [master, '3.0'] # Following release of 3.0, this should read: ['2.x', master]
+    - url: .
+      start_path: content3/drivers-src
+      branches: HEAD
+    - url: .
+      start_path: content3/typeql-src
+      branches: HEAD
+    - url: .
+      start_path: content3/manual-src
+      branches: HEAD
+    - url: .
+      start_path: content3/academy-src
+      branches: HEAD
+    - url: .
+      start_path: content3/home-src
+      branches: HEAD
 urls:
   latest_version_segment: ""
 antora:
