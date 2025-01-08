@@ -6,7 +6,7 @@
 @use "shapes";
 
 html, body {
-    scroll-padding-top: calc(var(--scroll-padding) + var(--toolbar-height) + 12px);
+    scroll-padding-top: calc(var(--toolbar-height) + 1rem);
     --font-size-h1: 38px;
     --line-height-h1: #{calc(48px / 38px)};
     --font-size-h2: 24px;
@@ -152,4 +152,8 @@ body.-toc {
 
 .td-topbar {
     border-bottom: 1px solid var(--content-border-color);
+
+    nav {
+        max-width: 1466px;
+    }
 }
