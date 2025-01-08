@@ -20,23 +20,23 @@ content:
     - url: .
       start_path: content2/2.x/home
       branches: HEAD
-    - url: https://github.com/typedb/typedb-driver.git
+    - url: ./content2/typedb-driver
       start_path: docs
       branches: docs-multiversion # Following release of 3.0, this should read: ['2.x', master]
     - url: .
-      start_path: content2/3.x/drivers-src
+      start_path: content2/3.x/drivers
       branches: HEAD
     - url: .
-      start_path: content2/3.x/typeql-src
+      start_path: content2/3.x/typeql
       branches: HEAD
     - url: .
-      start_path: content2/3.x/manual-src
+      start_path: content2/3.x/manual
       branches: HEAD
     - url: .
-      start_path: content2/3.x/academy-src
+      start_path: content2/3.x/academy
       branches: HEAD
     - url: .
-      start_path: content2/3.x/home-src
+      start_path: content2/3.x/home
       branches: HEAD
 urls:
   latest_version_segment: ""

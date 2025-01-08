@@ -3,7 +3,7 @@
     <button class="nav-toggle-button"></button>
     <p class="nav-item">
       {{#with (findPageVersion site.components.home.versions page.componentVersion.version)}}
-        <a class="nav-text nav-link" href="{{{ siteRootPath }}}{{{ this.url }}}">
+        <a class="nav-text nav-link" href="{{{ relativize this.url }}}">
           <span>
             <span class="docs-home-icon"></span>
             <span class="docs-home-text">Docs Home</span>
