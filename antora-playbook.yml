@@ -20,7 +20,7 @@ content:
     - url: .
       start_path: content2/2.x/home
       branches: HEAD
-    - url: ./content2/typedb-driver
+    - url: https://github.com/typedb/typedb-driver
       start_path: docs
       branches: docs-multiversion # Following release of 3.0, this should read: ['2.x', master]
     - url: .
