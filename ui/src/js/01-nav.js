@@ -29,6 +29,30 @@
         if (e.detail > 1) e.preventDefault();
     });
 
+    var explorePanels = document.querySelectorAll('.nav-panel-explore');
+    explorePanels.forEach(function(explorePanel, index) {
+        console.log(`Attaching event listener to explorePanel ${index}`); // Step 1
+
+        explorePanel
+            .querySelector(".context-container")
+            .addEventListener("click", function() {
+                console.log(`Click event triggered on explorePanel ${index}`); // Step 2
+                console.log(`Before toggle: ${explorePanel.classList}`); // Step 3
+                explorePanel.classList.toggle("is-active");
+                console.log(`After toggle: ${explorePanel.classList}`); // Step 3
+            });
+
+        function closeExplorePanel(ev) {
+            if (explorePanel.contains(ev.target)) {
+                return;
+            }
+            explorePanel.classList.toggle("is-active", false);
+        }
+
+        window.addEventListener("click", closeExplorePanel);
+        // navContainer.addEventListener("click", closeExplorePanel);
+    });
+
     function onHashChange() {
         var navLink;
         var hash = window.location.hash;
