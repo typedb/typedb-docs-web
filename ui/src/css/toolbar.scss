@@ -73,8 +73,14 @@
         }
     }
 
-    .toolbar-search {
-        width: 570px;
+    .toolbar-over-article {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: var(--body-gap);
         padding: 0 var(--doc-padding-sides);
 
         @media (max-width: media.$max-width-tablet) {
@@ -85,6 +91,14 @@
         @media (max-width: media.$max-width-mobile) {
             display: flex;
             gap: 0.5em;
+        }
+
+        .toolbar-search {
+            flex: 0 0 570px;
+        }
+
+        .toolbar-explore {
+            flex: 0 0 var(--toc-width);
         }
     }
 }

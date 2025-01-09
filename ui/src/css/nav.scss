@@ -285,9 +285,8 @@ button.nav-text:hover,
     color: var(--body-font-color);
     line-height: 1.25;
     font-weight: var(--font-weight-light);
-    font-size: 15px;
+    font-size: var(--font-size-aside);
     pointer-events: all;
-    margin-bottom: 1rem;
 
     @media (max-width: media.$max-width-mobile) {
         margin-top: 1rem;
@@ -295,19 +294,18 @@ button.nav-text:hover,
 
     .context-container {
         border-radius: var(--border-radius);
-        border: 1px solid var(--panel-border-color);
-        //background: var(--color-purple);
+        border: 1px solid var(--color-light-purple);
+        background: var(--color-purple);
         display: flex;
         cursor: pointer;
     }
 
     .context {
         flex-grow: 1;
-        padding: 8px 14px;
+        padding: 0 14px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        gap: 8px;
+        gap: 4px;
     }
 
     .context-divider {
@@ -318,7 +316,7 @@ button.nav-text:hover,
 
     .context-arrow {
         flex-shrink: 0;
-        margin: 14px;
+        margin: 8px 12px;
         width: 20px;
         height: 20px;
         background: url('data:image/svg+xml,<svg viewBox="0 0 24 24" fill="%23fff" xmlns="http://www.w3.org/2000/svg"><path d="M12 12.9821L16.6669 8.39999L18 9.70892L12 15.6L6 9.70892L7.33312 8.39999L12 12.9821Z"/></svg>');
