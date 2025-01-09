@@ -1,0 +1,23 @@
+<div class="nav-panel-explore{{#unless page.navigation}} is-active{{/unless}}" data-panel="explore">
+  {{#if page.component}}
+    <div class="context-container">
+      <div class="context">
+        <span class="title">TypeDB</span>
+        <span class="version">{{page.componentVersion.displayVersion}}</span>
+        {{#if (eq page.componentVersion.version page.component.latest.version)}}
+          <span class="latest">(current)</span>
+        {{/if}}
+      </div>
+      <div class="context-divider"></div>
+      <div class="context-arrow"></div>
+    </div>
+  {{/if}}
+  <ul class="components">
+    {{#each page.versions}}
+      <li class="component{{#if (eq this @root.page.component)}} is-current{{/if}}">
+        <a class="title" href="{{{relativize ./url}}}">TypeDB {{./version}} {{#if this.latest}}(current){{/if}}</a>
+        <div>&nbsp;</div>
+      </li>
+    {{/each}}
+  </ul>
+</div>

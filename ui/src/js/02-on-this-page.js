@@ -49,6 +49,9 @@
         var embeddedToc = document.createElement("aside");
         embeddedToc.className = "toc embedded";
         if (sidebar.querySelector(".no-toc")) { embeddedToc.className += " no-toc"; }
+        // Check if an element with class 'nav-panel-explore' exists
+        var explorePanel = document.querySelector('.nav-panel-explore');
+        if (explorePanel) { embeddedToc.appendChild(explorePanel.cloneNode(true)); }
         embeddedToc.appendChild(menu.cloneNode(true));
         startOfContent.parentNode.insertBefore(embeddedToc, startOfContent);
     }

@@ -6,15 +6,7 @@
 @use "shapes";
 
 html, body {
-    scroll-padding-top: calc(var(--scroll-padding) + var(--toolbar-height) + 12px);
-    --font-size-h1: 38px;
-    --line-height-h1: #{calc(48px / 38px)};
-    --font-size-h2: 24px;
-    --line-height-h2: #{calc(34px / 24px)};
-    --font-size-h3: 20px;
-    --line-height-h3: #{calc(30px / 20px)};
-    --font-size-h5: 18px;
-    --line-height-h5: #{calc(28px / 18px)};
+    scroll-padding-top: calc(var(--toolbar-height) + 1rem);
 }
 
 body.-toc {
@@ -31,7 +23,15 @@ body.-toc {
     }
 }
 
-.body {
+body {
+    --font-size-h1: 38px;
+    --line-height-h1: #{calc(48px / 38px)};
+    --font-size-h2: 24px;
+    --line-height-h2: #{calc(34px / 24px)};
+    --font-size-h3: 20px;
+    --line-height-h3: #{calc(30px / 20px)};
+    --font-size-h5: 18px;
+    --line-height-h5: #{calc(28px / 18px)};
     /* base */
     --panel-background: var(--color-deep-purple);
     --panel-border-color: var(--color-light-purple);
@@ -98,7 +98,9 @@ body.-toc {
         --search-result-width: calc(100vw - 24px);
         --main-offset: 121px;
     }
+}
 
+.body {
     margin: 0 auto;
     min-height: calc(100vh - var(--topbar-height) - var(--banner-height) - var(--toolbar-height));
     padding: 0 var(--body-padding-sides) var(--body-padding-bottom);

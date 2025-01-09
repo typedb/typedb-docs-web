@@ -2,6 +2,8 @@
 
 /* Modified by Vaticle */
 
+@use "mixins" as *;
+
 .tabs {
     margin: 1.5rem 0 0.5rem;
 
@@ -61,7 +63,7 @@
 
 .tabpanel {
     background-color: var(--color-deep-purple);
-    padding: 1.5rem 1.25rem;
+    @include card-padding;
 }
 
 .tabpanel > :first-child {
