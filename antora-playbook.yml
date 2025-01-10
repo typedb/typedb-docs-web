@@ -6,37 +6,37 @@ content:
   edit_url: 'https://github.com/typedb/typedb-docs/edit/development/{path}'
   sources:
     - url: .
-      start_path: content_/2.x/drivers
+      start_path: content/2.x/drivers
       branches: HEAD
     - url: .
-      start_path: content_/2.x/typeql
+      start_path: content/2.x/typeql
       branches: HEAD
     - url: .
-      start_path: content_/2.x/manual
+      start_path: content/2.x/manual
       branches: HEAD
     - url: .
-      start_path: content_/2.x/academy
+      start_path: content/2.x/academy
       branches: HEAD
     - url: .
-      start_path: content_/2.x/home
+      start_path: content/2.x/home
       branches: HEAD
     - url: https://github.com/typedb/typedb-driver
       start_path: docs
       branches: docs-multiversion # Following release of 3.0, this should read: ['2.x', master]
     - url: .
-      start_path: content_/3.x/drivers
+      start_path: content/3.x/drivers
       branches: HEAD
     - url: .
-      start_path: content_/3.x/typeql
+      start_path: content/3.x/typeql
       branches: HEAD
     - url: .
-      start_path: content_/3.x/manual
+      start_path: content/3.x/manual
       branches: HEAD
     - url: .
-      start_path: content_/3.x/academy
+      start_path: content/3.x/academy
       branches: HEAD
     - url: .
-      start_path: content_/3.x/home
+      start_path: content/3.x/home
       branches: HEAD
 urls:
   latest_version_segment: ""
