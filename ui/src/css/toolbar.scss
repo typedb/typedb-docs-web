@@ -94,11 +94,15 @@
         }
 
         .toolbar-search {
-            flex: 0 0 570px;
+            flex: 1 1 570px;
         }
 
         .toolbar-explore {
             flex: 0 0 var(--toc-width);
+
+            @media (max-width: media.$max-width-mobile) {
+                display: none;
+            }
         }
     }
 }
