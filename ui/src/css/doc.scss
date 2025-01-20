@@ -368,8 +368,22 @@
             }
         }
 
-        .content {
-            margin-top: -0.5rem;
+        td.content > :not(.title):first-child,
+        td.content > .title + * {
+            margin-top: 0;
+        }
+
+        > table {
+            table-layout: fixed;
+            position: relative;
+            width: 100%;
+        }
+
+        td.content {
+            padding: 0.5rem 0 0;
+            background: var(--admonition-background);
+            width: 100%;
+            word-wrap: anywhere;
         }
     }
 
