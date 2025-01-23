@@ -7,10 +7,10 @@ ignore = "/bin/false"
 DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1317118973443309649/CqydmmRN9Ao1G49fg6QWroNujeoLJm7Qx__bO6gn1yHX9jKHWbQwyV3GMdD9GxzW9FnX"
 
 [context.deploy-preview.environment]
-UNMINIFIED = true
+UNMINIFIED = "true"
 
 [context.development.environment]
-UNMINIFIED = true
+UNMINIFIED = "true"
 
 [build.processing.html]
 pretty_urls = true
