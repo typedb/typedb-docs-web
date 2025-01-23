@@ -120,15 +120,6 @@ body {
         }
     }
 
-    .td-topbar.td-topbar-has-banner + & {
-        margin-top: calc(var(--topbar-height) + var(--banner-height));
-        min-height: calc(100vh - var(--topbar-height) - var(--banner-height));
-
-        * {
-            scroll-margin-top: var(--banner-height);
-        }
-    }
-
     p {
         font-size: inherit;
         line-height: inherit;
