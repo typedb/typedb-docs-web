@@ -1,5 +1,5 @@
 "use strict";
 
 module.exports = (nav, context) => {
-    return nav || Object.values(context.data.root.site.components)[0].latest.navigation;
+    return nav || context.data.root.site.components.home.latest.navigation;
 };
