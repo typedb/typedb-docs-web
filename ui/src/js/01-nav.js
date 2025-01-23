@@ -33,14 +33,15 @@
     explorePanels.forEach(function(explorePanel, index) {
         console.log(`Attaching event listener to explorePanel ${index}`); // Step 1
 
-        explorePanel
-            .querySelector(".context-container")
-            .addEventListener("click", function() {
+        const contextContainer = explorePanel.querySelector(".context-container");
+        if (contextContainer) {
+            contextContainer.addEventListener("click", function () {
                 console.log(`Click event triggered on explorePanel ${index}`); // Step 2
                 console.log(`Before toggle: ${explorePanel.classList}`); // Step 3
                 explorePanel.classList.toggle("is-active");
                 console.log(`After toggle: ${explorePanel.classList}`); // Step 3
             });
+        }
 
         function closeExplorePanel(ev) {
             if (explorePanel.contains(ev.target)) {
@@ -50,7 +51,6 @@
         }
 
         window.addEventListener("click", closeExplorePanel);
-        // navContainer.addEventListener("click", closeExplorePanel);
     });
 
     function onHashChange() {

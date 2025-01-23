@@ -22,7 +22,7 @@ content:
       branches: HEAD
     - url: https://github.com/typedb/typedb-driver
       start_path: docs
-      branches: docs-multiversion # Following release of 3.0, this should read: ['2.x', master]
+      branches: [development, "3.0"] # TODO: Change to [development, 2.x] when development becomes 2.x and 3.0 becomes development
     - url: .
       start_path: content/3.x/drivers
       branches: HEAD

@@ -12,12 +12,14 @@
       <div class="context-arrow"></div>
     </div>
   {{/if}}
-  <ul class="components">
-    {{#each page.versions}}
-      <li class="component{{#if (eq this @root.page.component)}} is-current{{/if}}">
-        <a class="title" href="{{{relativize ./url}}}">TypeDB {{./version}} {{#if this.latest}}(current){{/if}}</a>
-        <div>&nbsp;</div>
-      </li>
-    {{/each}}
-  </ul>
+  {{#if page.versions}}
+    <ul class="components">
+      {{#each page.versions}}
+        <li class="component{{#if (eq this @root.page.component)}} is-current{{/if}}">
+          <a class="title" href="{{{relativize ./url}}}">TypeDB {{./version}} {{#if this.latest}}(current){{/if}}</a>
+          <div>&nbsp;</div>
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
 </div>
