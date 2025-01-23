@@ -59,6 +59,9 @@ devDependencies:
   gulp-imagemin:
     specifier: ~6.2
     version: 6.2.0(gulp@4.0.2)
+  gulp-noop:
+    specifier: 1.0.1
+    version: 1.0.1
   gulp-postcss:
     specifier: 9.0.1
     version: 9.0.1(postcss@8.4.32)
@@ -4123,6 +4126,13 @@ packages:
       imagemin-jpegtran: 6.0.0
       imagemin-optipng: 7.1.0
       imagemin-svgo: 7.1.0
+    dev: true
+
+  /gulp-noop@1.0.1:
+    resolution: {integrity: sha512-bX8wd6jgjgrT/DVok2ms2XXGOzhDnQe3QP2lCfmPFgyOaLtc3NmlKbFA0J03UniBgFjU7OFba7EMKSLEDfvCTQ==}
+    engines: {node: '>=0.10'}
+    dependencies:
+      through2: 2.0.5
     dev: true
 
   /gulp-postcss@9.0.1(postcss@8.4.32):
