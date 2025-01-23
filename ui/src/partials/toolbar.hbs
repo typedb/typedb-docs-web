@@ -2,7 +2,7 @@
   <nav class="toolbar">
     <button class="nav-toggle-button"></button>
     <p class="nav-item">
-      {{#with (findPageVersion site.components.home.versions page.componentVersion.version)}}
+      {{#with (or (findPageVersion site.components.home.versions page.componentVersion.version) (site.components.home.latest.url))}}
         <a class="nav-text nav-link" href="{{{ relativize this.url }}}">
           <span>
             <span class="docs-home-icon"></span>
