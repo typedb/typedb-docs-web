@@ -27,7 +27,7 @@ module.exports = (src, dest, preview) => (cb) => {
     const sassIncludePath = `${commonSrc}/styles`;
     const opts = { base: src, cwd: src };
     const sourcemaps = preview || process.env.SOURCEMAPS === "true";
-    const unminified = preview || process.env.UNMINIFIED === "true";
+    const minify = process.env.MINIFY === "true";
     const postcssPlugins = [
         postcssUrl([
             {
@@ -55,13 +55,13 @@ module.exports = (src, dest, preview) => (cb) => {
         vfs
             .src("js/+([0-9])-*.js", { ...opts, read: false, sourcemaps })
             .pipe(bundle(opts))
-            .pipe(unminified ? noop() : uglify({ output: { comments: /^! / } }))
+            .pipe(minify ? uglify({ output: { comments: /^! / } }) : noop())
             // NOTE concat already uses stat from newest combined file
             .pipe(concat("js/site.js")),
         vfs
             .src("js/vendor/*([^.])?(.bundle).js", { ...opts, read: false })
             .pipe(bundle(opts))
-            .pipe(unminified ? noop() : uglify({ output: { comments: /^! / } })),
+            .pipe(minify ? uglify({ output: { comments: /^! / } }) : noop()),
         vfs.src("js/common.js", { ...opts, read: false }).pipe(
             webpack({
                 mode: "production",
