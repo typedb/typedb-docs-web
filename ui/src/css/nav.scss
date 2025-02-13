@@ -280,6 +280,45 @@ button.nav-text:hover,
     background: var(--color-purple);
 }
 
+.nav-panel-ai {
+    color: var(--body-font-color);
+    line-height: 1.25;
+    font-weight: var(--font-weight-light);
+    font-size: var(--font-size-aside);
+
+    .context-container {
+        border-radius: var(--border-radius);
+        border: 1px solid var(--color-light-purple);
+        background: var(--color-purple);
+        display: flex;
+        cursor: pointer;
+        align-items: center;
+        height: 38px;
+        transition: all 100ms;
+
+        &:hover {
+            border-color: var(--content-border-color);
+            background-color: var(--color-light-purple);
+
+            .context span::after {
+                background: linear-gradient(105deg, #F96480 0%, #FDD257 100%);
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        }
+    }
+
+    .context {
+        flex-grow: 1;
+        padding: 0 14px;
+
+        span::after {
+            content: "\e2ca";
+            margin-left: 4px;
+        }
+    }
+}
+
 .nav-panel-explore {
     position: relative;
     color: var(--body-font-color);

@@ -97,6 +97,10 @@
             flex: 1 1 570px;
         }
 
+        .toolbar-ai {
+            flex: 0 0 var(--ask-ai-width);
+        }
+
         .toolbar-explore {
             flex: 0 0 var(--toc-width);
 

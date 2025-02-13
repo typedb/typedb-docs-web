@@ -75,6 +75,8 @@ body {
     /* toc */
     --toc-width: 236px;
     --toc-line-height: 1.25;
+    /* ai ✨ */
+    --ask-ai-width: 150px;
 
     @media (max-width: media.$max-width-tablet) {
         --body-padding-bottom: var(--section-page-margin);
