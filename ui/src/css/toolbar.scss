@@ -101,7 +101,7 @@
             flex: 0 0 var(--ask-ai-width);
 
             @media (max-width: media.$max-width-mobile) {
-                flex-shrink: 1;
+                flex-basis: 30px;
             }
         }
 
