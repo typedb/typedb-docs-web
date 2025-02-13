@@ -301,9 +301,7 @@ button.nav-text:hover,
             background-color: var(--color-light-purple);
 
             .context span::after {
-                background: linear-gradient(105deg, #F96480 0%, #FDD257 100%);
-                background-clip: text;
-                -webkit-text-fill-color: transparent;
+                color: #FDD257;
             }
         }
     }
@@ -315,6 +313,7 @@ button.nav-text:hover,
         span::after {
             content: "\e2ca";
             margin-left: 4px;
+            font-family: "Font Awesome 6 Pro";
         }
     }
 }
