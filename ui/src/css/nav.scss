@@ -280,6 +280,57 @@ button.nav-text:hover,
     background: var(--color-purple);
 }
 
+.nav-panel-ai {
+    color: var(--body-font-color);
+    line-height: 1.25;
+    font-weight: var(--font-weight-light);
+    font-size: var(--font-size-aside);
+
+    .context-container {
+        border-radius: var(--border-radius);
+        display: flex;
+        cursor: pointer;
+        align-items: center;
+        transition: all 100ms;
+        height: 34px;
+
+        &:hover {
+            border-color: var(--color-secondary-grey);
+        }
+
+        @media (min-width: media.$min-width-tablet) {
+            border: 1px solid var(--color-light-purple);
+            background: var(--color-purple);
+            height: 38px;
+        }
+    }
+
+    .context {
+        flex-grow: 1;
+        padding: 0 14px;
+
+        @media (max-width: media.$max-width-mobile) {
+            font-size: 18px;
+            padding: 0 2px;
+        }
+
+        .title {
+            @media (max-width: media.$max-width-mobile) {
+                display: none;
+            }
+        }
+
+        .suffix::after {
+            content: "\e2ca";
+            margin-left: 6px;
+            font-family: "Font Awesome 6 Pro";
+            background: linear-gradient(105deg, #F96480 0%, #FDD257 100%);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    }
+}
+
 .nav-panel-explore {
     position: relative;
     color: var(--body-font-color);
@@ -298,6 +349,10 @@ button.nav-text:hover,
         background: var(--color-purple);
         display: flex;
         cursor: pointer;
+
+        &:hover {
+            border-color: var(--color-secondary-grey);
+        }
     }
 
     .context {

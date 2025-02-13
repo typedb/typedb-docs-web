@@ -37,7 +37,7 @@
         font-size: inherit;
 
         @media (max-width: media.$max-width-mobile) {
-            width: 60px;
+            width: 34px;
         }
 
         .nav-link:hover {
@@ -95,6 +95,14 @@
 
         .toolbar-search {
             flex: 1 1 570px;
+        }
+
+        .toolbar-ai {
+            flex: 0 0 var(--ask-ai-width);
+
+            @media (max-width: media.$max-width-mobile) {
+                flex-basis: 30px;
+            }
         }
 
         .toolbar-explore {
