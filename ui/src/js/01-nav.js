@@ -29,12 +29,6 @@
         if (e.detail > 1) e.preventDefault();
     });
 
-    Intercom({
-        app_id: "zof896ic",
-        hide_default_launcher: true,
-        custom_launcher_selector: "#sidebar_support",
-    });
-
     var explorePanels = document.querySelectorAll('.nav-panel-explore');
     explorePanels.forEach(function(explorePanel, index) {
         console.log(`Attaching event listener to explorePanel ${index}`); // Step 1
