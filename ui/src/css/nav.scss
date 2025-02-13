@@ -297,13 +297,7 @@ button.nav-text:hover,
         transition: all 100ms;
 
         &:hover {
-            border-color: var(--color-green);
-
-            .context span::after {
-                background: linear-gradient(105deg, #F96480 0%, #FDD257 100%);
-                background-clip: text;
-                -webkit-text-fill-color: transparent;
-            }
+            border-color: var(--color-secondary-grey);
         }
     }
 
@@ -313,8 +307,11 @@ button.nav-text:hover,
 
         span::after {
             content: "\e2ca";
-            margin-left: 4px;
+            margin-left: 6px;
             font-family: "Font Awesome 6 Pro";
+            background: linear-gradient(105deg, #F96480 0%, #FDD257 100%);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
     }
 }
@@ -337,6 +334,10 @@ button.nav-text:hover,
         background: var(--color-purple);
         display: flex;
         cursor: pointer;
+
+        &:hover {
+            border-color: var(--color-secondary-grey);
+        }
     }
 
     .context {
