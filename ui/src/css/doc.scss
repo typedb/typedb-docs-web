@@ -817,6 +817,15 @@
         display: inline;
     }
 
+    /* By default, hide the entire hidden line */
+    pre:not(.show-hidden-lines) .hidden-line {
+        display: none;
+    }
+    /* When toggled, show the hidden lines as block-level elements */
+    pre.show-hidden-lines .hidden-line {
+        display: block;
+    }
+
     .source-toolbox {
         visibility: hidden;
         position: absolute;

@@ -15,7 +15,57 @@
     }
   }
 
-  // Use the same selector as the copy-button helper.
+  // Helper: Wrap a line in a hidden-line span.
+  function wrapHiddenLine (line) {
+    return '<span class="hidden-line">' + addHiddenClassToTokens(line) + '</span>'
+  }
+
+  // Helper: Given a line of HTML, add "hidden-token" to every token span.
+  function addHiddenClassToTokens (line) {
+    var temp = document.createElement('div')
+    temp.innerHTML = line
+    processNode(temp)
+    return temp.innerHTML
+  }
+
+  // Recursively process nodes so that:
+  //  - If a text node contains non-whitespace, it is wrapped in a span.hidden-token.
+  //  - If an element has the class "token", add the "hidden-token" class.
+  function processNode (node) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      if (node.textContent.trim() !== '') {
+        var span = document.createElement('span')
+        span.className = 'hidden-token'
+        span.textContent = node.textContent
+        node.parentNode.replaceChild(span, node)
+      }
+      return
+    }
+    if (node.nodeType === Node.ELEMENT_NODE) {
+      if (node.classList && node.classList.contains('token') && !node.classList.contains('hidden-token')) {
+        node.classList.add('hidden-token')
+      }
+      Array.from(node.childNodes).forEach(function (child) {
+        processNode(child)
+      })
+    }
+  }
+
+  // Helper: Remove all hidden lines from a block of HTML.
+  // It parses the HTML string, removes any element with class "hidden-line",
+  // and returns the resulting innerHTML.
+  function getVisibleContent (html) {
+    var container = document.createElement('div')
+    container.innerHTML = html
+    // Remove all hidden-line elements.
+    var hiddenEls = container.querySelectorAll('.hidden-line')
+    hiddenEls.forEach(function (el) {
+      el.parentNode.removeChild(el)
+    })
+    return container.innerHTML
+  }
+
+  // Process all code blocks using the same selector as the copy-button helper.
   [].slice
     .call(document.querySelectorAll('.doc pre.highlight, .doc .literalblock pre'))
     .forEach(function (pre, index) {
@@ -46,7 +96,7 @@
           if (line.indexOf('<span class="token comment">#!ordered</span>') !== -1) {
             console.log('Found #!ordered marker at line', i, 'in block', index)
             newLines.push(
-              '<span class="token hidden-token comment"># Run earlier queries before running this query</span>'
+              '<span class="hidden-line"><span class="token hidden-token comment"># Run earlier queries before running this query</span></span>'
             )
             continue
           }
@@ -57,12 +107,14 @@
             i++ // Skip the start marker.
             // Process lines until the end marker is found.
             while (i < lines.length && lines[i].indexOf('<span class="token comment">#}}</span>') === -1) {
-              newLines.push(addHiddenClassToTokens(lines[i]))
+              newLines.push(wrapHiddenLine(lines[i]))
               i++
             }
             console.log('Found hidden block end marker (#}}) in block', index)
-            // Append commit marker.
-            newLines.push('<span class="token hidden-token comment"># --commit--</span>')
+            // Append commit marker wrapped as a hidden line.
+            newLines.push(
+              '<span class="hidden-line"><span class="token hidden-token comment"># --commit--</span></span>'
+            )
             continue
           }
 
@@ -74,7 +126,7 @@
             for (var j = 0; j < n; j++) {
               i++
               if (i < lines.length) {
-                newLines.push(addHiddenClassToTokens(lines[i]))
+                newLines.push(wrapHiddenLine(lines[i]))
               }
             }
             continue
@@ -83,8 +135,16 @@
           // Otherwise, keep the line unchanged.
           newLines.push(line)
         }
-        // Replace the code block content with the transformed HTML.
-        code.innerHTML = newLines.join('\n')
+
+        // Build the "full" transformed content.
+        var fullContent = newLines.join('\n')
+        // Compute the visible version by removing all hidden lines.
+        var visibleContent = getVisibleContent(fullContent)
+        // Store both versions as data attributes.
+        code.dataset.fullContent = fullContent
+        code.dataset.visibleContent = visibleContent
+        // By default, show the visible version (hidden lines removed).
+        code.innerHTML = visibleContent
         console.log('Finished transforming code block', index)
 
         // Now add the "toggle hidden" button next to the copy button (if any).
@@ -102,7 +162,7 @@
         // Create the toggle button.
         var toggle = document.createElement('button')
         toggle.className = 'toggle-hidden-button'
-        toggle.setAttribute('title', 'Toggle hidden tokens')
+        toggle.setAttribute('title', 'Toggle hidden lines')
 
         // Create an icon for the toggle button (adjust the SVG as needed).
         var icon = document.createElement('div')
@@ -112,51 +172,20 @@
         toolbox.appendChild(toggle)
         console.log('Appended toggle button to toolbox for block', index)
 
-        // Toggle the visibility of hidden tokens on click.
+        // Toggle callback: swap between full content and visible content.
         toggle.addEventListener('click', function () {
-          pre.classList.toggle('show-hidden-tokens')
-          console.log(
-            'Toggle clicked for block',
-            index,
-            'show-hidden-tokens =',
-            pre.classList.contains('show-hidden-tokens')
-          )
+          if (pre.classList.contains('show-hidden-lines')) {
+            // Currently showing full content; hide hidden lines.
+            code.innerHTML = code.dataset.visibleContent
+            pre.classList.remove('show-hidden-lines')
+            console.log('Hidden lines removed for block', index)
+          } else {
+            // Currently hidden; re-add full content.
+            code.innerHTML = code.dataset.fullContent
+            pre.classList.add('show-hidden-lines')
+            console.log('Hidden lines restored for block', index)
+          }
         })
       })
     })
-
-  // Helper: For lines that need to be hidden, process every node so that:
-  //   - Any element with a token class gets the "hidden-token" class added.
-  //   - Any text node (which might be unwrapped) gets wrapped in a span.hidden-token.
-  function addHiddenClassToTokens (line) {
-    // Create a temporary container element.
-    var temp = document.createElement('div')
-    temp.innerHTML = line
-    processNode(temp)
-    return temp.innerHTML
-  }
-
-  function processNode (node) {
-    // If the node is a text node and contains non-whitespace text, wrap it.
-    if (node.nodeType === Node.TEXT_NODE) {
-      if (node.textContent.trim() !== '') {
-        var span = document.createElement('span')
-        span.className = 'hidden-token'
-        span.textContent = node.textContent
-        node.parentNode.replaceChild(span, node)
-      }
-    }
-    // If the node is an element node:
-    if (node.nodeType === Node.ELEMENT_NODE) {
-      // If this element is already a token, add the hidden-token class.
-      if (node.classList && node.classList.contains('token') && !node.classList.contains('hidden-token')) {
-        node.classList.add('hidden-token')
-      } else {
-        var children = Array.from(node.childNodes)
-        children.forEach(function (child) {
-          processNode(child)
-        })
-      }
-    }
-  }
 })()
