@@ -17,7 +17,7 @@
 
   // Helper: Wrap a line in a hidden-line span.
   function wrapHiddenLine (line) {
-    return '<span class="hidden-line">' + addHiddenClassToTokens(line) + '</span>'
+    return '<span class="hidden-line">' + line + '</span>'
   }
 
   // Helper: Given a line of HTML, add "hidden-token" to every token span.
