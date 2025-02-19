@@ -4,68 +4,70 @@
 
 @use "mixins" as *;
 
-.tabs {
-    margin: 1.5rem 0 0.5rem;
+.doc {
+    .tabs {
+        margin: 1.5rem 0 0.5rem;
 
-    > .content {
-        border-radius: var(--border-radius);
-        border: 1px solid var(--panel-border-color);
-        background: var(--panel-background);
-        overflow: hidden;
+        > .content {
+            border-radius: var(--border-radius);
+            border: 1px solid var(--panel-border-color);
+            background: var(--panel-background);
+            overflow: hidden;
+        }
     }
-}
 
-.tablist.ulist,
-.tablist.ulist > ul li {
-    margin: 0;
-}
+    .tablist.ulist,
+    .tablist.ulist > ul li {
+        margin: 0;
+    }
 
-.tablist > ul {
-    display: flex;
-    border-bottom: 1px solid var(--panel-border-color);
-    height: 3.25rem;
-    overflow: auto;
-    white-space: nowrap;
-}
+    .tablist > ul {
+        display: flex;
+        border-bottom: 1px solid var(--panel-border-color);
+        height: 3.25rem;
+        overflow: auto;
+        white-space: nowrap;
+    }
 
-.tablist > ul li {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 0.75rem;
-    cursor: pointer;
-    font-size: 1rem;
-    line-height: 2rem;
-    font-weight: var(--font-weight-regular);
-    color: var(--default-text-color);
-}
+    .tablist > ul li {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 0.75rem;
+        cursor: pointer;
+        font-size: 1rem;
+        line-height: 2rem;
+        font-weight: var(--font-weight-regular);
+        color: var(--default-text-color);
+    }
 
-.tablist > ul li + li {
-    border-left: 1px solid var(--panel-border-color);
-}
+    .tablist > ul li + li {
+        border-left: 1px solid var(--panel-border-color);
+    }
 
-.tabs.is-loading .tablist li:first-child,
-.tabs:not(.is-loading) .tablist li.is-selected {
-    background: var(--color-secondary-purple);
-    color: var(--color-green);
-}
+    .tabs.is-loading .tablist li:first-child,
+    .tabs:not(.is-loading) .tablist li.is-selected {
+        background: var(--color-secondary-purple);
+        color: var(--color-green);
+    }
 
-.tabs:not(.is-loading) .tablist li:hover {
-    color: var(--color-green);
-    text-decoration: underline;
-}
+    .tabs:not(.is-loading) .tablist li:hover {
+        color: var(--color-green);
+        text-decoration: underline;
+    }
 
-.tablist.ulist > ul li::before {
-    content: none;
-}
+    .tablist.ulist > ul li::before {
+        content: none;
+    }
 
-.tabpanel {
-    background-color: var(--color-deep-purple);
-    @include card-padding;
-}
+    .tabpanel {
+        background-color: var(--color-deep-purple);
+        @include card-padding;
+    }
 
-.tabpanel > :first-child {
-    margin-top: 0;
+    .tabpanel > :first-child {
+        margin-top: 0;
+    }
 }
