@@ -809,6 +809,14 @@
         display: block;
     }
 
+    pre.highlight code .hidden-token {
+        display: none;
+    }
+
+    pre.highlight code.show-hidden .hidden-token {
+        display: inline;
+    }
+
     .source-toolbox {
         visibility: hidden;
         position: absolute;
@@ -816,6 +824,9 @@
         right: 1.25rem;
         background: var(--color-black-purple);
         box-shadow: 0 0 0.25rem 0.25rem var(--color-black-purple);
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
 
         .source-lang {
             display: none;
@@ -872,6 +883,27 @@
                 transform-origin: left;
             }
         }
+
+        .toggle-hidden-button {
+            background: none;
+            border: none;
+            outline: none;
+            padding: 0;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .toggle-hidden-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23ffffff"><path d="M12 4.5C7.305 4.5 3.135 7.364 1.5 12c1.635 4.636 5.805 7.5 10.5 7.5s8.865-2.864 10.5-7.5c-1.635-4.636-5.805-7.5-10.5-7.5zm0 13c-3.038 0-5.5-2.462-5.5-5.5S8.962 6.5 12 6.5s5.5 2.462 5.5 5.5-2.462 5.5-5.5 5.5z"/></svg>') no-repeat center;
+            background-size: contain;
+        }
+
+
     }
 
     .listingblock:hover .source-toolbox {
