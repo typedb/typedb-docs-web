@@ -29,8 +29,8 @@
   }
 
   // Recursively process nodes so that:
-  //  - If a text node contains non-whitespace, it is wrapped in a span.hidden-token.
-  //  - If an element has the class "token", add the "hidden-token" class.
+  //  - Text nodes with non-whitespace are wrapped in a span.hidden-token.
+  //  - Elements with the "token" class get the "hidden-token" class added.
   function processNode (node) {
     if (node.nodeType === Node.TEXT_NODE) {
       if (node.textContent.trim() !== '') {
@@ -49,20 +49,6 @@
         processNode(child)
       })
     }
-  }
-
-  // Helper: Remove all hidden lines from a block of HTML.
-  // It parses the HTML string, removes any element with class "hidden-line",
-  // and returns the resulting innerHTML.
-  function getVisibleContent (html) {
-    var container = document.createElement('div')
-    container.innerHTML = html
-    // Remove all hidden-line elements.
-    var hiddenEls = container.querySelectorAll('.hidden-line')
-    hiddenEls.forEach(function (el) {
-      el.parentNode.removeChild(el)
-    })
-    return container.innerHTML
   }
 
   // Process all code blocks using the same selector as the copy-button helper.
@@ -136,11 +122,16 @@
           newLines.push(line)
         }
 
-        // Build the "full" transformed content.
+        // Build the full transformed content.
         var fullContent = newLines.join('\n')
-        // Compute the visible version by removing all hidden lines.
-        var visibleContent = getVisibleContent(fullContent)
-        // Store both versions as data attributes.
+        // Build the visible version by filtering out any hidden-line.
+        var visibleContent = newLines
+          .filter(function (line) {
+            return line.indexOf('class="hidden-line"') === -1
+          })
+          .join('\n')
+
+        // Store both versions in data attributes.
         code.dataset.fullContent = fullContent
         code.dataset.visibleContent = visibleContent
         // By default, show the visible version (hidden lines removed).
@@ -175,7 +166,7 @@
         // Toggle callback: swap between full content and visible content.
         toggle.addEventListener('click', function () {
           if (pre.classList.contains('show-hidden-lines')) {
-            // Currently showing full content; hide hidden lines.
+            // Currently showing full content; switch to visible version.
             code.innerHTML = code.dataset.visibleContent
             pre.classList.remove('show-hidden-lines')
             console.log('Hidden lines removed for block', index)
