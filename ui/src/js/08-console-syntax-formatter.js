@@ -5,13 +5,12 @@
 
   // --- TypeDB Console Script syntax ---
   const CONSOLE = {
-    db_connect: '.db',
     txn_open: {
-      schema: '.transaction schema ',
-      write: '.transaction write',
-      read: '.transaction read',
+      schema: '.transaction schema db_test',
+      write: '.transaction write db_test',
+      read: '.transaction read db_test',
     },
-    send_q: '', // just a new line
+    send_q: '', // sending a query just adds new line
     commit: '.commit',
     close: '.close',
     comments: {
@@ -138,6 +137,7 @@
         for (let i = 0; i <= lines.length; i++) {
           if (i === lines.length) {
             if (lang === 'typeql' && ongoingTransaction.type != null) {
+              formattedLines.push(hideLine(''))
               formattedLines.push(terminateTxnLine(ongoingTransaction))
             }
             break
@@ -149,8 +149,13 @@
             // console.log('Found test start at line', i, 'in block', index)
             if (lang === 'typeql') {
               if (ongoingTransaction.type != null) {
-                formattedLines.push(terminateTxnLine(ongoingTransaction))
+                const terminatingLine = terminateQueryLine(queryState, QueryParserState.NONE)
+                if (terminatingLine != null) {
+                  formattedLines.push(terminatingLine)
+                }
                 queryState = QueryParserState.NONE
+                formattedLines.push(terminateTxnLine(ongoingTransaction))
+                formattedLines.push(hideLine(''))
               }
               const txnTypeMatch = line.match(/^.+?\[(.+?)\b/)
               if (!(txnTypeMatch)) {
@@ -243,7 +248,7 @@
             }
             queryState = QueryParserState.VISIBLE
           }
-          // console.log('Found visible #' + i + ' line ' + line)
+          // console.log('Found #' + i + ' line is visible: ' + line)
           formattedLines.push(line)
         }
 
