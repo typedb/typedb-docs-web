@@ -99,8 +99,9 @@
             console.log('Found hidden block end marker (#}}) in block', index)
             // Append commit marker wrapped as a hidden line.
             newLines.push(
-              '<span class="hidden-line"><span class="token hidden-token comment"># --commit--</span></span>'
+              '<span class="hidden-line"><span class="token comment"># --commit--</span></span>'
             )
+            newLines.push('<span class="hidden-line"></span>')
             continue
           }
 

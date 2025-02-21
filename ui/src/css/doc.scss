@@ -813,14 +813,6 @@
         }
     }
 
-    pre.highlight code .hidden-token {
-        display: none;
-    }
-
-    pre.highlight code.show-hidden .hidden-token {
-        display: inline;
-    }
-
     .source-toolbox {
         visibility: hidden;
         position: absolute;
@@ -830,7 +822,7 @@
         box-shadow: 0 0 0.25rem 0.25rem var(--color-black-purple);
         display: flex;
         gap: 0.5rem;
-        margin-top: 0.5rem;
+        margin-top: 0rem;
 
         .source-lang {
             display: none;
