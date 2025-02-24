@@ -89,14 +89,14 @@
     return '<span class="token console">' + str + '</span>'
   }
 
-  function terminateTxnLine (ongoingTransaction) {
+  function terminateTxn (ongoingTransaction) {
     const failureComment = ongoingTransaction.failure ? CONSOLE.comments.failure.comment : ''
     const rollbackComment = ongoingTransaction.rollback ? CONSOLE.comments.rollback.comment : ''
     const commentStart = (ongoingTransaction.failure || ongoingTransaction.rollback) ? ' # ' : ''
     return hideLine(consoleStr(CONSOLE[ongoingTransaction.ends_with]) + commentStr(commentStart + failureComment + rollbackComment))
   }
 
-  function terminateQueryLine (currentState, resetState) {
+  function mayTerminateQuery (currentState, resetState) {
     if (currentState === resetState || currentState === QueryParserState.NONE) {
       return null
     } else {
@@ -138,7 +138,7 @@
           if (i === lines.length) {
             if (lang === 'typeql' && ongoingTransaction.type != null) {
               formattedLines.push(hideLine(''))
-              formattedLines.push(terminateTxnLine(ongoingTransaction))
+              formattedLines.push(terminateTxn(ongoingTransaction))
             }
             break
           }
@@ -149,12 +149,12 @@
             // console.log('Found test start at line', i, 'in block', index)
             if (lang === 'typeql') {
               if (ongoingTransaction.type != null) {
-                const terminatingLine = terminateQueryLine(queryState, QueryParserState.NONE)
-                if (terminatingLine != null) {
-                  formattedLines.push(terminatingLine)
+                const terminateQueryCommand = mayTerminateQuery(queryState, QueryParserState.NONE)
+                if (terminateQueryCommand != null) {
+                  formattedLines.push(terminateQueryCommand)
                 }
                 queryState = QueryParserState.NONE
-                formattedLines.push(terminateTxnLine(ongoingTransaction))
+                formattedLines.push(terminateTxn(ongoingTransaction))
                 formattedLines.push(hideLine(''))
               }
               const txnTypeMatch = line.match(/^.+?\[(.+?)\b/)
@@ -179,9 +179,9 @@
           if (line.indexOf(MARKERS[lang].hidden_segment_start) !== -1) {
             // console.log('Found hidden segment start at line', i, 'in block', index)
             if (lang === 'typeql') {
-              const terminatingLine = terminateQueryLine(queryState, QueryParserState.NONE)
-              if (terminatingLine != null) {
-                formattedLines.push(terminatingLine)
+              const terminateQueryCommand = mayTerminateQuery(queryState, QueryParserState.NONE)
+              if (terminateQueryCommand != null) {
+                formattedLines.push(terminateQueryCommand)
               }
               queryState = QueryParserState.HIDDEN
             }
@@ -242,9 +242,9 @@
 
           // Otherwise, this line must belong to an actual (visible) query
           if (lang === 'typeql') {
-            const terminatingLine = terminateQueryLine(queryState, QueryParserState.VISIBLE)
-            if (terminatingLine != null) {
-              formattedLines.push(terminatingLine)
+            const terminateQueryCommand = mayTerminateQuery(queryState, QueryParserState.VISIBLE)
+            if (terminateQueryCommand != null) {
+              formattedLines.push(terminateQueryCommand)
             }
             queryState = QueryParserState.VISIBLE
           }
@@ -290,11 +290,13 @@
           if (pre.classList.contains('show-hidden-lines')) {
             code.innerHTML = code.dataset.visibleContent
             pre.classList.remove('show-hidden-lines')
-            // console.log('Hidden lines removed for block', index)
+            toggle.classList.remove('active')
+            console.log('Hidden lines removed for block', index)
           } else {
             code.innerHTML = code.dataset.fullContent
             pre.classList.add('show-hidden-lines')
-            // console.log('Hidden lines restored for block', index)
+            toggle.classList.add('active')
+            console.log('Hidden lines restored for block', index)
           }
         })
       })
