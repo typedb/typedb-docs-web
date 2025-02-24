@@ -283,20 +283,24 @@
         icon.className = 'toggle-hidden-icon'
         toggle.appendChild(icon)
 
-        toolbox.appendChild(toggle)
-        // console.log('Appended toggle button to toolbox for block', index)
+        if (visibleContent !== fullContent) {
+          toolbox.appendChild(toggle)
+          // console.log('Appended toggle button to toolbox for block', index)
+        } else {
+          // console.log('Did not create toggle: no content to toggle', index)
+        }
 
         toggle.addEventListener('click', function () {
           if (pre.classList.contains('show-hidden-lines')) {
             code.innerHTML = code.dataset.visibleContent
             pre.classList.remove('show-hidden-lines')
             toggle.classList.remove('active')
-            console.log('Hidden lines removed for block', index)
+            // console.log('Hidden lines removed for block', index)
           } else {
             code.innerHTML = code.dataset.fullContent
             pre.classList.add('show-hidden-lines')
             toggle.classList.add('active')
-            console.log('Hidden lines restored for block', index)
+            // console.log('Hidden lines restored for block', index)
           }
         })
       })
