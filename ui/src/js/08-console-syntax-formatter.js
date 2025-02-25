@@ -4,15 +4,17 @@
   const SUPPORTED = ['typeql', 'python', 'rust']
 
   // --- TypeDB Console Script syntax ---
+  const DEFAULT_DB = 'db_test'
+
   const CONSOLE = {
     txn_open: {
-      schema: '.transaction schema db_test',
-      write: '.transaction write db_test',
-      read: '.transaction read db_test',
+      schema: 'transaction schema',
+      write: 'transaction write',
+      read: 'transaction read',
     },
     send_q: '', // sending a query just adds new line
-    commit: '.commit',
-    close: '.close',
+    commit: 'commit',
+    close: 'close',
     comments: {
       failure: {
         attribute: 'fails_at', // Test attribute (see typeql_runner.py)
@@ -24,12 +26,15 @@
       },
       count: {
         attribute: 'count', // Test attribute (see typeql_runner.py)
-        comment: 'Answer count:',
+        comment: 'Answer count: ',
       },
     },
   }
 
   // --- Keep this synced with typedb-docs: code_test/parser/parser.py ---
+  const TXN_TYPE_REGEX = /^.+?test\[(schema|write|read)\b/
+  const TXN_DB_REGEX = /^.+?test\[(?:.+?db=(.+?))?\b/
+  const TXN_COUNT_REGEX = /^.+?test\[(?:.+?count=(.+?))?\b/
   const MARKERS = {
     typeql: {
       test_start: '#!test',
@@ -89,11 +94,17 @@
     return '<span class="token console">' + str + '</span>'
   }
 
+  function startTxn (ongoingTransaction) {
+    const dbString = ' ' + ongoingTransaction.db
+    return hideLine(consoleStr(CONSOLE.txn_open[ongoingTransaction.type] + dbString))
+  }
+
   function terminateTxn (ongoingTransaction) {
+    const countComment = ongoingTransaction.count ? CONSOLE.comments.count.comment + ongoingTransaction.count : ''
     const failureComment = ongoingTransaction.failure ? CONSOLE.comments.failure.comment : ''
     const rollbackComment = ongoingTransaction.rollback ? CONSOLE.comments.rollback.comment : ''
-    const commentStart = (ongoingTransaction.failure || ongoingTransaction.rollback) ? ' # ' : ''
-    return hideLine(consoleStr(CONSOLE[ongoingTransaction.ends_with]) + commentStr(commentStart + failureComment + rollbackComment))
+    const commentStart = (ongoingTransaction.failure || ongoingTransaction.rollback || ongoingTransaction.count) ? ' # ' : ''
+    return hideLine(consoleStr(CONSOLE[ongoingTransaction.ends_with]) + commentStr(commentStart + countComment + failureComment + rollbackComment))
   }
 
   function mayTerminateQuery (currentState, resetState) {
@@ -129,6 +140,8 @@
         let queryState = QueryParserState.NONE
         const ongoingTransaction = {
           type: null,
+          db: null,
+          count: null,
           failure: null,
           rollback: null,
           ends_with: null,
@@ -157,21 +170,21 @@
                 formattedLines.push(terminateTxn(ongoingTransaction))
                 formattedLines.push(hideLine(''))
               }
-              const txnTypeMatch = line.match(/^.+?\[(.+?)\b/)
+              const txnTypeMatch = line.match(TXN_TYPE_REGEX)
+              const txnDBMatch = line.match(TXN_DB_REGEX)
+              const txnCountMatch = line.match(TXN_COUNT_REGEX)
               if (!(txnTypeMatch)) {
-                console.warn('Found typeql test without transaction type')
-                continue
-              }
-              if (!(txnTypeMatch[1] in CONSOLE.txn_open)) {
-                console.warn('Found typeql test with invalid transaction type')
+                console.warn('Found typeql test without valid transaction type')
                 continue
               }
               // TODO: parse out answer count test attribute
               ongoingTransaction.type = txnTypeMatch[1]
+              ongoingTransaction.db = txnDBMatch[1] || DEFAULT_DB
+              ongoingTransaction.count = txnCountMatch[1] || null
               ongoingTransaction.failure = (line.indexOf(CONSOLE.comments.failure.attribute) !== -1)
               ongoingTransaction.rollback = (line.indexOf(CONSOLE.comments.rollback.attribute) !== -1)
               ongoingTransaction.ends_with = (ongoingTransaction.failure || ongoingTransaction.rollback || ongoingTransaction.type === 'read') ? 'close' : 'commit'
-              formattedLines.push(hideLine(consoleStr(CONSOLE.txn_open[ongoingTransaction.type])))
+              formattedLines.push(startTxn(ongoingTransaction))
             }
             continue
           }
@@ -228,7 +241,7 @@
 
           var skipLinesMatch = line.match(`${MARKERS[lang].skip_lines}(\\d+)`)
           if (skipLinesMatch) {
-            // console.log('Found hidden-lines marker (#!!n) at line', i, 'in block', index, 'n =', skipLinesMatch[1])
+            // console.log('Found hidden-lines marker at line', i, 'in block', index, 'n =', skipLinesMatch[1])
             var n = parseInt(skipLinesMatch[1], 10)
             for (var j = 0; j < n; j++) {
               i++
