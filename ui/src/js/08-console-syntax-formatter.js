@@ -17,7 +17,7 @@
     close: 'close',
     comments: {
       failure: {
-        attribute: 'fails_at', // Test attribute (see typeql_runner.py)
+        attribute: 'fail_at', // Test attribute (see typeql_runner.py)
         comment: 'Will fail.',
       },
       rollback: {
@@ -100,7 +100,7 @@
   }
 
   function terminateTxn (ongoingTransaction) {
-    const countComment = ongoingTransaction.count ? CONSOLE.comments.count.comment + ongoingTransaction.count : ''
+    const countComment = ongoingTransaction.count ? CONSOLE.comments.count.comment + ongoingTransaction.count + '.' : ''
     const failureComment = ongoingTransaction.failure ? CONSOLE.comments.failure.comment : ''
     const rollbackComment = ongoingTransaction.rollback ? CONSOLE.comments.rollback.comment : ''
     const commentStart = (ongoingTransaction.failure || ongoingTransaction.rollback || ongoingTransaction.count) ? ' # ' : ''
