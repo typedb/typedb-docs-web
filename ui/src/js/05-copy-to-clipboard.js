@@ -60,7 +60,7 @@
 
   function writeToClipboard(code) {
     var text = code.innerText.replace(TRAILING_SPACE_RX, "");
-    if (code.dataset.lang === "console" && text.startsWith("$ "))
+    if (code.dataset.lang === "bash" && text.startsWith("$ "))
       text = extractCommands(text);
     window.navigator.clipboard.writeText(text).then(
       function() {
