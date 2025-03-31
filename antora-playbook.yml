@@ -22,7 +22,8 @@ content:
       branches: HEAD
     - url: https://github.com/typedb/typedb-driver
       start_path: docs
-      branches: [master, "2.29.2"]
+      branches: [master]
+      tags: ["2.29.2"]
     - url: .
       start_path: content/3.x/drivers
       branches: HEAD
