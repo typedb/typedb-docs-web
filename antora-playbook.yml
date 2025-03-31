@@ -22,7 +22,7 @@ content:
       branches: HEAD
     - url: https://github.com/typedb/typedb-driver
       start_path: docs
-      branches: [development, "3.0"] # TODO: Change to [development, 2.x] when development becomes 2.x and 3.0 becomes development
+      branches: [master, "2.29.2"]
     - url: .
       start_path: content/3.x/drivers
       branches: HEAD
