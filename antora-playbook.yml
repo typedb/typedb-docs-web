@@ -55,9 +55,6 @@ content:
       start_path: content/3.x/new_tools
       branches: HEAD
     - url: .
-      start_path: content/3.x/new_typedb_cloud
-      branches: HEAD
-    - url: .
       start_path: content/3.x/new_maintenance_operation
       branches: HEAD
     - url: .
