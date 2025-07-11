@@ -41,6 +41,28 @@ content:
     - url: .
       start_path: content/3.x/home
       branches: HEAD
+
+    - url: .
+      start_path: content/3.x/new_home
+      branches: HEAD
+    - url: .
+      start_path: content/3.x/new_examples
+      branches: HEAD
+    - url: .
+      start_path: content/3.x/new_core_concepts
+      branches: HEAD
+    - url: .
+      start_path: content/3.x/new_tools
+      branches: HEAD
+    - url: .
+      start_path: content/3.x/new_typedb_cloud
+      branches: HEAD
+    - url: .
+      start_path: content/3.x/new_maintenance_operation
+      branches: HEAD
+    - url: .
+      start_path: content/3.x/new_reference
+      branches: HEAD
 urls:
   latest_version_segment: ""
 antora:
