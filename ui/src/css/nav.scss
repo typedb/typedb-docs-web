@@ -194,20 +194,20 @@
         }
     }
 
-    &[data-depth="1"],
-    &[data-depth="2"],
-    &[data-depth="3"] {
-        text-transform: none;
-        font-size: var(--font-size-aside);
-        margin-left: 14px;
+    @for $i from 1 through 3 {
+        &[data-depth="#{$i}"] {
+            text-transform: none;
+            font-size: var(--font-size-aside);
+            margin-left: 14px;
 
-        > .nav-text-container > .nav-text::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 2px;
-            height: 34px;
+            > .nav-text-container > .nav-text::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 2px;
+                height: 34px;
+            }
         }
     }
 }
