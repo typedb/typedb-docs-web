@@ -22,10 +22,7 @@ content:
       branches: HEAD
     - url: https://github.com/typedb/typedb-driver
       start_path: docs
-      branches: ["3.x-docathon", "2.x"]
-    - url: https://github.com/typedb/typedb-examples
-      start_path: docs
-      branches: ["master"]
+      branches: ["master", "2.x"]
     - url: .
       start_path: content/3.x/drivers
       branches: HEAD
