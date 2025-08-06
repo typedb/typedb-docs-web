@@ -42,6 +42,16 @@ content:
     - url: .
       start_path: content/3.x/reference
       branches: HEAD
+
+    - url: .
+      start_path: content/3.x/archive/manual
+      branches: HEAD
+    - url: .
+      start_path: content/3.x/archive/drivers
+      branches: HEAD
+    - url: .
+      start_path: content/3.x/archive/typeql
+      branches: HEAD
 urls:
   latest_version_segment: ""
 antora:
