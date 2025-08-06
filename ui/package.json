@@ -13,6 +13,10 @@
     "engines": {
         "node": ">= 18.0.0"
     },
+    "dependencies": {
+      "postcss": "8.4.31",
+      "prismjs": "1.29.0"
+    },
     "devDependencies": {
         "@asciidoctor/core": "~2.2",
         "@fontsource/titillium-web": "5.0.17",
