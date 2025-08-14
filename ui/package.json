@@ -10,9 +10,6 @@
     "scripts": {
         "build": "gulp bundle"
     },
-    "engines": {
-        "node": ">= 18.0.0"
-    },
     "dependencies": {
       "postcss": "8.4.31",
       "prismjs": "1.29.0"
@@ -54,10 +51,13 @@
         "sass": "1.68.0",
         "stylelint": "~13.3",
         "stylelint-config-standard": "~20.0",
-        "typedb-web-common": "file:../typedb-web/common",
+        "typedb-web-common": "workspace:*",
         "vinyl-fs": "~3.0",
         "webpack": "5.89.0",
         "webpack-stream": "7.0.0"
     },
-    "packageManager": "pnpm@8.6.7"
+    "engines": {
+        "node": ">=22.16 <23"
+    },
+    "packageManager": "pnpm@10.12.1+sha256.889bac470ec93ccc3764488a19d6ba8f9c648ad5e50a9a6e4be3768a5de387a3"
 }
