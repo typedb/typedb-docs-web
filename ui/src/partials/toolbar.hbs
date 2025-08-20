@@ -2,22 +2,12 @@
   <nav class="toolbar">
     <button class="nav-toggle-button"></button>
     <p class="nav-item">
-      {{#if (findPageVersion site.components.home.versions page.componentVersion.version)}}
-        <a class="nav-text nav-link" href="{{{ relativize this.url }}}">
-          <span>
-            <span class="docs-home-icon"></span>
-            <span class="docs-home-text">Docs Home</span>
-          </span>
-        </a>
-      {{/if}}
-      {{#unless (findPageVersion site.components.home.versions page.componentVersion.version)}}
-        <a class="nav-text nav-link" href="{{{ relativize site.components.home.latest.url }}}">
-          <span>
-            <span class="docs-home-icon"></span>
-            <span class="docs-home-text">Docs Home</span>
-          </span>
-        </a>
-      {{/unless}}
+      <a class="nav-text nav-link" href="https://typedb.com/docs">
+        <span>
+          <span class="docs-home-icon"></span>
+          <span class="docs-home-text">Docs Home</span>
+        </span>
+      </a>
     </p>
     <div class="toolbar-over-article">
       <div class="toolbar-search">
