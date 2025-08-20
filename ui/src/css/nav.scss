@@ -70,10 +70,6 @@
     }
 }
 
-.nav-menu > .nav-list > .nav-item:first-child > .nav-text-container > .nav-list > .nav-item:first-child {
-    display: none;
-}
-
 .nav-toggle-button {
     display: none;
     appearance: none;
@@ -84,7 +80,7 @@
     justify-content: center;
     background: transparent;
     border: none;
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-small);
     height: var(--search-height);
     width: var(--search-height);
     cursor: pointer;
@@ -240,7 +236,7 @@
 .nav-text {
     width: 100%;
     padding: 6px 32px;
-    border-radius: var(--border-radius);
+    border-radius: var(--border-radius-small);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -288,7 +284,7 @@ button.nav-text:hover,
     font-size: var(--font-size-aside);
 
     .context-container {
-        border-radius: var(--border-radius);
+        border-radius: var(--border-radius-small);
         display: flex;
         cursor: pointer;
         align-items: center;
@@ -345,7 +341,7 @@ button.nav-text:hover,
     }
 
     .context-container {
-        border-radius: var(--border-radius);
+        border-radius: var(--border-radius-small);
         border: 1px solid var(--color-light-purple);
         background: var(--color-purple);
         display: flex;
@@ -397,7 +393,7 @@ button.nav-text:hover,
 
         background: var(--color-secondary-purple);
         border: 1px solid var(--color-light-purple);
-        border-radius: var(--border-radius);
+        border-radius: var(--border-radius-small);
         box-shadow: 0px 8px 30px 0px rgba(6, 4, 20, 0.58);
         list-style: none;
         overscroll-behavior: none;
@@ -423,11 +419,11 @@ button.nav-text:hover,
         .version {
             a {
                 display: block;
-                border: 1px solid var(--color-dark-white);
-                border-radius: var(--border-radius);
+                border: 1px solid var(--color-grey);
+                border-radius: var(--border-radius-small);
                 white-space: nowrap;
                 padding: 0.125rem 0.25rem;
-                color: var(--color-dark-white);
+                color: var(--color-grey);
             }
 
             &.is-current a {

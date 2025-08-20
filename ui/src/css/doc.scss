@@ -133,7 +133,7 @@
     .colist > table code {
         color: var(--code-font-color);
         background: var(--code-background);
-        border-radius: var(--border-radius);
+        border-radius: var(--border-radius-small);
         border: 1px solid var(--content-border-color);
         font-size: var(--font-size-code);
         padding: 6px 6px 3px 6px;
@@ -500,7 +500,7 @@
                 em {
                     font-weight: var(--font-weight-light);
                     font-size: var(--font-size-p1);
-                    color: var(--color-dark-white);
+                    color: var(--color-grey);
                     opacity: 0.9;
                 }
             }
@@ -738,7 +738,7 @@
                 width: 20px;
                 height: 20px;
                 margin-right: 4px;
-                @include url-icon(url("icons/arrow-down.svg"), var(--color-dark-white));
+                @include url-icon(url("icons/arrow-down.svg"), var(--color-grey));
                 transform: rotate(-90deg);
             }
         }
@@ -856,7 +856,7 @@
             opacity: 0;
             transition: opacity 0.5s ease 0.5s;
             background: var(--color-light-purple);
-            border-radius: var(--border-radius);
+            border-radius: var(--border-radius-small);
             padding: 0.25rem 0.5rem;
             position: absolute;
             top: 100%;
@@ -1019,7 +1019,7 @@
         font-size: 12px;
         background: var(--kbd-background);
         border: 1px solid var(--kbd-border-color);
-        border-radius: var(--border-radius);
+        border-radius: var(--border-radius-small);
         box-shadow: 0 1px 0 var(--kbd-border-color), 0 0 0 0.1em var(--body-background) inset;
         padding: 0.25em 0.5em;
         vertical-align: text-bottom;
@@ -1186,7 +1186,7 @@
                     font-size: var(--font-size-h4);
                     line-height: var(--line-height-h4);
                     font-weight: var(--font-weight-semi-bold);
-                    color: var(--color-dark-white);
+                    color: var(--color-grey);
                     hyphens: none;
 
                     &:hover {
@@ -1210,7 +1210,7 @@
         }
 
         a {
-            color: var(--color-dark-white);
+            color: var(--color-white);
             font-style: normal;
             font-size: var(--font-size-h5);
             font-weight: var(--font-weight-semi-bold);

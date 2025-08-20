@@ -2,8 +2,8 @@
   "name": "typedb-web-docs",
   "scripts": {
     "postinstall": "cd ui && pnpm i && cd ..",
-    "build-ui": "cd ui && pnpm build && cd ..",
-    "build": "pnpm build-ui && antora antora-playbook.yml",
+    "build-ui": "pushd ui && pnpm build && popd",
+    "build": "npm run build-ui && antora antora-playbook.yml",
     "build-content": "echo 'Generating site...' && antora antora-playbook.yml",
     "build-ci": "./build-ci.sh"
   },
