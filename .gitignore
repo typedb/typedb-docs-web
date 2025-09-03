@@ -7,6 +7,7 @@
 .ijwb
 
 # Bazel
+.bazelbsp
 bazel-*
 
 local
