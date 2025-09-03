@@ -4,7 +4,7 @@
 
 .doc {
     font-size: var(--doc-font-size);
-    font-weight: var(--font-weight-light);
+    font-weight: var(--font-weight-base);
     hyphens: auto;
     line-height: var(--doc-line-height);
     letter-spacing: var(--body-letter-spacing);
@@ -53,10 +53,9 @@
     }
 
     h1, h2, h3, h4, h5, h6 {
-        position: relative;
         margin-left: -1rem;
+        position: relative;
         padding-left: 1rem;
-        margin-top: 1rem;
         color: var(--color-white);
 
         .anchor {
@@ -76,6 +75,20 @@
         &:hover .anchor {
             visibility: visible;
         }
+    }
+
+    h1 {
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    h2, h3, h4, h5, h6 {
+        margin-top: 2em;
+        margin-bottom: 1em;
+    }
+
+    h3, h4 {
+        font-weight: var(--font-weight-medium);
     }
 
     > h1.page:first-child {
@@ -200,12 +213,12 @@
     }
 
     .paragraph, .dlist, .hdlist, .olist, .ulist, details {
-        margin: 1rem 0 0;
+        margin: 0 0 1.25rem;
     }
 
     .exampleblock, .imageblock, .listingblock, .literalblock, .verseblock, .videoblock, .openblock, .quoteblock,
     .partintro, hr {
-        margin: 24px 0 0;
+        margin: 1.5rem 0;
     }
 
     .tablecontainer,
@@ -276,7 +289,7 @@
 
     .admonitionblock {
         position: relative;
-        margin: 1.5rem 0 0;
+        margin: 1.5rem 0;
         padding: 1.25rem;
         border-radius: var(--border-radius);
         color: var(--color-white);
@@ -367,6 +380,10 @@
         td.content > :not(.title):first-child,
         td.content > .title + * {
             margin-top: 0;
+        }
+
+        td.content > :last-child {
+            margin-bottom: 0;
         }
 
         > table {
@@ -1206,6 +1223,10 @@
     .sidebarblock {
         > .content > :first-child {
             margin-top: 0;
+            margin-bottom: 1rem;
+        }
+
+        > .content > :last-child {
             margin-bottom: 0;
         }
 
