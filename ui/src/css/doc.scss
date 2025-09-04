@@ -225,7 +225,8 @@
     .tablecontainer + *,
     :not(.tablecontainer) > table.tableblock,
     :not(.tablecontainer) > table.tableblock + * {
-        margin-top: 1.5rem;
+        margin-top: 0.5rem;
+        margin-bottom: 1.5rem;
     }
 
     p.tableblock + p.tableblock {
