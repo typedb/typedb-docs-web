@@ -70,4 +70,8 @@
     .tabpanel > :first-child {
         margin-top: 0;
     }
+
+    .tabpanel > :last-child {
+        margin-bottom: 0;
+    }
 }
