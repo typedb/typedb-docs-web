@@ -1,1 +1,6 @@
     {{!-- Add additional meta tags here --}}
+
+    {{!-- Check if the page is from the 2.x component version --}}
+    {{#if (eq page.componentVersion.version "2.x")}}
+      <meta name="robots" content="noindex, nofollow">
+    {{/if}}
