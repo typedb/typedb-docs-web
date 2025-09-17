@@ -5,7 +5,7 @@ const { parseStringPromise, Builder } = require('xml2js');
 // === CONFIGURATION ===
 const OUTPUT_DIR = './dist'; // Antora bundle output folder
 const SITE_URL = 'https://typedb.com/docs'; // Absolute site URL
-const EXCLUDE_COMPONENTS = ['academy', 'manual', 'typeql', 'drivers'];
+const EXCLUDE_COMPONENTS = ['manual', 'typeql', 'drivers'];
 const EXCLUDE_VERSION_PATTERN = /\/2\.[^/]*\//; // matches /2.x/ in URL paths
 const SITEMAP_INDEX_FILE = 'sitemap.xml';
 

@@ -19,7 +19,6 @@ if (!fs.existsSync(rootDir)) {
 
 // Components to exclude entirely
 const excludedComponents = new Set([
-    'academy',
     'manual',
     'drivers',
     'typeql',
