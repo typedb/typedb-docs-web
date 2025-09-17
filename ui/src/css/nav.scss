@@ -114,7 +114,7 @@
 
 .nav-item {
     color: var(--color-white);
-    font-weight: var(--font-weight-thin);
+    font-weight: var(--font-weight-light);
 
     &:not(:hover) > * > .nav-link svg {
         opacity: 0;
@@ -278,7 +278,7 @@ button.nav-text:hover,
 }
 
 .nav-panel-ai {
-    color: var(--body-font-color);
+    color: var(--color-white);
     line-height: 1.25;
     font-weight: var(--font-weight-light);
     font-size: var(--font-size-aside);
@@ -330,7 +330,7 @@ button.nav-text:hover,
 
 .nav-panel-explore {
     position: relative;
-    color: var(--body-font-color);
+    color: var(--color-white);
     line-height: 1.25;
     font-weight: var(--font-weight-light);
     font-size: var(--font-size-aside);
