@@ -40,10 +40,13 @@ content:
       start_path: content/3.x/maintenance-operation
       branches: HEAD
     - url: .
-      start_path: content/3.x/academy
+      start_path: content/3.x/reference
       branches: HEAD
     - url: .
-      start_path: content/3.x/reference
+      start_path: content/3.x/typeql-reference
+      branches: HEAD
+    - url: .
+      start_path: content/3.x/academy
       branches: HEAD
 
     - url: .
