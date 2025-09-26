@@ -8,6 +8,7 @@
     "build": "npm run build-ui && npm run build-content",
     "build-llms": "node build-llms.js",
     "prune-sitemap": "node prune-sitemap.js",
+    "add-llms-short": "node add-llms-short.js",
     "build-ci": "./build-ci.sh"
   },
   "dependencies": {

@@ -1,0 +1,415 @@
+# TypeQL 3.0 Syntactic and Semantic Summary
+
+## Overview
+TypeQL 3.0 is a strongly-typed, polymorphic query language for TypeDB that enables schema definition, data manipulation, and complex queries through a type-theoretic approach. This summary covers the key syntactic and semantic differences from TypeDB 2.0 and provides comprehensive guidance TypeQL 3.0.
+
+## Major Changes compared to TypeQL 2.0
+
+### Value Type Renaming
+- `long` → `integer` (all integer values now use `integer` type)
+
+### Variables
+- **All variables**: Must start with `$` (no more `?` for value variables)
+- **Computed values**: Use `let` keyword for assignments for expressions or function calls
+
+### Patterns
+- **Relation role player shorthand has changed**: We NO LONGER use `$relation (role: $player) isa relation-type;`. Instead, we use `$relation isa relation-type (role: $player)`. Any usage of `$var (role: $player)` forces `$var` to be a _type_, instead of an _instance_ in TypeQL 3.0
+
+### Schema Definition: Type Kinds
+- **No more predefined root types** - all types must be explicitly declared with their kind
+- **Syntax**: `entity person`, `relation friendship`, `attribute name`
+- **Subtyping**: Still supported with separate definition: `entity person, sub animal;`
+
+### Updated Query Syntax
+
+#### Undefine and Delete Operations
+- **Type removal**: `undefine person;` (for entities, relations, attributes)
+- **Trait removal**: 
+  - `undefine owns name from person;`
+  - `undefine relates best-friend from friendship;`
+  - `undefine plays friendship:best-friend from person;`
+- **Instance deletion**: `delete $x;`
+- **Connection deletion**:
+  - `delete has $name of $x`
+  - `delete links (friend: $p) of $rel`;
+
+#### Query Clauses
+- **Variable filtering**: 'get' operation has been renamed 'select'
+
+#### New Fetch Syntax
+- **JSON-aligned formatting** with nested structures. Syntax describes the structure of JSON output.
+- **Subqueries**: Fetch subqueries with many answers are embedded using `[]`, while single-returning subqueries use `()`
+- **All attributes**: Getting all attributes can be done with `fetch { $person.* };`, or `fetch { "person-attributes": { $person.* } };`, since the .* operation expands into a dictionary, it must be wrapped in {}
+
+### 4. Annotations Consolidation
+- **Abstract and regex**: Now grouped under `@` annotations
+- **Syntax**: `define entity abstract-person @abstract, owns email @regex(".*@.*");`
+
+### 5. Cardinality Defaults
+- **Plays**: `@card(0..)` (unlimited) - default
+- **Owns/Relates**: `@card(0..1)` (up to one) - default
+- **Explicit cardinality**: `@card(0..)` required for unbounded cardinality cardinality
+
+## Core Syntax Elements
+
+Comments always start from `#` in typeql to the end of the line, and there are no block comments.
+
+These are reserved identifiers. **Never use them as user-defined identifier, in any capitalization**:
+with, match, fetch, update, define, undefine, redefine, insert, put, delete, end , entity, relation, attribute, role , asc, desc, struct, fun, return, alias, sub, owns, as, plays, relates, iid, isa, links, has, is, or, not, try, in, true, false, of, from, first, last
+
+### Schema Definition
+* use `define` to idempotently add to the schema
+* use `undefine` to remove elements from the schema
+* use `redefine` to replace parts of the schema
+
+### Query Pipeline Structure
+TypeQL 3.0 uses pipeline-based queries with multiple stages:
+
+#### Match Stage
+- **Purpose**: Find data matching patterns
+- **Syntax**: `match <pattern>;`
+- **Example**: 
+```typeql
+match
+  $user isa user, has username "user_0";
+  friendship (friend: $user, friend: $friend);
+```
+#### Insert Stage
+- **Purpose**: Add new data
+- **Syntax**: `insert <pattern>;`
+- **Example**: `insert $user has status "VIP";`
+
+#### Delete Stage
+- **Purpose**: Remove data
+- **Syntax**: `delete <pattern>;`
+
+#### Update Stage
+- **Purpose**: Replace existing data
+- **Syntax**: `update <pattern>;`
+
+#### Put Stage
+- **Purpose**: Insert or update data conditionally (upsert operation)
+- **Syntax**: `put <pattern>;`
+- **Behavior**: Creates new data if **the entire pattern** doesn't exist, otherwise returns the existing matching data
+- **Example**: 
+```typeql
+match
+  $p isa person, has full-name "John Doe";
+put
+  $p has age 30;
+```
+
+#### Fetch Stage
+- **Purpose**: Retrieve and format data
+- **Syntax**: `fetch { <structure> };`
+- **Features**:
+  - JSON-like nested structures
+  - Subqueries with `match` and either terminated with `fetch` or `return`
+  - Attribute access with `$var.*` to get all (wrapped in {}), `$var.<attribute type>` for a 0 or 1 cardinality attributeownership , and `[ $var.<attribute type> ]` for higher cardinality attribute ownership
+
+#### Reduce Stage
+- **Purpose**: Aggregate and compute values
+- **Syntax**: `reduce <variable> = <function> [groupby <variables>];`
+- **Example**: `reduce $VIP-friend-count = count groupby $friend;`
+
+##### Select Operator
+- **Purpose**: Specify which variables to return in query results
+- **Syntax**: `select $var1, $var2;`
+- **Behavior**: Filters output to only include specified variables
+- **Example**: 
+```typeql
+match
+  $p isa person, has full-name $n, has age $a;
+select $n, $a;
+```
+
+##### Sort Operator
+- **Purpose**: Order query results based on specified variables
+- **Syntax**: `sort $var [asc/desc] (, $var2 [asc/desc], ...);`
+- **Default**: Ascending order if not specified
+- **Example**: 
+```typeql
+match
+  $p isa person, has full-name $n, has age $a;
+sort $a desc;
+```
+
+##### Limit Operator
+- **Purpose**: Restrict the number of results returned
+- **Syntax**: `limit <number>;`
+- **Example**: 
+```typeql
+match
+  $p isa person, has full-name $n;
+limit 2;
+```
+
+##### Offset Operator
+- **Purpose**: Skip a specified number of results before returning remaining ones
+- **Syntax**: `offset <number>;`
+- **Example**: 
+```typeql
+match
+  $p isa person, has full-name $n;
+offset 2;
+```
+
+### Variable System
+- **Concept Variables**: `$variable-name` (represent instances/values)
+- **Value Variables**: `$variable-name` (all variables now use `$`)
+- **Computed Variables**: `let $computed = <expression>;`
+
+### Pattern Construction
+
+#### Basic Data Statements
+- **Type assertion**: `$x isa person;`
+- **Attribute ownership**: `$x has $name;` or `$x has name "John";`
+- **Anonymous Relation participation**: `friendship (friend: $x, friend: $y);`
+- **Variablized relation participation**: `$rel isa friendship, links (friend: $x, friend: $y);`
+- **Value comparison operation**: `$x > 25;`. Comparing two variables will ignore attribute type if the variables hold attributes and not primitive values.
+- **Concept comparison**: use `is` to do exact equality between concepts, eg `$x is $y;`. This will _not_ ignore attribute type in the variables hold attributes.
+
+Be careful: when a relation type **relates** a role, you can query data instances with links player syntax as the linking variable: `$relation-instance links (role: $player)`. 
+However, when a relation type (or any other type) **plays** a role, then the instances are queried with links player syntax with the variable **inside** the parenthesis: `$other-relation-instance links (role: $relation-instance)`.
+
+#### Basic schema statements
+- **Entity, relation or attribute type**: `entity $entity-type`; `relation $relation-type`; `attribute $attribute-type`
+- **Label**: `$type-variable label <label>`
+- **Value type**: `$attribute-type value <value type>;`
+- **Owns**: `$owner-type owns <attribute-type>`. Each attribute ownership declaration requires its own 'owns' declaration.
+- **Plays**: `$player-type plays <scoped role-type>`. Each role playing declaration requires its own 'plays'.
+- **Relates**: `$relation-type relates <unscoped role type>`
+
+Note that you can use a type label instead of variables in most cases.
+
+Warning! Using any of these statements means the variables or types on both sides are **schema types**, not **instances**.
+
+These are the available annotations in TypeQL:
+- @abstract : used directly on a type declaration
+- @key : only used on `owns` declarations
+- @unique : only used on `owns` declarations
+- @card(start..end) : used on owns, relates, or plays declaratinos
+- @range(start..end) : only used on `value <value-type>` declarations
+- @regex("regex") : only used on `value <value-type>` declarations
+- @values(value-1, value-2, ...) : only used on `value <value-type>` declarations
+
+
+#### Data vs schema statements
+
+Schema statements have **corresponding** statements when looking up data:
+
+- `relates` & `plays` corresponds to `links`:
+  `define entity person plays friendship:friend; relatino friendship relates friend;`
+  corresponds to data patterns like `match $p isa person; $friendship links (friend: $p);`
+- `owns` corresponds to `has:
+  `define entity person owns name; attribute name value string;` 
+  corresponds to data patterns like `match $p isa person, has $name; $name isa name;`
+
+#### Logical Pattern Operators
+- **Conjunction**: `and` (implicit in sequences separted by `;` or `,`)
+- **Disjunction**: `{pattern} or { pattern } [ or { pattern } or ... ]`
+- **Negation**: `not { pattern} `
+- **Optionality**: `try { pattern }`
+
+Use these to build complex patterns.
+
+#### Comparison Operators
+- **Equality**: `=`, `!=`
+- **Ordering**: `<`, `<=`, `>`, `>=`
+- **Pattern matching**: `like` (for regexes), `contains`
+
+### Functions and Aggregations
+
+#### Built-in Functions
+- **Count**: `count`, `count groupby $var`
+- **Mathematical**: `sum`, `mean`, `max`, `min`
+- **String**: `concat`, `substring`
+- **Date/Time**: `datetime`, `duration`
+
+#### Custom Functions
+- **Query-scoped**: `with fun friend_count($user: user) -> integer: ...`
+- **Schema-defined**: `define fun friend_count($user: user) -> integer: ...`
+
+### Value Types
+- **Implemented**: `string`, `integer`, `double`, `boolean`, `datetime`, `datetime-tz, `date`, `duration`, `decimal` (for fixed-decimal operations such as currency).
+
+Struct value types are not supported yet.
+
+## Best Practices for LLM Query Generation
+
+### 1. Schema-First Approach
+- Always define schema before data operations
+- Use explicit type kinds (`entity`, `relation`, `attribute`)
+- Set appropriate cardinalities for performance and to constraint data correctly
+
+### 2. Variable Naming
+- Use descriptive variable names (`$user`, `$friend`, `$company`)
+- All variables must start with `$`
+- Use `let` for computed values or function assignments
+
+### 4. Pipeline Design
+- Use `match` to find data
+- Use `insert`/`delete`/`update`/`put` for modifications
+- Use `reduce` for aggregations
+- Use `select`/`sort`/`limit`/`offset` for pipeline stream control
+- Use `fetch` for formatted output and projection
+
+## Common Patterns
+
+### Entity Creation
+```typeql
+insert $person isa person, has name "Alice", has age 30;
+```
+
+### Relation Creation
+```typeql
+insert 
+  $alice isa person, has name "Alice";
+  $bob isa person, has name "Bob";
+  friendship (friend: $alice, friend: $bob);
+```
+
+If you need to have a variable for the relation, use `links` to move the role players to their own statement:
+```
+insert 
+  $alice isa person, has name "Alice";
+  $bob isa person, has name "Bob";
+  $f isa friendship;
+  $f links (friend: $alice, friend: $bob);
+```
+
+This summary provides the essential syntactic and semantic knowledge needed for generating accurate and effective TypeQL 3.0 queries.
+
+## Examples
+
+## Schema
+Here's a complete example of a small TypeDB 3.0 schema modeling a social network with pages, which can be either user pages or organization pages. Organization pages can themselves be specialized to be company or university pages.
+```typeql
+define
+  entity page,
+    owns username @key;
+  entity user,
+    sub page, 
+	owns email @card(0..) @unique,
+	owns age,
+	plays following:follower;
+  entity organization,
+    sub page,
+    owns running,
+    plays following:target;
+  entity university, 
+    sub organization,   
+	owns non-profit-status;
+  entity company,
+    sub organization;		
+  relation following, 
+    relates follower @card(1),
+	relates target @card(1),
+	owns start-date;
+  attribute username, value string;
+  attribute email, value string @regex(".*@.*");
+  attribute age, value integer;
+  attribute running, value string @values("running", "defunct");
+  attribute start-date, value datetime;
+  attribute non-profit-status, value string; 
+```
+
+## Inserting data
+
+Inserting some initial data
+```typeql
+insert
+  $john isa user,
+    has username "john",
+	has email "john@email.com",
+	has age 30;
+
+  $stanford-page isa university,
+    has username "stanford",
+    has non-profit-status "501(c)(3)";
+
+  following (follower: $john, target: $stanford-page);
+
+  $typedb-page isa company,
+    has username "typedb";
+
+  $typedb-following isa following,
+    links (follower: $john, target: $typedb-page),
+	has start-date 2025-01-01T00:00:00.000000;
+```
+  
+Extending existing data:
+```typeql
+match
+  $john isa user, has username "john"; 
+insert 
+  $berkeley-page isa university,
+    has username "berkeley",
+    has non-profit-status "501(c)(3)";
+  $alice isa user, has username "alice";
+  following (follower: $john, target: $berkeley-page);
+  following (follower: $alice, target: $berkeley-page);
+```
+
+## Reading data
+
+Look up the most followed organizatino:
+```typeql
+match
+  $page isa organization; 
+  following (follower: $follower, target: $page);
+reduce $count = count groupby $page;
+sort $count desc;
+limit 1;
+fetch { 
+	"page": $page.username,
+	"count": $count,
+};
+```
+
+Find any followings from a specific date range:
+```typeql
+match 
+  $following isa following,
+    links (target: $page),
+	has start-date $date;
+	$date >= 2025-01-01T00:00:00;
+	$date < 2025-02-01T00:00:00;
+fetch {
+  "page": $page.username,
+  "following attributes": { $following.* },
+};
+```
+
+Fetch query with nested structure using a demonstrator function:
+```typeql
+with fun silly_function() -> { integer }:
+  match 
+    let $value = 1;
+  return { $value };
+match
+  $user isa user;
+fetch {
+  "all attributes": { $user.* },
+  "username": $user.username,
+  "emails": [ $user.email ],
+  "emails-nested": {
+    "double nested": {
+      "emails": [$user.email ],
+    }
+  },
+  "direct function call": [silly_function()],
+  "multi valued subquery": [
+    match
+      following (follower: $user, target: $org);
+    fetch {
+      "org information": { $org.* },
+    };
+  ],
+  "single value subquery": (
+    match
+      following (follower: $user);
+    return count;
+  )
+};
+```
