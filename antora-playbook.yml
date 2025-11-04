@@ -48,6 +48,9 @@ content:
     - url: .
       start_path: content/3.x/academy
       branches: HEAD
+    - url: .
+      start_path: content/3.x/tutorials
+      branches: HEAD
 
     - url: .
       start_path: content/3.x/archive/manual
