@@ -16,7 +16,7 @@
     z-index: 2;
     overflow-y: auto;
     scrollbar-width: thin;
-    scrollbar-color: var(--color-deep-purple) transparent;
+    color-scheme: dark;
 
     @media (max-width: media.$max-width-mobile) {
         height: auto;
@@ -169,6 +169,10 @@
                     font-size: 12px;
                 }
             }
+
+            > .nav-text-toggle-button {
+                margin-left: 3px;
+            }
         }
     }
 
@@ -243,8 +247,8 @@
     gap: 8px;
 }
 
-p.nav-text {
-    padding: 0 10px 0 24px;
+[data-depth="0"] > .nav-text-container > .nav-text {
+    padding: 0 10px 0 30px;
 }
 
 .nav-text-toggle {
