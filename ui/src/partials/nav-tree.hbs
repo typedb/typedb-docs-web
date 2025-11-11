@@ -12,7 +12,7 @@
           {{/if}}
           {{#if ./url}}
             <a class="nav-text nav-link" href="
-      {{~#if (eq ./urlType 'internal')}}{{{./url}}}
+      {{~#if (eq ./urlType 'internal')}}{{{relativize ./url}}}
             {{~else}}{{{./url}}}{{~/if}}">{{{./content}}}</a>
           {{else}}
             {{#if (and ./items.length ../level)}}
