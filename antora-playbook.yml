@@ -49,7 +49,7 @@ content:
       start_path: content/3.x/academy
       branches: HEAD
     - url: .
-      start_path: content/3.x/tutorials
+      start_path: content/3.x/guides
       branches: HEAD
 
     - url: .
