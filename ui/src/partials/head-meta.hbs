@@ -1,6 +1,6 @@
     {{!-- Add additional meta tags here --}}
 
-    {{!-- Check if the page is from the 2.x component version --}}
-    {{#if (eq page.componentVersion.version "2.x")}}
+    {{!-- Prevent indexing on 2.x docs and non-production sites --}}
+    {{#if (or (eq page.componentVersion.version "2.x") (ne site.url "https://typedb.com/docs"))}}
       <meta name="robots" content="noindex, nofollow">
     {{/if}}
