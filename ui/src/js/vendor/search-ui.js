@@ -223,12 +223,9 @@
         searchResultComponentHeader.classList.add(
           "search-result-component-header"
         );
-        const { title, displayVersion } = componentVersion;
-        const componentVersionText = `${title}${
-          doc.version && displayVersion ? ` ${displayVersion}` : ""
-        }`;
+        const { title } = componentVersion;
         searchResultComponentHeader.appendChild(
-          document.createTextNode(componentVersionText)
+          document.createTextNode(title)
         );
         searchResultDataset.appendChild(searchResultComponentHeader);
         currentComponent = componentVersion;
