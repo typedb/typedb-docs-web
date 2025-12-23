@@ -139,6 +139,7 @@
   const config = document.getElementById("search-ui-script").dataset;
   const snippetLength = 100;
   const siteRootPath = config.siteRootPath || "";
+  const pageVersion = config.pageVersion || "";
   const searchInput = document.getElementById("search-input");
   const searchResultContainer = document.createElement("div");
   searchResultContainer.classList.add("search-result-dropdown-menu");
@@ -222,12 +223,9 @@
         searchResultComponentHeader.classList.add(
           "search-result-component-header"
         );
-        const { title, displayVersion } = componentVersion;
-        const componentVersionText = `${title}${
-          doc.version && displayVersion ? ` ${displayVersion}` : ""
-        }`;
+        const { title } = componentVersion;
         searchResultComponentHeader.appendChild(
-          document.createTextNode(componentVersionText)
+          document.createTextNode(title)
         );
         searchResultDataset.appendChild(searchResultComponentHeader);
         currentComponent = componentVersion;
@@ -317,16 +315,31 @@
       facetFilterInput &&
       facetFilterInput.checked &&
       facetFilterInput.dataset.facetFilter;
+
+    // Filter results by version: only show results matching the current page version
+    let filteredResult = result.filter(item => {
+      const ids = item.ref.split("-");
+      const docId = ids[0];
+      const doc = documents[docId];
+
+      // Only show results from the same version as the current page
+      if (pageVersion && doc.version && pageVersion !== doc.version) {
+        return false;
+      }
+
+      return true;
+    });
+
     if (facetFilter) {
       const [field, value] = facetFilter.split(":");
-      return result.filter(item => {
+      return filteredResult.filter(item => {
         const ids = item.ref.split("-");
         const docId = ids[0];
         const doc = documents[docId];
         return field in doc && doc[field] === value;
       });
     }
-    return result;
+    return filteredResult;
   }
 
   function search(index, documents, queryString) {
