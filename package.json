@@ -22,6 +22,7 @@
     "@sanity/types": "3.67.1",
     "cheerio": "1.1.2",
     "turndown": "7.2.1",
+    "typedb-web-common": "workspace:*",
     "xml2js": "0.6.2"
   },
   "engines": {
