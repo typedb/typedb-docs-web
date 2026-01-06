@@ -43,7 +43,6 @@
         position: sticky;
         margin-left: calc(0px - var(--doc-tooltip-width));
         padding-left: var(--doc-tooltip-width);
-        pointer-events: none;
         padding-top: 12px;
         padding-bottom: 0.5rem;
         top: var(--toolbar-height);
