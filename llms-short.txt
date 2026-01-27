@@ -245,8 +245,6 @@ Struct value types are not supported yet.
 
 ## Advanced Query Patterns
 
-These patterns were validated against TypeDB 3.0 during the conversion of 4,728 queries across 7 domains.
-
 ### Chained Reduce (HAVING Equivalent)
 
 Filter on aggregation results by chaining a `reduce` stage into another `match` stage:
@@ -737,9 +735,7 @@ fetch {
 };
 ```
 
-## Advanced Examples (Validated Against TypeDB 3.0)
-
-These examples come from converting 4,728 queries across 7 domains and reflect patterns that are confirmed to parse and type-check correctly.
+## Advanced Examples
 
 ### Custom function with chained reduce
 ```typeql
