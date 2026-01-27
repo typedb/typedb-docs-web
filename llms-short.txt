@@ -65,7 +65,7 @@ with, match, fetch, update, define, undefine, redefine, insert, put, delete, end
 ### Query Pipeline Structure
 TypeQL 3.0 uses pipeline-based queries with multiple stages:
 
-**CRITICAL: Pipeline order must be**: `match` → `select` → `distinct` → `sort` → `offset` → `limit` → `fetch` or `reduce`
+Pipeline stages can be composed in any order, except that `fetch` can only be the final stage.
 
 Stages can be chained: a `reduce` stage produces new bindings that can feed into another `match` stage (see "Chained Reduce" below).
 
@@ -298,7 +298,7 @@ fetch { "user": $user.screen_name, "ratio": $ratio };
 
 # Absolute difference for similarity ranking
 match
-  $ref isa user, has name "Neo4j", has betweenness $ref_b;
+  $ref isa user, has name "TypeDB", has betweenness $ref_b;
   $other isa user, has betweenness $other_b;
   not { $ref is $other; };
 let $diff = abs($other_b - $ref_b);
@@ -347,25 +347,15 @@ $rt_users > 5;
 fetch { "tweet": $tweet.text, "unique_retweeters": $rt_users };
 ```
 
-### Type Variables (Polymorphic Queries)
+### Polymorphic Queries (Disjunctions Across Relation Types)
 
-Match across multiple relation types using type variables:
+Match across multiple relation types using disjunctions:
 
 ```typeql
 # Count all interactions (mentions + retweets + replies) for each tweet
 match
   $tweet isa tweet;
-  $rel isa $t;
-  {
-    $t label mentions;
-    $rel links (source_tweet: $tweet);
-  } or {
-    $t label retweets;
-    $rel links (original_tweet: $tweet);
-  } or {
-    $t label reply_to;
-    $rel links (original_tweet: $tweet);
-  };
+  { $rel links (source_tweet: $tweet); } or { $rel links (original_tweet: $tweet); };
 reduce $count = count groupby $tweet;
 sort $count desc;
 limit 5;
@@ -374,28 +364,23 @@ fetch { "tweet": $tweet.text, "interactions": $count };
 
 ### Variable Scoping in Disjunctions
 
-**CRITICAL**: Variables defined inside disjunction branches are scoped to those branches and NOT accessible outside. This is the most common source of errors.
+Variables introduced inside disjunction branches are accessible outside **only if they are bound in every branch**. Variables bound in only some branches are not returned.
 
 ```typeql
-# WRONG - $rel not accessible outside disjunction
-{ interacts (character1: $c); } or { interacts (character2: $c); };
-reduce $count = count($rel) groupby $c;  # Error: $rel undefined
+# WRONG - $rel only bound in one branch
+{ $rel isa interacts (character1: $c); } or { interacts (character2: $c); };
+reduce $count = count($rel) groupby $c;  # Error: $rel not in every branch
 
-# ALSO WRONG - $rel inside branches is STILL scoped even if named the same
-{ $rel isa interacts ($c); } or { $rel isa interacts2 ($c); };
-reduce $count = count($rel) groupby $c;  # Error: $rel still scoped
+# RIGHT - $rel bound in every branch
+{ $rel isa interacts (character1: $c); } or { $rel isa interacts (character2: $c); };
+reduce $count = count($rel) groupby $c;  # Works: $rel is in all branches
 
-# RIGHT - single relation type: bind outside disjunction
-$rel isa interacts ($c);
-reduce $count = count($rel) groupby $c;  # Works
-
-# RIGHT - multiple relation types: use TYPE VARIABLE outside disjunction
-$rel isa $t ($c);
-{ $t label interacts; } or { $t label interacts2; };
-reduce $count = count($rel) groupby $c;  # Works - $rel bound outside
+# RIGHT - also works across different relation types
+{ $rel links (source_tweet: $tweet); } or { $rel links (original_tweet: $tweet); };
+reduce $count = count($rel) groupby $tweet;  # Works: $rel is in all branches
 ```
 
-**Rule**: Any variable you need outside a disjunction must be bound OUTSIDE the `{ } or { }` blocks. Only use disjunctions to constrain type variables or filter conditions, not to introduce new instance variables.
+**Rule**: A variable from inside a disjunction is available outside only if it appears in **every** branch of the `{ } or { }` block.
 
 ### Role Inference (Omitting Roles)
 
@@ -490,7 +475,7 @@ fetch { "title": $m.title };
 ### 2. Variable Naming
 - Use descriptive variable names (`$user`, `$friend`, `$company`)
 - All variables must start with `$`
-- Use underscores in variable names, not hyphens (`$neo4j_score`, not `$neo4j-score`)
+- Use underscores in variable names, not hyphens (`$typedb_score`, not `$typedb-score`)
 - Use `let` for computed values or function assignments
 
 ### 3. Relation Syntax
@@ -511,7 +496,7 @@ fetch { "title": $m.title };
 - Use `reduce` for aggregations
 - Use `select`/`sort`/`limit`/`offset` for pipeline stream control
 - Use `fetch` for formatted output and projection
-- **Order**: `match` → `select` → `distinct` → `sort` → `offset` → `limit` → `fetch`/`reduce`
+- **Order**: Pipeline stages can be composed in any order, except that `fetch` can only be the final stage
 
 ### 6. String Matching
 - **Substring**: `$x contains "graph";` (preferred for simple substring)
@@ -767,61 +752,11 @@ with fun retweeting_users($tweet: tweet) -> integer:
   distinct;
   return count;
 match
-  $me isa me, has screen_name "neo4j";
+  $me isa me, has screen_name "typedb";
   posts (author: $me, content: $tweet);
 let $rt_users = retweeting_users($tweet);
 $rt_users > 5;
 fetch { "tweet": $tweet.text };
-```
-
-### Let expression with absolute difference
-```typeql
-# Top 5 users with betweenness most similar to a reference user
-match
-  $ref isa me, has name "Neo4j", has betweenness $ref_b;
-  $user isa user, has betweenness $user_b;
-  not { $ref is $user; };
-let $difference = abs($user_b - $ref_b);
-sort $difference asc;
-limit 5;
-fetch { "user": $user.name };
-```
-
-### Type variables with disjunction for polymorphic counting
-```typeql
-# Top 5 tweets by total interactions (mentions + retweets + replies)
-match
-  $tweet isa tweet;
-  $rel isa $t;
-  {
-    $t label mentions;
-    $rel links (source_tweet: $tweet);
-  } or {
-    $t label retweets;
-    $rel links (original_tweet: $tweet);
-  } or {
-    $t label reply_to;
-    $rel links (original_tweet: $tweet);
-  };
-reduce $count = count groupby $tweet;
-sort $count desc;
-limit 5;
-fetch { "tweet": $tweet.text, "interactions": $count };
-```
-
-### Chained reduce with arithmetic (aggregation + computed value)
-```typeql
-# Top 3 tweets by combined favorites + retweet count
-match
-  $tweet isa tweet;
-  retweets (original_tweet: $tweet);
-reduce $retweet_count = count groupby $tweet;
-match
-  $tweet has favorites $favorites;
-let $total = $favorites + $retweet_count;
-sort $total desc;
-limit 3;
-fetch { "tweet": $tweet.text, "score": $total };
 ```
 
 ### Two custom functions with ratio computation
