@@ -28,7 +28,7 @@ content:
       start_path: content/3.x/home
       branches: HEAD
     - url: .
-      start_path: content/3.x/examples
+      start_path: content/3.x/use-cases
       branches: HEAD
     - url: .
       start_path: content/3.x/core-concepts
