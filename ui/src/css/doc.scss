@@ -1189,3 +1189,17 @@
         }
     }
 }
+
+.doc-api-reference-driver {
+    border: 1px solid var(--color-light-purple);
+    border-radius: 16px;
+    padding: 16px;
+}
+
+.doc-api-reference-driver h3 {
+    margin-top: 0;
+}
+
+.doc-api-reference-driver h5 code {
+    font-size: 80%;
+}
