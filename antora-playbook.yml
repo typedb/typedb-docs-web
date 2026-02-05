@@ -61,6 +61,9 @@ content:
     - url: .
       start_path: content/3.x/archive/typeql
       branches: HEAD
+    - url: .
+      start_path: content/3.x/archive/examples
+      branches: HEAD
 urls:
   latest_version_segment: ""
 antora:
