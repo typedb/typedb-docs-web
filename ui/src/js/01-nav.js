@@ -2,6 +2,7 @@
     "use strict";
 
     var SECT_CLASS_RX = /^sect(\d)$/;
+    var NAV_STATE_KEY = "docs:navExpansionState";
 
     var navContainer = document.querySelector(".nav-container");
 
@@ -10,6 +11,8 @@
     const panels = navContainer.querySelector(".panels");
     var menuPanel = navContainer.querySelector("[data-panel=menu]");
     if (!menuPanel) return;
+
+    restoreExpansionState();
 
     var currentPageItem = menuPanel.querySelector(".is-current-page");
     var originalPageItem = currentPageItem;
@@ -135,4 +138,51 @@
     function find(from, selector) {
         return [].slice.call(from.querySelectorAll(selector));
     }
+
+    function saveExpansionState() {
+        var expandableItems = menuPanel.querySelectorAll(".nav-item-expandable");
+        var expanded = [];
+        expandableItems.forEach(function(item, index) {
+            if (item.classList.contains("is-active")) {
+                expanded.push(index);
+            }
+        });
+        sessionStorage.setItem(NAV_STATE_KEY, JSON.stringify({
+            component: navContainer.dataset.component || "",
+            version: navContainer.dataset.version || "",
+            expanded: expanded
+        }));
+    }
+
+    function restoreExpansionState() {
+        var saved = sessionStorage.getItem(NAV_STATE_KEY);
+        if (!saved) return;
+        try {
+            saved = JSON.parse(saved);
+        } catch (e) {
+            return;
+        }
+        var component = navContainer.dataset.component || "";
+        var version = navContainer.dataset.version || "";
+        if (saved.component !== component || saved.version !== version) return;
+        var expandableItems = menuPanel.querySelectorAll(".nav-item-expandable");
+        expandableItems.forEach(function(item, index) {
+            if (saved.expanded.indexOf(index) !== -1) {
+                item.classList.add("is-active");
+            } else {
+                item.classList.remove("is-active");
+            }
+        });
+    }
+
+    document.addEventListener("click", function(e) {
+        var anchor = e.target.closest("a");
+        if (anchor && anchor.href && !anchor.target) {
+            saveExpansionState();
+        }
+    }, true);
+
+    window.addEventListener("pagehide", function() {
+        saveExpansionState();
+    });
 })();
