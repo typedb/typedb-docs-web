@@ -20,7 +20,7 @@
         activateCurrentPath(currentPageItem);
         scrollItemToMidpoint(currentPageItem.querySelector(".nav-link"));
     } else {
-        panels.scrollTop = 0;
+        navContainer.scrollTop = 0;
     }
 
     find(menuPanel, ".nav-text-toggle-button, .nav-text-toggle").forEach((el) =>
@@ -116,10 +116,10 @@
         if (this.classList.toggle("is-active")) {
             var padding = parseFloat(window.getComputedStyle(this).marginTop);
             var rect = this.getBoundingClientRect();
-            var menuPanelRect = menuPanel.getBoundingClientRect();
-            var overflowY = (rect.bottom - menuPanelRect.top - menuPanelRect.height + padding).toFixed();
+            var containerRect = navContainer.getBoundingClientRect();
+            var overflowY = (rect.bottom - containerRect.top - containerRect.height + padding).toFixed();
             if (overflowY > 0)
-                menuPanel.scrollTop += Math.min((rect.top - menuPanelRect.top - padding).toFixed(), overflowY);
+                navContainer.scrollTop += Math.min((rect.top - containerRect.top - padding).toFixed(), overflowY);
         }
     }
 
@@ -128,11 +128,11 @@
     }
 
     function scrollItemToMidpoint(el) {
-        const panelsRect = panels.getBoundingClientRect();
-        const elRect = el.getBoundingClientRect();
-        const panelsCenter = panelsRect.top + panelsRect.height / 2;
-        const elCenter = elRect.top + elRect.height / 2;
-        panels.scrollTop += elCenter - panelsCenter;
+        var containerRect = navContainer.getBoundingClientRect();
+        var elRect = el.getBoundingClientRect();
+        var containerCenter = containerRect.top + containerRect.height / 2;
+        var elCenter = elRect.top + elRect.height / 2;
+        navContainer.scrollTop += elCenter - containerCenter;
     }
 
     function find(from, selector) {
