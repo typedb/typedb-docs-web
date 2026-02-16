@@ -2,6 +2,7 @@
     "use strict";
 
     var SECT_CLASS_RX = /^sect(\d)$/;
+    var NAV_STATE_KEY = "docs:navExpansionState";
 
     var navContainer = document.querySelector(".nav-container");
 
@@ -11,13 +12,15 @@
     var menuPanel = navContainer.querySelector("[data-panel=menu]");
     if (!menuPanel) return;
 
+    restoreExpansionState();
+
     var currentPageItem = menuPanel.querySelector(".is-current-page");
     var originalPageItem = currentPageItem;
     if (currentPageItem) {
         activateCurrentPath(currentPageItem);
         scrollItemToMidpoint(currentPageItem.querySelector(".nav-link"));
     } else {
-        panels.scrollTop = 0;
+        navContainer.scrollTop = 0;
     }
 
     find(menuPanel, ".nav-text-toggle-button, .nav-text-toggle").forEach((el) =>
@@ -113,10 +116,10 @@
         if (this.classList.toggle("is-active")) {
             var padding = parseFloat(window.getComputedStyle(this).marginTop);
             var rect = this.getBoundingClientRect();
-            var menuPanelRect = menuPanel.getBoundingClientRect();
-            var overflowY = (rect.bottom - menuPanelRect.top - menuPanelRect.height + padding).toFixed();
+            var containerRect = navContainer.getBoundingClientRect();
+            var overflowY = (rect.bottom - containerRect.top - containerRect.height + padding).toFixed();
             if (overflowY > 0)
-                menuPanel.scrollTop += Math.min((rect.top - menuPanelRect.top - padding).toFixed(), overflowY);
+                navContainer.scrollTop += Math.min((rect.top - containerRect.top - padding).toFixed(), overflowY);
         }
     }
 
@@ -125,14 +128,61 @@
     }
 
     function scrollItemToMidpoint(el) {
-        const panelsRect = panels.getBoundingClientRect();
-        const elRect = el.getBoundingClientRect();
-        const panelsCenter = panelsRect.top + panelsRect.height / 2;
-        const elCenter = elRect.top + elRect.height / 2;
-        panels.scrollTop += elCenter - panelsCenter;
+        var containerRect = navContainer.getBoundingClientRect();
+        var elRect = el.getBoundingClientRect();
+        var containerCenter = containerRect.top + containerRect.height / 2;
+        var elCenter = elRect.top + elRect.height / 2;
+        navContainer.scrollTop += elCenter - containerCenter;
     }
 
     function find(from, selector) {
         return [].slice.call(from.querySelectorAll(selector));
     }
+
+    function saveExpansionState() {
+        var expandableItems = menuPanel.querySelectorAll(".nav-item-expandable");
+        var expanded = [];
+        expandableItems.forEach(function(item, index) {
+            if (item.classList.contains("is-active")) {
+                expanded.push(index);
+            }
+        });
+        sessionStorage.setItem(NAV_STATE_KEY, JSON.stringify({
+            component: navContainer.dataset.component || "",
+            version: navContainer.dataset.version || "",
+            expanded: expanded
+        }));
+    }
+
+    function restoreExpansionState() {
+        var saved = sessionStorage.getItem(NAV_STATE_KEY);
+        if (!saved) return;
+        try {
+            saved = JSON.parse(saved);
+        } catch (e) {
+            return;
+        }
+        var component = navContainer.dataset.component || "";
+        var version = navContainer.dataset.version || "";
+        if (saved.component !== component || saved.version !== version) return;
+        var expandableItems = menuPanel.querySelectorAll(".nav-item-expandable");
+        expandableItems.forEach(function(item, index) {
+            if (saved.expanded.indexOf(index) !== -1) {
+                item.classList.add("is-active");
+            } else {
+                item.classList.remove("is-active");
+            }
+        });
+    }
+
+    document.addEventListener("click", function(e) {
+        var anchor = e.target.closest("a");
+        if (anchor && anchor.href && !anchor.target) {
+            saveExpansionState();
+        }
+    }, true);
+
+    window.addEventListener("pagehide", function() {
+        saveExpansionState();
+    });
 })();
