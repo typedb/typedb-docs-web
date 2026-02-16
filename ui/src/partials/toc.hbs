@@ -1,3 +1,12 @@
 <aside class="toc sidebar" data-title="{{or page.attributes.toctitle 'Contents'}}" data-levels="{{or page.attributes.toclevels 1 }}">
   <div class="toc-menu {{#if page.attributes.no-toc}}no-toc{{/if}}"></div>
+  {{#if page.editUrl}}
+  <div class="toc-links">
+    <div class="clickable toc-link toc-link-container">
+      <button class="toc-link-button">{{{ icon "github" }}}</button>
+      <a href="{{fixEditUrl page.editUrl}}" target="_blank">Edit on GitHub</a>
+      <span class="toc-link-tooltip">Edit this page on GitHub.</span>
+    </div>
+  </div>
+  {{/if}}
 </aside>

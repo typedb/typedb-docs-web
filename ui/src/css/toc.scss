@@ -1,5 +1,6 @@
 @use "media";
 @use "media_docs";
+@use "mixins" as *;
 
 .toc {
     font-size: inherit;
@@ -145,7 +146,13 @@
         padding-top: 1rem;
         border-top: 1px solid var(--panel-border-color);
         pointer-events: all;
+        font-size: var(--font-size-aside);
         line-height: var(--toc-line-height);
+    }
+
+    .toc-menu:empty + .toc-links {
+        border-top: none;
+        margin-top: 0;
     }
 
     .toc-links ul {
@@ -155,13 +162,29 @@
     .toc-links a {
         letter-spacing: var(--body-letter-spacing);
         margin-top: 10px;
-        padding-left: 30px;
+        padding-left: 22px;
         color: inherit;
         text-decoration: none;
     }
 
+    .toc-links a::after {
+        content: "";
+        display: inline-block;
+        width: 1em;
+        height: 1em;
+        margin-left: 4px;
+        vertical-align: -0.1em;
+        @include url-icon(url("icons/link.svg"), currentColor);
+        opacity: 0;
+        transition: opacity 0.15s;
+    }
+
     .toc-links a:hover {
         color: var(--link-font-color);
+
+        &::after {
+            opacity: 1;
+        }
     }
 
     .toc-links .toc-academy {
@@ -184,12 +207,19 @@
 
 .toc-link-button {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    padding: 2px 2px 0px 2px;
-    margin: 0px 0px -10px;
+    width: 14px;
+    height: 14px;
+    padding: 0;
+    margin: 0;
+    top: 50%;
+    transform: translateY(-50%);
     background: none;
     border: none;
+
+    svg {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .toc-link-container {
