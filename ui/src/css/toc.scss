@@ -42,6 +42,7 @@
     &.sidebar {
         display: block;
         position: sticky;
+        pointer-events: none;
         margin-left: calc(0px - var(--doc-tooltip-width));
         padding-left: var(--doc-tooltip-width);
         padding-top: 12px;
