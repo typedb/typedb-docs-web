@@ -1,3 +1,15 @@
+## Minimal build playbook.
+##
+## Excludes the 2.x content tree, the external typedb-driver source, and the
+## 3.x archive modules, so it builds only current 3.x content. Much faster than
+## the full build; use for local iteration on 3.x content or the UI.
+##
+## The 3.x reference module is kept, so this build logs a few expected,
+## non-fatal errors: the driver-API pages can't resolve their typedb-driver
+## includes, and typedb-2-vs-3/process.adoc has one broken 2.x xref. The site
+## still generates. Use antora-playbook.yml for a clean full build.
+##
+## Keep the shared settings below in sync with antora-playbook.yml.
 site:
   title: TypeDB Documentation portal
   start_page: home:ROOT:index.adoc
@@ -5,25 +17,6 @@ site:
 content:
   edit_url: 'https://github.com/typedb/typedb-docs/edit/development/{path}'
   sources:
-    - url: .
-      start_path: content/2.x/drivers
-      branches: HEAD
-    - url: .
-      start_path: content/2.x/typeql
-      branches: HEAD
-    - url: .
-      start_path: content/2.x/manual
-      branches: HEAD
-    - url: .
-      start_path: content/2.x/academy
-      branches: HEAD
-    - url: .
-      start_path: content/2.x/home
-      branches: HEAD
-    - url: https://github.com/typedb/typedb-driver
-      start_path: docs
-      branches: ["master", "2.x"]
-
     - url: .
       start_path: content/3.x/home
       branches: HEAD
@@ -53,19 +46,6 @@ content:
       branches: HEAD
     - url: .
       start_path: content/3.x/guides
-      branches: HEAD
-
-    - url: .
-      start_path: content/3.x/archive/manual
-      branches: HEAD
-    - url: .
-      start_path: content/3.x/archive/drivers
-      branches: HEAD
-    - url: .
-      start_path: content/3.x/archive/typeql
-      branches: HEAD
-    - url: .
-      start_path: content/3.x/archive/examples
       branches: HEAD
 urls:
   latest_version_segment: ""
