@@ -314,12 +314,13 @@
         }
 
         /*
-         * Yellow variant, authored as [NOTE.yellow].
-         * Renders a plain yellow block: no icon and no admonition label -
+         * Plain colored variants, authored as [NOTE.yellow] / [NOTE.green] / [NOTE.blue].
+         * Render a plain tinted block: no icon and no admonition label -
          * the icon cell is removed entirely so there is no ::before content.
          */
-        &.yellow {
-            background: var(--important-background);
+        &.yellow,
+        &.green,
+        &.blue {
             border-radius: var(--border-radius);
 
             td.icon {
@@ -329,6 +330,18 @@
             td.content {
                 background: transparent;
             }
+        }
+
+        &.yellow {
+            background: var(--important-background);
+        }
+
+        &.green {
+            background: var(--tip-background);
+        }
+
+        &.blue {
+            background: var(--note-background);
         }
     }
 
