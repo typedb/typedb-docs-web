@@ -152,6 +152,11 @@
         padding: 6px 6px 3px 6px;
     }
 
+    /* Inline code inside a link keeps the link color rather than the code pink. */
+    p a code {
+        color: var(--link-font-color);
+    }
+
     table.tableblock p code,
     table.tableblock thead code,
     table.tableblock .colist > table code {
