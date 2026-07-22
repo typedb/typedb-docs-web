@@ -409,6 +409,12 @@
         vertical-align: middle;
     }
 
+    .imageblock img,
+    .imageblock object,
+    .imageblock svg {
+        border-radius: var(--border-radius);
+    }
+
     :not(.imageblock) :not(.tableblock) .image > img {
         vertical-align: middle;
     }
