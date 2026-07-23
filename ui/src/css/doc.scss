@@ -383,6 +383,10 @@
         }
     }
 
+    .imageblock > .content {
+        width: 100%;
+    }
+
     .videoblock {
         position: relative;
         padding-bottom: 56.25%; /* 16:9 */
