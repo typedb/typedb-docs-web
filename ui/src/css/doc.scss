@@ -305,6 +305,44 @@
             width: 100%;
             word-wrap: anywhere;
         }
+
+        .title {
+            font-weight: var(--font-weight-medium);
+            font-size: 18px;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        /*
+         * Plain colored variants, authored as [NOTE.yellow] / [NOTE.green] / [NOTE.blue].
+         * Render a plain tinted block: no icon and no admonition label -
+         * the icon cell is removed entirely so there is no ::before content.
+         */
+        &.yellow,
+        &.green,
+        &.blue {
+            border-radius: var(--border-radius);
+
+            td.icon {
+                display: none;
+            }
+
+            td.content {
+                background: transparent;
+            }
+        }
+
+        &.yellow {
+            background: var(--important-background);
+        }
+
+        &.green {
+            background: var(--tip-background);
+        }
+
+        &.blue {
+            background: var(--note-background);
+        }
     }
 
     .imageblock,
@@ -345,6 +383,10 @@
         }
     }
 
+    .imageblock > .content {
+        width: 100%;
+    }
+
     .videoblock {
         position: relative;
         padding-bottom: 56.25%; /* 16:9 */
@@ -369,6 +411,12 @@
         height: auto;
         max-width: 100%;
         vertical-align: middle;
+    }
+
+    .imageblock img,
+    .imageblock object,
+    .imageblock svg {
+        border-radius: var(--border-radius);
     }
 
     :not(.imageblock) :not(.tableblock) .image > img {
@@ -603,7 +651,6 @@
         box-shadow: inset 0 0 0 1px currentColor;
     }
 
-    .admonitionblock .title,
     .exampleblock .title,
     .imageblock .title,
     .literalblock .title,
