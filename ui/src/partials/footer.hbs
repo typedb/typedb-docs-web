@@ -1,2 +1,7 @@
+{{#unless (or (eq page.componentVersion.version "2.x") (eq page.component.name "manual") (eq page.component.name "drivers") (eq page.component.name "typeql"))}}
+<div class="llms-links">
+    For LLMs &amp; AI agents: <a href="{{{relativize (mdUrl page.url)}}}">this page as Markdown</a> &middot; <a href="{{{relativize "/llms.txt"}}}">llms.txt</a> &middot; <a href="{{{relativize "/llms-full.txt"}}}">llms-full.txt</a> (TypeQL summary)
+</div>
+{{/unless}}
 {{> footer-content}}
 {{> footer-scripts}}

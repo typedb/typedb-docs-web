@@ -152,3 +152,19 @@ body {
         max-width: 1466px;
     }
 }
+
+.llms-links {
+    padding: 12px var(--body-padding-sides);
+    text-align: center;
+    font-size: 13px;
+    color: var(--color-grey);
+
+    a {
+        color: inherit;
+        text-decoration: underline;
+
+        &:hover {
+            color: var(--default-text-color);
+        }
+    }
+}
