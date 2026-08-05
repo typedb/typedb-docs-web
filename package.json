@@ -11,7 +11,7 @@
     "start": "npm run build",
     "build-llms": "node build-llms.js",
     "prune-sitemap": "node prune-sitemap.js",
-    "add-llms-short": "node add-llms-short.js",
+    "add-llms-full": "node add-llms-full.js",
     "build-ci": "./build-ci.sh"
   },
   "dependencies": {

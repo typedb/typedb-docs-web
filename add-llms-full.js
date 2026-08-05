@@ -7,6 +7,6 @@ if (!fs.existsSync(rootDir)) {
     process.exit(1);
 }
 
-const llmsInputPath = "./llms-short.txt";
-const llmsOutputPath = path.join(rootDir, 'llms-short.txt');
+const llmsInputPath = "./llms-full.txt";
+const llmsOutputPath = path.join(rootDir, 'llms-full.txt');
 fs.copyFileSync(llmsInputPath, llmsOutputPath);
