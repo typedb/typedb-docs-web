@@ -1,2 +1,9 @@
 packages:
   - ./typedb-web/common
+
+# Mirrors the catalog in typedb-web/pnpm-workspace.yaml (the source of truth) —
+# needed because pnpm resolves "catalog:" specs from this root workspace file.
+catalog:
+  react: 19.2.8
+  react-dom: 19.2.8
+  "@types/react": 19.2.17
