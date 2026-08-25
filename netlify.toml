@@ -3,9 +3,6 @@ command = "pnpm build-ci"
 publish = "dist/"
 ignore = "/bin/false"
 
-[build.environment]
-DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1317118973443309649/CqydmmRN9Ao1G49fg6QWroNujeoLJm7Qx__bO6gn1yHX9jKHWbQwyV3GMdD9GxzW9FnX"
-
 [context.production.environment]
 MINIFY = "true"
 
