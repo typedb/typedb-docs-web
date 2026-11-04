@@ -86,7 +86,7 @@
           },
           {
             label: "Design a schema",
-            prompt: "Help me design a TypeDB schema. I'll provide details of what the schema should represent and/or what should be in the schema.",
+            prompt: "Help me design a TypeDB schema. I'll describe the domain in a sentence or two. Make sensible assumptions and give me a first draft we can refine.",
           },
           {
             label: "What's new",
