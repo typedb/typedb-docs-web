@@ -1,7 +1,8 @@
 // "Ask TypeDB AI": OpenAI ChatKit widget backed by the support-agent edge function in typedb-web.
 // Only active when the site is built with the support_agent key (see build-ci.sh); otherwise the
 // launcher is inert, as it was with Intercom.
-(function () {
+// Leading semicolon guards against the preceding bundled file ending without one.
+;(function () {
   "use strict";
 
   var settings = window.supportAgentSettings;
