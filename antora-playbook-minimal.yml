@@ -6,7 +6,7 @@
 ##
 ## The 3.x reference module is kept, so this build logs a few expected,
 ## non-fatal errors: the driver-API pages can't resolve their typedb-driver
-## includes, and typedb-2-vs-3/process.adoc has one broken 2.x xref. The site
+## includes. The site
 ## still generates. Use antora-playbook.yml for a clean full build.
 ##
 ## Keep the shared settings below in sync with antora-playbook.yml.
