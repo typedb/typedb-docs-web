@@ -79,9 +79,13 @@
       startScreen: {
         greeting: "What would you like to know about TypeDB?",
         prompts: [
-          { label: "Install TypeDB", prompt: "How do I install and run TypeDB 3 locally?" },
-          { label: "Write a query", prompt: "Show me an example TypeQL match query with a function in TypeDB 3." },
-          { label: "What's new", prompt: "What is in the latest TypeDB release?" },
+          { label: "Install TypeDB", prompt: "How do I install and run TypeDB?" },
+          { label: "Write a query", prompt: "Help me write a TypeQL query." },
+          { label: "Design a schema", prompt: "Help me design a TypeDB schema." },
+          {
+            label: "What's new",
+            prompt: "What's the latest news from TypeDB? Check recent news-like blog posts and recent releases in the main TypeDB repos (typedb, typeql, typedb-studio, typedb-driver, typedb-tools, typedb-examples). In your summary, include only 'major' / interesting news.",
+          },
         ],
       },
       composer: {
