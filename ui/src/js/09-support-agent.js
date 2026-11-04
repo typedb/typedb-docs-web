@@ -80,11 +80,17 @@
         greeting: "What would you like to know about TypeDB?",
         prompts: [
           { label: "Install TypeDB", prompt: "How do I install and run TypeDB?" },
-          { label: "Write a query", prompt: "Help me write a TypeQL query." },
-          { label: "Design a schema", prompt: "Help me design a TypeDB schema." },
+          {
+            label: "Write a query",
+            prompt: "Help me write a TypeQL query. I'll provide the relevant schema and details of the query I want you to write.",
+          },
+          {
+            label: "Design a schema",
+            prompt: "Help me design a TypeDB schema. I'll provide details of what the schema should represent and/or what should be in the schema.",
+          },
           {
             label: "What's new",
-            prompt: "What's the latest news from TypeDB? Check recent news-like blog posts and recent releases in the main TypeDB repos (typedb, typeql, typedb-studio, typedb-driver, typedb-tools, typedb-examples). In your summary, include only 'major' / interesting news.",
+            prompt: "What's the latest news from TypeDB? Use recent news-like blog posts and recent releases in the main TypeDB repos as content sources (for example: typedb, typeql, typedb-studio, typedb-driver, typedb-tools, typedb-examples). In your summary, include only 'major' / interesting news and present news broken down by theme, not by content source.",
           },
         ],
       },
