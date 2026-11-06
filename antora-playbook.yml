@@ -8,18 +8,6 @@ content:
     - url: .
       start_path: content/2.x/drivers
       branches: HEAD
-    - url: .
-      start_path: content/2.x/typeql
-      branches: HEAD
-    - url: .
-      start_path: content/2.x/manual
-      branches: HEAD
-    - url: .
-      start_path: content/2.x/academy
-      branches: HEAD
-    - url: .
-      start_path: content/2.x/home
-      branches: HEAD
     - url: https://github.com/typedb/typedb-driver
       start_path: docs
       branches: ["master", "2.x"]
